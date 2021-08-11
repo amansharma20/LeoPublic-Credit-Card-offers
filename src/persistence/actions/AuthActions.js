@@ -5,6 +5,7 @@ import {RequestConstant, ResponseConstant} from '../../utils/constants/CommanCon
 
 export const AuthActions = {
   signIn,
+  signUp
 };
 
 function signIn(url, data) {
@@ -22,3 +23,18 @@ function signIn(url, data) {
   };
 }
 
+function signUp(url, data) {
+    return async dispatch => {
+      dispatch(RequestConstant(AuthConstants.SIGNIN_REQUEST, data));
+      const result = await AuthService.signIn(url, data);
+      dispatch(
+        ResponseConstant(
+          AuthConstants.SIGNIN_SUCCESS,
+          AuthConstants.SIGNIN_FAILURE,
+          result,
+        ),
+      );
+      return result;
+    };
+  }
+  

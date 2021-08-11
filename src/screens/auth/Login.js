@@ -30,7 +30,8 @@ export default function Login() {
         }
         dispatch(AuthActions.signIn('/Account/LoginStart',signInData));
         navigation.navigate('OTPScreen', {
-            phone: data.phone
+            phone: data.phone,
+            screenName:'Login'
         })
 
     };

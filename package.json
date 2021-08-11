@@ -10,10 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@apollo/client": "^3.4.7",
     "@hookform/resolvers": "^2.7.1",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.0.4",
     "axios": "^0.21.1",
+    "graphql": "^15.5.1",
     "react": "17.0.1",
     "react-hook-form": "^7.12.2",
     "react-native": "0.64.2",

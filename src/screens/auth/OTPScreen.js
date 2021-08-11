@@ -12,8 +12,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { AuthActions } from '../../persistence/actions/AuthActions';
 
+
 export default function OTPScreen(props) {
+
+    console.log(props)
+
     const { phone } = props.route.params
+    const { namscreenName } = props.route.params
+
     const dispatch = useDispatch();
     const schema = yup.object().shape({
         otp: yup.string().required('Phone is' + ' ' + 'required.'),
@@ -24,13 +30,34 @@ export default function OTPScreen(props) {
     });
 
     const onSubmit = data => {
-        const otpData = {
-            'MobileNumber': phone,
-            "Code": data.otp
+
+
+        if(namscreenName == 'Login'){
+            const otpData = {
+                'MobileNumber': phone,
+                "Code": data.otp
+            }
+            dispatch(AuthActions.signIn('/Account/LoginComplete', otpData)).then((response) => {
+                console.log(response.data)
+                navigation.navigate('OTPScreen', {
+                    token: response.data
+                })
+            })
+        }else{
+            console.log("YHA TK PAUCH GAYA")
+            const otpData = {
+                'MobileNumber': phone,
+                "Code": data.otp
+            }
+            dispatch(AuthActions.signIn('/Account/RegisterCustomerComplete', otpData)).then((response) => {
+                console.log(response.data)
+                navigation.navigate('OTPScreen', {
+                    token: response.data
+                })
+            })
         }
-        dispatch(AuthActions.signIn('/Account/LoginComplete', otpData)).then((response) => {
-            console.log(response.data)
-        })
+
+       
     };
 
     return (
