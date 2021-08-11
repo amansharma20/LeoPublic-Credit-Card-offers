@@ -1,0 +1,6 @@
+module Pods_Leo_LeoTests {
+  umbrella header "Pods-Leo-LeoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
