@@ -6,6 +6,7 @@ import {
 import React from 'react';
 import AuthNavigator from './AuthNavigator';
 import Login from '../screens/auth/Login';
+import OTPScreen from '../screens/auth/OTPScreen';
 
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ export default function StackNavigator() {
                 }}
             >
                 <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="OTPScreen" component={OTPScreen} />
                 <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
             </Stack.Navigator>
 
