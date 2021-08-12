@@ -27,7 +27,7 @@ export default function CardHolder() {
         </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
-          // onPress={handleSubmit(onSubmit)}
+          onPress={() => navigation.navigate('AddCardScreen')}
           >
             <View style={styles.yesButtonContainer}>
               <Text style={styles.yesButtonText}>Yes, I am</Text>

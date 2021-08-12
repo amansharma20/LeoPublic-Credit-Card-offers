@@ -130,6 +130,7 @@ export default function BasicDetailsInput() {
                   placeholderTextColor={'#B4B4B4'}
                   placeholder={'Pin Code'}
                   keyboardType={'number-pad'}
+                  maxLength={6}
                 />
               )}
               name="pincode"
