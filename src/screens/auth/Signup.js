@@ -67,7 +67,7 @@ export default function Signup() {
       <View style={styles.body}>
         <TouchableOpacity>
           <View style={styles.header}>
-            <Image source={icons.backButton} style={{width: 24, height: 24}} />
+            <Image source={icons.backButton} style={styles.backButtonSize} />
           </View>
         </TouchableOpacity>
         <View style={styles.headerTextContainer}>
@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
   header: {
     //   backgroundColor: '#000'
   },
+  backButtonSize: {width: 24, height: 24},
   headerTextContainer: {
     // backgroundColor: 'red',
     paddingVertical: 20,

@@ -10,6 +10,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.75.1] C:\Users\amana\
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\13e0ca18817a9e59a8c4a94704ec8c3c\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-community_checkbox] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-date-picker] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:2:1-13:12
@@ -52,6 +53,8 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\amana\.gradle\caches
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\15faa7fdc535e832982b4615d300cb77\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\033c1099bb4cd11be9138377da501d59\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\943631e3c5a6dfa67bece88add1d3fe3\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.henninghall.android:NumberPickerView:1.1.5] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\c3ad6f42abd825b8e362da1545c430d5\jetified-NumberPickerView-1.1.5\AndroidManifest.xml:2:1-11:12
+MERGED from [net.time4j:time4j-android:4.2-2018i] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\4f9ba7199e67a497a85d55c2f3caf956\jetified-time4j-android-4.2-2018i\AndroidManifest.xml:2:1-13:12
 MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5ff10ad0f2bea4b2419e86a549e99aac\jetified-fbcore-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:ui-common:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\ffdaca04e33e18187dfc99a2b0ddad3b\jetified-ui-common-2.2.0\AndroidManifest.xml:2:1-9:12
 INJECTED from C:\Users\amana\apps\Leo\Mobile\android\app\src\debug\AndroidManifest.xml:2:1-13:12
@@ -92,6 +95,8 @@ MERGED from [androidx.core:core:1.1.0] C:\Users\amana\.gradle\caches\transforms-
 MERGED from [androidx.core:core:1.1.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\d67cd79abd1ca209502f51c69d23182b\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\af9af86a2035b10a0514f89f66cf8a9a\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\af9af86a2035b10a0514f89f66cf8a9a\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [net.time4j:time4j-android:4.2-2018i] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\4f9ba7199e67a497a85d55c2f3caf956\jetified-time4j-android-4.2-2018i\AndroidManifest.xml:11:5-20
+MERGED from [net.time4j:time4j-android:4.2-2018i] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\4f9ba7199e67a497a85d55c2f3caf956\jetified-time4j-android-4.2-2018i\AndroidManifest.xml:11:5-20
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\d67cd79abd1ca209502f51c69d23182b\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:label
@@ -154,6 +159,8 @@ MERGED from [:react-native-community_checkbox] C:\Users\amana\apps\Leo\Mobile\no
 MERGED from [:react-native-community_checkbox] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-date-picker] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-date-picker] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -238,6 +245,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\amana\.g
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\033c1099bb4cd11be9138377da501d59\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\943631e3c5a6dfa67bece88add1d3fe3\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\943631e3c5a6dfa67bece88add1d3fe3\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.henninghall.android:NumberPickerView:1.1.5] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\c3ad6f42abd825b8e362da1545c430d5\jetified-NumberPickerView-1.1.5\AndroidManifest.xml:7:5-9:41
+MERGED from [com.henninghall.android:NumberPickerView:1.1.5] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\c3ad6f42abd825b8e362da1545c430d5\jetified-NumberPickerView-1.1.5\AndroidManifest.xml:7:5-9:41
+MERGED from [net.time4j:time4j-android:4.2-2018i] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\4f9ba7199e67a497a85d55c2f3caf956\jetified-time4j-android-4.2-2018i\AndroidManifest.xml:7:5-9:41
+MERGED from [net.time4j:time4j-android:4.2-2018i] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\4f9ba7199e67a497a85d55c2f3caf956\jetified-time4j-android-4.2-2018i\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5ff10ad0f2bea4b2419e86a549e99aac\jetified-fbcore-2.2.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5ff10ad0f2bea4b2419e86a549e99aac\jetified-fbcore-2.2.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:ui-common:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\ffdaca04e33e18187dfc99a2b0ddad3b\jetified-ui-common-2.2.0\AndroidManifest.xml:5:5-7:41

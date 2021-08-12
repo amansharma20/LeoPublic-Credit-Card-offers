@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Text,
   Image,
+  Platform,
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
@@ -18,6 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import icons from '../../constants/icons';
+import { Responsive } from '../../utils/layouts/Layout';
 
 export default function OTPScreen(props) {
   console.log(props);
@@ -35,6 +37,7 @@ export default function OTPScreen(props) {
   });
 
   const onSubmit = data => {
+    navigation.navigate('BasicDetailsInput');
     if (namscreenName == 'Login') {
       const otpData = {
         MobileNumber: phone,
@@ -101,7 +104,7 @@ export default function OTPScreen(props) {
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>I didn't receive the code.</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{color: '#4d2d8f', fontWeight: 'bold'}}> Resend Code</Text>
+            <Text style={styles.footerTextBold}> Resend Code</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -113,6 +116,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: Platform.select({
+      ios: Responsive.height(40),
+      android: Responsive.height(0),
+    }),
   },
   body: {
     padding: SIZES.padding,
@@ -157,9 +164,8 @@ const styles = StyleSheet.create({
   otpContainer: {alignItems: 'center', marginTop: '20%'},
   otpInputContainer: {width: '80%', height: 100},
   underlineStyleBase: {
-    borderRadius: 12,
-    borderColor: '#c4c4c4',
-    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    backgroundColor: '#f4f5f7',
     color: '#000',
   },
   footerTextContainer: {
@@ -168,5 +174,8 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: SIZES.h4,
+    color: '#7a869a',
+    fontWeight: '700',
   },
+  footerTextBold: {color: '#4d2d8f', fontWeight: 'bold'},
 });

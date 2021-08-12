@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
 // @react-native-community/clipboard
 import com.reactnativecommunity.clipboard.ClipboardPackage;
+// react-native-date-picker
+import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-safe-area-context
@@ -66,6 +68,7 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new ReactCheckBoxPackage(),
       new ClipboardPackage(),
+      new DatePickerPackage(),
       new RNGestureHandlerPackage(),
       new SafeAreaContextPackage()
     ));
