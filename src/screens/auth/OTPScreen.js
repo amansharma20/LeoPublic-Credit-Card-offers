@@ -1,20 +1,29 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-shadow */
 /* eslint-disable eqeqeq */
+/* eslint-disable no-undef */
 import React from 'react';
-import {View, StyleSheet, Keyboard, TextInput, Button} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Image,
+} from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useDispatch} from 'react-redux';
 import {AuthActions} from '../../persistence/actions/AuthActions';
 import {useNavigation} from '@react-navigation/native';
+import {SIZES} from '../../../constants/theme';
+import OTPInputView from '@twotalltotems/react-native-otp-input';
+import icons from '../../constants/icons';
 
 export default function OTPScreen(props) {
   console.log(props);
   const navigation = useNavigation();
-  const {phone} = props.route.params;
-  const {namscreenName} = props.route.params;
+  // const {phone} = props.route.params;
+  // const {namscreenName} = props.route.params;
 
   const dispatch = useDispatch();
   const schema = yup.object().shape({
@@ -58,28 +67,44 @@ export default function OTPScreen(props) {
 
   return (
     <View style={styles.container}>
-      <Controller
-        control={control}
-        render={({field: {onChange, value}}) => (
-          <TextInput
-            style={styles.phoneInput}
-            onChangeText={value => onChange(value)}
-            value={value}
-            placeholder="OTP"
-            placeholderTextColor="#797979"
-            keyboardType="phone-pad"
-            onSubmitEditing={Keyboard.dismiss}
-            blurOnSubmit={false}
-            secureTextEntry={false}
-            underlineColorAndroid="#f000"
-            returnKeyType="next"
-          />
-        )}
-        name="otp"
-        defaultValue="0000"
-      />
-
-      <Button onPress={handleSubmit(onSubmit)} title="Submit" />
+      <View style={styles.body}>
+      <TouchableOpacity>
+          <View style={styles.header}>
+            <Image source={icons.backButton} style={styles.iconSize} />
+          </View>
+        </TouchableOpacity>
+        <View style={styles.headerTextContainer}>
+          <Text style={styles.headerText}>Register with us</Text>
+          <Text style={styles.subTitleText}>
+            We’ll send you a code to verify your contact number
+          </Text>
+        </View>
+        <Controller
+          control={control}
+          render={({field: {onChange, value}}) => (
+            <View style={styles.otpContainer}>
+              <OTPInputView
+                pinCount={4}
+                style={styles.otpInputContainer}
+                codeInputFieldStyle={styles.underlineStyleBase}
+              />
+            </View>
+          )}
+          name="otp"
+          defaultValue="0000"
+        />
+        <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+          <View style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Confirm</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.footerTextContainer}>
+          <Text style={styles.footerText}>I didn't receive the code.</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={{color: '#4d2d8f', fontWeight: 'bold'}}> Resend Code</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
@@ -87,10 +112,61 @@ export default function OTPScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#ffffff',
   },
+  body: {
+    padding: SIZES.padding,
+  },
+  iconSize: {width: 24, height: 24},
+  headerTextContainer: {
+    paddingVertical: 20,
+  },
+  headerText: {
+    fontSize: SIZES.h1,
+    fontWeight: 'bold',
+  },
+  subTitleText: {
+    fontSize: SIZES.h3,
+    marginTop: 12,
+    color: '#797E96',
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#4d2d8f',
+    borderRadius: 10,
+    height: 48,
+    marginVertical: 20,
+  },
+  buttonText: {
+    fontSize: SIZES.h3,
+    color: '#FFFFFF',
+    fontWeight: '700',
+  },
+  resendButton: {
+    fontSize: 16,
+    fontFamily: 'AvenirLTStd-Black',
+    color: '#3511a3',
+  },
+  resendButtonContainer: {width: '80%', alignItems: 'flex-end'},
   phoneInput: {
     marginTop: 100,
     borderColor: 'red',
     borderRadius: 10,
+  },
+  otpContainer: {alignItems: 'center', marginTop: '20%'},
+  otpInputContainer: {width: '80%', height: 100},
+  underlineStyleBase: {
+    borderRadius: 12,
+    borderColor: '#c4c4c4',
+    backgroundColor: '#ffffff',
+    color: '#000',
+  },
+  footerTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  footerText: {
+    fontSize: SIZES.h4,
   },
 });

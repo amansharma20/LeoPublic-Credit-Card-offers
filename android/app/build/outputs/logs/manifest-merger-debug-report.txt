@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper:0.75.1] C:\Users\amana\.gradle\caches\
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.75.1] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\d8279ebfbcca51b68586de1b9bc17210\jetified-flipper-network-plugin-0.75.1\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\13e0ca18817a9e59a8c4a94704ec8c3c\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-community_checkbox] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:2:1-13:12
@@ -151,6 +152,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\amana\.
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\13e0ca18817a9e59a8c4a94704ec8c3c\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-community_checkbox] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_checkbox] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
