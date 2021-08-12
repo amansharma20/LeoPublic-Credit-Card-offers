@@ -1,18 +1,29 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  Modal,
+  Dimensions,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
 import icons from '../../constants/icons';
-import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import {Controller, useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import DropDownPicker from 'react-native-dropdown-picker';
 import images from '../../constants/images';
 
 export default function AddCardScreen() {
   const navigation = useNavigation();
+  const screenHeight = Dimensions.get('window').height;
+  const screenWidth = Dimensions.get('window').width;
 
   const [openBankName, setOpenBankName] = useState(false);
   const [openCardType, setOpenCardType] = useState(false);
@@ -37,6 +48,7 @@ export default function AddCardScreen() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [showModal, setShowModal] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -49,31 +61,30 @@ export default function AddCardScreen() {
           <Text style={styles.headerText}>Add New Card</Text>
         </View>
         <View style={styles.creditCardImage}>
-        <Image source={images.creditCardImage} />
-
+          <Image source={images.creditCardImage} />
         </View>
 
         <View>
-        <Controller
-              control={control}
-              render={({field: {onChange, onBlur, value}}) => (
-                <TextInput
-                  label={'Pincode'}
-                  onBlur={onBlur}
-                  onChangeText={value => onChange(value)}
-                  value={value}
-                  error={errors.pincode}
-                  style={styles.digitsInput}
-                  placeholderTextColor={'#B4B4B4'}
-                  placeholder={'First 6 digits of your Credit Card'}
-                  keyboardType={'number-pad'}
-                  maxLength={6}
-                />
-              )}
-              name="pincode"
-              defaultValue={''}
-            />
-            <DropDownPicker
+          <Controller
+            control={control}
+            render={({field: {onChange, onBlur, value}}) => (
+              <TextInput
+                label={'Pincode'}
+                onBlur={onBlur}
+                onChangeText={value => onChange(value)}
+                value={value}
+                error={errors.pincode}
+                style={styles.digitsInput}
+                placeholderTextColor={'#B4B4B4'}
+                placeholder={'First 6 digits of your Credit Card'}
+                keyboardType={'number-pad'}
+                maxLength={6}
+              />
+            )}
+            name="pincode"
+            defaultValue={''}
+          />
+          <DropDownPicker
             open={openBankName}
             value={bankValue}
             items={bankName}
@@ -108,13 +119,33 @@ export default function AddCardScreen() {
         </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
-          // onPress={handleSubmit(onSubmit)}
-          >
+            // onPress={handleSubmit(onSubmit)}
+            onPress={() => setShowModal(true)}>
             <View style={styles.yesButtonContainer}>
               <Text style={styles.yesButtonText}>Add Card</Text>
             </View>
           </TouchableOpacity>
         </View>
+        {showModal && (
+          <Modal
+            animationType="fade"
+            transparent={true}
+            showModal={showModal}
+            onRequestClose={() => setShowModal(false)}>
+            <View style={styles.modalBackground}>
+              <View style={styles.modalContainer}>
+                <Text style={styles.modalHeaderText}>Congratulations</Text>
+                <Text style={styles.modalSubText}>
+                  Your Credit Card has been added successfully. Best Offers are
+                  waiting for you.
+                </Text>
+                <View style={styles.modalButtonContainer}>
+                  <Text style={styles.modalButtonText}>Continue</Text>
+                </View>
+              </View>
+            </View>
+          </Modal>
+        )}
       </View>
     </View>
   );
@@ -128,7 +159,10 @@ const styles = StyleSheet.create({
   body: {
     padding: SIZES.padding,
   },
-  backButtonSize: {width: 24, height: 24},
+  backButtonSize: {
+    width: 24,
+    height: 24,
+  },
   headerTextContainer: {
     paddingVertical: 20,
   },
@@ -141,7 +175,9 @@ const styles = StyleSheet.create({
     marginTop: 12,
     color: '#797E96',
   },
-  buttonsContainer: {marginTop: '50%'},
+  buttonsContainer: {
+    marginTop: '50%',
+  },
   yesButtonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -196,5 +232,50 @@ const styles = StyleSheet.create({
     backgroundColor: '#f4f5f7',
     borderWidth: 0,
   },
-  creditCardImage: {alignItems: 'center', justifyContent: 'center', alignContent: 'center'}
+  creditCardImage: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  modalContainer: {
+    backgroundColor: '#ffffff',
+    width: '75%',
+    height: '40%',
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    marginVertical: '55%',
+    marginHorizontal: '12%',
+  },
+  modalHeaderText: {
+    fontSize: SIZES.h2,
+    fontWeight: 'bold',
+    color: '#4A4A4A',
+  },
+  modalSubText: {
+    fontSize: SIZES.h4,
+    fontWeight: '400',
+    textAlign: 'center',
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+    color: '#797E96',
+  },
+  modalButtonContainer: {
+    backgroundColor: '#4D2D8F',
+    height: '14%',
+    justifyContent: 'center',
+    width: '80%',
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  modalButtonText: {
+    color: '#ffffff',
+    fontSize: SIZES.h4,
+    fontWeight: '700',
+  },
+  modalBackground: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    flex: 1,
+  },
 });
