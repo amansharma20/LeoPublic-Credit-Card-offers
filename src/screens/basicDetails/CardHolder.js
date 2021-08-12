@@ -1,26 +1,16 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
   Text,
   TouchableOpacity,
   Image,
-  Modal,
-  Button,
-  TouchableHighlight,
-  TextInput,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
 import icons from '../../constants/icons';
-import DropDownPicker from 'react-native-dropdown-picker';
-import DatePicker from 'react-native-date-picker';
-import {Controller, useForm} from 'react-hook-form';
-import {Responsive} from '../../utils/layouts/Layout';
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 
 export default function CardHolder() {
   const navigation = useNavigation();

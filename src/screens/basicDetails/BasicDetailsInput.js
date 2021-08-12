@@ -155,6 +155,7 @@ export default function BasicDetailsInput() {
         <View>
           <TouchableOpacity
           // onPress={handleSubmit(onSubmit)}
+          onPress={() => navigation.navigate('CardHolder')}
           >
             <View style={styles.submitButtonContainer}>
               <Text style={styles.submitButtonText}>Submit Details</Text>
@@ -164,7 +165,7 @@ export default function BasicDetailsInput() {
           // onPress={handleSubmit(onSubmit)}
           >
             <View style={styles.notNowButtonContainer}>
-              <Text style={styles.notNowButtonText}>Submit Details</Text>
+              <Text style={styles.notNowButtonText}>Not Now</Text>
             </View>
           </TouchableOpacity>
         </View>

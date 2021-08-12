@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/stack';
 import React from 'react';
 import AuthNavigator from './AuthNavigator';
+import StartScreen from '../../src/screens/auth/StartScreen';
 import Login from '../screens/auth/Login';
 import OTPScreen from '../screens/auth/OTPScreen';
 import MyCards from '../screens/home/MyCards';
@@ -23,8 +24,8 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
-                {/* <Stack.Screen name="Login" component={Login}/> */}
-                {/* <Stack.Screen name="Signup" component={Signup}/> */}
+                <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="Signup" component={Signup}/>
                 <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="OTPScreen" component={OTPScreen}/>
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
@@ -33,4 +34,5 @@ export default function StackNavigator() {
             </Stack.Navigator>
     );
 }
+
 

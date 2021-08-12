@@ -11,6 +11,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Platform,
+  SafeAreaView,
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
@@ -50,7 +51,7 @@ export default function Login() {
   };
 
   return (
-    <KeyboardAvoidingView
+    <SafeAreaView
       style={{
         backgroundColor: '#fff',
         height: screenHeight,
@@ -142,7 +143,7 @@ export default function Login() {
           </View>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
