@@ -21,6 +21,7 @@
     "react-native": "0.64.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.3.0",
+    "react-native-status-bar-height": "^2.6.0",
     "react-native-toast-message": "^1.4.9",
     "react-redux": "^7.2.4",
     "redux": "^4.1.1",
