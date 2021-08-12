@@ -11,7 +11,7 @@ class RadioButtonRN extends React.Component {
         this.state = {
             activeIndex: -1,
             fadeAnim: new Animated.Value(0),
-            animations: []
+            animations: [],
         };
         // this.fadeAnim = new Animated.Value(0);
 
@@ -21,38 +21,38 @@ class RadioButtonRN extends React.Component {
                 animation: {
                     scale: this.state.fadeAnim.interpolate({
                         inputRange: [0, 1],
-                        outputRange: [0, 1]
-                    })
-                }
+                        outputRange: [0, 1],
+                    }),
+                },
             },
             {
                 name: 'pulse',
                 animation: {
                     scale: this.state.fadeAnim.interpolate({
                         inputRange: [0, 0.4, 0.7, 1],
-                        outputRange: [0.7, 1, 1.3, 1]
-                    })
-                }
+                        outputRange: [0.7, 1, 1.3, 1],
+                    }),
+                },
             },
             {
                 name: 'shake',
                 animation: {
                     scale: this.state.fadeAnim.interpolate({
                         inputRange: [0, 0.2, 0.4, 0.6, 0.8, 1],
-                        outputRange: [0.8, 1.2, 0.8, 1.2, 0.8, 1]
-                    })
-                }
+                        outputRange: [0.8, 1.2, 0.8, 1.2, 0.8, 1],
+                    }),
+                },
             },
             {
                 name: 'rotate',
                 animation: {
                     rotate: this.state.fadeAnim.interpolate({
                         inputRange: [0, 1],
-                        outputRange: ['0deg', '360deg']
-                    })
-                }
+                        outputRange: ['0deg', '360deg'],
+                    }),
+                },
             },
-        ]
+        ];
 
         this._changeRadio = this._changeRadio.bind(this);
         this._checkAnimatons = this._checkAnimatons.bind(this);
@@ -86,7 +86,7 @@ class RadioButtonRN extends React.Component {
             if (itm) {
                 newAnim.push(itm.animation);
             }
-        })
+        });
         this.setState({ animations: newAnim });
     }
 
@@ -125,7 +125,7 @@ class RadioButtonRN extends React.Component {
                     return (
                         <TouchableOpacity
                             key={index}
-                            style={[ box ? styles.productBox : styles.productBoxLess, 
+                            style={[ box ? styles.productBox : styles.productBoxLess,
                                 box && {
                                     backgroundColor: activeIndex === index ? boxActiveBgColor : boxDeactiveBgColor,
                                     borderColor: activeIndex === index ? activeColor : '#C4C4C4',
@@ -139,29 +139,29 @@ class RadioButtonRN extends React.Component {
                                 <View style={[ icon ? styles.icon : styles.circle, {
                                     borderColor: activeIndex === index ? activeColor : deactiveColor,
                                     width: circleSize + 8,
-                                    height: circleSize + 8
+                                    height: circleSize + 8,
                                 },
                                 icon && {
-                                    borderColor: activeIndex === index ? 'transparent' : deactiveColor
-                                }
+                                    borderColor: activeIndex === index ? 'transparent' : deactiveColor,
+                                },
                                 ]}>
                                     <Animated.View style={{
                                         opacity: activeIndex === index ? fadeAnim : 0,
-                                    }}>   
+                                    }}>
                                         <Animated.View
                                             style={{
-                                                transform: animations
+                                                transform: animations,
                                             }}
                                         >
                                             {
-                                                icon ? 
+                                                icon ?
                                                     icon
                                                 :
                                                     <View style={[styles.circleFill, {
                                                         backgroundColor: activeIndex === index ? activeColor : deactiveColor,
                                                         borderColor: activeIndex === index ? activeColor : deactiveColor,
                                                         width: circleSize,
-                                                        height: circleSize
+                                                        height: circleSize,
                                                     }]} />
                                             }
                                         </Animated.View>
@@ -172,7 +172,7 @@ class RadioButtonRN extends React.Component {
                             <View style={[styles.centerProductBox]}>
                             <View style={{flexDirection: 'row'}}>
                                 <Text style={[{
-                                    color: textColor
+                                    color: textColor,
                                 }, textStyle]}>
                                     {item.label}
                                 </Text>
@@ -182,13 +182,13 @@ class RadioButtonRN extends React.Component {
                             </View>
                             </View>
                         </TouchableOpacity>
-                    )
+                    );
                 })
             }
             </View>
 		);
     }
-    
+
 }
 
 /* Styles ====================================== */
@@ -199,16 +199,16 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingHorizontal: 10,
         paddingVertical: 15,
-        marginTop: 10
+        marginTop: 10,
     },
     productBoxLess: {
         flexDirection: 'row',
-        marginTop: 10
+        marginTop: 10,
     },
     leftProductBox: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     centerProductBox: {
         flex: 6,
@@ -221,18 +221,18 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10000,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     icon: {
         borderWidth: 1,
         borderRadius: 10000,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     circleFill: {
         borderWidth: 1,
-        borderRadius: 10000
-    }
+        borderRadius: 10000,
+    },
 });
 
 /* Props ======================================= */

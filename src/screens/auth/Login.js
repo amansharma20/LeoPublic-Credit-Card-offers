@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   View,
@@ -8,15 +10,16 @@ import {
   Keyboard,
   Dimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
-import { Controller, useForm } from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
-import { AuthActions } from '../../persistence/actions/AuthActions';
-import { useNavigation } from '@react-navigation/native';
-import { Responsive } from '../../utils/layouts/Layout';
-import { SIZES, COLORS } from '../../../constants/theme'
+import {yupResolver} from '@hookform/resolvers/yup';
+import {useDispatch} from 'react-redux';
+import {AuthActions} from '../../persistence/actions/AuthActions';
+import {useNavigation} from '@react-navigation/native';
+import {Responsive} from '../../utils/layouts/Layout';
+import {SIZES, COLORS} from '../../../constants/theme';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -28,20 +31,22 @@ export default function Login() {
     phone: yup.string().required('Phone is' + ' ' + 'required.'),
   });
 
-  const { control, handleSubmit, errors } = useForm({
+  const {control, handleSubmit, errors} = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = data => {
     const signInData = {
-      'MobileNumber': data.phone
-    }
-    dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then((response) => {
-      navigation.navigate('OTPScreen', {
-        phone: data.phone,
-        screenName: 'Login'
-      })
-    })
+      MobileNumber: data.phone,
+    };
+    dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
+      response => {
+        navigation.navigate('OTPScreen', {
+          phone: data.phone,
+          screenName: 'Login',
+        });
+      },
+    );
   };
 
   return (
@@ -50,15 +55,18 @@ export default function Login() {
         backgroundColor: '#fff',
         height: screenHeight,
       }}>
-      <View style={{ padding: SIZES.padding2 }}>
-      <TouchableOpacity style={styles.button} onPress={()=>{alert("you clicked me")}}>
+      <View style={{padding: SIZES.padding2}}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            alert('you clicked me');
+          }}>
           {/* <Image source={require("./assets/2.png")}/> */}
         </TouchableOpacity>
-        <Text
-          style={styles.headerText}>
-          Sign in to Leo
+        <Text style={styles.headerText}>Sign in to Leo</Text>
+        <Text style={styles.subTitleStyle}>
+          We'll send you a code to verify your contact number
         </Text>
-        <Text style={styles.subTitleStyle}>We'll send you a code to verify your contact number</Text>
       </View>
       <View>
         <View
@@ -69,18 +77,19 @@ export default function Login() {
           <View style={styles.inputView}>
             <Controller
               control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
+              render={({field: {onChange, onBlur, value}}) => (
                 <TextInput
                   onChangeText={value => onChange(value)}
                   value={value}
                   placeholder="Phone Number"
-                  placeholderTextColor="#797979"
-                  keyboardType='phone-pad'
+                  placeholderTextColor="#B4B4B4"
+                  keyboardType="phone-pad"
                   onSubmitEditing={Keyboard.dismiss}
                   blurOnSubmit={false}
                   secureTextEntry={false}
                   underlineColorAndroid="#f000"
                   returnKeyType="next"
+                  style={{color: '#1C1B1B'}}
                 />
               )}
               name="phone"
@@ -88,7 +97,8 @@ export default function Login() {
             />
           </View>
         </View>
-        <TouchableOpacity onPress={handleSubmit(onSubmit)}
+        <TouchableOpacity
+          onPress={handleSubmit(onSubmit)}
           style={{
             alignItems: 'center',
             justifyContent: 'center',
@@ -103,16 +113,31 @@ export default function Login() {
                 marginTop: 15,
               },
             ]}>
-            <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
+            <Text style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
               NEXT
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={{ alignItems: 'center' }}>
-          <View style={{ flexDirection: 'row', padding: 8, width: '55%', margin: screenHeight / 4 }}>
-            <Text style={{ color: COLORS.subheadingGrey }}>Don't have an account?</Text>
+        <View style={{alignItems: 'center'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              padding: 8,
+              width: '55%',
+              margin: screenHeight / 4,
+            }}>
+            <Text style={{color: COLORS.subheadingGrey}}>
+              Don't have an account?
+            </Text>
             <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-              <Text style={{ fontWeight: 'bold', marginLeft: 6, color: COLORS.headingBlack }}>SignUp</Text>
+              <Text
+                style={{
+                  fontWeight: 'bold',
+                  marginLeft: 6,
+                  color: COLORS.headingBlack,
+                }}>
+                SignUp
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -139,8 +164,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     marginTop: screenHeight / 6,
-  }, headerText:
-  {
+  },
+  headerText: {
     fontSize: 30,
     fontWeight: 'bold',
     padding: SIZES.padding2 / 2,
@@ -155,7 +180,5 @@ const styles = StyleSheet.create({
     color: COLORS.subheadingGrey,
     backgroundColor: 'white',
     marginTop: 5,
-  }
-
+  },
 });
-

@@ -11,6 +11,9 @@ import {
   TouchableOpacity,
   Text,
   Dimensions,
+  SafeAreaView,
+  TouchableHighlight,
+  Button,
 } from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
@@ -21,6 +24,7 @@ import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../constants/theme/';
 import icons from '../../constants/icons';
 import CheckBox from '@react-native-community/checkbox';
+import RadioButtons from '../../components/RadioButtons';
 
 const screenHeight = Dimensions.get('window').height;
 
@@ -39,7 +43,8 @@ export default function Signup() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
+    console.log('onSubmit')
     const signUpData = {
       FirstName: data.fname,
       LastName: data.lname,
@@ -50,16 +55,15 @@ export default function Signup() {
       AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
     ).then(response => {
       console.log(response);
-    });
-
-    navigation.navigate('OTPScreen', {
-      phone: data.mobile,
-      screenName: 'Signup',
+      navigation.navigate('OTPScreen', {
+        phone: data.mobile,
+        screenName: 'Signup',
+      });
     });
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.body}>
         <TouchableOpacity>
           <View style={styles.header}>
@@ -83,7 +87,7 @@ export default function Signup() {
                 value={value}
                 placeholder="Full Name"
                 placeholderTextColor="#B4B4B4"
-                keyboardType="phone-pad"
+                // keyboardType="phone-pad"
                 onSubmitEditing={Keyboard.dismiss}
                 blurOnSubmit={false}
                 secureTextEntry={false}
@@ -104,7 +108,7 @@ export default function Signup() {
                 value={value}
                 placeholder="Email"
                 placeholderTextColor="#B4B4B4"
-                keyboardType="phone-pad"
+                // keyboardType="phone-pad"
                 onSubmitEditing={Keyboard.dismiss}
                 blurOnSubmit={false}
                 secureTextEntry={false}
@@ -138,28 +142,26 @@ export default function Signup() {
           />
         </View>
         <View style={styles.termsContainer}>
-          <CheckBox
-            disabled={false}
-            value={toggleCheckBox}
-            onValueChange={newValue => setToggleCheckBox(newValue)}
-          />
+          <View style={{width: '10%'}}>
+            <RadioButtons />
+          </View>
           <Text style={styles.termsText}>
             By creating an account, you agree to our{'\n'}Terms and Conditions
           </Text>
         </View>
-        <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Register Now</Text>
+        <View style={styles.buttonContainer}>
+            <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
+            // style={styles.buttonText}
+            />
           </View>
-        </TouchableOpacity>
         <View style={styles.footerTextContainer}>
-            <Text style={styles.footerText}>Already have an account?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.footerText}>Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={{color: '#4d2d8f', fontWeight: 'bold'}}> Sign In</Text>
-            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -187,7 +189,9 @@ const styles = StyleSheet.create({
     marginTop: 12,
     color: '#797E96',
   },
-  inputs: {},
+  inputs: {
+    height: '40%',
+  },
   termsContainer: {
     paddingVertical: 15,
     flexDirection: 'row',
@@ -198,12 +202,12 @@ const styles = StyleSheet.create({
   },
   phoneInput: {
     marginTop: '10%',
-    borderColor: 'red',
     borderRadius: 10,
     backgroundColor: '#F4F5F7',
     color: '#1C1B1B',
     paddingHorizontal: 15,
     fontSize: SIZES.h3,
+    height: '19.5%',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -219,10 +223,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   footerTextContainer: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-    },
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   footerText: {
-      fontSize: SIZES.h4
-  }
+    fontSize: SIZES.h4,
+  },
 });
