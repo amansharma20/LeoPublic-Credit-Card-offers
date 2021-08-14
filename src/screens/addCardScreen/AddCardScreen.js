@@ -12,13 +12,13 @@ import {
   Dimensions,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../../constants/theme';
-import icons from '../../constants/icons';
+import {SIZES, icons, images} from '../../constants';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import DropDownPicker from 'react-native-dropdown-picker';
-import images from '../../constants/images';
+import CongratulationsAnimation from '../../components/animations/CongratulationsAnimation';
+import CongratulationsAnimation2 from '../../components/animations/CongratulationsAnimation2';
 
 export default function AddCardScreen() {
   const navigation = useNavigation();
@@ -134,7 +134,8 @@ export default function AddCardScreen() {
             onRequestClose={() => setShowModal(false)}>
             <View style={styles.modalBackground}>
               <View style={styles.modalContainer}>
-                <Text style={styles.modalHeaderText}>Congratulations</Text>
+                <CongratulationsAnimation />
+                {/* <Text style={styles.modalHeaderText}>Congratulations</Text> */}
                 <Text style={styles.modalSubText}>
                   Your Credit Card has been added successfully. Best Offers are
                   waiting for you.
@@ -240,7 +241,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     backgroundColor: '#ffffff',
     width: '75%',
-    height: '40%',
+    height: '45%',
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'center',
@@ -260,10 +261,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 20,
     color: '#797E96',
+    position: 'absolute',
   },
   modalButtonContainer: {
     backgroundColor: '#4D2D8F',
-    height: '14%',
+    height: '12%',
     justifyContent: 'center',
     width: '80%',
     borderRadius: 8,

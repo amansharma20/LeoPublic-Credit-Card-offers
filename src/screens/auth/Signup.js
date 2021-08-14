@@ -23,7 +23,6 @@ import {AuthActions} from '../../persistence/actions/AuthActions';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../constants/theme/';
 import icons from '../../constants/icons';
-import CheckBox from '@react-native-community/checkbox';
 import RadioButtons from '../../components/RadioButtons';
 
 const screenHeight = Dimensions.get('window').height;

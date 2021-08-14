@@ -20,7 +20,7 @@ import {useDispatch} from 'react-redux';
 import {AuthActions} from '../../persistence/actions/AuthActions';
 import {useNavigation} from '@react-navigation/native';
 import {Responsive} from '../../utils/layouts/Layout';
-import {SIZES, COLORS} from '../../../constants/theme';
+import {SIZES, COLORS} from '../../constants/theme';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
