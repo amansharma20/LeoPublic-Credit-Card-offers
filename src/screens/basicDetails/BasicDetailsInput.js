@@ -13,8 +13,7 @@ import {
   TextInput,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../../constants/theme';
-import icons from '../../constants/icons';
+import {SIZES, icons} from '../../constants/theme';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import {Controller, useForm} from 'react-hook-form';

@@ -25,14 +25,15 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
+            
+                <Stack.Screen name="MyCards" component={MyCards}/>
+                <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="StartScreen" component={StartScreen}/>
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Signup" component={Signup}/>
                 <Stack.Screen name="AddCardScreen" component={AddCardScreen}/>
                 <Stack.Screen name="OTPScreen" component={OTPScreen}/>
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
-                <Stack.Screen name="MyCards" component={MyCards}/>
-                <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
             </Stack.Navigator>
     );

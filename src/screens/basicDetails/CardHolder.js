@@ -9,8 +9,7 @@ import {
   Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../../constants/theme';
-import icons from '../../constants/icons';
+import {SIZES, icons} from '../../constants';
 
 export default function CardHolder() {
   const navigation = useNavigation();

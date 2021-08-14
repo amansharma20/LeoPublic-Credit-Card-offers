@@ -16,9 +16,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useDispatch} from 'react-redux';
 import {AuthActions} from '../../persistence/actions/AuthActions';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../../constants/theme';
+import {SIZES, icons} from '../../constants/theme';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import icons from '../../constants/icons';
 import { Responsive } from '../../utils/layouts/Layout';
 
 export default function OTPScreen(props) {

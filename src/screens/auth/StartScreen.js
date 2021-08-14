@@ -1,27 +1,34 @@
 import React from 'react';
 import {
-  Dimensions, SafeAreaView,View,TouchableOpacity,StyleSheet,Text, Image, ImageBackground,
+  Dimensions,
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Image,
+  ImageBackground,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SIZES } from '../../../constants/theme';
-import { COLORS } from '../../../constants/theme';
-import images from '../../constants/images';
+import {useNavigation} from '@react-navigation/native';
+import {SIZES, COLORS, images} from '../../constants';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function StartScreen() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    return(
-      <ImageBackground source= {images.startScreenBackgroundImage} style={styles.MainContainer}>
-        <View style={{ paddingHorizontal: SIZES.padding2}}>
-    <Text
-          style={styles.headerText}>
-          Welcome
+  return (
+    <ImageBackground
+      source={images.startScreenBackgroundImage}
+      style={styles.MainContainer}>
+      <View style={{paddingHorizontal: SIZES.padding2}}>
+        <Text style={styles.headerText}>Welcome</Text>
+        <Text style={styles.subTitleStyle}>
+          Evaluate, Manage & Optimise yourCredit Cards
         </Text>
-        <Text style={styles.subTitleStyle}>Evaluate, Manage & Optimise yourCredit Cards</Text>
-    <TouchableOpacity onPress={() => navigation.navigate('Login')}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Login')}
           style={{
             alignItems: 'center',
             justifyContent: 'center',
@@ -36,12 +43,18 @@ export default function StartScreen() {
                 marginTop: 15,
               },
             ]}>
-            <Text style={{ color: COLORS.PrimaryColor, fontSize: 16, fontWeight: 'bold' }}>
-            Sign in
+            <Text
+              style={{
+                color: COLORS.PrimaryColor,
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
+              Sign in
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Signup')}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Signup')}
           style={{
             alignItems: 'center',
             justifyContent: 'center',
@@ -53,18 +66,18 @@ export default function StartScreen() {
               {
                 alignItems: 'center',
                 marginTop: 10,
-                borderWidth : 1,
+                borderWidth: 1,
                 borderColor: 'white',
               },
             ]}>
-            <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
+            <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>
               Register
             </Text>
           </View>
         </TouchableOpacity>
-    </View>
-      </ImageBackground>
-    )
+      </View>
+    </ImageBackground>
+  );
 }
 const styles = StyleSheet.create({
   inputView: {
@@ -77,8 +90,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding2,
     marginTop: screenHeight / 6,
   },
-  headerText:
-  {
+  headerText: {
     fontSize: 36,
     fontWeight: 'bold',
     paddingHorizontal: SIZES.padding2,
@@ -98,5 +110,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding2,
     color: 'white',
     marginTop: 10,
-  }
+  },
 });
