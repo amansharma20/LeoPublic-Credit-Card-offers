@@ -2,7 +2,6 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   StatusBar,
   View,
   Image,
@@ -13,7 +12,6 @@ import {SIZES, images} from '../../constants';
 import {Responsive} from '../../utils/layouts/Layout';
 // import { gql, useQuery } from '@apollo/client';
 import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';
-import MenuIcon from '../../assets/svgs/menuIcon.svg';
 
 export default function MyCards(props) {
   //const { token } = props.route.params

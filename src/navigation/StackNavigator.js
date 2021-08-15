@@ -13,6 +13,7 @@ import Signup from '../screens/auth/Signup';
 import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import CardHolder from '../screens/basicDetails/CardHolder';
 import AddCardScreen from '../screens/addCardScreen/AddCardScreen';
+import BottomTabBarNavigator from './BottomTabBarNavigator';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default function StackNavigator() {
                 }}
             >
             
+                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
                 <Stack.Screen name="MyCards" component={MyCards}/>
                 <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="StartScreen" component={StartScreen}/>
