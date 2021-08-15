@@ -52,11 +52,8 @@ export default function Login() {
 
   return (
     <SafeAreaView
-      style={{
-        backgroundColor: '#fff',
-        height: screenHeight,
-      }}>
-      <View style={{padding: SIZES.padding2}}>
+      style={styles.container}>
+      <View style={styles.body}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -155,7 +152,9 @@ const styles = StyleSheet.create({
       ios: Responsive.height(40),
       android: Responsive.height(0),
     }),
+    height: screenHeight,
   },
+  body: {padding: SIZES.padding2},
   inputView: {
     width: '90%',
     backgroundColor: '#F2F2F2',

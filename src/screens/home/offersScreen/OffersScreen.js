@@ -6,7 +6,8 @@ import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
 import { FlatList } from 'react-native-gesture-handler';
 import DATA from '../../../assets/dummyData/offers';
-import Offers from '../../../components/flatlists/OffersScreenFlatlist';
+import Offers from '../../../components/flatlistsItems/OffersScreenFlatlist';
+import { Responsive } from '../../../utils/layouts/Layout';
 
 export default function OffersScreen() {
   const navigation = useNavigation();
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   contentContainer: {
-    paddingBottom: 20,
+    paddingBottom: Responsive.height(20),
   },
   body: {
     // padding: SIZES.padding,
@@ -44,5 +45,6 @@ const styles = StyleSheet.create({
   },
   flatlistContainer: {
     // alignItems: 'center',
-  }
+    paddingHorizontal: SIZES.padding,
+  },
 });

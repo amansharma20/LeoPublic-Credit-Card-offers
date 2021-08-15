@@ -123,7 +123,10 @@ const styles = StyleSheet.create({
   body: {
     padding: SIZES.padding,
   },
-  iconSize: {width: 24, height: 24},
+  iconSize: {
+    width: 24,
+    height: 24,
+  },
   headerTextContainer: {
     paddingVertical: 20,
   },
@@ -151,17 +154,25 @@ const styles = StyleSheet.create({
   },
   resendButton: {
     fontSize: 16,
-    fontFamily: 'AvenirLTStd-Black',
     color: '#3511a3',
   },
-  resendButtonContainer: {width: '80%', alignItems: 'flex-end'},
+  resendButtonContainer: {
+    width: '80%',
+    alignItems: 'flex-end',
+  },
   phoneInput: {
     marginTop: 100,
     borderColor: 'red',
     borderRadius: 10,
   },
-  otpContainer: {alignItems: 'center', marginTop: '20%'},
-  otpInputContainer: {width: '80%', height: 100},
+  otpContainer: {
+    alignItems: 'center',
+    marginTop: '20%',
+  },
+  otpInputContainer: {
+    width: '80%',
+    height: 100
+  },
   underlineStyleBase: {
     borderRadius: 8,
     backgroundColor: '#f4f5f7',
@@ -176,5 +187,8 @@ const styles = StyleSheet.create({
     color: '#7a869a',
     fontWeight: '700',
   },
-  footerTextBold: {color: '#4d2d8f', fontWeight: 'bold'},
+  footerTextBold: {
+    color: '#4d2d8f',
+    fontWeight: 'bold',
+  },
 });
