@@ -1,12 +1,12 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   Dimensions,
-  SafeAreaView,
   View,
   TouchableOpacity,
   StyleSheet,
   Text,
-  Image,
   ImageBackground,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';

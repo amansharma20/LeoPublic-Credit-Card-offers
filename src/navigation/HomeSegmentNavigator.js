@@ -68,7 +68,7 @@ export default function HomeSegmentNavigator() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: SIZES.padding,
+    paddingLeft: SIZES.padding,
   },
   tabStyle: {
     borderWidth: 0,

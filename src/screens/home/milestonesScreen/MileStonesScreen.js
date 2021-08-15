@@ -4,6 +4,7 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
+import {Responsive} from '../../../utils/layouts/Layout';
 
 export default function MileStonesScreen() {
   const navigation = useNavigation();
@@ -30,17 +31,17 @@ const styles = StyleSheet.create({
   },
   body: {
     padding: SIZES.padding,
-    paddingBottom: 300,
+    paddingBottom: Responsive.height(300),
   },
   milestoneContainer: {
     backgroundColor: '#F9F4F2',
     paddingHorizontal: SIZES.padding,
     paddingVertical: SIZES.padding,
-    elevation: 5,
+    elevation: 3,
     borderRadius: 13,
   },
   milestoneText: {
-    fontSize: 16,
+    fontSize: SIZES.h3,
     lineHeight: 20,
     textAlign: 'center',
     fontWeight: '300',

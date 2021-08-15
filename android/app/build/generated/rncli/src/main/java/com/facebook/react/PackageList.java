@@ -19,8 +19,12 @@ import com.airbnb.android.react.lottie.LottiePackage;
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-linear-gradient
+import com.BV.LinearGradient.LinearGradientPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+// react-native-svg
+import com.horcrux.svg.SvgPackage;
 
 public class PackageList {
   private Application application;
@@ -70,7 +74,9 @@ public class PackageList {
       new LottiePackage(),
       new DatePickerPackage(),
       new RNGestureHandlerPackage(),
-      new SafeAreaContextPackage()
+      new LinearGradientPackage(),
+      new SafeAreaContextPackage(),
+      new SvgPackage()
     ));
   }
 }

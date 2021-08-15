@@ -4,17 +4,19 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import icons from '../../constants/icons';
 import { SIZES } from '../../constants';
+import MenuIcon from '../../assets/svgs/menuIcon.svg';
+import AddIcon from '../../assets/svgs/addIcon.svg';
 
 const MyCardsScreenHeader = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.leftIconContainer}>
-      <Image source={icons.menuIcon} style={styles.iconSizeLeft} />
+      <MenuIcon />
       </View>
       <Text style={styles.headerText}>My Cards</Text>
       <View style={styles.rightIconContainer}>
-        <Image source={icons.add} style={styles.iconSizeRight} />
+        <AddIcon />
       </View>
     </View>
   );
@@ -43,7 +45,6 @@ const styles = StyleSheet.create({
   rightIconContainer: {
     width: 44,
     height: 44,
-    backgroundColor: '#7157a5',
     borderRadius: 13,
     alignItems: 'center',
     justifyContent: 'center',
