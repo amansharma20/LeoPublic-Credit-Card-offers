@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import {View, StyleSheet, ScrollView, Text} from 'react-native';
@@ -21,22 +22,14 @@ export default function HomeSegmentNavigator() {
     console.log(index);
     switch (index) {
       case 0:
-        return (
-          console.log('offers')
-        );
+        return console.log('offers');
       case 1:
-        return (
-          console.log('offers2')
-          );
-        case 2:
-          return (
-            console.log('offers3')
-            );
-            case 3:
-          return (
-            console.log('offers4')
-            );
-        // break;
+        return console.log('offers2');
+      case 2:
+        return console.log('offers3');
+      case 3:
+        return console.log('offers4');
+      // break;
       default:
         break;
     }
@@ -44,23 +37,23 @@ export default function HomeSegmentNavigator() {
 
   return (
     <View>
-<ScrollView horizontal style={styles.container}>
-      <SegmentedControlTab
-        values={['Offers', 'Overview', 'Reviews', 'Milestones']}
-        selectedIndex={selectedIndex}
-        tabStyle={styles.tabStyle}
-        tabsContainerStyle={styles.tabsContainerStyle}
-        activeTabStyle={styles.activeTabStyle}
-        onTabPress={handleSingleIndexSelect}
-        tabTextStyle={styles.tabTextStyle}
-        activeTabTextStyle={styles.activeTabTextStyle}
-        firstTabStyle={styles.firstTabStyle}
-      />
-    </ScrollView>
-      {selectedIndex === 0 ? <OffersScreen /> : <></> }
-      {selectedIndex === 1 ? <OverviewScreen /> : <></> }
-      {selectedIndex === 2 ? <ReviewsScreen /> : <></> }
-      {selectedIndex === 3 ? <MileStonesScreen /> : <></> }
+      <ScrollView horizontal style={styles.container}>
+        <SegmentedControlTab
+          values={['Offers', 'Overview', 'Reviews', 'Milestones']}
+          selectedIndex={selectedIndex}
+          tabStyle={styles.tabStyle}
+          tabsContainerStyle={styles.tabsContainerStyle}
+          activeTabStyle={styles.activeTabStyle}
+          onTabPress={handleSingleIndexSelect}
+          tabTextStyle={styles.tabTextStyle}
+          activeTabTextStyle={styles.activeTabTextStyle}
+          firstTabStyle={styles.firstTabStyle}
+        />
+      </ScrollView>
+      {selectedIndex === 0 ? <OffersScreen /> : <></>}
+      {selectedIndex === 1 ? <OverviewScreen /> : <></>}
+      {selectedIndex === 2 ? <ReviewsScreen /> : <></>}
+      {selectedIndex === 3 ? <MileStonesScreen /> : <></>}
     </View>
   );
 }
@@ -72,24 +65,26 @@ const styles = StyleSheet.create({
   },
   tabStyle: {
     borderWidth: 0,
+    paddingBottom: 2,
     marginRight: 36,
   },
   tabsContainerStyle: {
     paddingHorizontal: 0,
-    paddingVertical: 10,
+    paddingVertical: 0,
     alignContent: 'center',
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',
-    borderBottomWidth: 2.5,
+    borderBottomWidth: 5,
     borderColor: '#F7D071',
     marginRight: 36,
+    borderRadius: 5,
+
   },
   tabTextStyle: {
     color: '#6F7FAF',
     fontSize: 18,
     fontWeight: '500',
-    // paddingRight: 36,
   },
   activeTabTextStyle: {
     color: '#060417',
