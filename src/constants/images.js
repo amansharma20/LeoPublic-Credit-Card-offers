@@ -5,6 +5,8 @@ export const congratulationsBackground = require('../assets/images/congratulatio
 export const creditCardBackground = require('../assets/images/creditCardBackground.png');
 export const axis = require('../assets/images/axiss.png');
 export const pfp = require('../assets/images/pfp.jpeg');
+export const mastercard = require('../assets/images/mastercard.png');
+export const creditCardBlueBg = require('../assets/images/creditCardBlueBg.jpg');
 
 export default {
     startScreenBackgroundImage,
@@ -13,4 +15,6 @@ export default {
     creditCardBackground,
     axis,
     pfp,
+    mastercard,
+    creditCardBlueBg
 };

@@ -1,26 +1,26 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  KeyboardAvoidingView,
   TextInput,
   Keyboard,
   Dimensions,
   TouchableOpacity,
   Platform,
   SafeAreaView,
+  Image,
 } from 'react-native';
-import {Controller, useForm} from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup';
-import {useDispatch} from 'react-redux';
-import {AuthActions} from '../../persistence/actions/AuthActions';
-import {useNavigation} from '@react-navigation/native';
-import {Responsive} from '../../utils/layouts/Layout';
-import {SIZES, COLORS} from '../../constants/theme';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '../../persistence/actions/AuthActions';
+import { useNavigation } from '@react-navigation/native';
+import { Responsive } from '../../utils/layouts/Layout';
+import { SIZES, COLORS } from '../../constants/theme';
+import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -32,7 +32,7 @@ export default function Login() {
     phone: yup.string().required('Phone is' + ' ' + 'required.'),
   });
 
-  const {control, handleSubmit, errors} = useForm({
+  const { control, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -51,32 +51,25 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView
-      style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.body}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            alert('you clicked me');
-          }}>
-          {/* <Image source={require("./assets/2.png")}/> */}
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Sign in to Leo</Text>
-        <Text style={styles.subTitleStyle}>
-          We'll send you a code to verify your contact number
-        </Text>
-      </View>
-      <View>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <View style={styles.inputView}>
+        <View style={styles.backButton}>
+          <BackButtonBlack />
+        </View>
+        <View style={styles.bodyItems}>
+          <View style={styles.headerContainer}>
+            <Text style={styles.headerText}>Sign in to Leo</Text>
+            <Text style={styles.subTitleText}>
+              We'll send you a code to verify your contact number
+            </Text>
+          </View>
+
+          <View style={styles.textInputContainer}>
             <Controller
               control={control}
-              render={({field: {onChange, onBlur, value}}) => (
+              render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
+                  style={styles.phoneInput}
                   onChangeText={value => onChange(value)}
                   value={value}
                   placeholder="Phone Number"
@@ -87,56 +80,27 @@ export default function Login() {
                   secureTextEntry={false}
                   underlineColorAndroid="#f000"
                   returnKeyType="next"
-                  style={{color: '#1C1B1B'}}
                 />
               )}
               name="phone"
-              defaultValue="Phone Number"
+              defaultValue="7011886215"
             />
-          </View>
-        </View>
-        <TouchableOpacity
-          onPress={handleSubmit(onSubmit)}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 15,
-          }}>
-          <View
-            style={[
-              styles.inputView,
-              {
-                alignItems: 'center',
-                backgroundColor: COLORS.ButtonDisabled,
-                marginTop: 15,
-              },
-            ]}>
-            <Text style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
-              NEXT
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <View style={{alignItems: 'center'}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              padding: 8,
-              width: '55%',
-              margin: screenHeight / 4,
-            }}>
-            <Text style={{color: COLORS.subheadingGrey}}>
-              Don't have an account?
-            </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-              <Text
-                style={{
-                  fontWeight: 'bold',
-                  marginLeft: 6,
-                  color: COLORS.headingBlack,
-                }}>
-                SignUp
-              </Text>
+            <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.nextButtonText}>Next</Text>
+            </View>
             </TouchableOpacity>
+          </View>
+          <View style={styles.footerContainer}>
+              <Text style={styles.footerTextOne}>
+                Don’t have an account?
+              </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+              <Text style={styles.footerTextTwo}>
+                 Sign up
+              </Text>
+              </TouchableOpacity>
+
           </View>
         </View>
       </View>
@@ -154,31 +118,45 @@ const styles = StyleSheet.create({
     }),
     height: screenHeight,
   },
-  body: {padding: SIZES.padding2},
-  inputView: {
-    width: '90%',
-    backgroundColor: '#F2F2F2',
-    borderRadius: 10,
-    height: 46,
-    marginBottom: 20,
-    justifyContent: 'center',
-    padding: 10,
-    marginTop: screenHeight / 6,
+  headerContainer: {
+    // marginTop: '20%',
   },
+  body: { padding: SIZES.padding },
+  bodyItems: { justifyContent: 'space-around', height: '100%' },
   headerText: {
     fontSize: 30,
-    fontWeight: 'bold',
-    padding: SIZES.padding2 / 2,
-    color: COLORS.headingBlack,
-    backgroundColor: 'white',
-    marginTop: screenHeight / 7,
+    fontWeight: '700',
   },
-  subTitleStyle: {
+  textInputContainer: {
+    marginTop: '20%',
+  },
+  subTitleText: {
     fontSize: 16,
-    fontWeight: 'normal',
-    padding: SIZES.padding2 / 4,
-    color: COLORS.subheadingGrey,
-    backgroundColor: 'white',
-    marginTop: 5,
+    color: '#797E96',
   },
+  phoneInput: {
+    marginTop: '10%',
+    borderRadius: 10,
+    backgroundColor: '#F4F5F7',
+    color: '#1C1B1B',
+    paddingHorizontal: 15,
+    fontSize: SIZES.h3,
+    height: Responsive.height(50),
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#4d2d8f',
+    borderRadius: 10,
+    height: 48,
+    marginVertical: 20,
+  },
+  nextButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#ffffff',
+  },
+  footerContainer: { alignItems: 'center', flexDirection: 'row', justifyContent: 'center'},
+  footerTextOne: {fontSize: SIZES.h4, color: '#7a869a'},
+  footerTextTwo: {fontSize: SIZES.h4, fontWeight: '700', color: '#4d2d8f', marginLeft: 2.5},
 });
