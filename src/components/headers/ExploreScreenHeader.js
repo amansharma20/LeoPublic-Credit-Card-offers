@@ -7,38 +7,31 @@ import { SIZES } from '../../constants';
 import MenuIcon from '../../assets/svgs/menuIcon.svg';
 import AddIcon from '../../assets/svgs/addIcon.svg';
 
-const MyCardsScreenHeader = () => {
+const Explore = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.leftIconContainer}>
       <MenuIcon />
       </View>
-      <Text style={styles.headerText}>My Cards</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('AddCardScreen')}>
-      <View style={styles.rightIconContainer}>
-        <AddIcon />
-      </View>
-      </TouchableOpacity>
-
+      <Text style={styles.headerText}>Explore</Text>
     </View>
   );
 };
 
-export default MyCardsScreenHeader;
+export default Explore;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#4d2d8f',
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'space-between',
     padding: SIZES.padding2,
     alignItems: 'center',
   },
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},
-  headerText: {fontSize: 24, fontWeight: '700', color: '#ffffff'},
+  headerText: {fontSize: 24, fontWeight: '700', color: '#ffffff', paddingLeft: '26%',},
   leftIconContainer: {
     width: 44,
     height: 44,

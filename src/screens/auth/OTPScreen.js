@@ -19,6 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import {SIZES, icons} from '../../constants/theme';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Responsive } from '../../utils/layouts/Layout';
+import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 
 export default function OTPScreen(props) {
   console.log(props);
@@ -72,7 +73,8 @@ export default function OTPScreen(props) {
       <View style={styles.body}>
       <TouchableOpacity>
           <View style={styles.header}>
-            <Image source={icons.backButton} style={styles.iconSize} />
+            {/* <Image source={icons.backButton} style={styles.iconSize} /> */}
+            <BackButtonBlack />
           </View>
         </TouchableOpacity>
         <View style={styles.headerTextContainer}>
@@ -185,7 +187,6 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: SIZES.h4,
     color: '#7a869a',
-    fontWeight: '700',
   },
   footerTextBold: {
     color: '#4d2d8f',

@@ -20,6 +20,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {Responsive} from '../../utils/layouts/Layout';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 
 export default function BasicDetailsInput() {
   const navigation = useNavigation();
@@ -53,7 +54,8 @@ export default function BasicDetailsInput() {
       <View style={styles.body}>
         <TouchableOpacity>
           <View style={styles.header}>
-            <Image source={icons.backButton} style={styles.backButtonSize} />
+            {/* <Image source={icons.backButton} style={styles.backButtonSize} /> */}
+            <BackButtonBlack />
           </View>
         </TouchableOpacity>
         <View style={styles.headerTextContainer}>

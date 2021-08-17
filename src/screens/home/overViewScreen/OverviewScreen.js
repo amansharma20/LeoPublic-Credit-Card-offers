@@ -96,7 +96,7 @@ export default function OverviewScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 100,
+    paddingBottom: 20,
   },
   body: {
     paddingTop: SIZES.padding2,

@@ -10,6 +10,7 @@ import {
   TextInput,
   Modal,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES, icons, images} from '../../constants';
@@ -19,6 +20,10 @@ import * as yup from 'yup';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CongratulationsAnimation from '../../components/animations/CongratulationsAnimation';
 import CongratulationsAnimation2 from '../../components/animations/CongratulationsAnimation2';
+import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
+import BankLogo from '../../assets/svgs/bankLogo.svg';
+import Code from '../../assets/svgs/code.svg';
+import {Responsive} from '../../utils/layouts/Layout';
 
 export default function AddCardScreen() {
   const navigation = useNavigation();
@@ -60,8 +65,31 @@ export default function AddCardScreen() {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Add New Card</Text>
         </View>
-        <View style={styles.creditCardImage}>
+        {/* IMAGE  */}
+        {/* <View style={styles.creditCardImage}>
           <Image source={images.creditCardImage} />
+        </View> */}
+        <View style={styles.creditCardImage}>
+          <ImageBackground
+            style={styles.creditCardContainer}
+            //   source={images.creditCardBackground}
+            source={images.creditCardBlueBg}
+            imageStyle={styles.backgroundImageStyle}>
+            <View style={styles.creditCardDetailsContainer}>
+              <View style={styles.cardTopContainer}>
+                <Text style={styles.cardTypeText}>Platinum Cards</Text>
+                <BankLogo style={styles.bankLogo} />
+              </View>
+              <Code />
+              <View style={styles.cardBottomContainer}>
+                <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
+                {/* <Text style={{color: '#ffffff'}}>
+        card type icon
+    </Text> */}
+                <MasterCardLogo />
+              </View>
+            </View>
+          </ImageBackground>
         </View>
 
         <View>
@@ -140,9 +168,12 @@ export default function AddCardScreen() {
                   Your Credit Card has been added successfully. Best Offers are
                   waiting for you.
                 </Text>
-                <View style={styles.modalButtonContainer}>
+                <TouchableOpacity onPress={() => navigation.navigate('BottomTabBarNavigator')} style={styles.modalButtonContainer} activeOpacity={0.8}>
+                <View>
                   <Text style={styles.modalButtonText}>Continue</Text>
                 </View>
+                </TouchableOpacity>
+
               </View>
             </View>
           </Modal>
@@ -154,11 +185,13 @@ export default function AddCardScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#ffffff',
+    height: '100%',
   },
   body: {
     padding: SIZES.padding,
+    height: '100%'
   },
   backButtonSize: {
     width: 24,
@@ -237,6 +270,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignContent: 'center',
+    paddingVertical: SIZES.padding2,
   },
   modalContainer: {
     backgroundColor: '#ffffff',
@@ -279,5 +313,47 @@ const styles = StyleSheet.create({
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',
     flex: 1,
+  },
+
+  creditCardContainer: {
+    width: Responsive.width(290),
+    height: Responsive.height(189),
+    borderRadius: 12,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'red',
+    alignContent: 'center',
+  },
+  backgroundImageStyle: {
+    resizeMode: 'cover',
+    borderRadius: 12,
+  },
+  creditCardDetailsContainer: {
+    flex: 1,
+    justifyContent: 'space-around',
+  },
+  cardTopContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  cardTypeText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#ffffff',
+  },
+  bankLogo: {
+    marginLeft: 85,
+  },
+  cardBottomContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'flex-end',
+  },
+  cardNumberText: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: '700',
   },
 });

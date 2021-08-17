@@ -14,6 +14,7 @@ import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import CardHolder from '../screens/basicDetails/CardHolder';
 import AddCardScreen from '../screens/addCardScreen/AddCardScreen';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
+import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
 
 const Stack = createStackNavigator();
 
@@ -26,17 +27,16 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
-            
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
-                <Stack.Screen name="MyCards" component={MyCards}/>
-                <Stack.Screen name="CardHolder" component={CardHolder}/>
-                <Stack.Screen name="StartScreen" component={StartScreen}/>
+                <Stack.Screen name="ExploreScreen" component={ExploreScreen}/>
                 <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="StartScreen" component={StartScreen}/>
+                <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
+                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="Signup" component={Signup}/>
+                <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="AddCardScreen" component={AddCardScreen}/>
                 <Stack.Screen name="OTPScreen" component={OTPScreen}/>
-                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
-                <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
             </Stack.Navigator>
     );
 }
