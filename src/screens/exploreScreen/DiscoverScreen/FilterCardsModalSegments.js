@@ -1,17 +1,20 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import {View, StyleSheet, ScrollView, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../constants/';
+import {SIZES} from '../../../constants/';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import OffersScreen from '../screens/home/offersScreen/OffersScreen';
-import OverviewScreen from '../screens/home/overViewScreen/OverviewScreen';
-import ReviewsScreen from '../screens/home/reviewsScreen/ReviewsScreen';
-import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen';
+import { Responsive } from '../../../utils/layouts/Layout';
+import IssuerBank from './filterOptions/IssuerBank';
+import CreditLimit from './filterOptions/CreditLimit';
+import IncomeRange from './filterOptions/IncomeRange';
+import Category from './filterOptions/Category';
+import CardLevel from './filterOptions/CardLevel';
+import JoiningFees from './filterOptions/JoiningFees';
+import AnnualFees from './filterOptions/AnnualFees';
 
-export default function HomeSegmentNavigator() {
+export default function FilterCardsModalSegments() {
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
   console.log('selectedIndex');
@@ -36,10 +39,10 @@ export default function HomeSegmentNavigator() {
   };
 
   return (
-    <View>
-      <ScrollView horizontal style={styles.container}>
+    <View style={{flexDirection: 'row'}}>
+      <ScrollView vertical style={styles.container}>
         <SegmentedControlTab
-          values={['Offers', 'Overview', 'Reviews', 'Milestones']}
+          values={['Issuer Bank', 'Credit Limit', 'Income Range', 'Category', 'Card Level', 'Joining Fees', 'Annual Fees']}
           selectedIndex={selectedIndex}
           tabStyle={styles.tabStyle}
           tabsContainerStyle={styles.tabsContainerStyle}
@@ -50,44 +53,46 @@ export default function HomeSegmentNavigator() {
           firstTabStyle={styles.firstTabStyle}
         />
       </ScrollView>
-      {selectedIndex === 0 ? <OffersScreen /> : <></>}
-      {selectedIndex === 1 ? <OverviewScreen /> : <></>}
-      {selectedIndex === 2 ? <ReviewsScreen /> : <></>}
-      {selectedIndex === 3 ? <MileStonesScreen /> : <></>}
+      {selectedIndex === 0 ? <IssuerBank /> : <></>}
+      {selectedIndex === 1 ? <CreditLimit /> : <></>}
+      {selectedIndex === 2 ? <IncomeRange /> : <></>}
+      {selectedIndex === 3 ? <Category /> : <></>}
+      {selectedIndex === 4 ? <CardLevel /> : <></>}
+      {selectedIndex === 5 ? <JoiningFees /> : <></>}
+      {selectedIndex === 6 ? <AnnualFees /> : <></>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingLeft: SIZES.padding,
+    height: '100%',
   },
   tabStyle: {
-    borderWidth: 0,
-    paddingBottom: 2,
-    marginRight: 36,
+    alignItems: 'center',
+    backgroundColor: '#f1f3f7',
+    paddingVertical: Responsive.height(18),
+    borderBottomWidth: 1,
+    borderColor: '#dfe0e4',
+  },
+  firstTabStyle: {
+      borderTopWidth: 0,
   },
   tabsContainerStyle: {
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    alignContent: 'center',
+    flexDirection: 'column',
+    width: '65%',
   },
   activeTabStyle: {
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 5,
-    borderColor: '#F7D071',
-    marginRight: 36,
-    borderRadius: 5,
+    backgroundColor: '#f1f3f7',
   },
   tabTextStyle: {
-    color: '#6F7FAF',
-    fontSize: 18,
+    color: '#172B4D',
+    fontSize: 14,
     fontWeight: '500',
   },
   activeTabTextStyle: {
-    color: '#060417',
-    fontSize: 18,
+    color: '#172B4D',
+    fontSize: 14,
     fontWeight: '700',
   },
 });

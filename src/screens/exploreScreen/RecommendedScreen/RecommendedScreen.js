@@ -106,20 +106,16 @@ export default function RecommendedScreen() {
               {/* HEADER  */}
               <View style={styles.headerContainer}>
                 <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    height: 30,
-                  }}>
+                  style={styles.headerButtonsContainer}>
                   <TouchableOpacity onPress={() => setShowCompareModal(false)}>
                     <BackButtonWhite />
                   </TouchableOpacity>
-                  <View style={{ marginLeft: '38%' }}>
+                  <View style={styles.compareHeaderTextContainer}>
                     <Text style={styles.modalHeaderText}>Compare</Text>
                   </View>
                 </View>
               </View>
-              <View style={{ backgroundColor: '#4d2d8f' }}>
+              <View style={styles.modalBackgroundColor}>
                 <View style={styles.comparedCardsContainer}>
                   <ImageBackground
                     source={images.compareCardOne}
@@ -129,11 +125,11 @@ export default function RecommendedScreen() {
                       {/* CARD IMAGE  */}
                       {/* <Image source={images.axis} style={{width: 80, height: 25, resizeMode: 'contain',}} /> */}
                       <AxisLogo />
-                      <Text style={{ fontWeight: '700', fontSize: 8, paddingVertical: 4, color: '#ffffff' }}>
+                      <Text style={styles.cardTypeText}>
                         Fly Premium Card
                       </Text>
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={styles.cardItemsBottomContainer}>
                       <Stars />
                       <Visa />
                     </View>
@@ -146,18 +142,18 @@ export default function RecommendedScreen() {
                       {/* CARD IMAGE  */}
                       {/* <Image source={images.axis} style={{width: 80, height: 25, resizeMode: 'contain',}} /> */}
                       <AxisLogo />
-                      <Text style={{ fontWeight: '700', fontSize: 8, paddingVertical: 4, color: '#ffffff' }}>
+                      <Text style={styles.cardTypeText}>
                         Fly Premium Card
                       </Text>
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={styles.cardItemsBottomContainer}>
                       <Stars />
                       <Visa />
                     </View>
                   </ImageBackground>
                 </View>
                 {/* FLATLIST  */}
-                <View style={{ backgroundColor: '#fff' }}>
+                <View style={styles.flatlistBackgroundColor}>
                   <FlatList
                     data={compareModalData}
                     renderItem={renderCompareModalItem}
@@ -187,6 +183,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignContent: 'center',
+    paddingHorizontal: Responsive.width(20),
     paddingVertical: Responsive.height(22),
   },
   categoriesContainer: {
@@ -217,15 +214,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 24,
-    // alignItems: 'center',
     backgroundColor: '#4d2d8f',
-    // flex: 1,
     height: Responsive.height(190),
   },
+  headerButtonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 30,
+  },
+  modalBackgroundColor: { backgroundColor: '#4d2d8f' },
+  compareHeaderTextContainer: { marginLeft: '38%' },
   compareModalContainer: {
     flex: 1,
-    // backgroundColor: 'red',
-    // paddingVertical: 24,
   },
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
@@ -257,4 +257,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: 12,
   },
+  cardTypeText: { fontWeight: '700', fontSize: 8, paddingVertical: 4, color: '#ffffff' },
+  cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },
+  flatlistBackgroundColor: { backgroundColor: '#fff' },
 });
