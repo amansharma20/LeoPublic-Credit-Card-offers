@@ -7,6 +7,8 @@ export const axis = require('../assets/images/axiss.png');
 export const pfp = require('../assets/images/pfp.jpeg');
 export const mastercard = require('../assets/images/mastercard.png');
 export const creditCardBlueBg = require('../assets/images/creditCardBlueBg.jpg');
+export const compareCardOne = require('../assets/images/compareCardOne.png');
+export const compareCardTwo = require('../assets/images/compareCardTwo.png');
 
 export default {
     startScreenBackgroundImage,
@@ -16,5 +18,7 @@ export default {
     axis,
     pfp,
     mastercard,
-    creditCardBlueBg
+    creditCardBlueBg,
+    compareCardOne,
+    compareCardTwo,
 };

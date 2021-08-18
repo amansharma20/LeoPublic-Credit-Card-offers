@@ -8,6 +8,7 @@ export const explore_icon = require('../assets/icons/explore_icon.png');
 export const home_icon = require('../assets/icons/home_icon.png');
 export const offers_icon = require('../assets/icons/offers_icon.png');
 export const profile_icon = require('../assets/icons/profile_icon.png');
+export const checkMark = require('../assets/icons/checkMark.png');
 
 export default {
   backButton,
@@ -19,4 +20,5 @@ export default {
   offers_icon,
   home_icon,
   explore_icon,
+  checkMark,
 };
