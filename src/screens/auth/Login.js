@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
   Platform,
   SafeAreaView,
-  Image,
 } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -19,8 +18,9 @@ import { useDispatch } from 'react-redux';
 import { AuthActions } from '../../persistence/actions/AuthActions';
 import { useNavigation } from '@react-navigation/native';
 import { Responsive } from '../../utils/layouts/Layout';
-import { SIZES, COLORS } from '../../constants/theme';
+import { SIZES } from '../../constants/theme';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
+import CommonLoading from '../../components/CommonLoading';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -37,11 +37,13 @@ export default function Login() {
   });
 
   const onSubmit = data => {
+    CommonLoading.show()
     const signInData = {
       MobileNumber: data.phone,
     };
     dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
       response => {
+        CommonLoading.hide()
         navigation.navigate('OTPScreen', {
           phone: data.phone,
           screenName: 'Login',
@@ -83,23 +85,23 @@ export default function Login() {
                 />
               )}
               name="phone"
-              defaultValue="7011886215"
+              defaultValue="8860777703"
             />
             <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-            <View style={styles.buttonContainer}>
-              <Text style={styles.nextButtonText}>Next</Text>
-            </View>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.nextButtonText}>Next</Text>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.footerContainer}>
-              <Text style={styles.footerTextOne}>
-                Don’t have an account?
-              </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+            <Text style={styles.footerTextOne}>
+              Don’t have an account?
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
               <Text style={styles.footerTextTwo}>
-                 Sign up
+                Sign up
               </Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
 
           </View>
         </View>
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     marginTop: Platform.select({
-      ios: Responsive.height(40),
+      ios: Responsive.height(0),
       android: Responsive.height(0),
     }),
     height: screenHeight,
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#ffffff',
   },
-  footerContainer: { alignItems: 'center', flexDirection: 'row', justifyContent: 'center'},
-  footerTextOne: {fontSize: SIZES.h4, color: '#7a869a'},
-  footerTextTwo: {fontSize: SIZES.h4, fontWeight: '700', color: '#4d2d8f', marginLeft: 2.5},
+  footerContainer: { alignItems: 'center', flexDirection: 'row', justifyContent: 'center' },
+  footerTextOne: { fontSize: SIZES.h4, color: '#7a869a' },
+  footerTextTwo: { fontSize: SIZES.h4, fontWeight: '700', color: '#4d2d8f', marginLeft: 2.5 },
 });
