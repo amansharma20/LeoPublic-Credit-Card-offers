@@ -10,8 +10,11 @@ import OffersScreen from '../screens/home/offersScreen/OffersScreen';
 import OverviewScreen from '../screens/home/overViewScreen/OverviewScreen';
 import ReviewsScreen from '../screens/home/reviewsScreen/ReviewsScreen';
 import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen';
+import BestOffers from '../screens/offersScreen/bestOffers/BestOffers';
+import LatestOffers from '../screens/offersScreen/latestOffers/LatestOffers';
+import AllOffers from '../screens/offersScreen/allOffers/AllOffers';
 
-export default function HomeSegmentNavigator() {
+export default function OffersSegmentNavigator() {
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
   console.log('selectedIndex');
@@ -39,7 +42,7 @@ export default function HomeSegmentNavigator() {
     <View>
       <ScrollView horizontal style={styles.container}>
         <SegmentedControlTab
-          values={['Offers', 'Overview', 'Reviews', 'Milestones']}
+          values={['Best Offers', 'Latest Offers', 'All Offers']}
           selectedIndex={selectedIndex}
           tabStyle={styles.tabStyle}
           tabsContainerStyle={styles.tabsContainerStyle}
@@ -50,10 +53,9 @@ export default function HomeSegmentNavigator() {
           firstTabStyle={styles.firstTabStyle}
         />
       </ScrollView>
-      {selectedIndex === 0 ? <OffersScreen /> : <></>}
-      {selectedIndex === 1 ? <OverviewScreen /> : <></>}
-      {selectedIndex === 2 ? <ReviewsScreen /> : <></>}
-      {selectedIndex === 3 ? <MileStonesScreen /> : <></>}
+      {selectedIndex === 0 ? <BestOffers /> : <></>}
+      {selectedIndex === 1 ? <LatestOffers /> : <></>}
+      {selectedIndex === 2 ? <AllOffers /> : <></>}
     </View>
   );
 }
@@ -66,6 +68,7 @@ const styles = StyleSheet.create({
   tabStyle: {
     borderWidth: 0,
     paddingBottom: 2,
+    paddingVertical: 12,
     marginRight: 36,
   },
   tabsContainerStyle: {

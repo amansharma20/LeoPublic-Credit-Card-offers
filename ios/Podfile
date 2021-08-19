@@ -12,6 +12,8 @@ target 'Leo' do
     :hermes_enabled => false
   )
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'LeoTests' do
     inherit! :complete
     # Pods for testing
