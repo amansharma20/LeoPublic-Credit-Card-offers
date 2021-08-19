@@ -9,6 +9,8 @@ export const mastercard = require('../assets/images/mastercard.png');
 export const creditCardBlueBg = require('../assets/images/creditCardBlueBg.jpg');
 export const compareCardOne = require('../assets/images/compareCardOne.png');
 export const compareCardTwo = require('../assets/images/compareCardTwo.png');
+export const stockModel = require('../assets/images/stockModel.png');
+export const axisBankWhite = require('../assets/images/axisBankWhite.png');
 
 export default {
     startScreenBackgroundImage,
@@ -21,4 +23,6 @@ export default {
     creditCardBlueBg,
     compareCardOne,
     compareCardTwo,
+    stockModel,
+    axisBankWhite,
 };

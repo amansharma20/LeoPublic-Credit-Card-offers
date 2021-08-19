@@ -1,16 +1,13 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   StatusBar,
   View,
-  Image,
   ScrollView,
-  FlatList,
   Dimensions,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
-import { SIZES, images } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 // import { gql, useQuery } from '@apollo/client';
 import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';

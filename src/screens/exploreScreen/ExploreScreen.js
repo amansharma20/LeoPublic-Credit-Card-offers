@@ -37,7 +37,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4d2d8f'
+    backgroundColor: '#4d2d8f',
   },
   body: {
     // backgroundColor: 'red',
