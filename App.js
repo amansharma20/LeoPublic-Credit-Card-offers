@@ -8,6 +8,7 @@ import RootStore from './src/persistence/stores/RootStore';
 import { StatusBar } from 'react-native';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import {applicationProperties} from './application.properties';
+import CommonLoading from './src/components/CommonLoading';
 
 
 const client = new ApolloClient({
@@ -27,6 +28,7 @@ export default function App() {
           <StatusBar hidden={false} backgroundColor={'white'} barStyle={'dark-content'} />
           <ApplicationNavigator />
           <Toast ref={(ref) => Toast.setRef(ref)} />
+          <CommonLoading ref={ref => CommonLoading.setRef(ref)} />
         </SafeAreaProvider>
       </ApolloProvider>
     </Provider>

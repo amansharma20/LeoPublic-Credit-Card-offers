@@ -1,69 +1,56 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
   TouchableOpacity,
   Text,
-  Image,
   Platform,
 } from 'react-native';
-import {Controller, useForm} from 'react-hook-form';
-import * as yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup';
-import {useDispatch} from 'react-redux';
-import {AuthActions} from '../../persistence/actions/AuthActions';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES, icons} from '../../constants/theme';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '../../persistence/actions/AuthActions';
+import { useNavigation } from '@react-navigation/native';
+import { SIZES } from '../../constants/theme';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Responsive } from '../../utils/layouts/Layout';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
+import CommonLoading from '../../components/CommonLoading';
 
 export default function OTPScreen(props) {
   console.log(props);
   const navigation = useNavigation();
-  // const {phone} = props.route.params;
-  // const {namscreenName} = props.route.params;
+  const { phone } = props.route.params;
+  const { screenName } = props.route.params;
+  const [otp, setOtp] = useState("0000");
 
   const dispatch = useDispatch();
-  const schema = yup.object().shape({
-    otp: yup.string().required('Phone is' + ' ' + 'required.'),
-  });
 
-  const {control, handleSubmit} = useForm({
-    resolver: yupResolver(schema),
-  });
 
-  const onSubmit = data => {
-    navigation.navigate('BasicDetailsInput');
-    if (namscreenName == 'Login') {
+  const onSubmit = () => {
+    CommonLoading.show();
+    if (screenName == 'Login') {
       const otpData = {
         MobileNumber: phone,
-        Code: data.otp,
+        Code: otp,
       };
       dispatch(AuthActions.signIn('/Account/LoginComplete', otpData)).then(
-        response => {
-          console.log(response.data);
-          navigation.navigate('OTPScreen', {
-            token: response.data,
-          });
+        () => {
+          CommonLoading.hide();
+          navigation.navigate('BottomTabBarNavigator');
         },
       );
     } else {
-      console.log('YHA TK PAUCH GAYA');
       const otpData = {
         MobileNumber: phone,
-        Code: data.otp,
+        Code: otp,
       };
       dispatch(
         AuthActions.signIn('/Account/RegisterCustomerComplete', otpData),
-      ).then(response => {
-        console.log(response.data);
-        navigation.navigate('OTPScreen', {
-          token: response.data,
-        });
+      ).then(() => {
+        CommonLoading.hide();
+        navigation.navigate('BasicDetailsInput');
       });
     }
   };
@@ -71,33 +58,30 @@ export default function OTPScreen(props) {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-      <TouchableOpacity>
-          <View style={styles.header}>
-            {/* <Image source={icons.backButton} style={styles.iconSize} /> */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => {
+            navigation.goBack()
+          }}>
             <BackButtonBlack />
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </View>
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Register with us</Text>
           <Text style={styles.subTitleText}>
             We’ll send you a code to verify your contact number
           </Text>
         </View>
-        <Controller
-          control={control}
-          render={({field: {onChange, value}}) => (
-            <View style={styles.otpContainer}>
-              <OTPInputView
-                pinCount={4}
-                style={styles.otpInputContainer}
-                codeInputFieldStyle={styles.underlineStyleBase}
-              />
-            </View>
-          )}
-          name="otp"
-          defaultValue="0000"
-        />
-        <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+        <View style={styles.otpContainer}>
+          <OTPInputView
+            pinCount={4}
+            style={styles.otpInputContainer}
+            codeInputFieldStyle={styles.underlineStyleBase}
+            onCodeFilled={(code => {
+              console.log(`Code is ${code}, you are good to go!`)
+            })}
+          />
+        </View>
+        <TouchableOpacity onPress={onSubmit}>
           <View style={styles.buttonContainer}>
             <Text style={styles.buttonText}>Confirm</Text>
           </View>
@@ -118,12 +102,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     marginTop: Platform.select({
-      ios: Responsive.height(40),
+      ios: Responsive.height(0),
       android: Responsive.height(0),
     }),
   },
   body: {
     padding: SIZES.padding,
+  },
+  header: {
+    marginTop: Platform.select({
+      ios: 40,
+      android: 0
+    })
   },
   iconSize: {
     width: 24,
