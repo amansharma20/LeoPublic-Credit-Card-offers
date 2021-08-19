@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import {View, StyleSheet, Text, Image, TouchableOpacity, ImageBackground} from 'react-native';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
+//import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import LinearGradient from 'react-native-linear-gradient';
 import {images, SIZES} from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
