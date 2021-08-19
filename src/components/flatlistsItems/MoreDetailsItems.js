@@ -17,7 +17,6 @@ const MoreDetails = ({title, subtitle}) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     marginHorizontal: SIZES.padding,
     paddingVertical: SIZES.padding2,
     borderBottomColor: '#f1f2f7',

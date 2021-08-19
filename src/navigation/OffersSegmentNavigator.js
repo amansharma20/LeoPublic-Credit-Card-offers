@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingLeft: SIZES.padding,
+    paddingTop: SIZES.padding2,
   },
   tabStyle: {
     borderWidth: 0,

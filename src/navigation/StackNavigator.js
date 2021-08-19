@@ -27,7 +27,7 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
-                <Stack.Screen name="Login" component={Login}/>
+                {/* <Stack.Screen name="Login" component={Login}/> */}
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
                 <Stack.Screen name="ExploreScreen" component={ExploreScreen}/>
                 <Stack.Screen name="StartScreen" component={StartScreen}/>

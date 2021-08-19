@@ -35,9 +35,6 @@ export default function OffersScreen(props) {
   //             console.log(bank.Name);
   //         }));
   //     };
-  const renderItem = ({ item }) => (
-    <CreditCardImagesFlatlist image={item.image} />
-  );
 
   return (
     <View style={styles.container}>
@@ -73,13 +70,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: Responsive.width(12),
     paddingVertical: Responsive.height(8),
   },
-  creditCardContainer: {
-    marginTop: Responsive.height(-165),
-  },
   mainBody: {
     backgroundColor: 'white',
     height: '100%',
-    marginTop: Responsive.height(125),
+    marginTop: Responsive.height(0),
     borderTopLeftRadius: Responsive.width(32),
     borderTopRightRadius: Responsive.width(32),
   },
