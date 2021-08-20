@@ -6,6 +6,7 @@ import {
   View,
   ScrollView,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -57,7 +58,7 @@ export default function MyCards(props) {
           </View>
           {/* MAIN BODY  */}
           <View style={styles.mainBody}>
-            <View style={styles.creditCardContainer}>
+            <TouchableOpacity style={styles.creditCardContainer}>
               <Carousel
                 data={CREDITCARDDATA}
                 renderItem={renderItem}
@@ -74,7 +75,7 @@ export default function MyCards(props) {
                 inactiveSlideScale={0.9}
                 inactiveSlideOpacity={0.95}
               />
-            </View>
+            </TouchableOpacity>
             <View>
               <HomeSegmentNavigator />
             </View>

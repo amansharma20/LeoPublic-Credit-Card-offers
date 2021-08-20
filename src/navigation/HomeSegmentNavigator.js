@@ -37,7 +37,7 @@ export default function HomeSegmentNavigator() {
 
   return (
     <View>
-      <ScrollView horizontal style={styles.container}>
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal style={styles.container}>
         <SegmentedControlTab
           values={['Offers', 'Overview', 'Reviews', 'Milestones']}
           selectedIndex={selectedIndex}

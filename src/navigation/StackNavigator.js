@@ -15,6 +15,8 @@ import CardHolder from '../screens/basicDetails/CardHolder';
 import AddCardScreen from '../screens/addCardScreen/AddCardScreen';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
+import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDetails';
+import ChoosePreferences from '../screens/profile/choosePreferences/ChoosePreferences';
 
 const Stack = createStackNavigator();
 
@@ -36,7 +38,9 @@ export default function StackNavigator() {
                 <Stack.Screen name="Signup" component={Signup}/>
                 <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="AddCardScreen" component={AddCardScreen}/>
+                <Stack.Screen name="ChoosePreferences" component={ChoosePreferences}/>
                 <Stack.Screen name="OTPScreen" component={OTPScreen}/>
+                <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails}/>
             </Stack.Navigator>
     );
 }
