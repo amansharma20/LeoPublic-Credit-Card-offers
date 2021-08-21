@@ -24,10 +24,12 @@ const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 export default function MyCards(props) {
 
 
-   const { data } = useQuery(GQLQuery.GET_BANKS);
+   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
 
   useEffect(() => {
    console.log(data)
+   console.log(error)
+
   });
 
   const renderItem = ({ item }) => (

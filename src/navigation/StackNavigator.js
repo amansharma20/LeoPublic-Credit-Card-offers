@@ -6,9 +6,7 @@ import {
 import React from 'react';
 import AuthNavigator from './AuthNavigator';
 import StartScreen from '../../src/screens/auth/StartScreen';
-import Login from '../screens/auth/Login';
 import OTPScreen from '../screens/auth/OTPScreen';
-import MyCards from '../screens/home/MyCards';
 import Signup from '../screens/auth/Signup';
 import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import CardHolder from '../screens/basicDetails/CardHolder';
