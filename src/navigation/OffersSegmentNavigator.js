@@ -13,6 +13,7 @@ import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen'
 import BestOffers from '../screens/offersScreen/bestOffers/BestOffers';
 import LatestOffers from '../screens/offersScreen/latestOffers/LatestOffers';
 import AllOffers from '../screens/offersScreen/allOffers/AllOffers';
+import { Responsive } from '../utils/layouts/Layout';
 
 export default function OffersSegmentNavigator() {
   const navigation = useNavigation();
@@ -71,14 +72,14 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     paddingVertical: 12,
     marginRight: 36,
-    width: 99,
+    width: Responsive.width(105),
     alignItems: 'center',
   },
   tabsContainerStyle: {
     paddingHorizontal: 0,
     paddingVertical: 0,
     alignContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',
@@ -90,11 +91,11 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#6F7FAF',
     fontSize: 16,
-    fontWeight: '500',
+    fontFamily: 'Exo2Medium',
   },
   activeTabTextStyle: {
     color: '#060417',
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
 });

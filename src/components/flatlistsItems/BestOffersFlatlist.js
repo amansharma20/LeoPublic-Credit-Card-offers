@@ -143,22 +143,22 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 14,
   },
-  titleText: { fontSize: 12, fontWeight: '700', color: '#454545' },
+  titleText: { fontSize: 12, fontFamily: 'Exo2Bold', color: '#454545' },
   subtitleText: {
     fontSize: 10,
-    fontWeight: '400',
+    fontFamily: 'Exo2Regular',
     paddingTop: 4,
     color: '#515151',
   },
   showMoreText: {
     fontSize: 7,
-    fontWeight: '400',
+    fontFamily: 'Exo2Regular',
     paddingTop: 4,
     color: '#4D2D8F',
     paddingBottom: 6,
   },
   progressCircleContainer: { flexDirection: 'row' },
-  daysLeftText: { fontSize: 6, paddingLeft: 10, textAlign: 'center' },
+  daysLeftText: { fontSize: 6, paddingLeft: 10, textAlign: 'center', fontFamily: 'Exo2Medium' },
   animatedCircleSize: { marginLeft: -24, marginTop: -6 },
   modalContainer: {
     // paddingTop: Responsive.height(110),
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
-  modalHeaderText: { fontSize: 24, fontWeight: '700', color: '#ffffff' },
+  modalHeaderText: { fontSize: 24, fontFamily: 'Exo2Bold', color: '#ffffff' },
   leftIconContainer: {
     width: 44,
     height: 44,
@@ -189,10 +189,11 @@ const styles = StyleSheet.create({
   modalTitleText: {
     color: '#7A869A',
     fontSize: SIZES.h4,
+    fontFamily: 'Exo2Medium',
   },
   modalSubTitleText: {
     fontSize: SIZES.h3,
-    fontWeight: '500',
+    fontFamily: 'Exo2Medium',
   },
   modalHeaderContainer: {
     flexDirection: 'row',
@@ -244,11 +245,11 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#6F7FAF',
     fontSize: 16,
-    fontWeight: '500',
+    fontFamily: 'Exo2Medium',
   },
   activeTabTextStyle: {
     color: '#060417',
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
 });

@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.padding2,
     paddingHorizontal: SIZES.padding2,
   },
-  rewardsText: {color: '#626262', fontSize: 12, fontWeight: '700'},
+  rewardsText: {color: '#626262', fontSize: 12, fontFamily: 'Exo2Bold'},
   feeContainer: {flexDirection: 'row', justifyContent: 'space-between'},
   creditCardImage: {
     // paddingLeft: Responsive.width(24),
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   cardTypeText: {
     fontSize: 12,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
     color: '#ffffff',
   },
   bankLogo: {
@@ -168,11 +168,12 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   feeText: {
     fontSize: 10,
     color: '#626262',
+    fontFamily: 'Exo2Medium',
   },
   checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
   checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
@@ -189,14 +190,14 @@ const styles = StyleSheet.create({
   },
   modalHeaderText: {
     fontSize: SIZES.h3,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
     color: '#7B7B7B',
     textAlign: 'center',
-    paddingVertical: 20
+    paddingVertical: 20,
   },
   modalSubText: {
     fontSize: SIZES.h4,
-    fontWeight: '400',
+    fontFamily: 'Exo2Regular',
     textAlign: 'center',
     paddingHorizontal: 30,
     paddingVertical: 20,
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
   modalButtonText: {
     color: '#ffffff',
     fontSize: SIZES.h4,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',

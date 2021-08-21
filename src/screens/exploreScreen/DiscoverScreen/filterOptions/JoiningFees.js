@@ -12,7 +12,9 @@ export default function JoiningFees() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <Text>
+        <Text style={{
+        fontFamily: 'Exo2Bold',
+        }}>
         Joining Fees
         </Text>
       </View>

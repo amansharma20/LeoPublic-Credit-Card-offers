@@ -112,8 +112,8 @@ const styles = StyleSheet.create({
   header: {
     marginTop: Platform.select({
       ios: 40,
-      android: 0
-    })
+      android: 0,
+    }),
   },
   iconSize: {
     width: 24,
@@ -124,11 +124,12 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontWeight: 'bold',
+    fontFamily: 'Exo2Bold',
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
+    fontFamily: 'Exo2Medium',
     color: '#797E96',
   },
   buttonContainer: {
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: SIZES.h3,
     color: '#FFFFFF',
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   resendButton: {
     fontSize: 16,
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
   },
   otpInputContainer: {
     width: '80%',
-    height: 100
+    height: 100,
   },
   underlineStyleBase: {
     borderRadius: 8,
@@ -176,10 +177,11 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: SIZES.h4,
+    fontFamily: 'Exo2Medium',
     color: '#7a869a',
   },
   footerTextBold: {
     color: '#4d2d8f',
-    fontWeight: 'bold',
+    fontFamily: 'Exo2Bold',
   },
 });

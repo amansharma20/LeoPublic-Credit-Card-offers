@@ -70,9 +70,10 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#8c99bf',
     fontSize: SIZES.h3,
+    fontFamily: 'Exo2Medium',
   },
   activeTabTextStyle: {
     color: '#060417',
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
 });

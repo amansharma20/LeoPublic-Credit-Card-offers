@@ -12,7 +12,9 @@ export default function CreditLimit() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <Text>
+        <Text style={{
+        fontFamily: 'Exo2Bold',
+        }}>
         Credit Limit
         </Text>
       </View>

@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   },
   cardTypeText: {
     fontSize: 12,
-    fontWeight: '700',
     color: '#ffffff',
+    fontFamily: 'Exo2Bold'
   },
   bankLogo: {
     marginLeft: 85,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   cardNumberText: {
       color: '#ffffff',
       fontSize: 18,
-      fontWeight: '700',
+      fontFamily: 'Exo2Bold',
     },
 });
 

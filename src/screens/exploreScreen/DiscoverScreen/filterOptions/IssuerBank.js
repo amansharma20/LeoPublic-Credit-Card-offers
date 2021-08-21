@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
     },
     headerText: {
         fontSize: SIZES.h3,
-        fontWeight: '700',
+        fontFamily: 'Exo2Bold',
     },
     checkBoxContainer: { marginTop: 0, width: 24, height: 24, borderRadius: 4 },
     checkBoxIconStyle: { borderRadius: 4, borderWidth: 0 },
     checkBoxContainerStyle: { alignItems: 'center', flexDirection: 'row', paddingVertical: SIZES.padding2, paddingHorizontal: 8 },
-    bankName: { fontSize: 15, color: '#172B4D', paddingLeft: 4, },
+    bankName: { fontSize: 15, color: '#172B4D', paddingLeft: 4, fontFamily: 'Exo2Medium' },
 });

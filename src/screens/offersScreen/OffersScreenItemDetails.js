@@ -60,10 +60,11 @@ const styles = StyleSheet.create({
         color: '#7A869A',
         fontSize: SIZES.h4,
         paddingTop: 10,
+        fontFamily: 'Exo2Medium',
     },
     subTitleText: {
         fontSize: SIZES.h3,
-        fontWeight: '500',
+        fontFamily: 'Exo2Medium',
     },
     headerContainer: {
         flexDirection: 'row',
@@ -82,13 +83,13 @@ const styles = StyleSheet.create({
         height: Responsive.height(28),
         borderRadius: 12,
     },
-    applyNowText: { color: '#ffffff', fontSize: 10, fontWeight: '700' },
-    offerDetailsContainer: {  borderBottomWidth: 1, borderColor: '#EDEAF2', 
+    applyNowText: { color: '#ffffff', fontSize: 10, fontFamily: 'Exo2Bold' },
+    offerDetailsContainer: {  borderBottomWidth: 1, borderColor: '#EDEAF2',
     paddingVertical: SIZES.padding,
     paddingHorizontal: SIZES.padding2, },
     modalSubTitleDetailsText: {
         paddingTop: 10,
         fontSize: 16,
-        fontWeight: '700',
+        fontFamily: 'Exo2Bold',
     },
 });

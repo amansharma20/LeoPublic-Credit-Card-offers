@@ -12,7 +12,9 @@ export default function Category() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <Text>
+        <Text style={{
+        fontFamily: 'Exo2Bold',
+        }}>
         Category
         </Text>
       </View>

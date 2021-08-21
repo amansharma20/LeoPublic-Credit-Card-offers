@@ -22,7 +22,7 @@ export default function StartScreen() {
     <ImageBackground
       source={images.startScreenBackgroundImage}
       style={styles.MainContainer}>
-      <View style={{paddingHorizontal: SIZES.padding2}}>
+      <View>
         <Text style={styles.headerText}>Welcome</Text>
         <Text style={styles.subTitleStyle}>
           Evaluate, Manage & Optimise yourCredit Cards
@@ -45,9 +45,9 @@ export default function StartScreen() {
             ]}>
             <Text
               style={{
-                color: COLORS.PrimaryColor,
+                color: '#4D2D8F',
                 fontSize: 16,
-                fontWeight: 'bold',
+                fontFamily: 'Exo2Bold',
               }}>
               Sign in
             </Text>
@@ -70,7 +70,9 @@ export default function StartScreen() {
                 borderColor: 'white',
               },
             ]}>
-            <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>
+            <Text style={{color: 'white', fontSize: 16,
+            fontFamily: 'Exo2Bold',
+            }}>
               Register
             </Text>
           </View>
@@ -81,7 +83,7 @@ export default function StartScreen() {
 }
 const styles = StyleSheet.create({
   inputView: {
-    width: '90%',
+    width: '100%',
     //backgroundColor: '#F2F2F2',
     borderRadius: 10,
     height: 46,
@@ -92,23 +94,21 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 36,
-    fontWeight: 'bold',
-    paddingHorizontal: SIZES.padding2,
     color: COLORS.white,
+    fontFamily: 'Exo2Bold',
     marginTop: screenHeight / 3,
   },
   MainContainer: {
     flex: 1,
     justifyContent: 'center',
+    paddingHorizontal: 4,
     alignItems: 'center',
-    width: '100%',
-    height: '100%',
   },
   subTitleStyle: {
     fontSize: 18,
     fontWeight: 'normal',
-    paddingHorizontal: SIZES.padding2,
     color: 'white',
     marginTop: 10,
+    fontFamily: 'Exo2Medium',
   },
 });

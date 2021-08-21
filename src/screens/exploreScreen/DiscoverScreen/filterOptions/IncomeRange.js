@@ -12,7 +12,9 @@ export default function IncomeRange() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <Text>
+        <Text style={{
+        fontFamily: 'Exo2Bold',
+        }}>
         Income Range
         </Text>
       </View>

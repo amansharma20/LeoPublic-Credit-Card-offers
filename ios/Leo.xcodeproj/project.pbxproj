@@ -17,6 +17,14 @@
 		5D37B5F835AE6D208F1F4A25 /* libPods-Leo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A7E848E838E8854D3D76D3 /* libPods-Leo.a */; };
 		75674338AAE1CAC2514B8A4B /* libPods-Leo-LeoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EB6FB71838C383BCF96CB3 /* libPods-Leo-LeoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		6434FEBDB71545B283A909BB /* Exo2Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */; };
+		BD420D8BD8984F7C8238B382 /* Exo2Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */; };
+		83E4B636DFE246A4ADA47E9D /* Exo2ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */; };
+		C9B5483BD51246C0878F717A /* Exo2ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */; };
+		40871DEF20D04368876E3CDF /* Exo2Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9714AD79523E47B097AFEE09 /* Exo2Medium.otf */; };
+		35AF530D4B7C4377B5A19A7F /* Exo2Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */; };
+		26CA283DCEAC4FB594C7C24F /* Exo2SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */; };
+		7FD89BCD72C54BCDAF5DDD6F /* Exo2Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +109,14 @@
 		DFB8171788334C141EC931B3 /* Pods-Leo-LeoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoTests.debug.xcconfig"; path = "Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4EB6FB71838C383BCF96CB3 /* libPods-Leo-LeoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Leo-LeoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */ = {isa = PBXFileReference; name = "Exo2Black.otf"; path = "../src/assets/fonts/Exo2Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */ = {isa = PBXFileReference; name = "Exo2Bold.otf"; path = "../src/assets/fonts/Exo2Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */ = {isa = PBXFileReference; name = "Exo2ExtraBold.otf"; path = "../src/assets/fonts/Exo2ExtraBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */ = {isa = PBXFileReference; name = "Exo2ExtraLight.otf"; path = "../src/assets/fonts/Exo2ExtraLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9714AD79523E47B097AFEE09 /* Exo2Medium.otf */ = {isa = PBXFileReference; name = "Exo2Medium.otf"; path = "../src/assets/fonts/Exo2Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */ = {isa = PBXFileReference; name = "Exo2Regular.otf"; path = "../src/assets/fonts/Exo2Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */ = {isa = PBXFileReference; name = "Exo2SemiBold.otf"; path = "../src/assets/fonts/Exo2SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */ = {isa = PBXFileReference; name = "Exo2Thin.otf"; path = "../src/assets/fonts/Exo2Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +213,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B258D8771B3952E4A211007F /* Pods */,
+				2014D41676854EE1A0E92D9B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -222,6 +239,22 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		2014D41676854EE1A0E92D9B /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */,
+				C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */,
+				E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */,
+				30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */,
+				9714AD79523E47B097AFEE09 /* Exo2Medium.otf */,
+				2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */,
+				CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */,
+				CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -364,6 +397,14 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				6434FEBDB71545B283A909BB /* Exo2Black.otf in Resources */,
+				BD420D8BD8984F7C8238B382 /* Exo2Bold.otf in Resources */,
+				83E4B636DFE246A4ADA47E9D /* Exo2ExtraBold.otf in Resources */,
+				C9B5483BD51246C0878F717A /* Exo2ExtraLight.otf in Resources */,
+				40871DEF20D04368876E3CDF /* Exo2Medium.otf in Resources */,
+				35AF530D4B7C4377B5A19A7F /* Exo2Regular.otf in Resources */,
+				26CA283DCEAC4FB594C7C24F /* Exo2SemiBold.otf in Resources */,
+				7FD89BCD72C54BCDAF5DDD6F /* Exo2Thin.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

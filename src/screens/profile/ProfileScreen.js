@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 18,
     color: '#060417',
-    fontWeight: 'bold',
+    fontFamily: 'Exo2Bold',
     lineHeight: 28,
     paddingTop: 8,
   },
@@ -114,8 +114,9 @@ const styles = StyleSheet.create({
     color: '#6F7FAF',
     lineHeight: 20,
     paddingVertical: 8,
+    fontFamily: 'Exo2Medium',
   },
-  birthDateText: {fontSize: SIZES.h3, color: '#6F7FAF', lineHeight: 20},
+  birthDateText: {fontSize: SIZES.h3, color: '#6F7FAF', lineHeight: 20, fontFamily: 'Exo2Medium'},
   topContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -129,8 +130,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 24,
   },
-  topContainerHeaderText: {color: '#6F7FAF', fontSize: 14},
-  topContainerSubtitleText: {color: '#060417', fontSize: 18, fontWeight: '700'},
+  topContainerHeaderText: {color: '#6F7FAF', fontSize: 14, fontFamily: 'Exo2Medium'},
+  topContainerSubtitleText: {color: '#060417', fontSize: 18, fontFamily: 'Exo2Bold'},
   addContainer: {
     padding: SIZES.padding,
     borderBottomWidth: 1,
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e4e7f0',
   },
-  addContainerHeaderText: {paddingBottom: 22, fontSize: 16, fontWeight: '700'},
+  addContainerHeaderText: {paddingBottom: 22, fontSize: 16, fontFamily: 'Exo2Bold'},
   addContainerSubtitleTextContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
   },
-  addContainerSubtitleText: {color: '#1C1B1B', fontSize: 16},
+  addContainerSubtitleText: {color: '#1C1B1B', fontSize: 16, fontFamily: 'Exo2Medium'},
   addMonthlyExpenseContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

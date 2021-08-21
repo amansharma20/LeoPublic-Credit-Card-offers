@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
@@ -77,6 +78,8 @@ export default function RecommendedScreen() {
               listMode="FLATLIST"
               dropDownContainerStyle={styles.dropDownContainerStyle}
               closeAfterSelecting={true}
+              listItemLabelStyle={{fontFamily: 'Exo2Medium'}}
+              selectedItemLabelStyle={{fontFamily: 'Exo2Bold'}}
             />
           </View>
           <View>
@@ -189,13 +192,13 @@ const styles = StyleSheet.create({
   categoriesContainer: {
     backgroundColor: '#f4f5f7',
     borderWidth: 0,
-    width: Responsive.width(101),
+    width: Responsive.width(115),
     height: Responsive.height(40),
   },
   placeholderText: {
     fontSize: SIZES.h3,
     color: '#4D2D8F',
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   dropDownContainerStyle: {
     backgroundColor: '#f4f5f7',
@@ -209,7 +212,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  compareText: { color: '#ffffff', fontSize: 14, fontWeight: '700' },
+  compareText: { color: '#ffffff', fontSize: 14, fontFamily: 'Exo2Bold' },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -229,7 +232,7 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
-  modalHeaderText: { fontSize: 24, fontWeight: '700', color: '#ffffff' },
+  modalHeaderText: { fontSize: 24, fontFamily: 'Exo2Bold', color: '#ffffff' },
   leftIconContainer: {
     width: 44,
     height: 44,
@@ -257,7 +260,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: 12,
   },
-  cardTypeText: { fontWeight: '700', fontSize: 8, paddingVertical: 4, color: '#ffffff' },
+  cardTypeText: { fontFamily: 'Exo2Bold', fontSize: 8, paddingVertical: 4, color: '#ffffff' },
   cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   flatlistBackgroundColor: { backgroundColor: '#fff' },
 });

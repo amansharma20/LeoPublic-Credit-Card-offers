@@ -12,7 +12,9 @@ export default function CardLevel() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <Text>
+        <Text style={{
+        fontFamily: 'Exo2Bold',
+        }}>
         Card Level
         </Text>
       </View>

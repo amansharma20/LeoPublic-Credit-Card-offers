@@ -88,11 +88,11 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#172B4D',
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily: 'Exo2Medium',
   },
   activeTabTextStyle: {
     color: '#172B4D',
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
 });
