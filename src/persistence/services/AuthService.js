@@ -16,7 +16,7 @@ async function signIn(url, data) {
             type: 'error',
             position: 'top',
             text1: 'Oops',
-            text2: 'Invalid credentials',
+            text2: e.response.data,
             visibilityTime: 4000,
             autoHide: true,
             topOffset: 30,
