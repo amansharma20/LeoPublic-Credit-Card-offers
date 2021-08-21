@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
     headerText: { fontSize: 18, fontWeight: '700', color: '#172B4D', paddingVertical: 8 },
     subtitleText: { fontSize: 12, color: '#6F7FAF' },
     firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
-    secondRow: { justifyContent: 'space-around', flexDirection: 'row' },
+    secondRow: { justifyContent: 'space-between', flexDirection: 'row', width: '63%' },
     borderWidth: { borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F' },
 });
