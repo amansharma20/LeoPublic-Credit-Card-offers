@@ -19,7 +19,7 @@ export default function OffersScreenItemDetails() {
             </View>
             <View style={{backgroundColor: '#4d2d8f'}}>
 
-            <View style={{ padding: SIZES.padding2, borderTopRightRadius: 32, borderTopLeftRadius: 32, backgroundColor: '#ffffff', marginTop: 0 }}>
+            <View style={{ paddingHorizontal: SIZES.padding2, borderTopRightRadius: 32, borderTopLeftRadius: 32, backgroundColor: '#ffffff', marginTop: 0 }}>
                 <View style={styles.headerContainer}>
                     <View>
                         <Text style={styles.titleText}>Issuer Name</Text>
@@ -35,13 +35,13 @@ export default function OffersScreenItemDetails() {
                 <View style={styles.offerDetailsContainer}>
                     <AppleIcon />
                     {/* <Image source={{}} style={{ width: 24, height: 24 }} /> */}
-                    <Text style={styles.modalSubTitleText}>1000 off on apple watch
+                    <Text style={styles.modalSubTitleDetailsText}>1000 off on apple watch
                         and accessories </Text>
                 </View>
             </View>
             </View>
 
-            <ScrollView>
+            <ScrollView style={{paddingVertical: 12}}>
                 <OffersScreenItemDetailsNavigator />
             </ScrollView>
         </View>
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     titleText: {
         color: '#7A869A',
         fontSize: SIZES.h4,
+        paddingTop: 10,
     },
     subTitleText: {
         fontSize: SIZES.h3,
@@ -70,6 +71,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderBottomWidth: 1,
         borderColor: '#EDEAF2',
+        paddingVertical: SIZES.padding,
+        paddingHorizontal: SIZES.padding2,
     },
     buttonContainer: {
         alignItems: 'center',
@@ -80,5 +83,12 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
     applyNowText: { color: '#ffffff', fontSize: 10, fontWeight: '700' },
-    offerDetailsContainer: { paddingVertical: SIZES.padding2, borderBottomWidth: 1, borderColor: '#EDEAF2' },
+    offerDetailsContainer: {  borderBottomWidth: 1, borderColor: '#EDEAF2', 
+    paddingVertical: SIZES.padding,
+    paddingHorizontal: SIZES.padding2, },
+    modalSubTitleDetailsText: {
+        paddingTop: 10,
+        fontSize: 16,
+        fontWeight: '700',
+    },
 });

@@ -17,7 +17,7 @@ import MoreDetails from './MoreDetailsItems';
 import OffersDetailsModalFlatlist from './OffersDetailsModalFlatlist';
 import { useNavigation } from '@react-navigation/native';
 
-export default function BestOffersFlatlist({ title, subtitle, image }) {
+export default function MoreOffersFlatlist({ title, subtitle, image }) {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
   renderModalItemOffersDetails
@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
   gradientContainer: {
     elevation: 8,
     width: Responsive.width(147),
-    height: Responsive.height(223),
     borderRadius: 6,
   },
   imageBackgroundSize: {
@@ -140,8 +139,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: 'row',
-    paddingVertical: 14,
-    paddingHorizontal: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 8,
   },
   titleText: { fontSize: 12, fontWeight: '700', color: '#454545' },
   subtitleText: {
@@ -157,8 +156,8 @@ const styles = StyleSheet.create({
     color: '#4D2D8F',
     paddingBottom: 6,
   },
-  progressCircleContainer: { flexDirection: 'row' },
-  daysLeftText: { fontSize: 6, paddingLeft: 10, textAlign: 'center' },
+  progressCircleContainer: { width: '30%', flexDirection: 'row' },
+  daysLeftText: { fontSize: 6, marginLeft: 10, textAlign: 'center' },
   animatedCircleSize: { marginLeft: -24, marginTop: -6 },
   modalContainer: {
     // paddingTop: Responsive.height(110),

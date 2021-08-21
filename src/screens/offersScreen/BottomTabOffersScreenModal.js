@@ -13,14 +13,14 @@ export default function BottomTabOffersScreenModal() {
     <OffersDetailsModalFlatlist title={item.title} subtitle={item.subtitle} />
   );
   return (
-    // <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingTop: 8 }}>
       <FlatList
         data={MODALDATA}
         renderItem={renderModalItemOffersDetails}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.modalContentContainerStyle}
       />
-    // </View>
+    </View>
   );
 }
 
