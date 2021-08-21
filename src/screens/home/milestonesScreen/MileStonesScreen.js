@@ -28,6 +28,10 @@ export default function MileStonesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop:Platform.select({
+      ios:20,
+      android:20
+    })
   },
   body: {
     padding: SIZES.padding,

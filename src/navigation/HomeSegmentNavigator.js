@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import {View, StyleSheet, ScrollView, Text, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../constants/';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
@@ -14,30 +14,14 @@ import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen'
 export default function HomeSegmentNavigator() {
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log('selectedIndex');
-  console.log(selectedIndex);
-  console.log('selectedIndex');
+
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
-    console.log(index);
-    switch (index) {
-      case 0:
-        return console.log('offers');
-      case 1:
-        return console.log('offers2');
-      case 2:
-        return console.log('offers3');
-      case 3:
-        return console.log('offers4');
-      // break;
-      default:
-        break;
-    }
   };
 
   return (
-    <View>
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal style={styles.container}>
+    <View style={{marginTop:20}}>
+      <ScrollView showsHorizontalScrollIndicator={false}  horizontal={true} style={styles.container}>
         <SegmentedControlTab
           values={['Offers', 'Overview', 'Reviews', 'Milestones']}
           selectedIndex={selectedIndex}
@@ -61,12 +45,15 @@ export default function HomeSegmentNavigator() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: SIZES.padding,
+    marginLeft:Platform.select({
+      ios:30,
+      android:30
+    })
   },
   tabStyle: {
     borderWidth: 0,
     paddingBottom: 2,
-    marginRight: 36,
+    marginRight: 40,
   },
   tabsContainerStyle: {
     paddingHorizontal: 0,

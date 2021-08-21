@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import icons from '../../constants/icons';
 import { SIZES } from '../../constants';
@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: SIZES.padding2,
     alignItems: 'center',
+    marginTop:Platform.select({
+      ios: 30,
+      android:40
+    })
   },
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},

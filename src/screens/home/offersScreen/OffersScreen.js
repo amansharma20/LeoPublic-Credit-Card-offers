@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
 import { FlatList } from 'react-native-gesture-handler';
@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop:Platform.select({
+      ios:20,
+      android:20
+    })
   },
   contentContainer: {
     paddingBottom: Responsive.height(20),
