@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
-import {SIZES} from '../../constants';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import { SIZES } from '../../constants';
 
-const Offers = ({title, subtitle, image}) => (
+const Offers = ({ title, subtitle, image }) => (
   <View style={styles.container}>
     <View style={styles.offerContainer}>
       <View style={styles.imageContainer}>
-        <Image source={{uri: image}} style={styles.imageSize} />
+        <Image source={{ uri: image }} style={styles.imageSize} />
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.titleText}>{title}</Text>
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    marginHorizontal: 8
   },
   offerContainer: {
     backgroundColor: '#F9F4F2',
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   },
   imageSize: {
     width: 100,
-    height: 100,
+    height: 80,
     resizeMode: 'contain',
   },
 });

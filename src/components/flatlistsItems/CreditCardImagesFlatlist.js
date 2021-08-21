@@ -3,42 +3,41 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  Image,
   Text,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {images, SIZES} from '../../constants';
+import {SIZES} from '../../constants';
 import {Responsive} from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
 
-const CreditCardImagesFlatlist = ({image}) => (
-  <TouchableOpacity activeOpacity={0.9} style={styles.container}>
-    <ImageBackground
-      style={styles.creditCardContainer}
-      //   source={images.creditCardBackground}
-      source={{uri: image}}
-      imageStyle={styles.backgroundImageStyle}>
-      <View style={styles.creditCardDetailsContainer}>
-        <View style={styles.cardTopContainer}>
-          <Text style={styles.cardTypeText}>Platinum Cards</Text>
-          <BankLogo style={styles.bankLogo} />
-        </View>
-        <Code />
-        <View style={styles.cardBottomContainer}>
-          <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
-          {/* <Text style={{color: '#ffffff'}}>
-                card type icon
-            </Text> */}
-          <MasterCardLogo />
-        </View>
-      </View>
-    </ImageBackground>
-  </TouchableOpacity>
-);
 
+
+export default function CreditCardImagesFlatlist(props){
+  const card = props.card.item
+  return(
+    <TouchableOpacity activeOpacity={0.9} style={styles.container}>
+      <ImageBackground
+        style={styles.creditCardContainer}
+        source={{uri: card.image}}
+        imageStyle={styles.backgroundImageStyle}>
+        <View style={styles.creditCardDetailsContainer}>
+          <View style={styles.cardTopContainer}>
+            <Text style={styles.cardTypeText}>Platinum Cards</Text>
+            <BankLogo style={styles.bankLogo} />
+          </View>
+          <Code />
+          <View style={styles.cardBottomContainer}>
+            <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
+            <MasterCardLogo />
+          </View>
+        </View>
+      </ImageBackground>
+    </TouchableOpacity>
+  );
+}
 const styles = StyleSheet.create({
   container: {
     paddingLeft: Responsive.width(20),
@@ -89,5 +88,3 @@ const styles = StyleSheet.create({
       fontWeight: '700',
     },
 });
-
-export default CreditCardImagesFlatlist;

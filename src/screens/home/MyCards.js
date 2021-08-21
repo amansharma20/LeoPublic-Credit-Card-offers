@@ -10,13 +10,13 @@ import {
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';
 import CREDITCARDDATA from '../../assets/dummyData/creditCards';
 import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+import Carousel from 'react-native-snap-carousel';
 import { scrollInterpolator, animatedStyles } from '../../utils/animations';
-import  {GQLQuery} from '../../persistence/query/Query';
+import { GQLQuery } from '../../persistence/query/Query';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
@@ -24,28 +24,28 @@ const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 export default function MyCards(props) {
 
 
-   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
 
   useEffect(() => {
-   console.log(data)
-   console.log(error)
+    console.log(data)
+    console.log(error)
 
   });
 
-  const renderItem = ({ item }) => (
-    <CreditCardImagesFlatlist image={item.image} />
+  const renderCustomerUserCards = (card) => (
+    <CreditCardImagesFlatlist card={card} key={card.index}/>
   );
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView horizontal={false}>
         <StatusBar
           hidden={false}
           backgroundColor={'#4d2d8f'}
           barStyle={'light-content'}
         />
         <View>
-          {/* HEADER  */}
+        
           <View>
             <MyCardsScreenHeader />
           </View>
@@ -54,9 +54,9 @@ export default function MyCards(props) {
             <TouchableOpacity style={styles.creditCardContainer}>
               <Carousel
                 data={CREDITCARDDATA}
-                renderItem={renderItem}
+                renderItem={renderCustomerUserCards}
                 keyExtractor={item => item.id}
-                horizontal
+                horizontal={true}
                 sliderWidth={SLIDER_WIDTH}
                 itemWidth={ITEM_WIDTH}
                 containerCustomStyle={styles.carouselContainer}
@@ -68,6 +68,7 @@ export default function MyCards(props) {
                 useScrollView={true}
                 inactiveSlideScale={0.9}
                 inactiveSlideOpacity={0.95}
+                
               />
             </TouchableOpacity>
             <View>

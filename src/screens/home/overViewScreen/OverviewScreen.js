@@ -97,6 +97,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingBottom: 20,
+    marginTop:Platform.select({
+      ios:20,
+      android:20
+    }),
   },
   body: {
     paddingTop: SIZES.padding2,
@@ -112,15 +116,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '95%',
+    borderWidth: 1,
+    borderColor: '#4f2f90'
   },
   headerTextContainer: {
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   headerText: {
     color: '#797E96',
     fontSize: 18,
-    lineHeight: 24,
   },
   subText: {
     color: '#1c1b1b',
