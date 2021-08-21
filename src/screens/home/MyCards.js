@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   StatusBar,
@@ -10,35 +10,26 @@ import {
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
-// import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';
 import CREDITCARDDATA from '../../assets/dummyData/creditCards';
 import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
-import Carousel from 'react-native-snap-carousel';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { scrollInterpolator, animatedStyles } from '../../utils/animations';
+import  {GQLQuery} from '../../persistence/query/Query';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards(props) {
-  //const { token } = props.route.params
 
-  //     const GET_BANKS = gql`
-  //     query{
-  //         BankQuery{
-  //             GetBanks{
-  //                 Name
-  //             }
-  //         }
-  //     }
-  // `
-  //     const { data } = useQuery(GET_BANKS)
 
-  //     const fetchQuery = () => {
-  //         console.log(data.BankQuery.GetBanks.map(bank=>{
-  //             console.log(bank.Name);
-  //         }));
-  //     };
+   const { data } = useQuery(GQLQuery.GET_BANKS);
+
+  useEffect(() => {
+   console.log(data)
+  });
+
   const renderItem = ({ item }) => (
     <CreditCardImagesFlatlist image={item.image} />
   );
@@ -68,7 +59,8 @@ export default function MyCards(props) {
                 itemWidth={ITEM_WIDTH}
                 containerCustomStyle={styles.carouselContainer}
                 inactiveSlideShift={0}
-                // onSnapToItem={(index) => this.setState({ index })}
+                currentIndex={(c) => { console.log(c) }}
+                onSnapToItem={(index) => console.log(index)}
                 scrollInterpolator={scrollInterpolator}
                 slideInterpolatedStyle={animatedStyles}
                 useScrollView={true}

@@ -43,7 +43,6 @@ export default function Signup() {
   });
 
   const onSubmit = (data) => {
-    console.log('onSubmit')
     const signUpData = {
       FirstName: data.fname,
       LastName: data.lname,

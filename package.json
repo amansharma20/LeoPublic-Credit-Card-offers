@@ -13,6 +13,7 @@
     "@apollo/client": "^3.4.7",
     "@babel/preset-env": "^7.1.6",
     "@hookform/resolvers": "^2.7.1",
+    "@react-native-async-storage/async-storage": "react-native-async-storage/async-storage",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-navigation/bottom-tabs": "^6.0.4",
     "@react-navigation/native": "^6.0.2",

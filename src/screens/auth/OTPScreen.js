@@ -19,14 +19,12 @@ import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
 
 export default function OTPScreen(props) {
-  console.log(props);
   const navigation = useNavigation();
   const { phone } = props.route.params;
   const { screenName } = props.route.params;
   const [otp, setOtp] = useState("0000");
 
   const dispatch = useDispatch();
-
 
   const onSubmit = () => {
     CommonLoading.show();
@@ -36,7 +34,7 @@ export default function OTPScreen(props) {
         Code: otp,
       };
       dispatch(AuthActions.signIn('/Account/LoginComplete', otpData)).then(
-        () => {
+        response => {
           CommonLoading.hide();
           navigation.navigate('BottomTabBarNavigator');
         },
@@ -48,7 +46,7 @@ export default function OTPScreen(props) {
       };
       dispatch(
         AuthActions.signIn('/Account/RegisterCustomerComplete', otpData),
-      ).then(() => {
+      ).then(response => {
         CommonLoading.hide();
         navigation.navigate('BasicDetailsInput');
       });
@@ -74,9 +72,11 @@ export default function OTPScreen(props) {
         <View style={styles.otpContainer}>
           <OTPInputView
             pinCount={4}
+            autoFocusOnLoad
             style={styles.otpInputContainer}
             codeInputFieldStyle={styles.underlineStyleBase}
             onCodeFilled={(code => {
+              setOtp(code)
               console.log(`Code is ${code}, you are good to go!`)
             })}
           />
