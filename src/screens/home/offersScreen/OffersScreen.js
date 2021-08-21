@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     marginTop:Platform.select({
       ios:20,
-      android:20
-    })
+      android: 20,
+    }),
   },
   contentContainer: {
     paddingBottom: Responsive.height(20),

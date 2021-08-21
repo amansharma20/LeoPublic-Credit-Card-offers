@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
@@ -111,9 +112,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     marginTop:Platform.select({
-      ios:20,
-      android:20
-    })
+      ios: 20,
+      android: 20,
+    }),
   },
   body: {
     padding: SIZES.padding,
@@ -135,14 +136,14 @@ const styles = StyleSheet.create({
   },
   ratingText: {
     fontSize: 30,
-    fontWeight: 'bold',
+    fontFamily: 'Exo2Bold',
   },
   ratingContainer: {
     alignItems: 'center',
   },
   reviewText: {
     fontSize: 11,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   flatlistContainer: {},
   writeReviewButtonContainer: {
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   },
   writeReviewText: {
     fontSize: 12,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
     color: '#4D2D8F',
   },
   modalBackground: {
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
   },
   modalHeader: {
     fontSize: 22,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   writeReviewContainer: {
     paddingVertical: SIZES.padding,
@@ -181,6 +182,7 @@ const styles = StyleSheet.create({
     color: '#3E3E3E',
     textAlignVertical: 'top',
     padding: 12,
+    fontFamily: 'Exo2Medium',
   },
   buttonsContainer: {
     marginTop: 40,
@@ -196,7 +198,7 @@ const styles = StyleSheet.create({
   saveButtonText: {
     color: '#FFFFFF',
     fontSize: SIZES.h3,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   closeButtonContainer: {
     alignItems: 'center',
@@ -211,6 +213,6 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: '#4d2d8f',
     fontSize: SIZES.h3,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
 });

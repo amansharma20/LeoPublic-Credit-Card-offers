@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginHorizontal: 8
+    marginHorizontal: 8,
   },
   offerContainer: {
     backgroundColor: '#F9F4F2',
@@ -39,13 +39,14 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
     color: '#172B4D',
     lineHeight: 20,
   },
   subtitleText: {
     color: '#7A869A',
     marginTop: 10,
+    fontFamily: 'Exo2Medium',
   },
   imageSize: {
     width: 100,

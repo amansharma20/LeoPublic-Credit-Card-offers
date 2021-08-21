@@ -16,6 +16,7 @@ import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
 import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDetails';
 import ChoosePreferences from '../screens/profile/choosePreferences/ChoosePreferences';
 import MonthlySpend from '../screens/profile/monthlySpend/MonthlySpend';
+import Login from '../screens/auth/Login';
 
 const Stack = createStackNavigator();
 

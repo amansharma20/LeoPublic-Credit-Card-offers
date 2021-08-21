@@ -27,8 +27,8 @@ export default function MyCards(props) {
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
 
   useEffect(() => {
-    console.log(data)
-    console.log(error)
+    console.log(data);
+    console.log(error);
 
   });
 
@@ -45,7 +45,7 @@ export default function MyCards(props) {
           barStyle={'light-content'}
         />
         <View>
-        
+
           <View>
             <MyCardsScreenHeader />
           </View>
@@ -61,14 +61,14 @@ export default function MyCards(props) {
                 itemWidth={ITEM_WIDTH}
                 containerCustomStyle={styles.carouselContainer}
                 inactiveSlideShift={0}
-                currentIndex={(c) => { console.log(c) }}
+                currentIndex={(c) => { console.log(c); }}
                 onSnapToItem={(index) => console.log(index)}
                 scrollInterpolator={scrollInterpolator}
                 slideInterpolatedStyle={animatedStyles}
                 useScrollView={true}
                 inactiveSlideScale={0.9}
                 inactiveSlideOpacity={0.95}
-                
+
               />
             </TouchableOpacity>
             <View>

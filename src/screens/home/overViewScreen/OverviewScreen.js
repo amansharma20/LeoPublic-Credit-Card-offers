@@ -10,6 +10,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Modal,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
@@ -98,8 +99,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 20,
     marginTop:Platform.select({
-      ios:20,
-      android:20
+      ios: 20,
+      android: 20,
     }),
   },
   body: {
@@ -126,11 +127,12 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#797E96',
     fontSize: 18,
+    fontFamily: 'Exo2Medium',
   },
   subText: {
     color: '#1c1b1b',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'Exo2Bold',
   },
   imageSize: {
     width: Responsive.width(120),
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#4D2D8F',
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'Exo2Bold',
   },
   modalContainer: {
     flex: 1,
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},
-  modalHeaderText: {fontSize: 24, fontWeight: '700', color: '#4D2D8F'},
+  modalHeaderText: {fontSize: 24, fontFamily: 'Exo2Bold', color: '#4D2D8F'},
   leftIconContainer: {
     width: 44,
     height: 44,

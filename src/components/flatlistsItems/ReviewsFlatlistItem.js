@@ -43,7 +43,9 @@ const Reviews = ({ name, review }) => (
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: SIZES.padding2,
+        paddingVertical: SIZES.padding,
+        borderBottomWidth: 1,
+        borderColor: '#f2f5f7',
     },
     body: {
         flexDirection: 'row',
@@ -63,10 +65,11 @@ const styles = StyleSheet.create({
     },
     nameText: {
         fontSize: 16,
-        fontWeight: '700'
+        fontFamily: 'Exo2Bold',
     },
     ratingsContainer: {
         width: '50%',
+        paddingVertical: 2
     },
     nameRatingContainer: {
         paddingHorizontal: 6,
@@ -74,11 +77,12 @@ const styles = StyleSheet.create({
     dateText: {
         fontSize: 12,
         color: '#797E96',
+        fontFamily: 'Exo2Medium',
     },
     reviewText: {
         color: '#797E96',
         fontSize: 14,
-        fontWeight: '400',
+        fontFamily: 'Exo2Regular',
     },
     reviewTextContainer: {
         marginLeft: 44,

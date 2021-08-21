@@ -58,7 +58,7 @@ export default function ChoosePreferences() {
 
                 </View>
                 <TouchableOpacity style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
-                    <Text style={{color: '#ffffff', fontSize: 16, fontWeight: '700'}}>
+                    <Text style={{color: '#ffffff', fontSize: 16, fontFamily: 'Exo2Bold'}}>
                     Set Preferences
                     </Text>
                 </TouchableOpacity>
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     titleContainer: {
 
     },
-    headerText: { fontSize: 18, fontWeight: '700', color: '#172B4D', paddingVertical: 8 },
-    subtitleText: { fontSize: 12, color: '#6F7FAF' },
+    headerText: { fontSize: 18, fontFamily: 'Exo2Bold', color: '#172B4D', paddingVertical: 8 },
+    subtitleText: { fontSize: 12, color: '#6F7FAF', fontFamily: 'Exo2Medium' },
     firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
     secondRow: { justifyContent: 'space-between', flexDirection: 'row', width: '63%' },
     borderWidth: { borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F' },
