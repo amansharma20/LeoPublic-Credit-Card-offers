@@ -2,13 +2,18 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { SIZES } from '../../constants';
-import MenuIcon from '../../assets/svgs/menuIcon.svg';
+import BackIconWhite from '../../assets/svgs/backButtonWhite.svg';
+import { useNavigation } from '@react-navigation/native';
+
 
 const PreferencesScreenHeader = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.leftIconContainer}>
-      <MenuIcon />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <BackIconWhite />
+      </TouchableOpacity>
       </View>
       <Text style={styles.headerText}>Preferences</Text>
       <TouchableOpacity>

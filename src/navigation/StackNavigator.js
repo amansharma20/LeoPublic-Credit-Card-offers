@@ -17,6 +17,7 @@ import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
 import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDetails';
 import ChoosePreferences from '../screens/profile/choosePreferences/ChoosePreferences';
+import MonthlySpend from '../screens/profile/monthlySpend/MonthlySpend';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ export default function StackNavigator() {
             >
                 {/* <Stack.Screen name="Login" component={Login}/> */}
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
+                <Stack.Screen name="MonthlySpend" component={MonthlySpend}/>
                 <Stack.Screen name="ExploreScreen" component={ExploreScreen}/>
                 <Stack.Screen name="StartScreen" component={StartScreen}/>
                 <Stack.Screen name="AuthNavigator" component={AuthNavigator} />

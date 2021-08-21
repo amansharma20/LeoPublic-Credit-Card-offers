@@ -11,6 +11,7 @@ import LowerFees from '../../../assets/svgs/lowerFees.svg';
 import PopularityofCardIssuer from '../../../assets/svgs/popularityofCardIssuer.svg';
 import BestOffers from '../../../assets/svgs/bestOffers.svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Responsive } from '../../../utils/layouts/Layout';
 
 
 export default function ChoosePreferences() {
@@ -21,37 +22,46 @@ export default function ChoosePreferences() {
                 <PreferencesScreenHeader />
             </View>
             <View style={styles.body}>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.headerText}>Choose Your Preferences</Text>
-                    <Text style={styles.subtitleText}>
-                        Click on the icons to tell us about your preferences while evaluating a Credit Card
+                <View>
+
+                    <View style={styles.titleContainer}>
+                        <Text style={styles.headerText}>Choose Your Preferences</Text>
+                        <Text style={styles.subtitleText}>
+                            Click on the icons to tell us about your preferences while evaluating a Credit Card
+                        </Text>
+                    </View>
+                    <View style={styles.firstRow}>
+                        <View>
+                            <TouchableOpacity>
+                                <PopularityofCardIssuer />
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity>
+                                <PremiumNature />
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity>
+                                <ValueForMoney />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.secondRow}>
+                        <TouchableOpacity style={styles.borderWidth}>
+                            <LowerFees />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <BestOffers />
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+                <TouchableOpacity style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
+                    <Text style={{color: '#ffffff', fontSize: 16, fontWeight: '700'}}>
+                    Set Preferences
                     </Text>
-                </View>
-                <View style={styles.firstRow}>
-                <View>
-                    <TouchableOpacity>
-                        <PopularityofCardIssuer />
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <TouchableOpacity>
-                    <PremiumNature />
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <TouchableOpacity>
-                    <ValueForMoney />
-                    </TouchableOpacity>
-                </View>
-                </View>
-                <View style={styles.secondRow}>
-                    <TouchableOpacity style={styles.borderWidth}>
-                        <LowerFees />
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <BestOffers />
-                    </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -68,6 +78,7 @@ const styles = StyleSheet.create({
         borderRadius: 32,
         backgroundColor: '#ffffff',
         flex: 1,
+        justifyContent: 'space-between',
     },
     titleContainer: {
 
@@ -76,5 +87,5 @@ const styles = StyleSheet.create({
     subtitleText: { fontSize: 12, color: '#6F7FAF' },
     firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
     secondRow: { justifyContent: 'space-around', flexDirection: 'row' },
-    borderWidth: {borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F'},
+    borderWidth: { borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F' },
 });

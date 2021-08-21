@@ -8,22 +8,13 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
-  Modal,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
 } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import LinearGradient from 'react-native-linear-gradient';
-import { icons, images, SIZES } from '../../constants';
+import { images, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
-import BackButtonWhite from '../../assets/svgs/backButtonWhite.svg';
-import MODALDATA from '../../assets/dummyData/overviewModal';
 import MoreDetails from './MoreDetailsItems';
-import AppleIcon from '../../assets/svgs/apple.svg';
-import SegmentedControlTab from 'react-native-segmented-control-tab';
 import OffersDetailsModalFlatlist from './OffersDetailsModalFlatlist';
-import BottomTabOffersScreenModal from '../../screens/offersScreen/BottomTabOffersScreenModal';
 import { useNavigation } from '@react-navigation/native';
 
 export default function BestOffersFlatlist({ title, subtitle, image }) {
