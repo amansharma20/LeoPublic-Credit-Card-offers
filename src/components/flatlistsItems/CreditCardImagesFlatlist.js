@@ -42,6 +42,7 @@ const CreditCardImagesFlatlist = ({image}) => (
 const styles = StyleSheet.create({
   container: {
     paddingLeft: Responsive.width(20),
+
   },
   creditCardContainer: {
     marginTop: 50,

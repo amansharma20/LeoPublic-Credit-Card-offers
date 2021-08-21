@@ -39,8 +39,8 @@ export default function OffersSegmentNavigator() {
   };
 
   return (
-    <View>
-      <ScrollView horizontal style={styles.container}>
+    <View style={{ alignItems: 'center'}}>
+      <ScrollView contentContainerStyle={{alignItems: 'center'}} horizontal style={styles.container} showsHorizontalScrollIndicator={false}>
         <SegmentedControlTab
           values={['Best Offers', 'Latest Offers', 'All Offers']}
           selectedIndex={selectedIndex}
@@ -63,18 +63,22 @@ export default function OffersSegmentNavigator() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: SIZES.padding,
+    paddingHorizontal: SIZES.padding2,
+    paddingTop: SIZES.padding,
   },
   tabStyle: {
     borderWidth: 0,
     paddingBottom: 2,
     paddingVertical: 12,
     marginRight: 36,
+    width: 99,
+    alignItems: 'center',
   },
   tabsContainerStyle: {
     paddingHorizontal: 0,
     paddingVertical: 0,
     alignContent: 'center',
+    alignItems: 'center'
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',

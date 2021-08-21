@@ -31,7 +31,7 @@ export default function ExploreSegmentNavigator() {
   };
 
   return (
-      <View horizontal style={styles.container}>
+      <View contentContainerStyle={{alignItems: 'center', backgroundColor: 'red'}} horizontal style={styles.container}>
         <SegmentedControlTab
           values={['Recommended', 'Discover']}
           selectedIndex={selectedIndex}
@@ -60,34 +60,19 @@ const styles = StyleSheet.create({
   tabStyle: {
     borderWidth: 1,
     borderColor: '#ffffff',
-    // marginRight: 36,
-    // backgroundColor: 'red',
-    // alignItems: 'center',
   },
   tabsContainerStyle: {
-    // paddingHorizontal: 0,
-    // paddingVertical: 0,
-    // alignContent: 'center',
-    // alignItems: 'center',
     paddingHorizontal: 12,
-    backgroundColor: '#ffffff',
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',
-    // borderBottomWidth: 5,
-    // borderColor: '#F7D071',
-    // // marginRight: 36,
-    // borderRadius: 5,
-    // borderWidth: 0,
   },
   tabTextStyle: {
     color: '#8c99bf',
     fontSize: SIZES.h3,
-    // fontWeight: '700',
   },
   activeTabTextStyle: {
     color: '#060417',
-    // fontSize: 18,
     fontWeight: '700',
   },
 });
