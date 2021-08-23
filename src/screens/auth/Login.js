@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   bodyItems: { justifyContent: 'space-around', height: '100%' },
   headerText: {
     fontSize: 30,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   textInputContainer: {
     marginTop: '20%',
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   subTitleText: {
     fontSize: 16,
     color: '#797E96',
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
 
   },
   phoneInput: {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
     height: Responsive.height(50),
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -159,9 +159,13 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     color: '#ffffff',
-    fontFamily: 'Exo2Bold'
+    // fontFamily: 'Exo2Bold'
   },
   footerContainer: { alignItems: 'center', flexDirection: 'row', justifyContent: 'center' },
-  footerTextOne: { fontSize: SIZES.h4, color: '#7a869a', fontFamily: 'Exo2Medium' },
-  footerTextTwo: { fontSize: SIZES.h4, fontFamily: 'Exo2Bold', color: '#4d2d8f', marginLeft: 2.5 },
+  footerTextOne: { fontSize: SIZES.h4, color: '#7a869a', 
+  // fontFamily: 'Exo2Medium'
+ },
+  footerTextTwo: { fontSize: SIZES.h4, 
+    // fontFamily: 'Exo2Bold',
+     color: '#4d2d8f', marginLeft: 2.5 },
 });

@@ -136,14 +136,14 @@ const styles = StyleSheet.create({
   },
   ratingText: {
     fontSize: 30,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   ratingContainer: {
     alignItems: 'center',
   },
   reviewText: {
     fontSize: 11,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   flatlistContainer: {},
   writeReviewButtonContainer: {
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   writeReviewText: {
     fontSize: 12,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
     color: '#4D2D8F',
   },
   modalBackground: {
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   },
   modalHeader: {
     fontSize: 22,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   writeReviewContainer: {
     paddingVertical: SIZES.padding,
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     color: '#3E3E3E',
     textAlignVertical: 'top',
     padding: 12,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
   buttonsContainer: {
     marginTop: 40,
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   saveButtonText: {
     color: '#FFFFFF',
     fontSize: SIZES.h3,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   closeButtonContainer: {
     alignItems: 'center',
@@ -213,6 +213,6 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: '#4d2d8f',
     fontSize: SIZES.h3,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
 });

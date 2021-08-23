@@ -22,7 +22,7 @@ export default function StartScreen() {
     <ImageBackground
       source={images.startScreenBackgroundImage}
       style={styles.MainContainer}>
-      <View>
+      <View style={{marginHorizontal:10}}>
         <Text style={styles.headerText}>Welcome</Text>
         <Text style={styles.subTitleStyle}>
           Evaluate, Manage & Optimise yourCredit Cards
@@ -40,14 +40,14 @@ export default function StartScreen() {
               {
                 alignItems: 'center',
                 backgroundColor: 'white',
-                marginTop: 15,
+                marginTop: 0,
               },
             ]}>
             <Text
               style={{
                 color: '#4D2D8F',
                 fontSize: 16,
-                fontFamily: 'Exo2Bold',
+                // fontFamily: 'Exo2Bold',
               }}>
               Sign in
             </Text>
@@ -71,7 +71,7 @@ export default function StartScreen() {
               },
             ]}>
             <Text style={{color: 'white', fontSize: 16,
-            fontFamily: 'Exo2Bold',
+            // fontFamily: 'Exo2Bold',
             }}>
               Register
             </Text>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 36,
     color: COLORS.white,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
     marginTop: screenHeight / 3,
   },
   MainContainer: {
@@ -109,6 +109,6 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: 'white',
     marginTop: 10,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
 });

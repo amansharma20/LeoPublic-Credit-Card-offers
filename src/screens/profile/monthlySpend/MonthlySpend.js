@@ -33,7 +33,9 @@ export default function MonthlySpend() {
                         // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
                     />
-                    <Text style={{ fontSize: 20, textAlign: 'center', marginTop: -140, fontFamily: 'Exo2Medium' }}>
+                    <Text style={{ fontSize: 20, textAlign: 'center', marginTop: -140,
+                    //  fontFamily: 'Exo2Medium' 
+                     }}>
                         Monthly{'\n'}Expenses{'\n'}20,000
                     </Text>
                 </View>
@@ -104,7 +106,9 @@ export default function MonthlySpend() {
                     </Text>
                 </View>
                 <TouchableOpacity style={{ backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
-                    <Text style={{ color: '#ffffff', fontSize: 16, fontFamily: 'Exo2Bold' }}>
+                    <Text style={{ color: '#ffffff', fontSize: 16, 
+                    // fontFamily: 'Exo2Bold' 
+                    }}>
                         Set Preferences
                     </Text>
                 </TouchableOpacity>
@@ -136,5 +140,7 @@ const styles = StyleSheet.create({
     borderWidth: { borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F' },
     itemContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#eff0f2' },
     leftContainer: { flexDirection: 'row', alignItems: 'center' },
-    leftText: { fontSize: 14, color: '#455671', fontFamily: 'Exo2Medium' },
+    leftText: { fontSize: 14, color: '#455671',
+    //  fontFamily: 'Exo2Medium'
+     },
 });

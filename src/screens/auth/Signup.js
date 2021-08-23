@@ -150,7 +150,9 @@ export default function Signup() {
         <View style={styles.buttonContainer}>
           {/* <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
             /> */}
-            <Text style={{fontSize: 16, fontFamily: 'Exo2Bold', color: '#ffffff'}}>
+            <Text style={{fontSize: 16, 
+              // fontFamily: 'Exo2Bold',
+               color: '#ffffff'}}>
               Register Now
             </Text>
 
@@ -158,7 +160,10 @@ export default function Signup() {
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{ color: '#4d2d8f', fontFamily: 'Exo2Bold' }}> Sign In</Text>
+            <Text style={{ color: '#4d2d8f', 
+            // fontFamily: 'Exo2Bold' 
+          }
+          } > Sign In</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -184,12 +189,12 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
     color: '#797E96',
   },
   inputs: {
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
   },
   termsText: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
     color: '#979797',
     alignItems: 'center',
   },
@@ -213,7 +218,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: SIZES.h3,
     height: '19.5%',
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -234,6 +239,6 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
 });

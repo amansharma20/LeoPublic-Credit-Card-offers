@@ -127,12 +127,12 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#797E96',
     fontSize: 18,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
   subText: {
     color: '#1c1b1b',
     fontSize: 20,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   imageSize: {
     width: Responsive.width(120),
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#4D2D8F',
     fontSize: 14,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
   modalContainer: {
     flex: 1,

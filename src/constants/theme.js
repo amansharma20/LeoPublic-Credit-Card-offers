@@ -45,15 +45,32 @@ export const FONTS = {
     fontSize: SIZES.largeTitle,
     lineHeight: 55,
   },
-  mediumH1: {fontFamily: 'Exo2Medium', fontSize: SIZES.h1, lineHeight: 36},
-  mediumH2: {fontFamily: 'Exo2Medium', fontSize: SIZES.h2, lineHeight: 30},
-  mediumH3: {fontFamily: 'Exo2Medium', fontSize: SIZES.h3, lineHeight: 22},
-  mediumH4: {fontFamily: 'Exo2Medium', fontSize: SIZES.h4, lineHeight: 22},
-  boldH1: {fontFamily: 'Exo2Bold', fontSize: SIZES.body1, lineHeight: 36},
-  boldH2: {fontFamily: 'Exo2Bold', fontSize: SIZES.body2, lineHeight: 30},
-  boldH3: {fontFamily: 'Exo2Bold', fontSize: SIZES.body3, lineHeight: 22},
-  boldH4: {fontFamily: 'Exo2Bold', fontSize: SIZES.body4, lineHeight: 22},
+  mediumH1: {
+    // fontFamily: 'Exo2Medium', 
+    fontSize: SIZES.h1, lineHeight: 36},
+  mediumH2: {
+    // fontFamily: 'Exo2Medium', 
+    fontSize: SIZES.h2, lineHeight: 30},
+  mediumH3: {
+    // fontFamily: 'Exo2Medium', 
+  fontSize: SIZES.h3, lineHeight: 22},
+  mediumH4: {
+    // fontFamily: 'Exo2Medium',
+     fontSize: SIZES.h4, lineHeight: 22},
+  boldH1: {
+    // fontFamily: 'Exo2Bold', 
+  fontSize: SIZES.body1, lineHeight: 36},
+  boldH2: {
+    // fontFamily: 'Exo2Bold', 
+  fontSize: SIZES.body2, lineHeight: 30},
+  boldH3: {
+    // fontFamily: 'Exo2Bold', 
+  fontSize: SIZES.body3, lineHeight: 22},
+  boldH4: {
+    // fontFamily: 'Exo2Bold', 
+  fontSize: SIZES.body4, lineHeight: 22},
 };
+
 
 const appTheme = {COLORS, SIZES, FONTS};
 

@@ -11,20 +11,19 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3588825926D11DB4000594C8 /* Exo2Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825226D11DAF000594C8 /* Exo2Regular.otf */; };
+		3588825A26D11DB4000594C8 /* Exo2ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */; };
+		3588825B26D11DB4000594C8 /* Exo2ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */; };
+		3588825C26D11DB4000594C8 /* Exo2Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825526D11DB1000594C8 /* Exo2Thin.otf */; };
+		3588825D26D11DB4000594C8 /* Exo2Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825626D11DB2000594C8 /* Exo2Bold.otf */; };
+		3588825E26D11DB4000594C8 /* Exo2SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825726D11DB3000594C8 /* Exo2SemiBold.otf */; };
+		3588825F26D11DB4000594C8 /* Exo2Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825826D11DB4000594C8 /* Exo2Medium.otf */; };
 		359B3C7F26CE509F00C5D9A0 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359B3C7626CE507000C5D9A0 /* Lottie.framework */; };
 		359B3C8026CE509F00C5D9A0 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 359B3C7626CE507000C5D9A0 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		359B3C8426CE521E00C5D9A0 /* Leo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B3C8326CE521E00C5D9A0 /* Leo.swift */; };
 		5D37B5F835AE6D208F1F4A25 /* libPods-Leo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A7E848E838E8854D3D76D3 /* libPods-Leo.a */; };
 		75674338AAE1CAC2514B8A4B /* libPods-Leo-LeoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EB6FB71838C383BCF96CB3 /* libPods-Leo-LeoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		6434FEBDB71545B283A909BB /* Exo2Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */; };
-		BD420D8BD8984F7C8238B382 /* Exo2Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */; };
-		83E4B636DFE246A4ADA47E9D /* Exo2ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */; };
-		C9B5483BD51246C0878F717A /* Exo2ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */; };
-		40871DEF20D04368876E3CDF /* Exo2Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9714AD79523E47B097AFEE09 /* Exo2Medium.otf */; };
-		35AF530D4B7C4377B5A19A7F /* Exo2Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */; };
-		26CA283DCEAC4FB594C7C24F /* Exo2SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */; };
-		7FD89BCD72C54BCDAF5DDD6F /* Exo2Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,27 +95,34 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Leo/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Leo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Leo/main.m; sourceTree = "<group>"; };
+		2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Regular.otf; path = ../src/assets/fonts/Exo2Regular.otf; sourceTree = "<group>"; };
+		30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2ExtraLight.otf; path = ../src/assets/fonts/Exo2ExtraLight.otf; sourceTree = "<group>"; };
+		3588825226D11DAF000594C8 /* Exo2Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2Regular.otf; sourceTree = "<group>"; };
+		3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2ExtraBold.otf; sourceTree = "<group>"; };
+		3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2ExtraLight.otf; sourceTree = "<group>"; };
+		3588825526D11DB1000594C8 /* Exo2Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2Thin.otf; sourceTree = "<group>"; };
+		3588825626D11DB2000594C8 /* Exo2Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2Bold.otf; sourceTree = "<group>"; };
+		3588825726D11DB3000594C8 /* Exo2SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2SemiBold.otf; sourceTree = "<group>"; };
+		3588825826D11DB4000594C8 /* Exo2Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2Medium.otf; sourceTree = "<group>"; };
 		359B3C6926CE3F1800C5D9A0 /* liblottie-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		359B3C6B26CE3F2D00C5D9A0 /* liblottie-react-native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-react-native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		359B3C6D26CE506F00C5D9A0 /* Lottie.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../../../Downloads/lottie-ios-master/Lottie.xcodeproj"; sourceTree = "<group>"; };
 		359B3C8226CE521D00C5D9A0 /* Leo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Leo-Bridging-Header.h"; sourceTree = "<group>"; };
 		359B3C8326CE521E00C5D9A0 /* Leo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leo.swift; sourceTree = "<group>"; };
+		5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Black.otf; path = ../src/assets/fonts/Exo2Black.otf; sourceTree = "<group>"; };
 		68A7E848E838E8854D3D76D3 /* libPods-Leo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Leo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52D7C06CB30D80F2B7B266 /* Pods-Leo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo.debug.xcconfig"; path = "Target Support Files/Pods-Leo/Pods-Leo.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Leo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1BC7381AB2D98210CD37A8 /* Pods-Leo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo.release.xcconfig"; path = "Target Support Files/Pods-Leo/Pods-Leo.release.xcconfig"; sourceTree = "<group>"; };
+		9714AD79523E47B097AFEE09 /* Exo2Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Medium.otf; path = ../src/assets/fonts/Exo2Medium.otf; sourceTree = "<group>"; };
 		9C59CB1D37581786F09194D6 /* Pods-Leo-LeoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoTests.release.xcconfig"; path = "Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests.release.xcconfig"; sourceTree = "<group>"; };
+		C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Bold.otf; path = ../src/assets/fonts/Exo2Bold.otf; sourceTree = "<group>"; };
+		CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2SemiBold.otf; path = ../src/assets/fonts/Exo2SemiBold.otf; sourceTree = "<group>"; };
+		CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Thin.otf; path = ../src/assets/fonts/Exo2Thin.otf; sourceTree = "<group>"; };
 		DFB8171788334C141EC931B3 /* Pods-Leo-LeoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoTests.debug.xcconfig"; path = "Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2ExtraBold.otf; path = ../src/assets/fonts/Exo2ExtraBold.otf; sourceTree = "<group>"; };
 		E4EB6FB71838C383BCF96CB3 /* libPods-Leo-LeoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Leo-LeoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */ = {isa = PBXFileReference; name = "Exo2Black.otf"; path = "../src/assets/fonts/Exo2Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */ = {isa = PBXFileReference; name = "Exo2Bold.otf"; path = "../src/assets/fonts/Exo2Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */ = {isa = PBXFileReference; name = "Exo2ExtraBold.otf"; path = "../src/assets/fonts/Exo2ExtraBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */ = {isa = PBXFileReference; name = "Exo2ExtraLight.otf"; path = "../src/assets/fonts/Exo2ExtraLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9714AD79523E47B097AFEE09 /* Exo2Medium.otf */ = {isa = PBXFileReference; name = "Exo2Medium.otf"; path = "../src/assets/fonts/Exo2Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */ = {isa = PBXFileReference; name = "Exo2Regular.otf"; path = "../src/assets/fonts/Exo2Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */ = {isa = PBXFileReference; name = "Exo2SemiBold.otf"; path = "../src/assets/fonts/Exo2SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */ = {isa = PBXFileReference; name = "Exo2Thin.otf"; path = "../src/assets/fonts/Exo2Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +166,15 @@
 		13B07FAE1A68108700A75B9A /* Leo */ = {
 			isa = PBXGroup;
 			children = (
+				3588824C26D11D61000594C8 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				3588825626D11DB2000594C8 /* Exo2Bold.otf */,
+				3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */,
+				3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */,
+				3588825826D11DB4000594C8 /* Exo2Medium.otf */,
+				3588825226D11DAF000594C8 /* Exo2Regular.otf */,
+				3588825726D11DB3000594C8 /* Exo2SemiBold.otf */,
+				3588825526D11DB1000594C8 /* Exo2Thin.otf */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -170,6 +184,21 @@
 				359B3C8226CE521D00C5D9A0 /* Leo-Bridging-Header.h */,
 			);
 			name = Leo;
+			sourceTree = "<group>";
+		};
+		2014D41676854EE1A0E92D9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */,
+				C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */,
+				E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */,
+				30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */,
+				9714AD79523E47B097AFEE09 /* Exo2Medium.otf */,
+				2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */,
+				CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */,
+				CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -183,6 +212,13 @@
 				E4EB6FB71838C383BCF96CB3 /* libPods-Leo-LeoTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3588824C26D11D61000594C8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		359B3C6E26CE506F00C5D9A0 /* Products */ = {
@@ -239,22 +275,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		2014D41676854EE1A0E92D9B /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */,
-				C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */,
-				E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */,
-				30DE579551B74ED691D8C9B9 /* Exo2ExtraLight.otf */,
-				9714AD79523E47B097AFEE09 /* Exo2Medium.otf */,
-				2F1A3DD099AE4617B9B8E5EE /* Exo2Regular.otf */,
-				CB109A686F4A4790AC5302D7 /* Exo2SemiBold.otf */,
-				CFDDF6BDF4BD429E8B9C2EBC /* Exo2Thin.otf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -397,14 +417,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				6434FEBDB71545B283A909BB /* Exo2Black.otf in Resources */,
-				BD420D8BD8984F7C8238B382 /* Exo2Bold.otf in Resources */,
-				83E4B636DFE246A4ADA47E9D /* Exo2ExtraBold.otf in Resources */,
-				C9B5483BD51246C0878F717A /* Exo2ExtraLight.otf in Resources */,
-				40871DEF20D04368876E3CDF /* Exo2Medium.otf in Resources */,
-				35AF530D4B7C4377B5A19A7F /* Exo2Regular.otf in Resources */,
-				26CA283DCEAC4FB594C7C24F /* Exo2SemiBold.otf in Resources */,
-				7FD89BCD72C54BCDAF5DDD6F /* Exo2Thin.otf in Resources */,
+				3588825A26D11DB4000594C8 /* Exo2ExtraBold.otf in Resources */,
+				3588825E26D11DB4000594C8 /* Exo2SemiBold.otf in Resources */,
+				3588825F26D11DB4000594C8 /* Exo2Medium.otf in Resources */,
+				3588825C26D11DB4000594C8 /* Exo2Thin.otf in Resources */,
+				3588825D26D11DB4000594C8 /* Exo2Bold.otf in Resources */,
+				3588825926D11DB4000594C8 /* Exo2Regular.otf in Resources */,
+				3588825B26D11DB4000594C8 /* Exo2ExtraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +476,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

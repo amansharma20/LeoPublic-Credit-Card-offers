@@ -166,7 +166,9 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     alignItems: 'center',
   },
-  modalHeaderText: { fontSize: 20, color: '#060417', fontFamily: 'Exo2Medium' },
+  modalHeaderText: { fontSize: 20, color: '#060417',
+  //  fontFamily: 'Exo2Medium'
+   },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',
     flex: 1,
@@ -193,7 +195,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  clearAllText: { color: '#4D2D8F', fontSize: 16, fontFamily: 'Exo2Bold' },
+  clearAllText: { color: '#4D2D8F', fontSize: 16, 
+  // fontFamily: 'Exo2Bold' 
+},
   applyButtonContainer: {
     backgroundColor: '#4D2D8F',
     width: Responsive.width(160),
@@ -202,7 +206,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
   },
-  applyButtonText: { color: '#ffffff', fontSize: 16, fontFamily: 'Exo2Bold' },
+  applyButtonText: { color: '#ffffff', fontSize: 16, 
+  // fontFamily: 'Exo2Bold'
+ },
   rightIconContainer: {
     width: 30,
     height: 30,

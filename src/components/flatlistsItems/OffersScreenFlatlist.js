@@ -39,14 +39,14 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 14,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
     color: '#172B4D',
     lineHeight: 20,
   },
   subtitleText: {
     color: '#7A869A',
     marginTop: 10,
-    fontFamily: 'Exo2Medium',
+    // fontFamily: 'Exo2Medium',
   },
   imageSize: {
     width: 100,

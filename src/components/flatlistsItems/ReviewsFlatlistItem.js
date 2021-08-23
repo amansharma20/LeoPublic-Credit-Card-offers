@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     nameText: {
         fontSize: 16,
-        fontFamily: 'Exo2Bold',
+        // fontFamily: 'Exo2Bold',
     },
     ratingsContainer: {
         width: '50%',
@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
     dateText: {
         fontSize: 12,
         color: '#797E96',
-        fontFamily: 'Exo2Medium',
+        // fontFamily: 'Exo2Medium',
     },
     reviewText: {
         color: '#797E96',
         fontSize: 14,
-        fontFamily: 'Exo2Regular',
+        // fontFamily: 'Exo2Regular',
     },
     reviewTextContainer: {
         marginLeft: 44,

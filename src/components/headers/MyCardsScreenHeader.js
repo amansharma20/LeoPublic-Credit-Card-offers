@@ -42,7 +42,10 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},
-  headerText: {fontSize: 24, color: '#ffffff', fontFamily: 'Exo2Bold'},
+  headerText: {fontSize: 24, 
+    color: '#ffffff',
+  //  fontFamily: 'Exo2Bold'
+  },
   leftIconContainer: {
     width: 44,
     height: 44,

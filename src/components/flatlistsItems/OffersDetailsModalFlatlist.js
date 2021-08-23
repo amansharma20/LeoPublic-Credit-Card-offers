@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#797E96',
     lineHeight: 20,
-    fontFamily: 'Exp2Medium',
+    // fontFamily: 'Exp2Medium',
   },
   subtitleText: {
     fontSize: SIZES.h4,
     color: '#172B4D',
     marginTop: 2,
-    fontFamily: 'Exo2Bold',
+    // fontFamily: 'Exo2Bold',
   },
 });
 
