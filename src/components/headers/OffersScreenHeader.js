@@ -3,13 +3,15 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { SIZES } from '../../constants';
 import MenuIcon from '../../assets/svgs/menuIcon.svg';
+import { useNavigation } from '@react-navigation/native';
 
 const OffersScreenHeader = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View style={styles.leftIconContainer}>
+      <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.leftIconContainer}>
       <MenuIcon />
-      </View>
+      </TouchableOpacity>
       <Text style={styles.headerText}>Offers</Text>
       <TouchableOpacity>
       <View style={styles.rightIconContainer}>

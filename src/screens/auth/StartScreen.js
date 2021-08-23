@@ -22,10 +22,10 @@ export default function StartScreen() {
     <ImageBackground
       source={images.startScreenBackgroundImage}
       style={styles.MainContainer}>
-      <View>
+      <View style={styles.body}>
         <Text style={styles.headerText}>Welcome</Text>
         <Text style={styles.subTitleStyle}>
-          Evaluate, Manage & Optimise yourCredit Cards
+          Evaluate, Manage & Optimise your{'\n'}Credit Cards
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('Login')}
@@ -91,6 +91,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: SIZES.padding2,
     marginTop: screenHeight / 6,
+  },
+  body: {
+    flex: 1, width: '100%', paddingHorizontal: SIZES.padding2,
   },
   headerText: {
     fontSize: 36,

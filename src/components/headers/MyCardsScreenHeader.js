@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {View, Text, StyleSheet, TouchableOpacity, Platform, Touchable} from 'react-native';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 import icons from '../../constants/icons';
 import { SIZES } from '../../constants';
 import MenuIcon from '../../assets/svgs/menuIcon.svg';
@@ -11,9 +11,9 @@ const MyCardsScreenHeader = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View style={styles.leftIconContainer}>
+      <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.leftIconContainer}>
       <MenuIcon />
-      </View>
+      </TouchableOpacity>
       <Text style={styles.headerText}>My Cards</Text>
       <TouchableOpacity onPress={() => navigation.navigate('AddCardScreen')}>
       <View style={styles.rightIconContainer}>

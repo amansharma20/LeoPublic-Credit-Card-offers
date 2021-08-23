@@ -20,6 +20,7 @@ MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\cach
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5c64f35c4f864d4cd139ccbbff91ceb9\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\65337ca8c0783fc27be60d476a5f6b75\jetified-android-jsc-r245459\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-linear-gradient] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-reanimated\android\build\.transforms\fdb1762ad88370f1c86720a2e943a5a2\jetified-react-native-reanimated-64-jsc\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\84c6a932a42f35f9b796c5d67e6eb742\jetified-flipper-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:stetho:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5f2c193a45b1b439ec8f5a8edcb37f33\jetified-stetho-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fresco:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\336cee0c87f467fe6bfb36840b0630b2\jetified-fresco-2.2.0\AndroidManifest.xml:2:1-9:12
@@ -197,6 +198,8 @@ MERGED from [org.webkit:android-jsc:r245459] C:\Users\amana\.gradle\caches\trans
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\65337ca8c0783fc27be60d476a5f6b75\jetified-android-jsc-r245459\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-linear-gradient] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-linear-gradient] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-reanimated\android\build\.transforms\fdb1762ad88370f1c86720a2e943a5a2\jetified-react-native-reanimated-64-jsc\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-reanimated\android\build\.transforms\fdb1762ad88370f1c86720a2e943a5a2\jetified-react-native-reanimated-64-jsc\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\84c6a932a42f35f9b796c5d67e6eb742\jetified-flipper-2.2.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\84c6a932a42f35f9b796c5d67e6eb742\jetified-flipper-2.2.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:stetho:2.2.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5f2c193a45b1b439ec8f5a8edcb37f33\jetified-stetho-2.2.0\AndroidManifest.xml:5:5-7:41
