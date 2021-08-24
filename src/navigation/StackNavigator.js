@@ -17,6 +17,8 @@ import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDet
 import ChoosePreferences from '../screens/profile/choosePreferences/ChoosePreferences';
 import MonthlySpend from '../screens/profile/monthlySpend/MonthlySpend';
 import Login from '../screens/auth/Login';
+import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
+import Educate from '../screens/basicDetails/Educate';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,9 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
+                <Stack.Screen name="CardHolder" component={CardHolder}/>
+                <Stack.Screen name="Educate" component={Educate}/>
+                <Stack.Screen name="NewToCreditCards" component={NewToCreditCards}/>
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
                 <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
                 <Stack.Screen name="StartScreen" component={StartScreen}/>
@@ -38,7 +43,6 @@ export default function StackNavigator() {
                 <Stack.Screen name="OTPScreen" component={OTPScreen}/>
                 <Stack.Screen name="MonthlySpend" component={MonthlySpend}/>
                 <Stack.Screen name="ExploreScreen" component={ExploreScreen}/>
-                <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="AddCardScreen" component={AddCardScreen}/>
                 <Stack.Screen name="ChoosePreferences" component={ChoosePreferences}/>
                 <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails}/>

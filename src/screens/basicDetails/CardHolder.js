@@ -33,7 +33,7 @@ export default function CardHolder() {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-          // onPress={handleSubmit(onSubmit)}
+          onPress={() => navigation.navigate('NewToCreditCards')}
           >
             <View style={styles.noButtonContainer}>
               <Text style={styles.noButtonText}>No, I am not</Text>

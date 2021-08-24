@@ -1,24 +1,31 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
   Text,
   ImageBackground,
   TouchableOpacity,
+  Modal,
+  Image,
 } from 'react-native';
-import {SIZES} from '../../constants';
-import {Responsive} from '../../utils/layouts/Layout';
+import { icons, images, SIZES } from '../../constants';
+import { Responsive } from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
-import {applicationProperties} from '../../../application.properties';
+import { applicationProperties } from '../../../application.properties';
 
 export default function CreditCardImagesFlatlist(props) {
   const card = props.card.item;
   const cardDetails = card.BankCard;
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <TouchableOpacity activeOpacity={0.9} style={styles.container}>
+    <TouchableOpacity
+      onLongPress={() => setShowModal(true)}
+      activeOpacity={0.9}
+      style={styles.container}>
       <ImageBackground
         style={styles.creditCardContainer}
         source={{
@@ -27,7 +34,9 @@ export default function CreditCardImagesFlatlist(props) {
         imageStyle={styles.backgroundImageStyle}>
         <View style={styles.creditCardDetailsContainer}>
           <View style={styles.cardTopContainer}>
-            <Text numberOfLines={2} style={styles.cardTypeText}>{cardDetails.CardName}</Text>
+            <Text numberOfLines={2} style={styles.cardTypeText}>
+              {cardDetails.CardName}
+            </Text>
             <BankLogo style={styles.bankLogo} />
           </View>
           <Code />
@@ -39,6 +48,45 @@ export default function CreditCardImagesFlatlist(props) {
           </View>
         </View>
       </ImageBackground>
+      {showModal && (
+        <Modal
+          animationType="fade"
+          statusBarTranslucent={true}
+          transparent={true}
+          showModal={showModal}
+          onRequestClose={() => setShowModal(false)}>
+          <View style={styles.modalBackground}>
+            <View style={styles.modalContainer}>
+              <View>
+                <Image
+                  source={icons.removeCardModalIcon}
+                  style={{
+                    width: Responsive.width(75),
+                    height: Responsive.height(75),
+                  }}
+                />
+              </View>
+              <View>
+                <Text style={styles.modalSubText}>
+                  Do you want to remove this card?
+                </Text>
+              </View>
+              <View>
+                <TouchableOpacity onPress={() => setShowModal(false)}>
+                  <View style={styles.noModalButton}>
+                    <Text style={styles.noModalButtonText}>No</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(false)}>
+                  <View style={styles.yesModalButton}>
+                    <Text style={styles.yesModalButtonText}>Yes</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      )}
     </TouchableOpacity>
   );
 }
@@ -93,4 +141,44 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Exo2Bold',
   },
+  modalBackground: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContainer: {
+    backgroundColor: '#ffffff',
+    width: '75%',
+    height: '40%',
+    alignItems: 'center',
+    alignContent: 'center',
+    borderRadius: 20,
+    marginVertical: '55%',
+    marginHorizontal: '12%',
+    justifyContent: 'space-around',
+  },
+  modalSubText: {
+    color: '#797E96',
+    fontFamily: 'Exo2SemiBold',
+  },
+  noModalButton: {
+    backgroundColor: '#4D2D8F',
+    width: 220,
+    height: 35,
+    marginBottom: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  yesModalButton: {
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#ED4C5C',
+    width: 220,
+    height: 35,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noModalButtonText: { color: '#ffffff', fontFamily: 'Exo2Bold' },
+  yesModalButtonText: { color: '#ED4C5C', fontFamily: 'Exo2Bold' },
 });

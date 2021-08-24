@@ -15,6 +15,7 @@ export const tndcIcon = require('../assets/icons/tndcIcon.png');
 export const supportIcon = require('../assets/icons/supportIcon.png');
 export const homeIcon = require('../assets/icons/homeIcon.png');
 export const tick = require('../assets/icons/tick.png');
+export const removeCardModalIcon = require('../assets/icons/removeCardModalIcon.png');
 
 export default {
   backButton,
@@ -33,4 +34,5 @@ export default {
   supportIcon,
   homeIcon,
   tick,
+  removeCardModalIcon,
 };

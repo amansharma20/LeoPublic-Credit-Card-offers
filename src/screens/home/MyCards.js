@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-lone-blocks */
 import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
@@ -8,7 +7,6 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
-  Text,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -28,29 +26,21 @@ export default function MyCards(props) {
 
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
-  console.log('BankCards');
-  console.log(BankCards);
-  console.log('BankCards');
+  console.log('BankCards')
+  console.log(BankCards)
+  console.log('BankCards')
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
   useEffect(() => {
-
+   
   });
 
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index}/>
   );
 
-{
-  if ((BankCards) === undefined) {return (
-    <View>
-      <Text>
-        add card
-      </Text>
-    </View>
-  );}
-  else {return (
+  return (
     <View style={styles.container}>
       <ScrollView horizontal={false}>
         <StatusBar
@@ -76,7 +66,7 @@ export default function MyCards(props) {
                 containerCustomStyle={styles.carouselContainer}
                 inactiveSlideShift={0}
                 currentIndex={(c) => { console.log(c); }}
-                onSnapToItem={(index) => console.log(index + 1)}
+                onSnapToItem={(index) => console.log(index+1)}
                 scrollInterpolator={scrollInterpolator}
                 slideInterpolatedStyle={animatedStyles}
                 useScrollView={true}
@@ -92,10 +82,7 @@ export default function MyCards(props) {
         </View>
       </ScrollView>
     </View>
-  );}
-}
-
-
+  );
 }
 
 const styles = StyleSheet.create({
