@@ -37,8 +37,8 @@ export default function HomeSegmentNavigator(props) {
       </ScrollView>
       {selectedIndex === 0 ? <OffersScreen /> : <></>}
       {selectedIndex === 1 ? <OverviewScreen cardData ={selectedCardData}/> : <></>}
-      {selectedIndex === 2 ? <ReviewsScreen /> : <></>}
-      {selectedIndex === 3 ? <MileStonesScreen /> : <></>}
+      {selectedIndex === 2 ? <ReviewsScreen cardData ={selectedCardData} /> : <></>}
+      {selectedIndex === 3 ? <MileStonesScreen cardData ={selectedCardData} /> : <></>}
     </View>
   );
 }

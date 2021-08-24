@@ -6,7 +6,10 @@ import { Rating } from 'react-native-ratings';
 
 const RATING_STAR = require('../../assets/icons/starRating.png');
 
-const Reviews = ({ name, review }) => (
+export default function Reviews(props) {
+    const review = props.review;
+    console.log(props.review.Rating)
+    return (
     <View style={styles.container}>
         <View style={styles.body}>
             <View>
@@ -14,7 +17,9 @@ const Reviews = ({ name, review }) => (
             </View>
             <View style={styles.headerContainer}>
                 <View style={styles.nameRatingContainer}>
-                    <Text style={styles.nameText}>{name}</Text>
+                    <Text style={styles.nameText}>
+                    {review.CustomerUserId}
+                    </Text>
                     <View style={styles.ratingsContainer}>
                         <Rating
                             type="custom"
@@ -35,11 +40,11 @@ const Reviews = ({ name, review }) => (
         </View>
         <View style={styles.reviewTextContainer}>
             <Text style={styles.reviewText}>
-                {review}
+                {review.Review}
             </Text>
         </View>
     </View>
-);
+)};
 
 const styles = StyleSheet.create({
     container: {
@@ -65,11 +70,12 @@ const styles = StyleSheet.create({
     },
     nameText: {
         fontSize: 16,
-        // fontFamily: 'Exo2Bold',
+        fontFamily: 'Exo2Bold',
     },
     ratingsContainer: {
         width: '50%',
-        paddingVertical: 2
+        paddingHorizontal: 18,
+        paddingVertical: 4,
     },
     nameRatingContainer: {
         paddingHorizontal: 6,
@@ -77,12 +83,12 @@ const styles = StyleSheet.create({
     dateText: {
         fontSize: 12,
         color: '#797E96',
-        // fontFamily: 'Exo2Medium',
+        fontFamily: 'Exo2Medium',
     },
     reviewText: {
         color: '#797E96',
         fontSize: 14,
-        // fontFamily: 'Exo2Regular',
+        fontFamily: 'Exo2Regular',
     },
     reviewTextContainer: {
         marginLeft: 44,
@@ -90,4 +96,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Reviews;

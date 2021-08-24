@@ -11,62 +11,81 @@ export const GQLQuery = {
                 }
             }`,
     GET_USER_BANK_CARDS: gql`
-    {
-        BankCardQuery {
-          GetCustomerUserBankCard {
-            Id
-            CardNumber
-            BankCard {
-              AdditionalQualificationRequirements
-              AddOnCards
-              AnnualFees
-              BankId
-              InterestRate
-              JoiningFees
-              KeyHighlights
-              LatePaymentFee
-              LoungeAccess
-              MinSpendToWaiveAnnualFees
-              MilestoneBenefits
-              Network
-              OverLimitCharge
-              PriorityPassMembership
-              RedemptionHandlingFee
-              RewardBooster
-              RewardBoosterSectors
-              RewardPointIssuedPer100RsSpend
-              RewardPointValue
-              RewardRate
-              SalariedEligibilityAgeMax
-              SalariedEligibilityAgeMin
-              SelfEligibilityAgeMax
-              SelfEligibilityAgeMin
-              CardFocusSegment
-              CardLevel
-              CardMaterial
-              CardName
-              CardProgram
-              CardReplacementFee
-              CashWithdrawalCharges
-              CoBrandedPartner
-              CoBrandedFlag
-              CreditLimit
-              CurrentlyIssuing
-              DedicatedRewardsCatalogueAvailability
-              Dining
-              Entertainment
-              ForWhom
-              ForexMarkUpInPercent
-              HotelBenefits
+    query MyQuery {
+      BankCardQuery {
+        GetCustomerUserBankCard {
+          CardNumber
+          Id
+          BankCard {
+            AddOnCards
+            AdditionalQualificationRequirements
+            AnnualFees
+            Bank {
               Id
-              ImageStoragePath
-              IncomeSelfEmpAnnual
-              IncomeSalariedAnnual
-              Insurance
+              LogoStoragePath
+              Name
             }
+            BankId
+            CardFocusSegment
+            SelfEligibilityAgeMin
+            SelfEligibilityAgeMax
+            SalariedEligibilityAgeMax
+            SalariedEligibilityAgeMin
+            RewardRate
+            RewardPointValue
+            RewardPointIssuedPer100RsSpend
+            RewardBoosterSectors
+            RewardBooster
+            RedemptionHandlingFee
+            PriorityPassMembership
+            OverLimitCharge
+            Network
+            MinSpendToWaiveAnnualFees
+            MilestoneBenefits
+            LatePaymentFee
+            LoungeAccess
+            KeyHighlights
+            JoiningFees
+            InterestRate
+            IncomeSelfEmpAnnual
+            Insurance
+            IncomeSalariedAnnual
+            ImageStoragePath
+            Id
+            HotelBenefits
+            ForexMarkUpInPercent
+            ForWhom
+            Entertainment
+            Dining
+            DedicatedRewardsCatalogueAvailability
+            CurrentlyIssuing
+            CreditLimit
+            CoBrandedPartner
+            CoBrandedFlag
+            CashWithdrawalCharges
+            CardReplacementFee
+            CardProgram
+            CardName
+            CardMaterial
+            CardLevel
           }
         }
       }
+    }
+            `,
+            GET_USER_BANK_CARD_REVIEW: gql`
+            query MyQuery ($BankCardId: Long!){
+              BankCardReviewQuery {
+              GetBankCardReviewsByBankCardId(BankCardId: $BankCardId) {
+              BankCardId
+              CustomerUserId
+              Id
+              Rating
+              Review
+              Status
+              }
+              }
+              }
             `
 };
 

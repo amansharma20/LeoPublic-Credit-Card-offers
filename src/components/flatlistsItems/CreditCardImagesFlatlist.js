@@ -12,28 +12,29 @@ import {Responsive} from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
-import { applicationProperties } from '../../../application.properties';
+import {applicationProperties} from '../../../application.properties';
 
-
-
-export default function CreditCardImagesFlatlist(props){
-  
-  const card = props.card.item
-  const cardDetails = card.BankCard
-  return(
+export default function CreditCardImagesFlatlist(props) {
+  const card = props.card.item;
+  const cardDetails = card.BankCard;
+  return (
     <TouchableOpacity activeOpacity={0.9} style={styles.container}>
       <ImageBackground
         style={styles.creditCardContainer}
-        source={{uri: applicationProperties.imageUrl+cardDetails.ImageStoragePath}}
+        source={{
+          uri: applicationProperties.imageUrl + cardDetails.ImageStoragePath,
+        }}
         imageStyle={styles.backgroundImageStyle}>
         <View style={styles.creditCardDetailsContainer}>
           <View style={styles.cardTopContainer}>
-            <Text style={styles.cardTypeText}>{cardDetails.CardName}</Text>
+            <Text numberOfLines={2} style={styles.cardTypeText}>{cardDetails.CardName}</Text>
             <BankLogo style={styles.bankLogo} />
           </View>
           <Code />
           <View style={styles.cardBottomContainer}>
-            <Text style={styles.cardNumberText}>{card.CardNumber}** **** ****</Text>
+            <Text style={styles.cardNumberText}>
+              {card.CardNumber}** **** ****
+            </Text>
             <MasterCardLogo />
           </View>
         </View>
@@ -44,16 +45,15 @@ export default function CreditCardImagesFlatlist(props){
 const styles = StyleSheet.create({
   container: {
     paddingLeft: Responsive.width(20),
-
   },
   creditCardContainer: {
     marginTop: 50,
-    width: Responsive.width(290),
-    height: Responsive.height(189),
+    width: Responsive.width(285),
+    height: Responsive.height(170),
     borderRadius: 12,
-    elevation: 5,
+    // elevation: 1,
     marginVertical: SIZES.padding,
-    paddingVertical: SIZES.padding2,
+    paddingVertical: 4,
     paddingHorizontal: SIZES.padding2,
   },
   creditCardImage: {
@@ -75,10 +75,13 @@ const styles = StyleSheet.create({
   cardTypeText: {
     fontSize: 12,
     color: '#ffffff',
-    // fontFamily: 'Exo2Bold'
+    fontFamily: 'Exo2Bold',
+    width: 120,
+    // backgroundColor: 'red'
   },
   bankLogo: {
-    marginLeft: 85,
+    // marginLeft: 60,
+    // backgroundColor: 'red'
   },
   cardBottomContainer: {
     flexDirection: 'row',
@@ -86,8 +89,8 @@ const styles = StyleSheet.create({
     alignContent: 'flex-end',
   },
   cardNumberText: {
-      color: '#ffffff',
-      fontSize: 18,
-      // fontFamily: 'Exo2Bold',
-    },
+    color: '#ffffff',
+    fontSize: 18,
+    fontFamily: 'Exo2Bold',
+  },
 });

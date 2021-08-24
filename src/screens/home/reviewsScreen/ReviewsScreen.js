@@ -17,14 +17,27 @@ import StarIcon from '../../../assets/svgs/star.svg';
 import {Rating} from 'react-native-ratings';
 import REVIEWDATA from '../../../assets/dummyData/reviews';
 import Reviews from '../../../components/flatlistsItems/ReviewsFlatlistItem';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../../persistence/query/Query';
 
-export default function ReviewsScreen() {
+export default function ReviewsScreen(props) {
   const navigation = useNavigation();
+  const cardData = props.cardData;
+  console.log(cardData.BankCard.Bank.Id);
   const RATING_STAR = require('../../../assets/icons/starRating.png');
   const renderItem = ({item}) => (
-    <Reviews name={item.name} review={item.review} />
+    <Reviews review ={item}  />
   );
   const [showModal, setShowModal] = useState(false);
+
+  const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARD_REVIEW, {
+    variables:{
+      BankCardId : cardData.BankCard.Bank.Id
+    }
+  });
+  console.log(error)
+  const ReviewList = data && data.BankCardReviewQuery && data.BankCardReviewQuery.GetBankCardReviewsByBankCardId;
+  
 
   return (
     <View style={styles.container}>
@@ -43,6 +56,7 @@ export default function ReviewsScreen() {
               type="custom"
               ratingImage={RATING_STAR}
               ratingColor="#f6cb61"
+              count={4}
               ratingCount={5}
               imageSize={16}
               // onFinishRating={this.ratingCompleted}
@@ -57,7 +71,7 @@ export default function ReviewsScreen() {
         {/* REVIEWS FLATLIST */}
         <View style={styles.flatlistContainer}>
           <FlatList
-            data={REVIEWDATA}
+            data={ReviewList}
             renderItem={renderItem}
             keyExtractor={item => item.id}
             contentContainerStyle={styles.contentContainerStyle}
