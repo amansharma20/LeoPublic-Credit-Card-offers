@@ -3,6 +3,7 @@
 import React from 'react';
 import {Image, View} from 'react-native';
 import icons from '../constants/icons';
+import { Responsive } from '../utils/layouts/Layout';
 import RadioButtonRN from './RadioButtonRN/RadioButtonRN';
 
 const RadioButtons = props => {
@@ -17,14 +18,7 @@ const RadioButtons = props => {
         <RadioButtonRN
             data={data}
             selectedBtn={e => console.log(e)}
-            // initial={1}
             box={false}
-            // boxStyle={{
-            // width: '100%',
-            // height: 40,
-            // borderRadius: 50,
-            // paddingVertical: 10,
-            // }}
             circleSize={12}
             style={{
             alignItems: 'center',
@@ -33,7 +27,7 @@ const RadioButtons = props => {
             }}
             activeColor={'#3711A4'}
             deactiveColor={'#c4c4c4'}
-            icon={<Image source={icons.checkedIcon} />}
+            icon={<Image source={icons.checkedIcon} style={{width: Responsive.width(20), height: Responsive.height(20), resizeMode: 'contain'}} />}
         />
       </View>
     </View>
