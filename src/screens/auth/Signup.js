@@ -26,13 +26,14 @@ import { Formik, Field } from 'formik';
 import { COLORS } from '../../constants';
 import CustomInput from '../../components/CustomInput';
 import { Responsive } from '../../utils/layouts/Layout';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const screenHeight = Dimensions.get('window').height;
 
 export default function Signup() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [checkboxState, setCheckboxState] = useState(false);
 
   const signUpValidationSchema = yup.object().shape({
     fullName: yup
@@ -82,6 +83,9 @@ export default function Signup() {
     });
   };
 
+  const onCardClick = () => {
+    setCheckboxState(!checkboxState);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -168,7 +172,19 @@ export default function Signup() {
         </View>
         <View style={styles.termsContainer}>
           <View style={{ width: '10%' }}>
-            <RadioButtons />
+          <View>
+              <BouncyCheckbox
+                style={styles.checkBoxContainer}
+                isChecked={checkboxState}
+                disableBuiltInState
+                onPress={onCardClick}
+                // onPress={() => setCheckboxState(!checkboxState)}
+                size={20}
+                iconStyle={styles.checkBoxIconStyle}
+                fillColor={checkboxState ? '#4D2D8F' : '#f1f1f1'}
+                unfillColor={checkboxState ? '#000000' : '#f1f1f1'}
+              />
+            </View>
           </View>
           <Text style={styles.termsText}>
             By creating an account, you agree to our{'\n'}Terms and Conditions
@@ -229,7 +245,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: 0,
   },
   termsText: {
     fontSize: SIZES.h4,
@@ -241,7 +257,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F4F5F7',
     color: '#1C1B1B',
-    paddingHorizontal: 15,
+    paddingHorizontal: 16,
     fontSize: SIZES.h3,
     fontFamily: 'Exo2Medium',
     marginVertical: 16,
@@ -279,4 +295,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
   },
+  checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
+  checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
+
 });

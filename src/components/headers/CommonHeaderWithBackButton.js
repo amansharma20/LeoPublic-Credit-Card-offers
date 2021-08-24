@@ -10,11 +10,11 @@ const CommonHeader = ({children}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View style={styles.leftIconContainer}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
+      <View style={styles.leftIconContainer}>
       <BackIconWhite />
-      </TouchableOpacity>
       </View>
+      </TouchableOpacity>
       <Text style={styles.headerText}>{children}</Text>
       <TouchableOpacity>
       <View style={styles.rightIconContainer}>

@@ -30,7 +30,7 @@ export default function RecommendedScreenFlatlist({image}) {
         setCardClicked(cardClicked + 1);
     } else {
         console.log('show modal');
-        setShowModal(true)
+        setShowModal(true);
     }
   };
   const [showModal, setShowModal] = useState(false);
@@ -38,7 +38,7 @@ export default function RecommendedScreenFlatlist({image}) {
   return (
     <TouchableOpacity
       activeOpacity={0.85}
-    onPress={onCardClick}
+      onPress={onCardClick}
       >
       <View style={styles.container}>
         <View style={styles.cardContainerBody}>

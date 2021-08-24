@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
-import PreferencesScreenHeader from '../../../components/headers/PreferencesHeader';
 import PremiumNature from '../../../assets/svgs/premiumNature.svg';
 import ValueForMoney from '../../../assets/svgs/valueForMoney.svg';
 import LowerFees from '../../../assets/svgs/lowerFees.svg';
@@ -13,6 +12,7 @@ import PopularityofCardIssuer from '../../../assets/svgs/popularityofCardIssuer.
 import BestOffers from '../../../assets/svgs/bestOffers.svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Responsive } from '../../../utils/layouts/Layout';
+import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 
 
 export default function ChoosePreferences() {
@@ -26,7 +26,7 @@ const [borderColor5, setBorderColor5] = useState('#ffffff');
     return (
         <View style={styles.container}>
             <View>
-                <PreferencesScreenHeader />
+                <CommonHeader children="Preferences" />
             </View>
             <View style={styles.body}>
                 <View>

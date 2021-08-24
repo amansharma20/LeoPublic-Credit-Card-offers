@@ -4,7 +4,6 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
-import PreferencesScreenHeader from '../../../components/headers/PreferencesHeader';
 import ShoppingIcon from '../../../assets/svgs/shoppingIcon.svg';
 import TravelIcon from '../../../assets/svgs/travelIcon.svg';
 import GroceriesIcon from '../../../assets/svgs/groceriesIcon.svg';
@@ -14,13 +13,14 @@ import TotalSpendIcon from '../../../assets/svgs/totalSpendIcon.svg';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Responsive } from '../../../utils/layouts/Layout';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 
 export default function MonthlySpend() {
     const navigation = useNavigation();
     return (
         <ScrollView style={styles.container}>
             <View>
-                <PreferencesScreenHeader />
+                <CommonHeader children="Monthly Spend Pattern" />
             </View>
             <View style={styles.body}>
                 <View style={{ alignItems: 'center', height: 220 }}>
