@@ -9,6 +9,12 @@ export const home_icon = require('../assets/icons/home_icon.png');
 export const offers_icon = require('../assets/icons/offers_icon.png');
 export const profile_icon = require('../assets/icons/profile_icon.png');
 export const checkMark = require('../assets/icons/checkMark.png');
+export const aboutIcon = require('../assets/icons/aboutIcon.png');
+export const faqsIcon = require('../assets/icons/faqsIcon.png');
+export const tndcIcon = require('../assets/icons/tndcIcon.png');
+export const supportIcon = require('../assets/icons/supportIcon.png');
+export const homeIcon = require('../assets/icons/homeIcon.png');
+export const tick = require('../assets/icons/tick.png');
 
 export default {
   backButton,
@@ -21,4 +27,10 @@ export default {
   home_icon,
   explore_icon,
   checkMark,
+  aboutIcon,
+  faqsIcon,
+  tndcIcon,
+  supportIcon,
+  homeIcon,
+  tick,
 };

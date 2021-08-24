@@ -69,7 +69,7 @@ function MyTabBar({state, descriptors, navigation}) {
                             {label}
                         </Text>
                       </TouchableOpacity>
-                      
+
                   );
               })}
           </View>

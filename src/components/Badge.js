@@ -5,7 +5,8 @@ import {View} from 'react-native';
 import { Badge } from 'react-native-elements';
 
 function BadgeIcon(props) {
-const [itemCount, setiItemCount] = useState(false);
+const [itemCount, setItemCount] = useState(0);
+console.log(itemCount);
 return (
     <View>
       {itemCount !== 0 &&

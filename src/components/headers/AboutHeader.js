@@ -6,7 +6,7 @@ import BackIconWhite from '../../assets/svgs/backButtonWhite.svg';
 import { useNavigation } from '@react-navigation/native';
 
 
-const PreferencesScreenHeader = () => {
+const AboutHeader = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -15,7 +15,7 @@ const PreferencesScreenHeader = () => {
       <BackIconWhite />
       </TouchableOpacity>
       </View>
-      <Text style={styles.headerText}>Preferences</Text>
+      <Text style={styles.headerText}>About LEO</Text>
       <TouchableOpacity>
       <View style={styles.rightIconContainer}>
         {/* <AddIcon /> */}
@@ -25,7 +25,7 @@ const PreferencesScreenHeader = () => {
   );
 };
 
-export default PreferencesScreenHeader;
+export default AboutHeader;
 
 const styles = StyleSheet.create({
   container: {
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},
-  headerText: {fontSize: 24,
-    //  fontFamily: 'Exo2Bold',
-      color: '#ffffff'},
+  headerText: {fontSize: 22, 
+    // fontFamily: 'Exo2Bold', 
+    color: '#ffffff'},
   leftIconContainer: {
     width: 44,
     height: 44,

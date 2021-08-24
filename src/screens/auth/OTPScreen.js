@@ -76,8 +76,8 @@ export default function OTPScreen(props) {
             style={styles.otpInputContainer}
             codeInputFieldStyle={styles.underlineStyleBase}
             onCodeFilled={(code => {
-              setOtp(code)
-              console.log(`Code is ${code}, you are good to go!`)
+              setOtp(code);
+              console.log(`Code is ${code}, you are good to go!`);
             })}
           />
         </View>

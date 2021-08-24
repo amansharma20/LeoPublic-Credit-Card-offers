@@ -12,8 +12,6 @@ import {
   Text,
   Dimensions,
   SafeAreaView,
-  TouchableHighlight,
-  Button,
 } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -24,40 +22,69 @@ import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme/';
 import icons from '../../constants/icons';
 import RadioButtons from '../../components/RadioButtons';
+import { Formik, Field } from 'formik';
+import { COLORS } from '../../constants';
+import CustomInput from '../../components/CustomInput';
+import { Responsive } from '../../utils/layouts/Layout';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const screenHeight = Dimensions.get('window').height;
 
 export default function Signup() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  const schema = yup.object().shape({
-    fname: yup.string().required('First Name is' + ' ' + 'required.'),
-    lname: yup.string().required('Last Name is' + ' ' + 'required.'),
-    email: yup.string().required('Email is' + ' ' + 'required.'),
-    mobile: yup.string().required('Mobile is' + ' ' + 'required.'),
+  const [checkboxState, setCheckboxState] = useState(false);
+
+  const signUpValidationSchema = yup.object().shape({
+    fullName: yup
+      .string()
+      .matches(/(\w.+\s).+/, 'Enter at least 2 names')
+      .required('Full name is required'),
+    phoneNumber: yup
+      .string()
+      .matches(/(\d){10}\b/, 'Enter a valid phone number')
+      // .matches(/(01)(\d){8}\b/, 'Enter a valid phone number')
+      .required('Phone number is required'),
+    email: yup
+      .string()
+      .email('Please enter valid email')
+      .required('Email is required'),
+    password: yup
+      .string()
+      // .matches(/\w*[a-z]\w*/,  'Password must have a small letter')
+      // .matches(/\w*[A-Z]\w*/,  'Password must have a capital letter')
+      // .matches(/\d/, 'Password must have a number')
+      // .matches(/[!@#$%^&*()\-_"=+{}; :,<.>]/, 'Password must have a special character')
+      .min(8, ({ min }) => `Password must be at least ${min} characters`)
+      .required('Password is required'),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Passwords do not match')
+      .required('Confirm password is required'),
   });
 
-  const { control, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-  });
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const signUpData = {
-      FirstName: data.fname,
-      LastName: data.lname,
+      FirstName: data.fullName,
       Email: data.email,
-      MobileNumber: data.mobile,
+      MobileNumber: data.phoneNumber,
     };
+    console.log(signUpData);
+    console.log('signUpData');
     dispatch(
       AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
     ).then(response => {
       console.log(response);
       navigation.navigate('OTPScreen', {
-        phone: data.mobile,
+        phone: data.phoneNumber,
         screenName: 'Signup',
       });
     });
+  };
+
+  const onCardClick = () => {
+    setCheckboxState(!checkboxState);
   };
 
   return (
@@ -76,94 +103,110 @@ export default function Signup() {
         </View>
 
         <View style={styles.inputs}>
-          <Controller
-            control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.phoneInput}
-                onChangeText={value => onChange(value)}
-                value={value}
-                placeholder="Full Name"
-                placeholderTextColor="#B4B4B4"
-                // keyboardType="phone-pad"
-                onSubmitEditing={Keyboard.dismiss}
-                blurOnSubmit={false}
-                secureTextEntry={false}
-                underlineColorAndroid="#f000"
-                returnKeyType="next"
-              />
-            )}
-            name="fname"
-            defaultValue="Shanu"
-          />
 
-          <Controller
-            control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.phoneInput}
-                onChangeText={value => onChange(value)}
-                value={value}
-                placeholder="Email"
-                placeholderTextColor="#B4B4B4"
-                // keyboardType="phone-pad"
-                onSubmitEditing={Keyboard.dismiss}
-                blurOnSubmit={false}
-                secureTextEntry={false}
-                underlineColorAndroid="#f000"
-                returnKeyType="next"
-              />
-            )}
-            name="email"
-            defaultValue="shanu@webority.com"
-          />
+          <Formik
+            validationSchema={signUpValidationSchema}
+            initialValues={{
+              fullName: '',
+              email: '',
+              phoneNumber: '',
+              password: '',
+              confirmPassword: '',
+            }}
+            onSubmit={values => onSubmit(values)}>
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              isValid,
+              touched,
+            }) => (
+              <>
+                <View style={styles.inputContainer}>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Field
+                      component={CustomInput}
+                      name="fullName"
+                      style={styles.textInput}
+                      placeholder="Full Name"
+                    />
+                    {!errors.fullName && touched.fullName && (
+                      <Image source={icons.tick} style={styles.checkMarkIcon} />
+                    )}
+                  </View>
+                </View>
 
-          <Controller
-            control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.phoneInput}
-                onChangeText={value => onChange(value)}
-                value={value}
-                placeholder="Phone Number"
-                placeholderTextColor="#B4B4B4"
-                keyboardType="phone-pad"
-                onSubmitEditing={Keyboard.dismiss}
-                blurOnSubmit={false}
-                secureTextEntry={false}
-                underlineColorAndroid="#f000"
-                returnKeyType="next"
-              />
+                <View style={styles.inputContainer}>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Field
+                      component={CustomInput}
+                      name="email"
+                      style={styles.textInput}
+                      placeholder="Email ID"
+                    />
+                    {!errors.email && touched.email && (
+                      <Image source={icons.tick} style={styles.checkMarkIcon} />
+                    )}
+                  </View>
+                </View>
+
+                <View style={styles.inputContainer}>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Field
+                      component={CustomInput}
+                      name="phoneNumber"
+                      style={styles.textInput}
+                      placeholder="Phone Number"
+                      keyboardType="numeric"
+                    />
+                    {!errors.phoneNumber && touched.phoneNumber && (
+                      <Image source={icons.tick} style={styles.checkMarkIcon} />
+                    )}
+                  </View>
+                </View>
+              </>
             )}
-            name="email"
-            defaultValue="shanu@webority.com"
-          />
+          </Formik>
         </View>
         <View style={styles.termsContainer}>
           <View style={{ width: '10%' }}>
-            <RadioButtons />
+          <View>
+              <BouncyCheckbox
+                style={styles.checkBoxContainer}
+                isChecked={checkboxState}
+                disableBuiltInState
+                onPress={onCardClick}
+                // onPress={() => setCheckboxState(!checkboxState)}
+                size={20}
+                iconStyle={styles.checkBoxIconStyle}
+                fillColor={checkboxState ? '#4D2D8F' : '#f1f1f1'}
+                unfillColor={checkboxState ? '#000000' : '#f1f1f1'}
+              />
+            </View>
           </View>
           <Text style={styles.termsText}>
             By creating an account, you agree to our{'\n'}Terms and Conditions
           </Text>
         </View>
+        <TouchableOpacity onPress={()=> console.log(onSubmit)}>
         <View style={styles.buttonContainer}>
           {/* <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
             /> */}
-            <Text style={{fontSize: 16, 
-              // fontFamily: 'Exo2Bold',
-               color: '#ffffff'}}>
-              Register Now
-            </Text>
-
+          <Text
+            style={{ fontSize: 16, fontFamily: 'Exo2Bold', color: '#ffffff' }}>
+            Register Now
+          </Text>
         </View>
+        </TouchableOpacity>
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{ color: '#4d2d8f', 
-            // fontFamily: 'Exo2Bold' 
-          }
-          } > Sign In</Text>
+            <Text style={{ color: '#4d2d8f', fontFamily: 'Exo2Bold' }}>
+              {' '}
+              Sign In
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -174,17 +217,15 @@ export default function Signup() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
-    height: screenHeight,
+    flex: 1,
   },
   body: {
     padding: SIZES.padding,
   },
   header: {
-    //   backgroundColor: '#000'
   },
   backButtonSize: { width: 24, height: 24 },
   headerTextContainer: {
-    // backgroundColor: 'red',
     paddingVertical: 20,
   },
   headerText: {
@@ -198,11 +239,13 @@ const styles = StyleSheet.create({
     color: '#797E96',
   },
   inputs: {
-    height: '40%',
+    height: '47%',
   },
   termsContainer: {
-    paddingVertical: 15,
+    paddingVertical: 0,
     flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 0,
   },
   termsText: {
     fontSize: SIZES.h4,
@@ -210,15 +253,15 @@ const styles = StyleSheet.create({
     color: '#979797',
     alignItems: 'center',
   },
-  phoneInput: {
-    marginTop: '10%',
+  textInput: {
     borderRadius: 10,
     backgroundColor: '#F4F5F7',
     color: '#1C1B1B',
-    paddingHorizontal: 15,
+    paddingHorizontal: 16,
     fontSize: SIZES.h3,
-    height: '19.5%',
-    // fontFamily: 'Exo2Medium',
+    fontFamily: 'Exo2Medium',
+    marginVertical: 16,
+    width: '100%',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -241,4 +284,18 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h4,
     // fontFamily: 'Exo2Medium',
   },
+  checkMarkIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+    marginLeft: -28,
+    tintColor: '#3CC1C5',
+    marginTop: Responsive.height(32),
+  },
+  inputContainer: {
+    width: '100%',
+  },
+  checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
+  checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
+
 });
