@@ -35,7 +35,7 @@ export default function HomeSegmentNavigator(props) {
           firstTabStyle={styles.firstTabStyle}
         />
       </ScrollView>
-      {selectedIndex === 0 ? <OffersScreen /> : <></>}
+      {selectedIndex === 0 ? <OffersScreen cardData ={selectedCardData} /> : <></>}
       {selectedIndex === 1 ? <OverviewScreen cardData ={selectedCardData}/> : <></>}
       {selectedIndex === 2 ? <ReviewsScreen cardData ={selectedCardData} /> : <></>}
       {selectedIndex === 3 ? <MileStonesScreen cardData ={selectedCardData} /> : <></>}

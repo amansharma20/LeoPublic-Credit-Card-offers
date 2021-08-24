@@ -8,9 +8,21 @@ import { FlatList } from 'react-native-gesture-handler';
 import DATA from '../../../assets/dummyData/offers';
 import Offers from '../../../components/flatlistsItems/OffersScreenFlatlist';
 import { Responsive } from '../../../utils/layouts/Layout';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../../persistence/query/Query';
 
-export default function OffersScreen() {
+export default function OffersScreen(props) {
   const navigation = useNavigation();
+  const cardData = props.cardData;
+  console.log(cardData.BankCard.Bank.Id);
+
+  const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARD_OFFER, {
+    variables:{
+      CardId : 8,
+    },
+  });
+  console.log(data, error);
+
   const renderItem = ({ item }) => (
     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
   );

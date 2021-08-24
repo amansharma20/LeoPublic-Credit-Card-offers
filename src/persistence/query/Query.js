@@ -1,16 +1,17 @@
 /* eslint-disable prettier/prettier */
-import { gql } from '@apollo/client';
+import {gql} from '@apollo/client';
 
 export const GQLQuery = {
-    GET_BANKS: gql`
-        query{
-                BankQuery{
-                    GetBanks{
-                        Name
-                    }
-                }
-            }`,
-    GET_USER_BANK_CARDS: gql`
+  GET_BANKS: gql`
+    query {
+      BankQuery {
+        GetBanks {
+          Name
+        }
+      }
+    }
+  `,
+  GET_USER_BANK_CARDS: gql`
     query MyQuery {
       BankCardQuery {
         GetCustomerUserBankCard {
@@ -72,20 +73,39 @@ export const GQLQuery = {
         }
       }
     }
-            `,
-            GET_USER_BANK_CARD_REVIEW: gql`
-            query MyQuery ($BankCardId: Long!){
-              BankCardReviewQuery {
-              GetBankCardReviewsByBankCardId(BankCardId: $BankCardId) {
-              BankCardId
-              CustomerUserId
-              Id
-              Rating
-              Review
-              Status
-              }
-              }
-              }
-            `
+  `,
+  GET_USER_BANK_CARD_REVIEW: gql`
+    query MyQuery($BankCardId: Long!) {
+      BankCardReviewQuery {
+        GetBankCardReviewsByBankCardId(BankCardId: $BankCardId) {
+          BankCardId
+          CustomerUserId
+          Id
+          Rating
+          Review
+          Status
+        }
+      }
+    }
+  `,
+  GET_USER_BANK_CARD_OFFER: gql`
+  query MyQuery($CardId: Long!){
+    BankCardOfferQuery {
+      GetBankCardOfferById(CardId: $CardId) {
+        BankCardId
+        Eligibility
+        ExpiryDate
+        HowToRedeem
+        Id
+        LinkToOfferDetails
+        LogoStoragePath
+        OfferCode
+        OfferDescription
+        OfferTitle
+        Platform
+        TermsAndConditions
+      }
+    }
+  }
+  `,
 };
-
