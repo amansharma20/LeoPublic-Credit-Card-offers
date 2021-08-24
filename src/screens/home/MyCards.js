@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   StatusBar,
@@ -25,11 +25,12 @@ export default function MyCards(props) {
 
 
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
+
+  const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
   useEffect(() => {
-    console.log(data);
-    console.log(error);
-
+   
   });
 
   const renderCustomerUserCards = (card) => (
@@ -53,7 +54,7 @@ export default function MyCards(props) {
           <View style={styles.mainBody}>
             <TouchableOpacity style={styles.creditCardContainer}>
               <Carousel
-                data={CREDITCARDDATA}
+                data={BankCards}
                 renderItem={renderCustomerUserCards}
                 keyExtractor={item => item.id}
                 horizontal={true}
@@ -62,7 +63,7 @@ export default function MyCards(props) {
                 containerCustomStyle={styles.carouselContainer}
                 inactiveSlideShift={0}
                 currentIndex={(c) => { console.log(c); }}
-                onSnapToItem={(index) => console.log(index)}
+                onSnapToItem={(index) => console.log(index+1)}
                 scrollInterpolator={scrollInterpolator}
                 slideInterpolatedStyle={animatedStyles}
                 useScrollView={true}
@@ -72,7 +73,7 @@ export default function MyCards(props) {
               />
             </TouchableOpacity>
             <View>
-              <HomeSegmentNavigator />
+              <HomeSegmentNavigator selectedCard= {BankCards && BankCards[selectedCardIndex]} />
             </View>
           </View>
         </View>

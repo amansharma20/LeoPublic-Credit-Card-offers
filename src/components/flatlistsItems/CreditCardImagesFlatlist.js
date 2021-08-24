@@ -12,25 +12,28 @@ import {Responsive} from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
+import { applicationProperties } from '../../../application.properties';
 
 
 
 export default function CreditCardImagesFlatlist(props){
+  
   const card = props.card.item
+  const cardDetails = card.BankCard
   return(
     <TouchableOpacity activeOpacity={0.9} style={styles.container}>
       <ImageBackground
         style={styles.creditCardContainer}
-        source={{uri: card.image}}
+        source={{uri: applicationProperties.imageUrl+cardDetails.ImageStoragePath}}
         imageStyle={styles.backgroundImageStyle}>
         <View style={styles.creditCardDetailsContainer}>
           <View style={styles.cardTopContainer}>
-            <Text style={styles.cardTypeText}>Platinum Cards</Text>
+            <Text style={styles.cardTypeText}>{cardDetails.CardName}</Text>
             <BankLogo style={styles.bankLogo} />
           </View>
           <Code />
           <View style={styles.cardBottomContainer}>
-            <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
+            <Text style={styles.cardNumberText}>{card.CardNumber}** **** ****</Text>
             <MasterCardLogo />
           </View>
         </View>

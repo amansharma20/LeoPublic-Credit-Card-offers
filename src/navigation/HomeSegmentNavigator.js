@@ -11,7 +11,8 @@ import OverviewScreen from '../screens/home/overViewScreen/OverviewScreen';
 import ReviewsScreen from '../screens/home/reviewsScreen/ReviewsScreen';
 import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen';
 
-export default function HomeSegmentNavigator() {
+export default function HomeSegmentNavigator(props) {
+  const selectedCardData = props.selectedCard;
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -35,7 +36,7 @@ export default function HomeSegmentNavigator() {
         />
       </ScrollView>
       {selectedIndex === 0 ? <OffersScreen /> : <></>}
-      {selectedIndex === 1 ? <OverviewScreen /> : <></>}
+      {selectedIndex === 1 ? <OverviewScreen cardData ={selectedCardData}/> : <></>}
       {selectedIndex === 2 ? <ReviewsScreen /> : <></>}
       {selectedIndex === 3 ? <MileStonesScreen /> : <></>}
     </View>

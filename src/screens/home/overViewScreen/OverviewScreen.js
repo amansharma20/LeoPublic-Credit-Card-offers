@@ -23,12 +23,15 @@ import MoreDetails from '../../../components/flatlistsItems/MoreDetailsItems';
 import BackButtonPurple from '../../../assets/svgs/backButtonPurple.svg';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function OverviewScreen() {
+export default function OverviewScreen(props) {
+  const cardData = props.cardData
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
+
   const renderItem = ({item}) => (
     <Overview title={item.title} subtitle={item.subtitle} />
   );
+
   const renderModalItem = ({item}) => (
     <MoreDetails title={item.title} subtitle={item.subtitle} />
   );
@@ -50,7 +53,7 @@ export default function OverviewScreen() {
       {/* FLATLIST */}
       <View style={styles.flatlistContainer}>
         <FlatList
-          data={DATA}
+          data={cardData.BankCard}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           numColumns={2}
@@ -82,7 +85,7 @@ export default function OverviewScreen() {
             </View>
             {/* FLATLIST  */}
             <FlatList
-              data={MODALDATA}
+              data={cardData.BankCard}
               renderItem={renderModalItem}
               keyExtractor={item => item.id}
               contentContainerStyle={styles.modalContentContainerStyle}
