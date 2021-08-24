@@ -1,6 +1,5 @@
-/* eslint-disable no-lone-blocks */
-/* eslint-disable curly */
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import {
@@ -43,7 +42,7 @@ export default function ReviewsScreen(props) {
   console.log('ReviewList');
 
   {
-    if ((ReviewList) === undefined) return (
+    if ((ReviewList) === undefined) {return (
       <View style={{flex: 1, height: 400, alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
 
       <Text>
@@ -51,8 +50,8 @@ export default function ReviewsScreen(props) {
       </Text>
 
       </View>
-    );
-    else return (
+    );}
+    else {return (
       <View style={styles.container}>
       <View style={styles.body}>
         {/* AVERAGE REVIEW  */}
@@ -132,89 +131,8 @@ export default function ReviewsScreen(props) {
       )}
     </View>
 
-    );
+    );}
   }
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.body}>
-        {/* AVERAGE REVIEW  */}
-        <View style={styles.defaultReviewContainer}>
-          <View style={styles.leftContainer}>
-            <StarIcon />
-            <View style={styles.ratingTextContainer}>
-              <Text style={styles.ratingText}>3.5</Text>
-              <Text style={styles.reviewText}>70 Reviews</Text>
-            </View>
-          </View>
-          <View style={styles.ratingContainer}>
-            <Rating
-              type="custom"
-              ratingImage={RATING_STAR}
-              ratingColor="#f6cb61"
-              count={4}
-              ratingCount={5}
-              imageSize={16}
-              // onFinishRating={this.ratingCompleted}
-            />
-            <TouchableOpacity
-              onPress={() => setShowModal(true)}
-              style={styles.writeReviewButtonContainer}>
-              <Text style={styles.writeReviewText}>Write a review</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        {/* REVIEWS FLATLIST */}
-        <View style={styles.flatlistContainer}>
-          <FlatList
-            data={ReviewList}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            contentContainerStyle={styles.contentContainerStyle}
-          />
-        </View>
-      </View>
-      {/* WRITE A REVIEW MODAL  */}
-      {showModal && (
-        <Modal
-          showModal={showModal}
-          onRequestClose={() => setShowModal(false)}
-          transparent={true}
-          statusBarTranslucent ={true}
-          animationType="slide">
-          <View style={styles.modalBackground}>
-            {/* HEADER  */}
-            <View style={styles.modalContainer}>
-              <Text style={styles.modalHeader}>Write Review</Text>
-              <View style={styles.writeReviewContainer}>
-                <TextInput
-                  style={styles.inputText}
-                  autoCapitalize
-                  multiline={true}
-                />
-              </View>
-              <View style={styles.buttonsContainer}>
-                <TouchableOpacity
-                  // onPress={handleSubmit(onSubmit)}
-                  onPress={{}}>
-                  <View style={styles.saveButtonContainer}>
-                    <Text style={styles.saveButtonText}>Save</Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  // onPress={handleSubmit(onSubmit)}
-                  onPress={() => setShowModal(false)}>
-                  <View style={styles.closeButtonContainer}>
-                    <Text style={styles.closeButtonText}>Close</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </Modal>
-      )}
-    </View>
-  );
 }
 
 const styles = StyleSheet.create({
