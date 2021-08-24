@@ -11,10 +11,16 @@ export default function About() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-    {/* <AboutHeader /> */}
-    <CommonHeader children="About Leo" />
+      {/* <AboutHeader /> */}
+      <CommonHeader children="About Leo" />
       <View style={styles.body}>
-        <Text style={styles.bodyText}>Lorem ipsum dolor sit amet, consectetur este lan adipiscing elit. Donec dictum massa ipsum, vitae mattis eros accumsan at. Vestibulum urna ex fes, congue eget scelerisque non, malesuada vitae orci. Nullam consectetur ornare tortor nec lacinia. Nam tortor elit, porttitor et tristique scelerisque, eleifend a libero. Aenean vel luctus mi.</Text>
+        <Text style={styles.bodyText}>
+          Lorem ipsum dolor sit amet, consectetur este lan adipiscing elit.
+          Donec dictum massa ipsum, vitae mattis eros accumsan at. Vestibulum
+          urna ex fes, congue eget scelerisque non, malesuada vitae orci. Nullam
+          consectetur ornare tortor nec lacinia. Nam tortor elit, porttitor et
+          tristique scelerisque, eleifend a libero. Aenean vel luctus mi.
+        </Text>
       </View>
     </View>
   );

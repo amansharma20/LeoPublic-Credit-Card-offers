@@ -5,45 +5,36 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  Keyboard,
   Dimensions,
   TouchableOpacity,
   Platform,
   SafeAreaView,
+  Image,
 } from 'react-native';
-import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
-import { AuthActions } from '../../persistence/actions/AuthActions';
-import { useNavigation } from '@react-navigation/native';
-import { Responsive } from '../../utils/layouts/Layout';
-import { SIZES } from '../../constants/theme';
+import {useDispatch} from 'react-redux';
+import {AuthActions} from '../../persistence/actions/AuthActions';
+import {useNavigation} from '@react-navigation/native';
+import {Responsive} from '../../utils/layouts/Layout';
+import {SIZES} from '../../constants/theme';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
+import {Formik} from 'formik';
+import {icons} from '../../constants';
 
-const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function Login() {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
-  const schema = yup.object().shape({
-    phone: yup.string().required('Phone is' + ' ' + 'required.'),
-  });
-
-  const { control, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-  });
 
   const onSubmit = data => {
-    CommonLoading.show()
+    CommonLoading.show();
     const signInData = {
       MobileNumber: data.phone,
     };
     dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
       response => {
-        CommonLoading.hide()
+        CommonLoading.hide();
         navigation.navigate('OTPScreen', {
           phone: data.phone,
           screenName: 'Login',
@@ -51,6 +42,15 @@ export default function Login() {
       },
     );
   };
+
+  const navigation = useNavigation();
+
+  const schema = yup.object().shape({
+    phone: yup
+      .string()
+      .required('Phone is' + ' ' + 'required.')
+      .matches(/(\d){10}\b/, 'Enter a valid phone number'),
+  });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -67,7 +67,7 @@ export default function Login() {
           </View>
 
           <View style={styles.textInputContainer}>
-            <Controller
+            {/* <Controller
               control={control}
               render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
@@ -86,23 +86,56 @@ export default function Login() {
               )}
               name="phone"
               defaultValue="8860777703"
-            />
-            <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+            /> */}
+            <Formik
+              validationSchema={schema}
+              initialValues={{
+                phone: '',
+              }}
+              onSubmit={values => onSubmit(values)}>
+              {({
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                values,
+                errors,
+                isValid,
+                touched,
+              }) => (
+                <>
+                  <View style={styles.checkMarkContainer}>
+                    <TextInput
+                      name="phone"
+                      style={styles.phoneInput}
+                      onChangeText={handleChange('phone')}
+                      onBlur={handleBlur('phone')}
+                      value={values.phone}
+                      keyboardType="numeric"
+                      placeholder="Phone Number"
+                      placeholderTextColor="#B4B4B4"
+                    />
+                    {!errors.phone && touched.phone && (
+                      <Image source={icons.tick} style={styles.checkMarkIcon} />
+                    )}
+                  </View>
+                  {errors.phone && touched.phone && (
+                    <Text style={styles.error}>{errors.phone}</Text>
+                  )}
+                </>
+              )}
+            </Formik>
+            {/* <TouchableOpacity onPress={handleSubmit(onSubmit)}> */}
+            <TouchableOpacity onPress={onSubmit}>
               <View style={styles.buttonContainer}>
                 <Text style={styles.nextButtonText}>Next</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style={styles.footerContainer}>
-            <Text style={styles.footerTextOne}>
-              Don’t have an account?
-            </Text>
+            <Text style={styles.footerTextOne}>Don’t have an account?</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-              <Text style={styles.footerTextTwo}>
-                Sign up
-              </Text>
+              <Text style={styles.footerTextTwo}>Sign up</Text>
             </TouchableOpacity>
-
           </View>
         </View>
       </View>
@@ -123,8 +156,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     // marginTop: '20%',
   },
-  body: { padding: SIZES.padding },
-  bodyItems: { justifyContent: 'space-around', height: '100%' },
+  body: {padding: SIZES.padding},
+  bodyItems: {justifyContent: 'space-around', height: '100%'},
   headerText: {
     fontSize: 30,
     fontFamily: 'Exo2Bold',
@@ -136,7 +169,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#797E96',
     fontFamily: 'Exo2Medium',
-
   },
   phoneInput: {
     marginTop: '10%',
@@ -147,6 +179,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: Responsive.height(50),
     fontFamily: 'Exo2Medium',
+    width: '100%',
+  },
+  checkMarkContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent: 'center',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -159,9 +197,34 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     color: '#ffffff',
-    fontFamily: 'Exo2Bold'
+    fontFamily: 'Exo2Bold',
   },
-  footerContainer: { alignItems: 'center', flexDirection: 'row', justifyContent: 'center' },
-  footerTextOne: { fontSize: SIZES.h4, color: '#7a869a', fontFamily: 'Exo2Medium' },
-  footerTextTwo: { fontSize: SIZES.h4, fontFamily: 'Exo2Bold', color: '#4d2d8f', marginLeft: 2.5 },
+  footerContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  footerTextOne: {
+    fontSize: SIZES.h4,
+    color: '#7a869a',
+    fontFamily: 'Exo2Medium',
+  },
+  footerTextTwo: {
+    fontSize: SIZES.h4,
+    fontFamily: 'Exo2Bold',
+    color: '#4d2d8f',
+    marginLeft: 2.5,
+  },
+  error: {
+    padding: 4,
+    color: '#cc0000',
+  },
+  checkMarkIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+    marginLeft: -28,
+    tintColor: '#3CC1C5',
+    marginTop: Responsive.height(36),
+  },
 });

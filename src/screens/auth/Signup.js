@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -12,16 +12,14 @@ import {
   Text,
   Dimensions,
   SafeAreaView,
-  TouchableHighlight,
-  Button,
 } from 'react-native';
-import { Controller, useForm } from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
-import { AuthActions } from '../../persistence/actions/AuthActions';
-import { useNavigation } from '@react-navigation/native';
-import { SIZES } from '../../constants/theme/';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {useDispatch} from 'react-redux';
+import {AuthActions} from '../../persistence/actions/AuthActions';
+import {useNavigation} from '@react-navigation/native';
+import {SIZES} from '../../constants/theme/';
 import icons from '../../constants/icons';
 import RadioButtons from '../../components/RadioButtons';
 
@@ -31,6 +29,7 @@ export default function Signup() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
   const schema = yup.object().shape({
     fname: yup.string().required('First Name is' + ' ' + 'required.'),
     lname: yup.string().required('Last Name is' + ' ' + 'required.'),
@@ -38,11 +37,11 @@ export default function Signup() {
     mobile: yup.string().required('Mobile is' + ' ' + 'required.'),
   });
 
-  const { control, handleSubmit, errors } = useForm({
+  const {control, handleSubmit, errors} = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const signUpData = {
       FirstName: data.fname,
       LastName: data.lname,
@@ -78,7 +77,7 @@ export default function Signup() {
         <View style={styles.inputs}>
           <Controller
             control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 style={styles.phoneInput}
                 onChangeText={value => onChange(value)}
@@ -99,7 +98,7 @@ export default function Signup() {
 
           <Controller
             control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 style={styles.phoneInput}
                 onChangeText={value => onChange(value)}
@@ -120,7 +119,7 @@ export default function Signup() {
 
           <Controller
             control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 style={styles.phoneInput}
                 onChangeText={value => onChange(value)}
@@ -140,7 +139,7 @@ export default function Signup() {
           />
         </View>
         <View style={styles.termsContainer}>
-          <View style={{ width: '10%' }}>
+          <View style={{width: '10%'}}>
             <RadioButtons />
           </View>
           <Text style={styles.termsText}>
@@ -150,15 +149,18 @@ export default function Signup() {
         <View style={styles.buttonContainer}>
           {/* <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
             /> */}
-            <Text style={{fontSize: 16, fontFamily: 'Exo2Bold', color: '#ffffff'}}>
-              Register Now
-            </Text>
-
+          <Text
+            style={{fontSize: 16, fontFamily: 'Exo2Bold', color: '#ffffff'}}>
+            Register Now
+          </Text>
         </View>
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{ color: '#4d2d8f', fontFamily: 'Exo2Bold' }}> Sign In</Text>
+            <Text style={{color: '#4d2d8f', fontFamily: 'Exo2Bold'}}>
+              {' '}
+              Sign In
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -177,7 +179,7 @@ const styles = StyleSheet.create({
   header: {
     //   backgroundColor: '#000'
   },
-  backButtonSize: { width: 24, height: 24 },
+  backButtonSize: {width: 24, height: 24},
   headerTextContainer: {
     // backgroundColor: 'red',
     paddingVertical: 20,
