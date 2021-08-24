@@ -36,6 +36,7 @@ export default function OffersScreen(props) {
             renderItem={renderItem}
             keyExtractor={item => item.id}
             contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
           />
         </View>
       </View>

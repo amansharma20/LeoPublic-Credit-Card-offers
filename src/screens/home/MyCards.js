@@ -42,7 +42,7 @@ export default function MyCards(props) {
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal={false}>
+      <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
         <StatusBar
           hidden={false}
           backgroundColor={'#4d2d8f'}
