@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
   creditCardContainer: {
     marginTop: 50,
     width: Responsive.width(285),
-    height: Responsive.height(170),
+    height: Responsive.height(190),
     borderRadius: 12,
     // elevation: 1,
-    marginVertical: SIZES.padding,
+    marginVertical: SIZES.padding2,
     paddingVertical: 4,
     paddingHorizontal: SIZES.padding2,
   },

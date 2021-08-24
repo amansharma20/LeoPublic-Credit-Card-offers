@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   bodyItems: {justifyContent: 'space-around', height: '100%'},
   headerText: {
     fontSize: 30,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
   },
   textInputContainer: {
     marginTop: '20%',
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   subTitleText: {
     fontSize: 16,
     color: '#797E96',
-    // fontFamily: 'Exo2Medium',
+    fontFamily: 'Exo2Medium',
 
   },
   phoneInput: {

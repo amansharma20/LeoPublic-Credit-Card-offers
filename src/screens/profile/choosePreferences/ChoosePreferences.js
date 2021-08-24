@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
 
     },
     headerText: { fontSize: 18, 
-        // fontFamily: 'Exo2Bold',
+        fontFamily: 'Exo2Bold',
          color: '#172B4D', paddingVertical: 8 },
     subtitleText: { fontSize: 12, color: '#6F7FAF', 
-    // fontFamily: 'Exo2Medium' 
+    fontFamily: 'Exo2Medium' 
 },
     firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
     secondRow: { justifyContent: 'space-between', flexDirection: 'row', width: '63%' },

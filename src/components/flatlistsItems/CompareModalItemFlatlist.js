@@ -45,13 +45,13 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         alignItems: 'center',
         textAlign: 'center',
-        // fontFamily: 'Exo2Medium',
+        fontFamily: 'Exo2Medium',
     },
     subtitleText: {
         fontSize: 20,
         color: '#1C1B1B',
         marginTop: 2,
-        // fontFamily: 'Exo2Bold',
+        fontFamily: 'Exo2Bold',
     },
 });
 

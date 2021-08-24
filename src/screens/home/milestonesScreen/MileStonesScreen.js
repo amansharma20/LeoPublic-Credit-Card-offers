@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     lineHeight: 20,
     textAlign: 'center',
-    // fontFamily: 'Exo2Regular',
+    fontFamily: 'Exo2Regular',
   },
 });

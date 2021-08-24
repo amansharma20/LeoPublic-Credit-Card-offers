@@ -230,12 +230,12 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
-    // fontFamily: 'Exo2Medium',
+    fontFamily: 'Exo2Medium',
     color: '#797E96',
   },
   inputs: {
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   },
   termsText: {
     fontSize: SIZES.h4,
-    // fontFamily: 'Exo2Medium',
+    fontFamily: 'Exo2Medium',
     color: '#979797',
     alignItems: 'center',
   },

@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
         color: '#7A869A',
         fontSize: SIZES.h4,
         paddingTop: 10,
-        // fontFamily: 'Exo2Medium',
+        fontFamily: 'Exo2Medium',
     },
     subTitleText: {
         fontSize: SIZES.h3,
-        // fontFamily: 'Exo2Medium',
+        fontFamily: 'Exo2Medium',
     },
     headerContainer: {
         flexDirection: 'row',
@@ -90,6 +90,6 @@ const styles = StyleSheet.create({
     modalSubTitleDetailsText: {
         paddingTop: 10,
         fontSize: 16,
-        // fontFamily: 'Exo2Bold',
+        fontFamily: 'Exo2Bold',
     },
 });

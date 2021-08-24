@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   cardTypeText: {
     fontSize: 12,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
     color: '#ffffff',
   },
   bankLogo: {
@@ -168,12 +168,12 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
   },
   feeText: {
     fontSize: 10,
     color: '#626262',
-    // fontFamily: 'Exo2Medium',
+    fontFamily: 'Exo2Medium',
   },
   checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
   checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
@@ -190,14 +190,14 @@ const styles = StyleSheet.create({
   },
   modalHeaderText: {
     fontSize: SIZES.h3,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
     color: '#7B7B7B',
     textAlign: 'center',
     paddingVertical: 20,
   },
   modalSubText: {
     fontSize: SIZES.h4,
-    // fontFamily: 'Exo2Regular',
+    fontFamily: 'Exo2Regular',
     textAlign: 'center',
     paddingHorizontal: 30,
     paddingVertical: 20,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
   modalButtonText: {
     color: '#ffffff',
     fontSize: SIZES.h4,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
   },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',

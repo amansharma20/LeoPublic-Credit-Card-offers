@@ -47,7 +47,7 @@ export default function StartScreen() {
               style={{
                 color: '#4D2D8F',
                 fontSize: 16,
-                // fontFamily: 'Exo2Bold',
+                fontFamily: 'Exo2Bold',
               }}>
               Sign in
             </Text>
@@ -71,7 +71,7 @@ export default function StartScreen() {
               },
             ]}>
             <Text style={{color: 'white', fontSize: 16,
-            // fontFamily: 'Exo2Bold',
+            fontFamily: 'Exo2Bold',
             }}>
               Register
             </Text>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 36,
     color: COLORS.white,
-    // fontFamily: 'Exo2Bold',
+    fontFamily: 'Exo2Bold',
     marginTop: screenHeight / 3,
   },
   MainContainer: {
@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: 'white',
     marginTop: 10,
-    // fontFamily: 'Exo2Medium',
+    fontFamily: 'Exo2Medium',
   },
 });

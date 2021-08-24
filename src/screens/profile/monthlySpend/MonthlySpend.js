@@ -34,7 +34,7 @@ export default function MonthlySpend() {
                         backgroundColor="#b9b9b9"
                     />
                     <Text style={{ fontSize: 20, textAlign: 'center', marginTop: -140,
-                    //  fontFamily: 'Exo2Medium' 
+                     fontFamily: 'Exo2Medium' 
                      }}>
                         Monthly{'\n'}Expenses{'\n'}20,000
                     </Text>
@@ -107,7 +107,7 @@ export default function MonthlySpend() {
                 </View>
                 <TouchableOpacity style={{ backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
                     <Text style={{ color: '#ffffff', fontSize: 16, 
-                    // fontFamily: 'Exo2Bold' 
+                    fontFamily: 'Exo2Bold' 
                     }}>
                         Set Preferences
                     </Text>
@@ -141,6 +141,6 @@ const styles = StyleSheet.create({
     itemContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#eff0f2' },
     leftContainer: { flexDirection: 'row', alignItems: 'center' },
     leftText: { fontSize: 14, color: '#455671',
-    //  fontFamily: 'Exo2Medium'
+     fontFamily: 'Exo2Medium'
      },
 });
