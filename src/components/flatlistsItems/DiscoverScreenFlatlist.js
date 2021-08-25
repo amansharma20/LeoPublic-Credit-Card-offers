@@ -20,7 +20,7 @@ import CompareModalItemFlatlist from './CompareModalItemFlatlist';
 import COMPAREMODALDATA from '../../assets/dummyData/compareModalData';
 import { applicationProperties } from '../../../application.properties';
 
-export default function RecommendedScreenFlatlist(props) {
+export default function DiscoverScreenFlatlist(props) {
   const card = props.cards;
   console.log('card');
   console.log(card);

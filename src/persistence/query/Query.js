@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const GQLQuery = {
   GET_BANKS: gql`
@@ -108,4 +108,111 @@ export const GQLQuery = {
     }
   }
   `,
+  GET_EXPLORE_RECOMMENDED_CARDS: gql`
+  query MyQuery {
+    ExploreQuery {
+    GetRecommended {
+    AddOnCards
+    AdditionalQualificationRequirements
+    AnnualFees
+    BankId
+    CardFocusSegment
+    CardLevel
+    CardMaterial
+    CardName
+    CardProgram
+    CardReplacementFee
+    CashWithdrawalCharges
+    CoBrandedFlag
+    CoBrandedPartner
+    CreditLimit
+    CurrentlyIssuing
+    DedicatedRewardsCatalogueAvailability
+    Dining
+    Entertainment
+    ForWhom
+    ForexMarkUpInPercent
+    HotelBenefits
+    Id
+    ImageStoragePath
+    IncomeSalariedAnnual
+    IncomeSelfEmpAnnual
+    Insurance
+    InterestRate
+    JoiningFees
+    KeyHighlights
+    LatePaymentFee
+    LoungeAccess
+    MilestoneBenefits
+    MinSpendToWaiveAnnualFees
+    Network
+    OverLimitCharge
+    PriorityPassMembership
+    RedemptionHandlingFee
+    RewardBooster
+    RewardBoosterSectors
+    RewardPointIssuedPer100RsSpend
+    RewardPointValue
+    RewardRate
+    SalariedEligibilityAgeMax
+    SalariedEligibilityAgeMin
+    SelfEligibilityAgeMax
+    SelfEligibilityAgeMin
+     }
+     }
+    }
+  `,
+  GET_EXPLORE_DISCOVER_CARDS: gql`
+  query MyQuery {
+    ExploreQuery {
+    GetDiscover {
+    AddOnCards
+    AdditionalQualificationRequirements
+    AnnualFees
+    BankId
+    CardFocusSegment
+    CardLevel
+    CardMaterial
+    CardName
+    CardProgram
+    CardReplacementFee
+    CashWithdrawalCharges
+    CoBrandedFlag
+    CoBrandedPartner
+    CreditLimit
+    CurrentlyIssuing
+    DedicatedRewardsCatalogueAvailability
+    Dining
+    Entertainment
+    ForWhom
+    ForexMarkUpInPercent
+    HotelBenefits
+    Id
+    ImageStoragePath
+    IncomeSalariedAnnual
+    IncomeSelfEmpAnnual
+    Insurance
+    InterestRate
+    JoiningFees
+    KeyHighlights
+    LatePaymentFee
+    LoungeAccess
+    MilestoneBenefits
+    MinSpendToWaiveAnnualFees
+    Network
+    OverLimitCharge
+    PriorityPassMembership
+    RedemptionHandlingFee
+    RewardBooster
+    RewardBoosterSectors
+    RewardPointIssuedPer100RsSpend
+    RewardPointValue
+    RewardRate
+    SalariedEligibilityAgeMax
+    SalariedEligibilityAgeMin
+    SelfEligibilityAgeMax
+    SelfEligibilityAgeMin
+     }
+     }
+    }`
 };

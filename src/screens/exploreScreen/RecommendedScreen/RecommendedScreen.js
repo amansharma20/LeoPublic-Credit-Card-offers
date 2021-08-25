@@ -26,11 +26,13 @@ import { images } from '../../../constants';
 import AxisLogo from '../../../assets/svgs/axisLogo.svg';
 import Stars from '../../../assets/svgs/stars.svg';
 import Visa from '../../../assets/svgs/visasvg.svg';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../../persistence/query/Query';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-export default function RecommendedScreen() {
+export default function RecommendedScreen(props) {
   const navigation = useNavigation();
   //   const renderItem = ({ item }) => (
   //     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
@@ -43,7 +45,7 @@ export default function RecommendedScreen() {
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
   const renderItem = ({ item }) => (
-    <RecommendedScreenFlatlist image={item.image} />
+    <RecommendedScreenFlatlist cards={item} />
   );
 
   const [checkboxState, setCheckboxState] = useState(false);
@@ -57,6 +59,9 @@ export default function RecommendedScreen() {
       card2={item.card2}
     />
   );
+
+  const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
+  const recommendedCard = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
 
   return (
     <View style={styles.container}>
@@ -92,7 +97,7 @@ export default function RecommendedScreen() {
         </View>
         <View>
           <FlatList
-            data={CREDITCARDDATA}
+            data={recommendedCard}
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />

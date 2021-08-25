@@ -43,10 +43,10 @@ export default function ReviewsScreen(props) {
 
   {
     if ((ReviewList) === undefined) {return (
-      <View style={{flex: 1, height: 400, alignContent: 'center', alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.emptyStateContainer}>
 
-      <Text>
-        no reviews for this card yet
+      <Text style={styles.emptyStateText}>
+        No reviews for this card yet
       </Text>
 
       </View>
@@ -243,4 +243,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     fontFamily: 'Exo2Bold',
   },
+  emptyStateContainer: {flex: 1, height: 400, alignContent: 'center', alignItems: 'center', justifyContent: 'center'},
+  emptyStateText: {fontSize: 16, fontFamily: 'Exo2SemiBold'},
 });

@@ -20,6 +20,9 @@ import FilterIcon from '../../../assets/svgs/filterIcon.svg';
 import CrossIcon from '../../../assets/svgs/crossIcon.svg';
 import { SIZES } from '../../../constants';
 import FilterCardsModalSegments from './FilterCardsModalSegments';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../../persistence/query/Query';
+import DiscoverScreenFlatlist from '../../../components/flatlistsItems/DiscoverScreenFlatlist';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -37,10 +40,15 @@ export default function RecommendedScreen() {
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
   const renderItem = ({ item }) => (
-    <RecommendedScreenFlatlist image={item.image} />
+    <DiscoverScreenFlatlist cards={item} />
   );
 
   const [showModal, setShowModal] = useState(false);
+
+  const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
+  const discoverCard = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
+  console.log(discoverCard);
+  console.log('data000');
 
   return (
     <View style={styles.container}>
@@ -82,7 +90,7 @@ export default function RecommendedScreen() {
         </View>
         <View>
           <FlatList
-            data={CREDITCARDDATA}
+            data={discoverCard}
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />
