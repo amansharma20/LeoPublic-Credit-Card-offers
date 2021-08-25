@@ -212,12 +212,18 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#797E96',
     fontSize: 18,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   subText: {
     color: '#1c1b1b',
     fontSize: 20,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   imageSize: {
     width: Responsive.width(120),
@@ -246,7 +252,10 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#4D2D8F',
     fontSize: 14,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   modalContainer: {
     flex: 1,
@@ -260,7 +269,12 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
-  modalHeaderText: { fontSize: 24, fontFamily: 'Exo2Bold', color: '#4D2D8F' },
+  modalHeaderText: { fontSize: 24,
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
+     color: '#4D2D8F' },
   leftIconContainer: {
     width: 44,
     height: 44,
@@ -296,12 +310,18 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     color: '#797E96',
     lineHeight: 20,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   subtitleText: {
     fontSize: 18,
     color: '#1C1B1B',
     marginTop: 10,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
 });

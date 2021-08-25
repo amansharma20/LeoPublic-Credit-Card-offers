@@ -29,13 +29,19 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     color: '#797E96',
     lineHeight: 20,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   subtitleText: {
     fontSize: 18,
     color: '#1C1B1B',
     marginTop: 2,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
 });
 

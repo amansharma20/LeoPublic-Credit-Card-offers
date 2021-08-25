@@ -15,7 +15,7 @@ import * as yup from 'yup';
 import {useDispatch} from 'react-redux';
 import {AuthActions} from '../../persistence/actions/AuthActions';
 import {useNavigation} from '@react-navigation/native';
-import {Responsive} from '../../utils/layouts/Layout';
+import {Responsive} from '../../utils/layouts/Layout'; 
 import {SIZES} from '../../constants/theme';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
@@ -160,7 +160,10 @@ const styles = StyleSheet.create({
   bodyItems: {justifyContent: 'space-around', height: '100%'},
   headerText: {
     fontSize: 30,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    })
   },
   textInputContainer: {
     marginTop: '20%',
@@ -168,8 +171,10 @@ const styles = StyleSheet.create({
   subTitleText: {
     fontSize: 16,
     color: '#797E96',
-    fontFamily: 'Exo2Medium',
-
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    })
   },
   phoneInput: {
     marginTop: '10%',
@@ -179,7 +184,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
     height: Responsive.height(50),
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     width: '100%',
   },
   checkMarkContainer: {
@@ -198,7 +206,10 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     color: '#ffffff',
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    })
   },
   footerContainer: {
     alignItems: 'center',
@@ -208,11 +219,17 @@ const styles = StyleSheet.create({
   footerTextOne: {
     fontSize: SIZES.h4,
     color: '#7a869a',
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   footerTextTwo: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     color: '#4d2d8f',
     marginLeft: 2.5,
   },

@@ -124,12 +124,18 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     color: '#797E96',
   },
   buttonContainer: {
@@ -143,7 +149,10 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: SIZES.h3,
     color: '#FFFFFF',
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   resendButton: {
     fontSize: 16,
@@ -177,11 +186,17 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     color: '#7a869a',
   },
   footerTextBold: {
     color: '#4d2d8f',
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
 });

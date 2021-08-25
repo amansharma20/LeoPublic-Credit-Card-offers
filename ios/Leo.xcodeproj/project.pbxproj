@@ -11,16 +11,16 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		3588825926D11DB4000594C8 /* Exo2Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825226D11DAF000594C8 /* Exo2Regular.otf */; };
-		3588825A26D11DB4000594C8 /* Exo2ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */; };
-		3588825B26D11DB4000594C8 /* Exo2ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */; };
-		3588825C26D11DB4000594C8 /* Exo2Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825526D11DB1000594C8 /* Exo2Thin.otf */; };
-		3588825D26D11DB4000594C8 /* Exo2Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825626D11DB2000594C8 /* Exo2Bold.otf */; };
-		3588825E26D11DB4000594C8 /* Exo2SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825726D11DB3000594C8 /* Exo2SemiBold.otf */; };
-		3588825F26D11DB4000594C8 /* Exo2Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825826D11DB4000594C8 /* Exo2Medium.otf */; };
 		359B3C7F26CE509F00C5D9A0 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359B3C7626CE507000C5D9A0 /* Lottie.framework */; };
 		359B3C8026CE509F00C5D9A0 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 359B3C7626CE507000C5D9A0 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		359B3C8426CE521E00C5D9A0 /* Leo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B3C8326CE521E00C5D9A0 /* Leo.swift */; };
+		35C47DD926D65C0000B4853C /* Exo2Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825626D11DB2000594C8 /* Exo2Bold.otf */; };
+		35C47DDA26D65C0000B4853C /* Exo2ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */; };
+		35C47DDB26D65C0000B4853C /* Exo2ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */; };
+		35C47DDC26D65C0000B4853C /* Exo2Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825826D11DB4000594C8 /* Exo2Medium.otf */; };
+		35C47DDD26D65C0000B4853C /* Exo2Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825226D11DAF000594C8 /* Exo2Regular.otf */; };
+		35C47DDE26D65C0000B4853C /* Exo2SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825726D11DB3000594C8 /* Exo2SemiBold.otf */; };
+		35C47DDF26D65C0000B4853C /* Exo2Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825526D11DB1000594C8 /* Exo2Thin.otf */; };
 		5D37B5F835AE6D208F1F4A25 /* libPods-Leo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A7E848E838E8854D3D76D3 /* libPods-Leo.a */; };
 		75674338AAE1CAC2514B8A4B /* libPods-Leo-LeoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EB6FB71838C383BCF96CB3 /* libPods-Leo-LeoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -168,13 +168,6 @@
 			children = (
 				3588824C26D11D61000594C8 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				3588825626D11DB2000594C8 /* Exo2Bold.otf */,
-				3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */,
-				3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */,
-				3588825826D11DB4000594C8 /* Exo2Medium.otf */,
-				3588825226D11DAF000594C8 /* Exo2Regular.otf */,
-				3588825726D11DB3000594C8 /* Exo2SemiBold.otf */,
-				3588825526D11DB1000594C8 /* Exo2Thin.otf */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -217,6 +210,13 @@
 		3588824C26D11D61000594C8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3588825626D11DB2000594C8 /* Exo2Bold.otf */,
+				3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */,
+				3588825426D11DB1000594C8 /* Exo2ExtraLight.otf */,
+				3588825826D11DB4000594C8 /* Exo2Medium.otf */,
+				3588825226D11DAF000594C8 /* Exo2Regular.otf */,
+				3588825726D11DB3000594C8 /* Exo2SemiBold.otf */,
+				3588825526D11DB1000594C8 /* Exo2Thin.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -415,15 +415,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C47DD926D65C0000B4853C /* Exo2Bold.otf in Resources */,
+				35C47DDA26D65C0000B4853C /* Exo2ExtraBold.otf in Resources */,
+				35C47DDB26D65C0000B4853C /* Exo2ExtraLight.otf in Resources */,
+				35C47DDC26D65C0000B4853C /* Exo2Medium.otf in Resources */,
+				35C47DDD26D65C0000B4853C /* Exo2Regular.otf in Resources */,
+				35C47DDE26D65C0000B4853C /* Exo2SemiBold.otf in Resources */,
+				35C47DDF26D65C0000B4853C /* Exo2Thin.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				3588825A26D11DB4000594C8 /* Exo2ExtraBold.otf in Resources */,
-				3588825E26D11DB4000594C8 /* Exo2SemiBold.otf in Resources */,
-				3588825F26D11DB4000594C8 /* Exo2Medium.otf in Resources */,
-				3588825C26D11DB4000594C8 /* Exo2Thin.otf in Resources */,
-				3588825D26D11DB4000594C8 /* Exo2Bold.otf in Resources */,
-				3588825926D11DB4000594C8 /* Exo2Regular.otf in Resources */,
-				3588825B26D11DB4000594C8 /* Exo2ExtraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +476,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

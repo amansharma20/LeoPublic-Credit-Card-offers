@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     color: '#797E96',
     fontSize: 14,
     lineHeight: 20,
-    fontFamily: 'Exo2Regular',
+    fontFamily:Platform.select({
+      ios:'Exo2-Regular',
+      android:'Exo2Regular'
+    }),
   },
 });

@@ -72,7 +72,10 @@ const [borderColor5, setBorderColor5] = useState('#ffffff');
                 </View>
                 <TouchableOpacity style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
                     <Text style={{color: '#ffffff', fontSize: 16, 
-                    // fontFamily: 'Exo2Bold'
+                     fontFamily:Platform.select({
+                        ios:'Exo2-Bold',
+                        android:'Exo2Bold'
+                      }),
                     }}>
                     Set Preferences
                     </Text>
@@ -99,10 +102,16 @@ const styles = StyleSheet.create({
 
     },
     headerText: { fontSize: 18, 
-        fontFamily: 'Exo2Bold',
+        fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
          color: '#172B4D', paddingVertical: 8 },
     subtitleText: { fontSize: 12, color: '#6F7FAF', 
-    fontFamily: 'Exo2Medium' 
+    fontFamily:Platform.select({
+        ios:'Exo2-Medium',
+        android:'Exo2Medium'
+      }),
 },
     firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
     secondRow: { justifyContent: 'space-between', flexDirection: 'row', width: '63%' },

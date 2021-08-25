@@ -180,16 +180,25 @@ const styles = StyleSheet.create({
     leftContainer: { flexDirection: 'row', alignItems: 'center' },
     leftText: {
         fontSize: 14, color: '#455671',
-        fontFamily: 'Exo2Medium',
+        fontFamily:Platform.select({
+            ios:'Exo2-Medium',
+            android:'Exo2Medium'
+          }),
     },
     headerTextCircle: {
         fontSize: 20, textAlign: 'center', marginTop: -140,
-        fontFamily: 'Exo2Medium',
+        fontFamily:Platform.select({
+            ios:'Exo2-Medium',
+            android:'Exo2Medium'
+          }),
     },
     buttonContainer: { backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48), marginVertical: SIZES.padding },
     buttonText: {
         color: '#ffffff', fontSize: 16,
-        fontFamily: 'Exo2Bold',
+        fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
     },
     modalBackground: {
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -207,7 +216,10 @@ const styles = StyleSheet.create({
     },
     modalHeader: {
         fontSize: 22,
-        fontFamily: 'Exo2Bold',
+        fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
     },
     writeReviewContainer: {
         paddingVertical: SIZES.padding,
@@ -220,7 +232,10 @@ const styles = StyleSheet.create({
         color: '#3E3E3E',
         textAlignVertical: 'top',
         padding: 12,
-        fontFamily: 'Exo2Medium',
+        fontFamily:Platform.select({
+            ios:'Exo2-Medium',
+            android:'Exo2Medium'
+          }),
         width: '80%',
     },
     buttonsContainer: {
@@ -237,7 +252,10 @@ const styles = StyleSheet.create({
     saveButtonText: {
         color: '#FFFFFF',
         fontSize: SIZES.h3,
-        fontFamily: 'Exo2Bold',
+        fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
     },
     closeButtonContainer: {
         alignItems: 'center',
@@ -252,6 +270,9 @@ const styles = StyleSheet.create({
     closeButtonText: {
         color: '#4d2d8f',
         fontSize: SIZES.h3,
-        fontFamily: 'Exo2Bold',
+        fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
     },
 });

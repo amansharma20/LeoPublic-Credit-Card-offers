@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
   cardTypeText: {
     fontSize: 12,
     color: '#ffffff',
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     width: 120,
-    // backgroundColor: 'red'
   },
   bankLogo: {
-    // marginLeft: 60,
-    // backgroundColor: 'red'
   },
   cardBottomContainer: {
     flexDirection: 'row',
@@ -139,7 +139,10 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   modalBackground: {
     flex: 1,
@@ -158,7 +161,10 @@ const styles = StyleSheet.create({
   },
   modalSubText: {
     color: '#797E96',
-    fontFamily: 'Exo2SemiBold',
+    fontFamily:Platform.select({
+      ios:'Exo2-SemiBold',
+      android:'Exo2SemiBold'
+    }),
   },
   noModalButton: {
     backgroundColor: '#4D2D8F',
@@ -179,6 +185,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  noModalButtonText: { color: '#ffffff', fontFamily: 'Exo2Bold' },
-  yesModalButtonText: { color: '#ED4C5C', fontFamily: 'Exo2Bold' },
+  noModalButtonText: { color: '#ffffff', 
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
+ },
+  yesModalButtonText: { color: '#ED4C5C', 
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
+},
 });

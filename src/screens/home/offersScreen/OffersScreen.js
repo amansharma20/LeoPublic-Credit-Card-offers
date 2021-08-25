@@ -13,16 +13,6 @@ import { GQLQuery } from '../../../persistence/query/Query';
 
 export default function OffersScreen(props) {
   const navigation = useNavigation();
-  // const cardData = props.cardData;
-  // console.log(cardData.BankCard.Bank.Id);
-
-  // const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARD_OFFER, {
-  //   variables:{
-  //     CardId : cardData.BankCard.Bank.Id,
-  //   },
-  // });
-  // console.log(data, error);
-
   const renderItem = ({ item }) => (
     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
   );

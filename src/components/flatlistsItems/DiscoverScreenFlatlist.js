@@ -22,9 +22,6 @@ import { applicationProperties } from '../../../application.properties';
 
 export default function DiscoverScreenFlatlist(props) {
   const card = props.cards;
-  console.log('card');
-  console.log(card);
-  console.log('card');
   const [checkboxState, setCheckboxState] = useState(false);
   const [cardClicked, setCardClicked] = useState(0);
 
@@ -138,7 +135,10 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.padding2,
     paddingHorizontal: SIZES.padding2,
   },
-  rewardsText: {color: '#626262', fontSize: 12, fontFamily: 'Exo2Bold', marginBottom: 8, width: 250},
+  rewardsText: {color: '#626262', fontSize: 12, fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }), marginBottom: 8, width: 250},
   feeContainer: {flexDirection: 'row', justifyContent: 'space-between'},
   creditCardImage: {
     // paddingLeft: Responsive.width(24),
@@ -158,7 +158,10 @@ const styles = StyleSheet.create({
   },
   cardTypeText: {
     fontSize: 12,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     color: '#ffffff',
     width: 75,
   },
@@ -174,12 +177,18 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   feeText: {
     fontSize: 10,
     color: '#626262',
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
   checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
@@ -196,14 +205,20 @@ const styles = StyleSheet.create({
   },
   modalHeaderText: {
     fontSize: SIZES.h3,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     color: '#7B7B7B',
     textAlign: 'center',
     paddingVertical: 20,
   },
   modalSubText: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Regular',
+    fontFamily:Platform.select({
+      ios:'Exo2-Regular',
+      android:'Exo2Regular'
+    }),
     textAlign: 'center',
     paddingHorizontal: 30,
     paddingVertical: 20,
@@ -221,7 +236,10 @@ const styles = StyleSheet.create({
   modalButtonText: {
     color: '#ffffff',
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',

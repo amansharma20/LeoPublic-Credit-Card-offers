@@ -91,11 +91,17 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#6F7FAF',
     fontSize: 16,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   activeTabTextStyle: {
     color: '#060417',
     fontSize: 16,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
 });

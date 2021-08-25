@@ -203,7 +203,12 @@ export default function Signup() {
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{ color: '#4d2d8f', fontFamily: 'Exo2Bold' }}>
+            <Text style={{ color: '#4d2d8f', 
+            fontFamily:Platform.select({
+              ios:'Exo2-Bold',
+              android:'Exo2Bold'
+            }),
+            }}>
               {' '}
               Sign In
             </Text>
@@ -230,12 +235,18 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     color: '#797E96',
   },
   inputs: {

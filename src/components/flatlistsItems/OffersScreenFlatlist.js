@@ -39,14 +39,20 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 14,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     color: '#172B4D',
     lineHeight: 20,
   },
   subtitleText: {
     color: '#7A869A',
     marginTop: 10,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   imageSize: {
     width: 100,

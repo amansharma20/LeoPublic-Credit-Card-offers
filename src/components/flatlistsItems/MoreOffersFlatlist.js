@@ -29,9 +29,7 @@ export default function MoreOffersFlatlist({ title, subtitle, image }) {
   );
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log('selectedIndex');
-  console.log(selectedIndex);
-  console.log('selectedIndex');
+
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
     console.log(index);

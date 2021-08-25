@@ -25,13 +25,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#797E96',
     lineHeight: 20,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   subtitleText: {
     fontSize: SIZES.h4,
     color: '#172B4D',
     marginTop: 2,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
 });
 

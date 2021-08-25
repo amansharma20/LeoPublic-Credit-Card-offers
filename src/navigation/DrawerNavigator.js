@@ -19,7 +19,10 @@ export default function MyDrawer() {
         drawerLabelStyle: {
           fontSize: 16,
           color: '#6F7FAF',
-          fontFamily: 'Exo2Bold',
+          fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
         },
         drawerStyle: {
           backgroundColor: '#ffffff',

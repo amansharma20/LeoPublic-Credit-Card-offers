@@ -51,10 +51,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#4d2d8f',
   },
-  headerText: { fontSize: 22, color: '#797E96', fontFamily: 'Exo2SemiBold' },
+  headerText: { fontSize: 22, color: '#797E96', 
+  fontFamily:Platform.select({
+    ios:'Exo2-SemiBold',
+    android:'Exo2SemiBold'
+  }),
+},
   body: { backgroundColor: '#ffffff', borderTopLeftRadius: 32, borderTopRightRadius: 32, flex: 1, padding: SIZES.padding },
   rowContainer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%', paddingTop: '10%' },
   imageContainer: { width: 145, height: 185, marginHorizontal: 10 },
   skipButtonContainer: { justifyContent: 'flex-end', bottom: '8%', position: 'absolute', width: '100%', flexDirection: 'row' },
-  skipButtonText: { fontSize: 16, color: '#4D2D8F', fontFamily: 'Exo2Bold' },
+  skipButtonText: { fontSize: 16, color: '#4D2D8F', 
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
+},
 });

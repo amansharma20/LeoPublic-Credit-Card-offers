@@ -175,7 +175,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalHeaderText: { fontSize: 20, color: '#060417',
-   fontFamily: 'Exo2Medium'
+  fontFamily:Platform.select({
+    ios:'Exo2-Medium',
+    android:'Exo2Medium'
+  }),
    },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -204,7 +207,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   clearAllText: { color: '#4D2D8F', fontSize: 16, 
-  fontFamily: 'Exo2Bold' 
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
 },
   applyButtonContainer: {
     backgroundColor: '#4D2D8F',
@@ -215,7 +221,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   applyButtonText: { color: '#ffffff', fontSize: 16, 
-  fontFamily: 'Exo2Bold'
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
  },
   rightIconContainer: {
     width: 30,

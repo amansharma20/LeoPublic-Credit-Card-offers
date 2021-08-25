@@ -8,7 +8,6 @@ const RATING_STAR = require('../../assets/icons/starRating.png');
 
 export default function Reviews(props) {
     const review = props.review;
-    console.log(props.review.Rating)
     return (
     <View style={styles.container}>
         <View style={styles.body}>
@@ -70,7 +69,10 @@ const styles = StyleSheet.create({
     },
     nameText: {
         fontSize: 16,
-        fontFamily: 'Exo2Bold',
+        fontFamily:Platform.select({
+            ios:'Exo2-Bold',
+            android:'Exo2Bold'
+          }),
     },
     ratingsContainer: {
         width: '50%',
@@ -83,12 +85,18 @@ const styles = StyleSheet.create({
     dateText: {
         fontSize: 12,
         color: '#797E96',
-        fontFamily: 'Exo2Medium',
+        fontFamily:Platform.select({
+            ios:'Exo2-Medium',
+            android:'Exo2Medium'
+          }),
     },
     reviewText: {
         color: '#797E96',
         fontSize: 14,
-        fontFamily: 'Exo2Regular',
+        fontFamily:Platform.select({
+            ios:'Exo20-Regular',
+            android:'Exo2Regular'
+          }),
     },
     reviewTextContainer: {
         marginLeft: 44,

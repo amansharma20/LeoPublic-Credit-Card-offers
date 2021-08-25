@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,8 +9,8 @@ import {
   Modal,
   FlatList,
 } from 'react-native';
-import {SIZES} from '../../constants';
-import {Responsive} from '../../utils/layouts/Layout';
+import { SIZES } from '../../constants';
+import { Responsive } from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
@@ -22,9 +22,6 @@ import { applicationProperties } from '../../../application.properties';
 
 export default function RecommendedScreenFlatlist(props) {
   const card = props.cards;
-  console.log('card');
-  console.log(card);
-  console.log('card');
   const [checkboxState, setCheckboxState] = useState(false);
   const [cardClicked, setCardClicked] = useState(0);
 
@@ -32,10 +29,10 @@ export default function RecommendedScreenFlatlist(props) {
     setCheckboxState(!checkboxState, cardClicked);
     console.log(cardClicked);
     if (cardClicked < 2) {
-        setCardClicked(cardClicked + 1);
+      setCardClicked(cardClicked + 1);
     } else {
-        console.log('show modal');
-        setShowModal(true);
+      console.log('show modal');
+      setShowModal(true);
     }
   };
   const [showModal, setShowModal] = useState(false);
@@ -44,12 +41,12 @@ export default function RecommendedScreenFlatlist(props) {
     <TouchableOpacity
       activeOpacity={0.85}
       onPress={onCardClick}
-      >
+    >
       <View style={styles.container}>
         <View style={styles.cardContainerBody}>
           <ImageBackground
             style={styles.creditCardContainer}
-            source={{uri: applicationProperties.imageUrl + card.ImageStoragePath}}
+            source={{ uri: applicationProperties.imageUrl + card.ImageStoragePath }}
             imageStyle={styles.backgroundImageStyle}>
             <View>
               <BouncyCheckbox
@@ -101,12 +98,12 @@ export default function RecommendedScreenFlatlist(props) {
                 {/* <Text style={styles.modalHeaderText}>Congratulations</Text> */}
                 <CrossWithBackground />
                 <Text style={styles.modalHeaderText}>
-                    You can select only two{'\n'}cards at a time
+                  You can select only two{'\n'}cards at a time
                 </Text>
                 <TouchableOpacity onPress={() => setShowModal(false)} style={styles.modalButtonContainer} activeOpacity={0.8}>
-                <View>
-                  <Text style={styles.modalButtonText}>Continue</Text>
-                </View>
+                  <View>
+                    <Text style={styles.modalButtonText}>Continue</Text>
+                  </View>
                 </TouchableOpacity>
               </View>
             </View>
@@ -127,7 +124,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
     borderRadius: 10,
   },
-  cardContainerBodyPadding: {paddingHorizontal: 12, paddingVertical: 9},
+  cardContainerBodyPadding: { paddingHorizontal: 12, paddingVertical: 9 },
   creditCardContainer: {
     // marginTop: 12,
     width: Responsive.width(300),
@@ -138,8 +135,13 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.padding2,
     paddingHorizontal: SIZES.padding2,
   },
-  rewardsText: {color: '#626262', fontSize: 12, fontFamily: 'Exo2Bold', marginBottom: 8, width: 250},
-  feeContainer: {flexDirection: 'row', justifyContent: 'space-between'},
+  rewardsText: {
+    color: '#626262', fontSize: 12, fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }), marginBottom: 8, width: 250
+  },
+  feeContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   creditCardImage: {
     // paddingLeft: Responsive.width(24),
   },
@@ -158,7 +160,10 @@ const styles = StyleSheet.create({
   },
   cardTypeText: {
     fontSize: 12,
-    fontFamily: 'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
     color: '#ffffff',
     width: 75,
   },
@@ -179,10 +184,13 @@ const styles = StyleSheet.create({
   feeText: {
     fontSize: 10,
     color: '#626262',
-    fontFamily: 'Exo2Medium',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
+    }),
   },
-  checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
-  checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
+  checkBoxContainer: { marginTop: 0, width: 24, height: 24, borderRadius: 4 },
+  checkBoxIconStyle: { borderRadius: 4, borderWidth: 0 },
   modalContainer: {
     backgroundColor: '#ffffff',
     width: '75%',
@@ -196,14 +204,20 @@ const styles = StyleSheet.create({
   },
   modalHeaderText: {
     fontSize: SIZES.h3,
-    fontFamily: 'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
     color: '#7B7B7B',
     textAlign: 'center',
     paddingVertical: 20,
   },
   modalSubText: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Regular',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Regular',
+      android: 'Exo2Regular'
+    }),
     textAlign: 'center',
     paddingHorizontal: 30,
     paddingVertical: 20,
@@ -221,7 +235,10 @@ const styles = StyleSheet.create({
   modalButtonText: {
     color: '#ffffff',
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
   },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',

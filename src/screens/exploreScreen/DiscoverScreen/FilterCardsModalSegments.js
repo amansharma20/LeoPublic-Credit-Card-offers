@@ -17,9 +17,7 @@ import AnnualFees from './filterOptions/AnnualFees';
 export default function FilterCardsModalSegments() {
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log('selectedIndex');
-  console.log(selectedIndex);
-  console.log('selectedIndex');
+
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
     console.log(index);
@@ -88,11 +86,17 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#172B4D',
     fontSize: 14,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   activeTabTextStyle: {
     color: '#172B4D',
     fontSize: 14,
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
 });

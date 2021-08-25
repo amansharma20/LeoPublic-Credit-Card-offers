@@ -105,7 +105,10 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 18,
     color: '#060417',
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     lineHeight: 28,
     paddingTop: 8,
   },
@@ -114,10 +117,16 @@ const styles = StyleSheet.create({
     color: '#6F7FAF',
     lineHeight: 20,
     paddingVertical: 8,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
   },
   birthDateText: {fontSize: SIZES.h3, color: '#6F7FAF', lineHeight: 20,
-   fontFamily: 'Exo2Medium'
+  fontFamily:Platform.select({
+    ios:'Exo2-Medium',
+    android:'Exo2Medium'
+  }),
   }
    ,
   topContainer: {
@@ -134,10 +143,16 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   topContainerHeaderText: {color: '#6F7FAF', fontSize: 14, 
-  fontFamily: 'Exo2Medium'
+  fontFamily:Platform.select({
+    ios:'Exo2-Medium',
+    android:'Exo2Medium'
+  }),
 },
   topContainerSubtitleText: {color: '#060417', fontSize: 18, 
-  fontFamily: 'Exo2Bold'
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
 },
   addContainer: {
     padding: SIZES.padding,
@@ -150,7 +165,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e4e7f0',
   },
   addContainerHeaderText: {paddingBottom: 22, fontSize: 16, 
-    fontFamily: 'Exo2Bold'
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   addContainerSubtitleTextContainer: {
     flexDirection: 'row',
@@ -161,7 +179,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addContainerSubtitleText: {color: '#1C1B1B', fontSize: 16,
-   fontFamily: 'Exo2Medium'
+  fontFamily:Platform.select({
+    ios:'Exo2-Medium',
+    android:'Exo2Medium'
+  }),
   },
   addMonthlyExpenseContainer: {
     flexDirection: 'row',

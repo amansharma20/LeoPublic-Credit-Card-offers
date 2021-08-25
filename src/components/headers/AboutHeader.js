@@ -38,7 +38,10 @@ const styles = StyleSheet.create({
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},
   headerText: {fontSize: 22, 
-    fontFamily: 'Exo2Bold', 
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
     color: '#ffffff'},
   leftIconContainer: {
     width: 44,

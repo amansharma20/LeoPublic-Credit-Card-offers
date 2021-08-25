@@ -83,8 +83,18 @@ export default function RecommendedScreen(props) {
               listMode="FLATLIST"
               dropDownContainerStyle={styles.dropDownContainerStyle}
               closeAfterSelecting={true}
-              listItemLabelStyle={{fontFamily: 'Exo2Medium'}}
-              selectedItemLabelStyle={{fontFamily: 'Exo2Bold'}}
+              listItemLabelStyle={{
+                fontFamily:Platform.select({
+                  ios:'Exo2-Medium',
+                  android:'Exo2Medium'
+                }),
+              }}
+              selectedItemLabelStyle={{
+                fontFamily:Platform.select({
+                  ios:'Exo2-Bold',
+                  android:'Exo2Bold'
+                }),
+              }}
             />
           </View>
           <View>
@@ -203,7 +213,10 @@ const styles = StyleSheet.create({
   placeholderText: {
     fontSize: SIZES.h3,
     color: '#4D2D8F',
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
   },
   dropDownContainerStyle: {
     backgroundColor: '#f4f5f7',
@@ -218,7 +231,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   compareText: { color: '#ffffff', fontSize: 14, 
-  fontFamily: 'Exo2Bold'
+  fontFamily:Platform.select({
+    ios:'Exo2-Bold',
+    android:'Exo2Bold'
+  }),
  },
   headerContainer: {
     flexDirection: 'row',
@@ -240,7 +256,10 @@ const styles = StyleSheet.create({
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
   modalHeaderText: { fontSize: 24,
-     fontFamily: 'Exo2Bold', 
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
      color: '#ffffff' },
   leftIconContainer: {
     width: 44,
@@ -270,7 +289,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   cardTypeText: { 
-    fontFamily: 'Exo2Bold',
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),
      fontSize: 8, paddingVertical: 4, color: '#ffffff' },
   cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   flatlistBackgroundColor: { backgroundColor: '#fff' },

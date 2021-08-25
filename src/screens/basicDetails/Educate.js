@@ -146,7 +146,10 @@ const styles = StyleSheet.create({
   },
   placeholderText: {
       fontSize: 16, 
-      fontFamily: 'Exo2Bold',
+      fontFamily:Platform.select({
+        ios:'Exo2-Bold',
+        android:'Exo2Bold'
+      }),
   },
   dropDownContainerStyle: {
     backgroundColor: '#ffffff',
