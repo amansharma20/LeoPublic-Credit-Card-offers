@@ -19,7 +19,8 @@ import AddButton from '../../assets/svgs/profileScreenAddButton';
 export default function ProfileScreen() {
   const navigation = useNavigation();
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+    <ScrollView style={styles.body}>
       <View>
         <ProfileOffersScreenHeader />
       </View>
@@ -73,6 +74,7 @@ export default function ProfileScreen() {
         </View>
       </View>
     </ScrollView>
+    </View>
   );
 }
 
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   body: {
-    padding: SIZES.padding,
+    //padding: SIZES.padding,
   },
   backgroundColorView: {
     backgroundColor: '#4d2d8f',

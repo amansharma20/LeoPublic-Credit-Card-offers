@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { Responsive } from '../../utils/layouts/Layout';
 // import { gql, useQuery } from '@apollo/client';
-import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
 import OffersSegmentNavigator from '../../navigation/OffersSegmentNavigator';
 import OffersScreenHeader from '../../components/headers/OffersScreenHeader';
 

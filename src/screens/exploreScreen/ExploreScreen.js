@@ -10,7 +10,7 @@ import ExploreSegmentNavigator from '../../navigation/ExploreSegmentNavigator';
 export default function ExploreScreen() {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView style={styles.body}>
         <StatusBar
           hidden={false}
@@ -30,7 +30,7 @@ export default function ExploreScreen() {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 

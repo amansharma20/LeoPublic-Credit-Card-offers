@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import {TouchableOpacity, StyleSheet, View, Text} from 'react-native';
+import {TouchableOpacity, StyleSheet, View, Text, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MyCards from '../screens/home/MyCards';
@@ -116,7 +116,10 @@ export default function BottomTabBarNavigator() {
 
 const styles = StyleSheet.create({
   container: {
-      height: Responsive.height(60),
+      height: Platform.select({
+          ios:Responsive.height(80),
+          android:Responsive.height(60)
+      }),
       width: '100%',
       flexDirection: 'row',
       backgroundColor: '#f6f6f6',
