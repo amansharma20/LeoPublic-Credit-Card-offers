@@ -28,7 +28,7 @@ export default function BestOffers() {
             renderItem={renderItem}
             keyExtractor={item => item.id}
             numColumns={2}
-            contentContainerStyle={{paddingBottom: 10}}
+            contentContainerStyle={{paddingBottom: Responsive.height(140)}}
            />
       </View>
       </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     paddingBottom: Responsive.height(20),
   },
   body: {
-    paddingVertical: SIZES.padding,
+    // paddingVertical: SIZES.padding,
     paddingHorizontal: SIZES.padding2,
   },
 });

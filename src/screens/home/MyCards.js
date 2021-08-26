@@ -7,7 +7,8 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
-  LogBox} from 'react-native';
+  LogBox
+} from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useQuery } from '@apollo/client';
@@ -35,36 +36,23 @@ export default function MyCards(props) {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [])
 
-  if (loading) 
-  return  Array.from({length: 3}).map((_, index) => (
-    <View key={index} style={{marginBottom: 12}}>
-      <SkeletonPlaceholder>
-        <SkeletonPlaceholder.Item flexDirection="row">
-          <SkeletonPlaceholder.Item width={300} height={300} borderRadius={4} />
-          <SkeletonPlaceholder.Item
-            flex={1}
-            justifyContent={'space-between'}
-            marginLeft={12}>
-            <SkeletonPlaceholder.Item
-              width="50%"
-              height={20}
-              borderRadius={4}
-            />
-            <SkeletonPlaceholder.Item
-              width="30%"
-              height={20}
-              borderRadius={4}
-            />
-            <SkeletonPlaceholder.Item
-              width="80%"
-              height={20}
-              borderRadius={4}
-            />
-          </SkeletonPlaceholder.Item>
-        </SkeletonPlaceholder.Item>
-      </SkeletonPlaceholder>
-    </View>
-  ));
+  if (loading)
+    return (
+      <View style={{ marginBottom: 12, alignItems: 'center' }}>
+        <SkeletonPlaceholder>
+          <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
+          <View horizontal style={{flexDirection: 'row', marginTop: 60, width: 250}}>
+            <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+            <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+            <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+            <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+          </View>
+          <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 90 }} />
+          <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+          <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+        </SkeletonPlaceholder>
+      </View>
+    );
 
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index} />

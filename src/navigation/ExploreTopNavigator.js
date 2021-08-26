@@ -13,9 +13,9 @@ function ExploreTopNavigator() {
       initialRouteName="All"
       tabBarOptions={{
         labelStyle: {
-          fontSize: 16, lineHeight: 18, fontFamily: Platform.select({
-            ios: 'Exo2-Medium',
-            android: 'Exo2Medium',
+          fontSize: 12, lineHeight: 18, fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold',
           })
         },
         activeTintColor: '#060417',

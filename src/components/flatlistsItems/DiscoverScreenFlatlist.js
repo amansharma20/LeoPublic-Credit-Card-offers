@@ -28,12 +28,12 @@ export default function DiscoverScreenFlatlist(props) {
   const onCardClick = () => {
     setCheckboxState(!checkboxState, cardClicked);
     console.log(cardClicked);
-    if (cardClicked < 2) {
-        setCardClicked(cardClicked + 1);
-    } else {
-        console.log('show modal');
-        setShowModal(true);
-    }
+    // if (cardClicked < 2) {
+    //     setCardClicked(cardClicked + 1);
+    // } else {
+    //     console.log('show modal');
+    //     setShowModal(true);
+    // }
   };
   const [showModal, setShowModal] = useState(false);
 

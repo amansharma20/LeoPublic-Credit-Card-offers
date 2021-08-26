@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
 import PremiumNature from '../../../assets/svgs/premiumNature.svg';
@@ -70,9 +70,9 @@ const [borderColor5, setBorderColor5] = useState('#ffffff');
                     </View>
 
                 </View>
-                <TouchableOpacity style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48) }}>
                     <Text style={{color: '#ffffff', fontSize: 16, 
-                     fontFamily:Platform.select({
+                     fontFamily: Platform.select({
                         ios:'Exo2-Bold',
                         android:'Exo2Bold'
                       }),

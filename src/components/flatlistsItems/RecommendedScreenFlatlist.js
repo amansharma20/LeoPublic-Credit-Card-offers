@@ -26,11 +26,11 @@ export default function RecommendedScreenFlatlist(props) {
   const onCardClick = () => {
     setCheckboxState(!checkboxState, cardClicked);
     console.log(cardClicked);
-    if (cardClicked < 2) {
-      setCardClicked(cardClicked + 1);
-    } else {
-      setShowModal(true);
-    }
+    // if (cardClicked < 2) {
+    //   setCardClicked(cardClicked + 1);
+    // } else {
+    //   setShowModal(true);
+    // }
   };
   const [showModal, setShowModal] = useState(false);
 
