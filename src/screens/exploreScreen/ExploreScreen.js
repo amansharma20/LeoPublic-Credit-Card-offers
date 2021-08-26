@@ -1,11 +1,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, StyleSheet, Text, ScrollView, StatusBar, SafeAreaView, Dimensions } from 'react-native';
+import { View, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { SIZES } from '../../constants/theme';
 import ExploreScreenHeader from '../../components/headers/ExploreScreenHeader';
-import ExploreSegmentNavigator from '../../navigation/ExploreSegmentNavigator';
 import ExploreTopNavigator from '../../navigation/ExploreTopNavigator';
 import { Responsive } from '../../utils/layouts/Layout';
 const { width: WIDTH } = Dimensions.get('window');

@@ -81,7 +81,10 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: Responsive.font(14),
-    // fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     paddingLeft: 10,
     color: '#000',
     marginLeft: 6,

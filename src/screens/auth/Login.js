@@ -65,28 +65,7 @@ export default function Login() {
               We'll send you a code to verify your contact number
             </Text>
           </View>
-
           <View style={styles.textInputContainer}>
-            {/* <Controller
-              control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  style={styles.phoneInput}
-                  onChangeText={value => onChange(value)}
-                  value={value}
-                  placeholder="Phone Number"
-                  placeholderTextColor="#B4B4B4"
-                  keyboardType="phone-pad"
-                  onSubmitEditing={Keyboard.dismiss}
-                  blurOnSubmit={false}
-                  secureTextEntry={false}
-                  underlineColorAndroid="#f000"
-                  returnKeyType="next"
-                />
-              )}
-              name="phone"
-              defaultValue="8860777703"
-            /> */}
             <Formik
               validationSchema={schema}
               initialValues={{
@@ -173,7 +152,7 @@ const styles = StyleSheet.create({
     color: '#797E96',
     fontFamily:Platform.select({
       ios:'Exo2-Medium',
-      android:'Exo2Medium'
+      android:''
     })
   },
   phoneInput: {
