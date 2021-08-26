@@ -165,8 +165,9 @@ const styles = StyleSheet.create({
     topContainer: { alignItems: 'center', height: 220 },
     body: {
         padding: SIZES.padding,
-        paddingVertical: 40,
-        borderRadius: 32,
+        paddingVertical: 20,
+        borderTopLeftRadius: 32,
+        borderTopRightRadius: 32,
         backgroundColor: '#ffffff',
         flex: 1,
         justifyContent: 'space-between',

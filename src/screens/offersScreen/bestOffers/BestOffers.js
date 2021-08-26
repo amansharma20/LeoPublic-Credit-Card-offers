@@ -28,7 +28,8 @@ export default function BestOffers() {
             renderItem={renderItem}
             keyExtractor={item => item.id}
             numColumns={2}
-            contentContainerStyle={{paddingBottom: Responsive.height(140)}}
+            contentContainerStyle={{paddingBottom: Responsive.height(180)}}
+            showsVerticalScrollIndicator={false}
            />
       </View>
       </View>
