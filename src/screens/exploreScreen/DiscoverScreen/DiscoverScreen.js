@@ -12,8 +12,6 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Responsive } from '../../../utils/layouts/Layout';
-import RecommendedScreenFlatlist from '../../../components/flatlistsItems/RecommendedScreenFlatlist';
-import CREDITCARDDATA from '../../../assets/dummyData/creditCards';
 import SearchIcon from '../../../assets/svgs/search.svg';
 import CommonSearchInput from '../../../components/CommonSearchInput';
 import FilterIcon from '../../../assets/svgs/filterIcon.svg';
@@ -24,15 +22,14 @@ import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import DiscoverScreenFlatlist from '../../../components/flatlistsItems/DiscoverScreenFlatlist';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
+import _ from "lodash";
+import { ScrollView } from 'react-native-gesture-handler';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function RecommendedScreen() {
   const navigation = useNavigation();
-  //   const renderItem = ({ item }) => (
-  //     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
-  //   );
   const [openAllCategories, setOpenAllCategories] = useState(false);
   const [allCategories, setAllCategories] = useState([
     { label: 'Lifestyle', value: 'Lifestyle' },
@@ -40,34 +37,31 @@ export default function RecommendedScreen() {
   ]);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
-  const renderItem = ({ item }) => (
-    <DiscoverScreenFlatlist cards={item} />
-  );
-
+  
   const [showModal, setShowModal] = useState(false);
 
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
   const discoverCard = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
 
-  if (loading) 
-  return  Array.from({length: 3}).map((_, index) => (
-    <View key={index} style={{marginBottom: 12}}>
-      <SkeletonPlaceholder>
-        <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
-          <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
-          <SkeletonPlaceholder.Item
-            flex={1}
-            justifyContent={'space-between'}
-            marginLeft={12}>
-            
+  if (loading)
+    return Array.from({ length: 3 }).map((_, index) => (
+      <View key={index} style={{ marginBottom: 12 }}>
+        <SkeletonPlaceholder>
+          <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
+            <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
+            <SkeletonPlaceholder.Item
+              flex={1}
+              justifyContent={'space-between'}
+              marginLeft={12}>
+
+            </SkeletonPlaceholder.Item>
           </SkeletonPlaceholder.Item>
-        </SkeletonPlaceholder.Item>
-      </SkeletonPlaceholder>
-    </View>
-  ));
+        </SkeletonPlaceholder>
+      </View>
+    ));
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.body}>
         <View style={styles.buttonsContainer}>
           <CommonSearchInput
@@ -85,11 +79,11 @@ export default function RecommendedScreen() {
           </TouchableOpacity>
         </View>
         <View>
-          <FlatList
-            data={discoverCard}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
+          {_.map(discoverCard, (value, index) => {
+            return (
+              <DiscoverScreenFlatlist cards={value} key={index.toString()} />
+            );
+          })}
         </View>
         {showModal && (
           <Modal
@@ -127,7 +121,7 @@ export default function RecommendedScreen() {
           </Modal>
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -170,12 +164,13 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     alignItems: 'center',
   },
-  modalHeaderText: { fontSize: 20, color: '#060417',
-  fontFamily:Platform.select({
-    ios:'Exo2-Medium',
-    android:'Exo2Medium'
-  }),
-   },
+  modalHeaderText: {
+    fontSize: 20, color: '#060417',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
+    }),
+  },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.5)',
     flex: 1,
@@ -202,12 +197,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  clearAllText: { color: '#4D2D8F', fontSize: 16, 
-  fontFamily:Platform.select({
-    ios:'Exo2-Bold',
-    android:'Exo2Bold'
-  }),
-},
+  clearAllText: {
+    color: '#4D2D8F', fontSize: 16,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
+  },
   applyButtonContainer: {
     backgroundColor: '#4D2D8F',
     width: Responsive.width(160),
@@ -216,12 +212,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
   },
-  applyButtonText: { color: '#ffffff', fontSize: 16, 
-  fontFamily:Platform.select({
-    ios:'Exo2-Bold',
-    android:'Exo2Bold'
-  }),
- },
+  applyButtonText: {
+    color: '#ffffff', fontSize: 16,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
+  },
   rightIconContainer: {
     width: 30,
     height: 30,

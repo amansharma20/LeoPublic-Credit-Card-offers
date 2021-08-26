@@ -11,7 +11,7 @@ const { width: WIDTH } = Dimensions.get('window');
 export default function ExploreScreen() {
   const navigation = useNavigation();
   return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <StatusBar
           hidden={false}
           backgroundColor={'#4d2d8f'}
@@ -24,13 +24,13 @@ export default function ExploreScreen() {
           </View>
           {/* MAIN BODY  */}
           <View style={styles.mainBody}>
-            <View style={{width: WIDTH, height: Responsive.height(2750), }}>
+            <View style={{width: WIDTH, height: "100%" }}>
               {/* <ExploreSegmentNavigator /> */}
               <ExploreTopNavigator />
             </View>
           </View>
         </View>
-      </ScrollView>
+      </View>
   );
 }
 
@@ -40,10 +40,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#4d2d8f',
   },
   mainBody: {
-    paddingTop: 20,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    backgroundColor: '#ffffff',
-    flex: 1,
+    height:"100%"
   },
 });

@@ -11,7 +11,6 @@ import {
   FlatList,
   Modal,
   ImageBackground,
-  Image,
   Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +18,6 @@ import SIZES from '../../../constants/theme';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Responsive } from '../../../utils/layouts/Layout';
 import RecommendedScreenFlatlist from '../../../components/flatlistsItems/RecommendedScreenFlatlist';
-import CREDITCARDDATA from '../../../assets/dummyData/creditCards';
 import CompareModalItemFlatlist from '../../../components/flatlistsItems/CompareModalItemFlatlist';
 import compareModalData from '../../../assets/dummyData/compareModalData';
 import BackButtonWhite from '../../../assets/svgs/backButtonWhite.svg';
@@ -30,6 +28,8 @@ import Visa from '../../../assets/svgs/visasvg.svg';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import _ from "lodash";
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const screenWidth = Dimensions.get('window').width;
@@ -47,9 +47,7 @@ export default function RecommendedScreen(props) {
   ]);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
-  const renderItem = ({ item }) => (
-    <RecommendedScreenFlatlist cards={item} />
-  );
+
 
   const [checkboxState, setCheckboxState] = useState(false);
 
@@ -66,23 +64,24 @@ export default function RecommendedScreen(props) {
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
   const recommendedCard = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
 
-  if (loading)
-  {return  Array.from({length: 3}).map((_, index) => (
-    <View key={index} style={{marginBottom: 12}}>
-      <SkeletonPlaceholder>
-        <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
-          <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
-          <SkeletonPlaceholder.Item
-            flex={1}
-            justifyContent={'space-between'}
-            marginLeft={12} />
-        </SkeletonPlaceholder.Item>
-      </SkeletonPlaceholder>
-    </View>
-  ));}
+  if (loading) {
+    return Array.from({ length: 3 }).map((_, index) => (
+      <View key={index} style={{ marginBottom: 12 }}>
+        <SkeletonPlaceholder>
+          <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
+            <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
+            <SkeletonPlaceholder.Item
+              flex={1}
+              justifyContent={'space-between'}
+              marginLeft={12} />
+          </SkeletonPlaceholder.Item>
+        </SkeletonPlaceholder>
+      </View>
+    ));
+  }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.body}>
         <View style={styles.buttonsContainer}>
           <View>
@@ -102,15 +101,15 @@ export default function RecommendedScreen(props) {
               dropDownContainerStyle={styles.dropDownContainerStyle}
               closeAfterSelecting={true}
               listItemLabelStyle={{
-                fontFamily:Platform.select({
-                  ios:'Exo2-Medium',
-                  android:'Exo2Medium',
+                fontFamily: Platform.select({
+                  ios: 'Exo2-Medium',
+                  android: 'Exo2Medium',
                 }),
               }}
               selectedItemLabelStyle={{
-                fontFamily:Platform.select({
-                  ios:'Exo2-Bold',
-                  android:'Exo2Bold',
+                fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold',
                 }),
               }}
             />
@@ -124,11 +123,11 @@ export default function RecommendedScreen(props) {
           </View>
         </View>
         <View>
-          <FlatList
-            data={recommendedCard}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
+          {_.map(recommendedCard, (value, index) => {
+            return (
+              <RecommendedScreenFlatlist cards={value} key={index.toString()} />
+            );
+          })}
         </View>
         {/* COMPARE MODAL  */}
         {showCompareModal && (
@@ -202,7 +201,7 @@ export default function RecommendedScreen(props) {
           </Modal>
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -231,9 +230,9 @@ const styles = StyleSheet.create({
   placeholderText: {
     fontSize: SIZES.h3,
     color: '#4D2D8F',
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
   },
   dropDownContainerStyle: {
@@ -248,21 +247,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  compareText: { color: '#ffffff', fontSize: 14,
-  fontFamily:Platform.select({
-    ios:'Exo2-Bold',
-    android:'Exo2Bold',
-  }),
- },
+  compareText: {
+    color: '#ffffff', fontSize: 14,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
+  },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 24,
     backgroundColor: '#4d2d8f',
     height: Responsive.height(190),
-    paddingTop:Platform.select({
-      ios:40,
-      android:0,
+    paddingTop: Platform.select({
+      ios: 40,
+      android: 0,
     }),
   },
   headerButtonsContainer: {
@@ -277,12 +277,14 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
-  modalHeaderText: { fontSize: 24,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold',
+  modalHeaderText: {
+    fontSize: 24,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
-     color: '#ffffff' },
+    color: '#ffffff'
+  },
   leftIconContainer: {
     width: 44,
     height: 44,
@@ -311,11 +313,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   cardTypeText: {
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
-     fontSize: 8, paddingVertical: 4, color: '#ffffff' },
+    fontSize: 8, paddingVertical: 4, color: '#ffffff'
+  },
   cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   flatlistBackgroundColor: { backgroundColor: '#fff' },
 });
