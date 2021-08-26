@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, Platform } from 'react-native';
 import { SIZES } from '../../constants';
 
 const Offers = ({ title, subtitle, image }) => (
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily:Platform.select({
       ios:'Exo2-Bold',
-      android:'Exo2Bold'
+      android:'Exo2Bold',
     }),
     color: '#172B4D',
     lineHeight: 20,

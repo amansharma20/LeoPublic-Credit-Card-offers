@@ -29,7 +29,7 @@ import Stars from '../../../assets/svgs/stars.svg';
 import Visa from '../../../assets/svgs/visasvg.svg';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
-import SkeletonPlaceholder from "react-native-skeleton-placeholder";
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
 const screenWidth = Dimensions.get('window').width;
@@ -66,8 +66,8 @@ export default function RecommendedScreen(props) {
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
   const recommendedCard = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
 
-  if (loading) 
-  return  Array.from({length: 3}).map((_, index) => (
+  if (loading)
+  {return  Array.from({length: 3}).map((_, index) => (
     <View key={index} style={{marginBottom: 12}}>
       <SkeletonPlaceholder>
         <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
@@ -75,13 +75,11 @@ export default function RecommendedScreen(props) {
           <SkeletonPlaceholder.Item
             flex={1}
             justifyContent={'space-between'}
-            marginLeft={12}>
-            
-          </SkeletonPlaceholder.Item>
+            marginLeft={12} />
         </SkeletonPlaceholder.Item>
       </SkeletonPlaceholder>
     </View>
-  ));
+  ));}
 
   return (
     <View style={styles.container}>
@@ -106,13 +104,13 @@ export default function RecommendedScreen(props) {
               listItemLabelStyle={{
                 fontFamily:Platform.select({
                   ios:'Exo2-Medium',
-                  android:'Exo2Medium'
+                  android:'Exo2Medium',
                 }),
               }}
               selectedItemLabelStyle={{
                 fontFamily:Platform.select({
                   ios:'Exo2-Bold',
-                  android:'Exo2Bold'
+                  android:'Exo2Bold',
                 }),
               }}
             />
@@ -235,7 +233,7 @@ const styles = StyleSheet.create({
     color: '#4D2D8F',
     fontFamily:Platform.select({
       ios:'Exo2-Bold',
-      android:'Exo2Bold'
+      android:'Exo2Bold',
     }),
   },
   dropDownContainerStyle: {
@@ -250,10 +248,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  compareText: { color: '#ffffff', fontSize: 14, 
+  compareText: { color: '#ffffff', fontSize: 14,
   fontFamily:Platform.select({
     ios:'Exo2-Bold',
-    android:'Exo2Bold'
+    android:'Exo2Bold',
   }),
  },
   headerContainer: {
@@ -264,8 +262,8 @@ const styles = StyleSheet.create({
     height: Responsive.height(190),
     paddingTop:Platform.select({
       ios:40,
-      android:0
-    })
+      android:0,
+    }),
   },
   headerButtonsContainer: {
     flexDirection: 'row',
@@ -282,7 +280,7 @@ const styles = StyleSheet.create({
   modalHeaderText: { fontSize: 24,
     fontFamily:Platform.select({
       ios:'Exo2-Bold',
-      android:'Exo2Bold'
+      android:'Exo2Bold',
     }),
      color: '#ffffff' },
   leftIconContainer: {
@@ -312,10 +310,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: 12,
   },
-  cardTypeText: { 
+  cardTypeText: {
     fontFamily:Platform.select({
       ios:'Exo2-Bold',
-      android:'Exo2Bold'
+      android:'Exo2Bold',
     }),
      fontSize: 8, paddingVertical: 4, color: '#ffffff' },
   cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },

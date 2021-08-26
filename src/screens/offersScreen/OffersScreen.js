@@ -11,6 +11,7 @@ import { Responsive } from '../../utils/layouts/Layout';
 // import { gql, useQuery } from '@apollo/client';
 import OffersSegmentNavigator from '../../navigation/OffersSegmentNavigator';
 import OffersScreenHeader from '../../components/headers/OffersScreenHeader';
+import OffersScreenTopNavigator from '../../navigation/OffersScreenTopNavigator';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
@@ -49,11 +50,12 @@ export default function OffersScreen(props) {
             <OffersScreenHeader />
           </View>
           {/* MAIN BODY  */}
-          <View style={styles.mainBody}>
+          {/* <View style={styles.mainBody}> */}
             <View>
-              <OffersSegmentNavigator />
+              {/* <OffersSegmentNavigator /> */}
+              <OffersScreenTopNavigator />
             </View>
-          </View>
+          {/* </View> */}
         </View>
       </ScrollView>
     </View>
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   mainBody: {
     backgroundColor: 'white',
     height: '100%',
-    marginTop: Responsive.height(0),
+    paddingTop: Responsive.height(20),
     borderTopLeftRadius: Responsive.width(32),
     borderTopRightRadius: Responsive.width(32),
   },
