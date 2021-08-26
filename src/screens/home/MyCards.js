@@ -7,9 +7,7 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
-  LogBox,
-  Text
-} from 'react-native';
+  LogBox} from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useQuery } from '@apollo/client';
@@ -64,13 +62,9 @@ export default function MyCards(props) {
     </View>
   ));
 
-
-
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index} />
   );
-
- 
 
   return (
     <View style={styles.container}>

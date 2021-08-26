@@ -7,7 +7,6 @@ import {
   ImageBackground,
   TouchableOpacity,
   Modal,
-  FlatList,
 } from 'react-native';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -16,8 +15,6 @@ import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CrossWithBackground from '../../assets/svgs/crossWithBackground.svg';
-import CompareModalItemFlatlist from './CompareModalItemFlatlist';
-import COMPAREMODALDATA from '../../assets/dummyData/compareModalData';
 import { applicationProperties } from '../../../application.properties';
 
 export default function RecommendedScreenFlatlist(props) {
@@ -31,7 +28,6 @@ export default function RecommendedScreenFlatlist(props) {
     if (cardClicked < 2) {
       setCardClicked(cardClicked + 1);
     } else {
-      console.log('show modal');
       setShowModal(true);
     }
   };

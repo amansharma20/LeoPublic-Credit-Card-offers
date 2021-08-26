@@ -5,30 +5,24 @@ import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
-  Keyboard,
-  TextInput,
   Image,
   TouchableOpacity,
   Text,
   Dimensions,
   SafeAreaView,
 } from 'react-native';
-import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { AuthActions } from '../../persistence/actions/AuthActions';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme/';
 import icons from '../../constants/icons';
-import RadioButtons from '../../components/RadioButtons';
 import { Formik, Field } from 'formik';
-import { COLORS } from '../../constants';
 import CustomInput from '../../components/CustomInput';
 import { Responsive } from '../../utils/layouts/Layout';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import CommonLoading from '../../components/CommonLoading';
 
-const screenHeight = Dimensions.get('window').height;
 
 export default function Signup() {
   const dispatch = useDispatch();
@@ -43,7 +37,6 @@ export default function Signup() {
     phoneNumber: yup
       .string()
       .matches(/(\d){10}\b/, 'Enter a valid phone number')
-      // .matches(/(01)(\d){8}\b/, 'Enter a valid phone number')
       .required('Phone number is required'),
     email: yup
       .string()
@@ -51,10 +44,6 @@ export default function Signup() {
       .required('Email is required'),
     password: yup
       .string()
-      // .matches(/\w*[a-z]\w*/,  'Password must have a small letter')
-      // .matches(/\w*[A-Z]\w*/,  'Password must have a capital letter')
-      // .matches(/\d/, 'Password must have a number')
-      // .matches(/[!@#$%^&*()\-_"=+{}; :,<.>]/, 'Password must have a special character')
       .min(8, ({ min }) => `Password must be at least ${min} characters`)
       .required('Password is required'),
     confirmPassword: yup
@@ -65,17 +54,17 @@ export default function Signup() {
 
 
   const onSubmit = data => {
+    CommonLoading.show();
     const signUpData = {
-      FirstName: data.fullName,
+      FirstName: data.Shanu,
       Email: data.email,
       MobileNumber: data.phoneNumber,
     };
-    console.log(signUpData);
-    console.log('signUpData');
+    
     dispatch(
       AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
     ).then(response => {
-      console.log(response);
+      CommonLoading.hide();
       navigation.navigate('OTPScreen', {
         phone: data.phoneNumber,
         screenName: 'Signup',
@@ -90,20 +79,19 @@ export default function Signup() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
-        <TouchableOpacity>
           <View style={styles.header}>
+          <TouchableOpacity onPress={()=> navigation.goBack()}>
             <Image source={icons.backButton} style={styles.backButtonSize} />
-          </View>
         </TouchableOpacity>
+
+          </View>
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Register with us</Text>
           <Text style={styles.subTitleText}>
             We’ll send you a code to verify your contact number
           </Text>
         </View>
-
         <View style={styles.inputs}>
-
           <Formik
             validationSchema={signUpValidationSchema}
             initialValues={{
@@ -115,12 +103,7 @@ export default function Signup() {
             }}
             onSubmit={values => onSubmit(values)}>
             {({
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              values,
               errors,
-              isValid,
               touched,
             }) => (
               <>
@@ -190,12 +173,15 @@ export default function Signup() {
             By creating an account, you agree to our{'\n'}Terms and Conditions
           </Text>
         </View>
-        <TouchableOpacity onPress={()=> console.log(onSubmit)}>
+        <TouchableOpacity onPress={onSubmit}>
         <View style={styles.buttonContainer}>
           {/* <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
             /> */}
           <Text
-            style={{ fontSize: 16, fontFamily: 'Exo2Bold', color: '#ffffff' }}>
+            style={{ fontSize: 16,  fontFamily:Platform.select({
+              ios:'Exo2-Bold',
+              android:'Exo2Bold'
+            }), color: '#ffffff' }}>
             Register Now
           </Text>
         </View>
@@ -223,6 +209,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
     flex: 1,
+    marginTop: Platform.select({
+      ios: Responsive.height(0),
+      android: Responsive.height(0),
+    }),
   },
   body: {
     padding: SIZES.padding,
@@ -260,7 +250,10 @@ const styles = StyleSheet.create({
   },
   termsText: {
     fontSize: SIZES.h4,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     color: '#979797',
     alignItems: 'center',
   },
@@ -270,7 +263,10 @@ const styles = StyleSheet.create({
     color: '#1C1B1B',
     paddingHorizontal: 16,
     fontSize: SIZES.h3,
-    fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    }),
     marginVertical: 16,
     width: '100%',
   },
@@ -293,7 +289,10 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: SIZES.h4,
-    // fontFamily: 'Exo2Medium',
+    fontFamily:Platform.select({
+      ios:'Exo2-Medium',
+      android:'Exo2Medium'
+    })
   },
   checkMarkIcon: {
     width: 20,
