@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
             android:'Exo2Medium'
           }),
     },
-    buttonContainer: { backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48), marginVertical: SIZES.padding },
+    buttonContainer: { backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48), marginVertical: SIZES.padding, marginBottom: 50 },
     buttonText: {
         color: '#ffffff', fontSize: 16,
         fontFamily:Platform.select({

@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
@@ -21,8 +22,8 @@ import FilterCardsModalSegments from './FilterCardsModalSegments';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import DiscoverScreenFlatlist from '../../../components/flatlistsItems/DiscoverScreenFlatlist';
-import SkeletonPlaceholder from "react-native-skeleton-placeholder";
-import _ from "lodash";
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const screenWidth = Dimensions.get('window').width;
@@ -37,7 +38,7 @@ export default function RecommendedScreen() {
   ]);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
-  
+
   const [showModal, setShowModal] = useState(false);
 
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 20, color: '#060417',
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   modalBackground: {
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     color: '#4D2D8F', fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   applyButtonContainer: {
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
     color: '#ffffff', fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   rightIconContainer: {
