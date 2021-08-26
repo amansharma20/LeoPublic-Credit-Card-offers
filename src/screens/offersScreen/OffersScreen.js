@@ -15,49 +15,27 @@ import OffersScreenTopNavigator from '../../navigation/OffersScreenTopNavigator'
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
+const { width: WIDTH } = Dimensions.get('window');
 
 export default function OffersScreen(props) {
-  //const { token } = props.route.params
-
-  //     const GET_BANKS = gql`
-  //     query{
-  //         BankQuery{
-  //             GetBanks{
-  //                 Name
-  //             }
-  //         }
-  //     }
-  // `
-  //     const { data } = useQuery(GET_BANKS)
-
-  //     const fetchQuery = () => {
-  //         console.log(data.BankQuery.GetBanks.map(bank=>{
-  //             console.log(bank.Name);
-  //         }));
-  //     };
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <StatusBar
-          hidden={false}
-          backgroundColor={'#4d2d8f'}
-          barStyle={'light-content'}
-        />
+      <StatusBar
+        hidden={false}
+        backgroundColor={'#4d2d8f'}
+        barStyle={'light-content'}
+      />
+      <View>
         <View>
-          {/* HEADER  */}
-          <View>
-            <OffersScreenHeader />
-          </View>
-          {/* MAIN BODY  */}
-          {/* <View style={styles.mainBody}> */}
-            <View>
-              {/* <OffersSegmentNavigator /> */}
-              <OffersScreenTopNavigator />
-            </View>
-          {/* </View> */}
+          <OffersScreenHeader />
         </View>
-      </ScrollView>
+        <View style={styles.mainBody}>
+          <View style={{ width: WIDTH, height: "100%" }}>
+            <OffersScreenTopNavigator />
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
@@ -67,18 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#4d2d8f',
   },
-  body: {
-    paddingHorizontal: Responsive.width(12),
-    paddingVertical: Responsive.height(8),
-  },
   mainBody: {
-    backgroundColor: 'white',
-    height: '100%',
-    paddingTop: Responsive.height(20),
-    borderTopLeftRadius: Responsive.width(32),
-    borderTopRightRadius: Responsive.width(32),
-  },
-  carouselContainer: {
-
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+    height: "100%"
   },
 });
