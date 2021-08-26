@@ -12,14 +12,9 @@ export default function BottomTabOffersScreenModal() {
   const renderModalItemOffersDetails = ({ item }) => (
     <OffersDetailsModalFlatlist title={item.title} subtitle={item.subtitle} />
   );
+
   return (
     <View style={styles.container}>
-      {/* <FlatList
-        data={MODALDATA}
-        renderItem={renderModalItemOffersDetails}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.modalContentContainerStyle}
-      /> */}
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Offer Title</Text>
       </View>
@@ -106,11 +101,13 @@ const styles = StyleSheet.create({
       ios: 'Exo2-Medium',
       android: 'Exo2Medium',
     }),
+    marginLeft:10,
   },
   subtitleText: {
     fontSize: SIZES.h4,
     color: '#172B4D',
     marginTop: 2,
+    marginLeft:10,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold',

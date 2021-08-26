@@ -16,7 +16,6 @@ import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../../../constants/theme';
 import StarIcon from '../../../assets/svgs/star.svg';
 import {Rating} from 'react-native-ratings';
-import REVIEWDATA from '../../../assets/dummyData/reviews';
 import Reviews from '../../../components/flatlistsItems/ReviewsFlatlistItem';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
@@ -36,11 +35,9 @@ export default function ReviewsScreen(props) {
     },
   });
   const ReviewList = data && data.BankCardReviewQuery && data.BankCardReviewQuery.GetBankCardReviewsByBankCardId;
-  
   {
     if ((ReviewList) === undefined) {return (
       <View style={styles.emptyStateContainer}>
-
       <Text style={styles.emptyStateText}>
         No reviews for this card yet
       </Text>

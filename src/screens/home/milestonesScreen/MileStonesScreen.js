@@ -9,7 +9,6 @@ import {applicationProperties} from '../../../../application.properties';
 
 export default function MileStonesScreen(props) {
   const cardData = props.cardData;
-  console.log(cardData);
   const navigation = useNavigation();
   return (
     <View style={styles.container}>

@@ -68,35 +68,6 @@ export default function RecommendedScreen() {
     ));
   }
 
-  const DropDown = () => {
-    return <DropDownPicker
-      open={openAllCategories}
-      value={allCategoriesValue}
-      items={allCategories}
-      setOpen={setOpenAllCategories}
-      setValue={setAllCategoriesValue}
-      setItems={setAllCategories}
-      placeholder="All"
-      style={styles.categoriesContainer}
-      placeholderStyle={styles.placeholderText}
-      listMode="FLATLIST"
-      dropDownContainerStyle={styles.dropDownContainerStyle}
-      closeAfterSelecting={true}
-      listItemLabelStyle={{
-        fontFamily: Platform.select({
-          ios: 'Exo2-Medium',
-          android: 'Exo2Medium',
-        }),
-      }}
-      selectedItemLabelStyle={{
-        fontFamily: Platform.select({
-          ios: 'Exo2-Bold',
-          android: 'Exo2Bold',
-        }),
-      }}
-    />
-  }
-
   const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
   const y = new Animated.Value(0);
   const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true })
@@ -109,7 +80,32 @@ export default function RecommendedScreen() {
       <View style={styles.body}>
         <View style={styles.buttonsContainer}>
           <View>
-            <DropDown />
+            <DropDownPicker
+              open={openAllCategories}
+              value={allCategoriesValue}
+              items={allCategories}
+              setOpen={setOpenAllCategories}
+              setValue={setAllCategoriesValue}
+              setItems={setAllCategories}
+              placeholder="All"
+              style={styles.categoriesContainer}
+              placeholderStyle={styles.placeholderText}
+              listMode="FLATLIST"
+              dropDownContainerStyle={styles.dropDownContainerStyle}
+              closeAfterSelecting={true}
+              listItemLabelStyle={{
+                fontFamily: Platform.select({
+                  ios: 'Exo2-Medium',
+                  android: 'Exo2Medium',
+                }),
+              }}
+              selectedItemLabelStyle={{
+                fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold',
+                }),
+              }}
+            />
           </View>
           <View>
             <TouchableOpacity onPress={() => setShowCompareModal(true)}>
@@ -119,10 +115,10 @@ export default function RecommendedScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{paddingBottom: Responsive.height(150)}}>
+        <View >
           {_.map(recommendedCard, (value, index) => {
             return (
-              <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} index ={index}/>
+              <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} index={index} />
             );
           })}
         </View>

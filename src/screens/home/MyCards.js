@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   StatusBar,
   View,
-  ScrollView,
   Dimensions,
   TouchableOpacity,
   LogBox
@@ -19,19 +18,18 @@ import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
-import { onScrollEvent, useValues } from 'react-native-redash/lib/module/v1';
+import { useValues } from 'react-native-redash/lib/module/v1';
 
 
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
-export default function MyCards(props) {
+export default function MyCards() {
   const [y] = useValues([0], []);
-  const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const { loading, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
-  const fadeAnim = useRef(new Animated.Value(0)).current
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [])
@@ -69,12 +67,9 @@ export default function MyCards(props) {
           backgroundColor={'#4d2d8f'}
           barStyle={'light-content'}
         />
-
         <View >
           <MyCardsScreenHeader />
         </View>
-
-
         {/* MAIN BODY  */}
         <View style={styles.mainBody}>
           <TouchableOpacity style={styles.creditCardContainer}>

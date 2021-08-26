@@ -6,8 +6,10 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
-  Modal, Animated, Dimensions,
+  Modal,
   Platform,
+  Dimensions,
+  Animated
 } from 'react-native';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -19,64 +21,68 @@ import CrossWithBackground from '../../assets/svgs/crossWithBackground.svg';
 import { applicationProperties } from '../../../application.properties';
 
 export default function RecommendedScreenFlatlist(props) {
+
   const card = props.cards;
   const y = props.y;
   const index = props.index;
 
-  const CARD_HEIGHT = 380 + 80 * 2;
+  const onCardClick = () => {
+    setCheckboxState(!checkboxState, cardClicked);
+  };
 
   const [checkboxState, setCheckboxState] = useState(false);
   const [cardClicked] = useState(0);
 
-  const { height: wheight } = Dimensions.get('window');
-
-  console.log(wheight)
-
-  const height = wheight - 120;
-
-  const onCardClick = () => {
-    setCheckboxState(!checkboxState, cardClicked);
-  };
   const [showModal, setShowModal] = useState(false);
 
-  const position = Animated.subtract(index * CARD_HEIGHT, y);
+  const CARD_HEIGHT = 290 + 24 * 2;
 
-  const isDisappering = -CARD_HEIGHT;
+  const onLayout = () => {
+    //const {x, y, height, width} = event.nativeEvent.layout;
+  }
+
+  const { height: wheight } = Dimensions.get('window');
+  const height = wheight - 120;
+
+
+  const position = Animated.subtract(index * CARD_HEIGHT , y);
+
+  const isDisappering = - CARD_HEIGHT;
 
   const isTop = 0;
 
-  const isBottom = height - CARD_HEIGHT;
+  const isBottom = height - CARD_HEIGHT - 200;
 
-  const isAppering = CARD_HEIGHT;
+  const isAppering = CARD_HEIGHT - 20;
 
   const translateY = Animated.add(Animated.add(y, y.interpolate({
-    inputRange: [0, 0.00001 + index * 1200],
-    outputRange: [0, -index * CARD_HEIGHT],
+    inputRange: [0, 0.00001 + index * CARD_HEIGHT],
+    outputRange: [0, - index * CARD_HEIGHT],
     extrapolateRight: 'clamp',
   })), position.interpolate({
     inputRange: [isBottom, isAppering],
-    outputRange: [0, - CARD_HEIGHT / 4],
+    outputRange: [0, - CARD_HEIGHT / 30 ],
     extrapolate: 'clamp',
-
-  }))
+  }));
 
   const scale = position.interpolate({
     inputRange: [isDisappering, isTop, isBottom, isAppering],
-    outputRange: [0.5, 1, 1, 0.5],
+    outputRange: [0.8, 1, 1, 1],
     extrapolate: 'clamp',
   });
 
   const opacity = position.interpolate({
     inputRange: [isDisappering, isTop, isBottom, isAppering],
-    outputRange: [0.5, 1, 1, 0.5],
-  })
+    outputRange: [0.0, 1, 1, 1],
+  });
+
 
   return (
     <TouchableOpacity
       activeOpacity={0.85}
       onPress={onCardClick} >
       <Animated.View style={[styles.container, { opacity, transform: [{ translateY }, { scale }] }]}>
-        <View style={styles.cardContainerBody}>
+        <View style={styles.cardContainerBody} onLayout={onLayout}>
           <ImageBackground
             style={styles.creditCardContainer}
             source={{ uri: applicationProperties.imageUrl + card.ImageStoragePath }}
@@ -156,12 +162,10 @@ const styles = StyleSheet.create({
   },
   cardContainerBodyPadding: { paddingHorizontal: 12, paddingVertical: 9 },
   creditCardContainer: {
-    // marginTop: 12,
     width: Responsive.width(300),
     height: Responsive.height(172),
     borderRadius: 12,
     elevation: 3,
-    // marginVertical: SIZES.padding,
     paddingVertical: SIZES.padding2,
     paddingHorizontal: SIZES.padding2,
   },
@@ -175,7 +179,7 @@ const styles = StyleSheet.create({
   },
   feeContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   creditCardImage: {
-    // paddingLeft: Responsive.width(24),
+
   },
   backgroundImageStyle: {
     resizeMode: 'cover',

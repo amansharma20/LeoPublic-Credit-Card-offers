@@ -13,21 +13,10 @@ import Rectangle from '../assets/svgs/Rectangle.svg';
 export default function ExploreSegmentNavigator() {
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log('selectedIndex');
-  console.log(selectedIndex);
-  console.log('selectedIndex');
+  
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
-    console.log(index);
-    switch (index) {
-      case 0:
-        return console.log('explore');
-      case 1:
-        return console.log('explore2');
-      // break;
-      default:
-        break;
-    }
+    
   };
 
   return (

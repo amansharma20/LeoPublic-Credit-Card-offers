@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#4d2d8f',
+        
     },
     body: {
         padding: SIZES.padding,
@@ -98,6 +99,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         flex: 1,
         justifyContent: 'space-between',
+        
+        
     },
     titleContainer: {
 

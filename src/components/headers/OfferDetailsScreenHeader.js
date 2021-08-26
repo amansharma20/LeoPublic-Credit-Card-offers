@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: SIZES.padding2,
     alignItems: 'center',
+    marginTop: Platform.select({
+      ios: 30,
+      android: 0,
+    }),
   },
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},

@@ -20,20 +20,7 @@ export default function FilterCardsModalSegments() {
 
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
-    console.log(index);
-    switch (index) {
-      case 0:
-        return console.log('offers');
-      case 1:
-        return console.log('offers2');
-      case 2:
-        return console.log('offers3');
-      case 3:
-        return console.log('offers4');
-      // break;
-      default:
-        break;
-    }
+    
   };
 
   return (

@@ -189,6 +189,10 @@ const styles = StyleSheet.create({
     // flex: 1,
     backgroundColor: '#ffffff',
     height: '100%',
+    paddingTop:Platform.select({
+      ios: 30,
+      android: 0
+    })
   },
   body: {
     padding: SIZES.padding,
@@ -250,6 +254,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     fontSize: SIZES.h3,
     color: '#2A2525',
+    height:50
   },
   bankNamePickerContainer: {
     backgroundColor: '#f4f5f7',

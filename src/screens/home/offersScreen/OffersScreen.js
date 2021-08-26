@@ -1,23 +1,16 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {View, StyleSheet, Text, Platform} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../../constants/theme';
+import { View, StyleSheet, Platform } from 'react-native';
+import { SIZES } from '../../../constants/theme';
 import { FlatList } from 'react-native-gesture-handler';
 import DATA from '../../../assets/dummyData/offers';
 import Offers from '../../../components/flatlistsItems/OffersScreenFlatlist';
 import { Responsive } from '../../../utils/layouts/Layout';
-import { useQuery } from '@apollo/client';
-import { GQLQuery } from '../../../persistence/query/Query';
-import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 
 
-export default function OffersScreen(props) {
-  const navigation = useNavigation();
+export default function OffersScreen() {
 
-  const { loading, error, data } = useQuery(GQLQuery.GET_BEST_OFFERS);
-  const latestOffer = data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOffers;
   const renderItem = ({ item }) => (
     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
   );
@@ -42,8 +35,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    marginTop:Platform.select({
-      ios:20,
+    marginTop: Platform.select({
+      ios: 20,
       android: 20,
     }),
   },

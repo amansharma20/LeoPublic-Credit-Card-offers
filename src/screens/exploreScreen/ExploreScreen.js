@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { View, StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native';
+import React,{useEffect} from 'react';
+import { View, StyleSheet, ScrollView, StatusBar, Dimensions,LogBox} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ExploreScreenHeader from '../../components/headers/ExploreScreenHeader';
 import ExploreTopNavigator from '../../navigation/ExploreTopNavigator';
@@ -10,6 +10,11 @@ const { width: WIDTH } = Dimensions.get('window');
 
 export default function ExploreScreen() {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
+  }, [])
+
   return (
       <View style={styles.container}>
         <StatusBar

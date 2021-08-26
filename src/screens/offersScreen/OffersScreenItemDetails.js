@@ -23,7 +23,7 @@ export default function OffersScreenItemDetails() {
                 <View style={styles.headerContainer}>
                     <View>
                         <Text style={styles.titleText}>Issuer Name</Text>
-                        <Text style={styles.modalSubTitleText}>Axis Bank</Text>
+                        <Text style={styles.subTitleText}>Axis Bank</Text>
 
                         <Text style={styles.titleText}>Card Name</Text>
                         <Text style={styles.subTitleText}>Regalia First</Text>
@@ -41,7 +41,7 @@ export default function OffersScreenItemDetails() {
             </View>
             </View>
 
-            <ScrollView style={{paddingVertical: 12}}>
+            <ScrollView>
                 <OffersScreenItemDetailsNavigator />
             </ScrollView>
         </View>
@@ -51,7 +51,7 @@ export default function OffersScreenItemDetails() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#4d2d8f',
     },
     body: {
         padding: SIZES.padding,
