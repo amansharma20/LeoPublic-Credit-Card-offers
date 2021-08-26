@@ -37,9 +37,7 @@ const screenHeight = Dimensions.get('window').height;
 
 export default function RecommendedScreen(props) {
   const navigation = useNavigation();
-  //   const renderItem = ({ item }) => (
-  //     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
-  //   );
+
   const [openAllCategories, setOpenAllCategories] = useState(false);
   const [allCategories, setAllCategories] = useState([
     { label: 'Lifestyle', value: 'Lifestyle' },

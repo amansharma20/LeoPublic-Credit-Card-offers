@@ -18,4 +18,36 @@ export default [
     subtitle: 'Valid till 01 May - 20 May',
     image: 'https://s.productreview.com.au/products/images/zara-logo_4dae1ee5367e3.png',
   },
+  {
+    id: '3',
+    title: 'Get flat 20% off on all kids wear',
+    subtitle: 'Valid till 01 May - 20 May',
+    image: 'https://s.productreview.com.au/products/images/zara-logo_4dae1ee5367e3.png',
+  },
+  {
+    id: '4',
+    title: 'Get flat 20% off on all kids wear',
+    subtitle: 'Valid till 01 May - 20 May',
+    image: 'https://s.productreview.com.au/products/images/zara-logo_4dae1ee5367e3.png',
+  },
+  {
+    id: '5',
+    title: 'Get flat 20% off on all kids wear',
+    subtitle: 'Valid till 01 May - 20 May',
+    image: 'https://cdn.freelogovectors.net/wp-content/uploads/2020/03/dunkin-donuts-logo.png',
+
+  },
+  {
+    id: '6',
+    title: 'Get flat 20% off on all kids wear',
+    subtitle: 'Valid till 01 May - 20 May',
+    image: 'https://s.productreview.com.au/products/images/zara-logo_4dae1ee5367e3.png',
+  },
+  {
+    id: '7',
+    title: 'Get flat 20% off on all kids wear',
+    subtitle: 'Valid till 01 May - 20 May',
+    image: 'https://cdn.freelogovectors.net/wp-content/uploads/2020/03/dunkin-donuts-logo.png',
+
+  },
 ];

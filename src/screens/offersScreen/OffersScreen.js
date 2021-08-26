@@ -4,12 +4,8 @@ import {
   StyleSheet,
   StatusBar,
   View,
-  ScrollView,
   Dimensions,
 } from 'react-native';
-import { Responsive } from '../../utils/layouts/Layout';
-// import { gql, useQuery } from '@apollo/client';
-import OffersSegmentNavigator from '../../navigation/OffersSegmentNavigator';
 import OffersScreenHeader from '../../components/headers/OffersScreenHeader';
 import OffersScreenTopNavigator from '../../navigation/OffersScreenTopNavigator';
 

@@ -7,10 +7,11 @@ import { SIZES } from '../../constants';
 import MenuIcon from '../../assets/svgs/menuIcon.svg';
 import AddIcon from '../../assets/svgs/addIcon.svg';
 
-const MyCardsScreenHeader = () => {
+export default function MyCardsScreenHeader (props) {
+  
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.leftIconContainer}>
       <MenuIcon />
       </TouchableOpacity>
@@ -25,7 +26,6 @@ const MyCardsScreenHeader = () => {
   );
 };
 
-export default MyCardsScreenHeader;
 
 const styles = StyleSheet.create({
   container: {
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
       ios: 30,
       android: 0,
     }),
-  },
+  }
+  ,
   iconSizeLeft: {width: 34, height: 34},
   iconSizeRight: {width: 28, height: 28},
   headerText: {fontSize: 24, 

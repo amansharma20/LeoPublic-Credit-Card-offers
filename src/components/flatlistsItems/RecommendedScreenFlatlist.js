@@ -16,6 +16,7 @@ import Code from '../../assets/svgs/code.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CrossWithBackground from '../../assets/svgs/crossWithBackground.svg';
 import { applicationProperties } from '../../../application.properties';
+import Animated from 'react-native-reanimated';
 
 export default function RecommendedScreenFlatlist(props) {
   const card = props.cards;
@@ -38,7 +39,7 @@ export default function RecommendedScreenFlatlist(props) {
       activeOpacity={0.85}
       onPress={onCardClick}
     >
-      <View style={styles.container}>
+      <Animated.View style={styles.container}>
         <View style={styles.cardContainerBody}>
           <ImageBackground
             style={styles.creditCardContainer}
@@ -105,7 +106,7 @@ export default function RecommendedScreenFlatlist(props) {
             </View>
           </Modal>
         )}
-      </View>
+      </Animated.View>
     </TouchableOpacity>
   );
 }
