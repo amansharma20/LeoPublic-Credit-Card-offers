@@ -23,6 +23,7 @@ import FilterCardsModalSegments from './FilterCardsModalSegments';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import DiscoverScreenFlatlist from '../../../components/flatlistsItems/DiscoverScreenFlatlist';
+import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -47,6 +48,23 @@ export default function RecommendedScreen() {
 
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
   const discoverCard = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
+
+  if (loading) 
+  return  Array.from({length: 3}).map((_, index) => (
+    <View key={index} style={{marginBottom: 12}}>
+      <SkeletonPlaceholder>
+        <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
+          <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
+          <SkeletonPlaceholder.Item
+            flex={1}
+            justifyContent={'space-between'}
+            marginLeft={12}>
+            
+          </SkeletonPlaceholder.Item>
+        </SkeletonPlaceholder.Item>
+      </SkeletonPlaceholder>
+    </View>
+  ));
 
   return (
     <View style={styles.container}>

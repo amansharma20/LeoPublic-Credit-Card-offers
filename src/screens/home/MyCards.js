@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
   LogBox,
+  Text
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -17,11 +18,13 @@ import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCard
 import Carousel from 'react-native-snap-carousel';
 import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
+import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards(props) {
+
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
@@ -30,9 +33,44 @@ export default function MyCards(props) {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [])
 
+  if (loading) 
+  return  Array.from({length: 3}).map((_, index) => (
+    <View key={index} style={{marginBottom: 12}}>
+      <SkeletonPlaceholder>
+        <SkeletonPlaceholder.Item flexDirection="row">
+          <SkeletonPlaceholder.Item width={300} height={300} borderRadius={4} />
+          <SkeletonPlaceholder.Item
+            flex={1}
+            justifyContent={'space-between'}
+            marginLeft={12}>
+            <SkeletonPlaceholder.Item
+              width="50%"
+              height={20}
+              borderRadius={4}
+            />
+            <SkeletonPlaceholder.Item
+              width="30%"
+              height={20}
+              borderRadius={4}
+            />
+            <SkeletonPlaceholder.Item
+              width="80%"
+              height={20}
+              borderRadius={4}
+            />
+          </SkeletonPlaceholder.Item>
+        </SkeletonPlaceholder.Item>
+      </SkeletonPlaceholder>
+    </View>
+  ));
+
+
+
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index} />
   );
+
+ 
 
   return (
     <View style={styles.container}>
@@ -65,7 +103,6 @@ export default function MyCards(props) {
                 useScrollView={true}
                 inactiveSlideScale={0.9}
                 inactiveSlideOpacity={0.95}
-
               />
             </TouchableOpacity>
             <View>

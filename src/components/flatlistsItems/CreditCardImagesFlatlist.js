@@ -50,8 +50,7 @@ export default function CreditCardImagesFlatlist(props) {
       </ImageBackground>
       {showModal && (
         <Modal
-          animationType="fade"
-          statusBarTranslucent={true}
+          animationType='slide'
           transparent={true}
           showModal={showModal}
           onRequestClose={() => setShowModal(false)}>
@@ -122,9 +121,9 @@ const styles = StyleSheet.create({
   cardTypeText: {
     fontSize: 12,
     color: '#ffffff',
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
     width: 120,
   },
@@ -138,9 +137,9 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
   },
   modalBackground: {
@@ -160,9 +159,9 @@ const styles = StyleSheet.create({
   },
   modalSubText: {
     color: '#797E96',
-    fontFamily:Platform.select({
-      ios:'Exo2-SemiBold',
-      android:'Exo2SemiBold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-SemiBold',
+      android: 'Exo2SemiBold'
     }),
   },
   noModalButton: {
@@ -184,16 +183,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  noModalButtonText: { color: '#ffffff', 
-  fontFamily:Platform.select({
-    ios:'Exo2-Bold',
-    android:'Exo2Bold'
-  }),
- },
-  yesModalButtonText: { color: '#ED4C5C', 
-  fontFamily:Platform.select({
-    ios:'Exo2-Bold',
-    android:'Exo2Bold'
-  }),
-},
+  noModalButtonText: {
+    color: '#ffffff',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
+  },
+  yesModalButtonText: {
+    color: '#ED4C5C',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
+  },
 });
