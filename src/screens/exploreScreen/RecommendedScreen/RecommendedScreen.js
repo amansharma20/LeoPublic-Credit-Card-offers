@@ -12,6 +12,7 @@ import {
   Modal,
   ImageBackground,
   Image,
+  Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SIZES from '../../../constants/theme';
@@ -242,6 +243,10 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: '#4d2d8f',
     height: Responsive.height(190),
+    paddingTop:Platform.select({
+      ios:40,
+      android:0
+    })
   },
   headerButtonsContainer: {
     flexDirection: 'row',

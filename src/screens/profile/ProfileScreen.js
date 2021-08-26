@@ -81,7 +81,7 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#4d2d8f',
   },
   body: {
     //padding: SIZES.padding,
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     borderBottomWidth: 1,
     borderColor: '#e4e7f0',
+    backgroundColor: '#ffffff',
   },
   topContainerBackgroundColor: {
     backgroundColor: '#effafa',
@@ -160,6 +161,7 @@ const styles = StyleSheet.create({
     padding: SIZES.padding,
     borderBottomWidth: 1,
     borderColor: '#e4e7f0',
+    backgroundColor: '#ffffff',
   },
   addContainerTextContainer: {
     padding: SIZES.padding,

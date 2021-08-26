@@ -47,8 +47,6 @@ export default function RecommendedScreen() {
 
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
   const discoverCard = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
-  console.log(discoverCard);
-  console.log('data000');
 
   return (
     <View style={styles.container}>
@@ -61,26 +59,6 @@ export default function RecommendedScreen() {
             borderRadius={4}
             alignItems={'center'}
             leftIcon={<SearchIcon />}
-          // onFocus={() => {
-          //   setRecentSearchFlag(false);
-          // }}
-          // onBlur={async () => {
-          //   if (keyword.length == 0) {
-          //     setRecentSearchFlag(true);
-          //   }
-          //   await onSearch(keyword);
-          // }}
-          // onRightIconClick={async () => {
-          //   setKeyword('');
-          //   await onSearch('');
-          //   setRecentSearchFlag(true);
-          // }}
-          // onChangeText={async value => {
-          //   setKeyword(value);
-          //   await CommonLoading.show()
-          //   await onSearch(value);
-          // }}
-          // value={keyword}
           />
           <TouchableOpacity
             onPress={() => setShowModal(true)}

@@ -13,7 +13,6 @@ import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useQuery } from '@apollo/client';
 import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';
-import CREDITCARDDATA from '../../assets/dummyData/creditCards';
 import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
 import Carousel from 'react-native-snap-carousel';
 import { scrollInterpolator, animatedStyles } from '../../utils/animations';
@@ -23,19 +22,16 @@ const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards(props) {
-
-
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
-  
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
   useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested','Warning: Each', 'Warning: Failed'])
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [])
 
   const renderCustomerUserCards = (card) => (
-    <CreditCardImagesFlatlist card={card} key={card.index}/>
+    <CreditCardImagesFlatlist card={card} key={card.index} />
   );
 
   return (
@@ -63,7 +59,7 @@ export default function MyCards(props) {
                 containerCustomStyle={styles.carouselContainer}
                 inactiveSlideShift={0}
                 currentIndex={(c) => { console.log(c); }}
-                onSnapToItem={(index) => console.log(index+1)}
+                onSnapToItem={(index) => console.log(index + 1)}
                 scrollInterpolator={scrollInterpolator}
                 slideInterpolatedStyle={animatedStyles}
                 useScrollView={true}
@@ -73,7 +69,7 @@ export default function MyCards(props) {
               />
             </TouchableOpacity>
             <View>
-              <HomeSegmentNavigator selectedCard= {BankCards && BankCards[selectedCardIndex]} />
+              <HomeSegmentNavigator selectedCard={BankCards && BankCards[selectedCardIndex]} />
             </View>
           </View>
         </View>
@@ -92,7 +88,7 @@ const styles = StyleSheet.create({
     paddingVertical: Responsive.height(8),
   },
   creditCardContainer: {
-    marginTop: Responsive.height(-165),
+    marginTop: Responsive.height(-130),
   },
   mainBody: {
     backgroundColor: 'white',

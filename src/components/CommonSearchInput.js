@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, View, TextInput, TouchableOpacity,Image} from 'react-native';
+import {StyleSheet, View, TextInput, TouchableOpacity,Image, Platform} from 'react-native';
 import React, {useRef} from 'react';
 import {Responsive} from '../utils/layouts/Layout';
 import { icons, SIZES } from '../constants/';
@@ -69,12 +69,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: Responsive.width(4),
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    shadowOffset: {
-      height: 3,
-      width: 3,
-    },
     backgroundColor: '#f1f1f1',
     paddingHorizontal: 8,
   },

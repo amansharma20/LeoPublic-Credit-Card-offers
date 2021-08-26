@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
     paddingLeft: Responsive.width(20),
   },
   creditCardContainer: {
-    marginTop: 50,
     width: Responsive.width(285),
     height: Responsive.height(190),
     borderRadius: 12,
