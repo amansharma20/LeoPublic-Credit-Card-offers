@@ -214,5 +214,25 @@ export const GQLQuery = {
     SelfEligibilityAgeMin
      }
      }
-    }`
+    }`,
+    GET_BEST_OFFERS: gql`
+    query MyQuery {
+      BankCardOfferQuery {
+        GetBankCardOffers {
+          BankCardId
+          Eligibility
+          ExpiryDate
+          HowToRedeem
+          Id
+          LinkToOfferDetails
+          LogoStoragePath
+          OfferCode
+          OfferDescription
+          OfferTitle
+          Platform
+          TermsAndConditions
+        }
+      }
+    }
+  `,
 };
