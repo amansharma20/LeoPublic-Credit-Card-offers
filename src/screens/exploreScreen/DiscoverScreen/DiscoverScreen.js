@@ -43,22 +43,17 @@ export default function RecommendedScreen() {
   const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
   const discoverCard = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
 
-  if (loading)
+  if (loading) {
     return Array.from({ length: 3 }).map((_, index) => (
-      <View key={index} style={{ marginBottom: 12 }}>
+      <View key={index} style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
-          <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
-            <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
-            <SkeletonPlaceholder.Item
-              flex={1}
-              justifyContent={'space-between'}
-              marginLeft={12}>
-
-            </SkeletonPlaceholder.Item>
-          </SkeletonPlaceholder.Item>
+          <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
+          <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
+          <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
         </SkeletonPlaceholder>
       </View>
     ));
+  }
 
   return (
     <ScrollView style={styles.container}>

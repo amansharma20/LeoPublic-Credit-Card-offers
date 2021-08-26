@@ -46,7 +46,11 @@ export default function RecommendedScreen(props) {
     { label: 'Fashion', value: 'Fashion' },
   ]);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
+
+
+
   const [checkboxState, setCheckboxState] = useState(false);
+
   const [showCompareModal, setShowCompareModal] = useState(false);
 
   const renderCompareModalItem = ({ item }) => (
@@ -64,11 +68,6 @@ export default function RecommendedScreen(props) {
     return Array.from({ length: 3 }).map((_, index) => (
       <View key={index} style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
-            <View style={{ width: 80, height: 20 }} />
-            <View style={{ width: 80, height: 20, marginLeft: 150 }} />
-
-
-
           <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
           <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
           <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
@@ -89,6 +88,8 @@ export default function RecommendedScreen(props) {
               setOpen={setOpenAllCategories}
               setValue={setAllCategoriesValue}
               setItems={setAllCategories}
+              // zIndex={10000}
+              // zIndexInverse={1000}
               placeholder="All"
               style={styles.categoriesContainer}
               placeholderStyle={styles.placeholderText}

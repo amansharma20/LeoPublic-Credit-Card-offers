@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Modal, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Modal, Image, ScrollView, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
 import ShoppingIcon from '../../../assets/svgs/shoppingIcon.svg';
@@ -26,7 +26,7 @@ export default function MonthlySpend() {
                 <CommonHeader children="Monthly Spend Pattern" />
             </View>
             <View style={styles.body}>
-                <View style={styles.topContainer}>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.topContainer}>
                     <AnimatedCircularProgress
                         style={styles.animatedCircleSize}
                         size={200}
@@ -39,8 +39,8 @@ export default function MonthlySpend() {
                     <Text style={styles.headerTextCircle}>
                         Monthly{'\n'}Expenses{'\n'}20,000
                     </Text>
-                </View>
-                <View style={styles.itemContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <ShoppingIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -50,8 +50,8 @@ export default function MonthlySpend() {
                     <Text style={{ fontSize: 18 }}>
                         ₹1000
                     </Text>
-                </View>
-                <View style={styles.itemContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <TravelIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -61,8 +61,8 @@ export default function MonthlySpend() {
                     <Text style={{ fontSize: 18 }}>
                         ₹1000
                     </Text>
-                </View>
-                <View style={styles.itemContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <GroceriesIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -72,8 +72,8 @@ export default function MonthlySpend() {
                     <Text style={{ fontSize: 18 }}>
                         ₹1000
                     </Text>
-                </View>
-                <View style={styles.itemContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <EntertainmentIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -83,8 +83,8 @@ export default function MonthlySpend() {
                     <Text style={{ fontSize: 18 }}>
                         ₹1000
                     </Text>
-                </View>
-                <View style={styles.itemContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <OthersIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -94,8 +94,8 @@ export default function MonthlySpend() {
                     <Text style={{ fontSize: 18 }}>
                         ₹1000
                     </Text>
-                </View>
-                <View style={styles.itemContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <TotalSpendIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -105,8 +105,8 @@ export default function MonthlySpend() {
                     <Text style={{ fontSize: 18 }}>
                         ₹1000
                     </Text>
-                </View>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.buttonContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonContainer}> 
                     <Text style={styles.buttonText}>
                         Submit
                     </Text>
@@ -124,7 +124,7 @@ export default function MonthlySpend() {
                         <View style={styles.modalContainer}>
                             <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                                 <Text style={styles.modalHeader}>Your Monthly Spend</Text>
-                                <TouchableOpacity style={{backgroundColor: 'red', width: 24, height: 24, alignItems: 'center', justifyContent: 'center'}} onPress={() => setShowModal(false)}>
+                                <TouchableOpacity style={{width: 24, height: 24, alignItems: 'center', justifyContent: 'center'}} onPress={() => setShowModal(false)}>
                                 <Image source={icons.crossIcon} style={{ width: 14, height: 14 }} />
                                 </TouchableOpacity>
                             </View>
@@ -136,7 +136,10 @@ export default function MonthlySpend() {
                                     multiline={true}
                                     keyboardType={'numeric'}
                                 />
-                                    <Image source={icons.forwardButton} style={{width: 48, height: 48, marginLeft: 16}} />
+                                <TouchableOpacity onPress={() => setShowModal(false)} >
+                                <Image source={icons.forwardButton} style={{width: 48, height: 48, marginLeft: 16}} />
+                                </TouchableOpacity>
+
 
                                 {/* <View style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', width: 48, hei4: 48}}>
                                     <Text style={{color: '#ffffff'}}>

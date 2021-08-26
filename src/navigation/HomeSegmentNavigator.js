@@ -63,9 +63,10 @@ const styles = StyleSheet.create({
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',
-    borderBottomWidth: 5,
-    borderColor: '#F7D071',
-    marginRight: 36,
+    borderBottomWidth: 2,
+    // borderColor: '#F7D071',
+    borderColor: '#247DFB',
+    marginRight: 36, 
     borderRadius: 5,
   },
   tabTextStyle: {

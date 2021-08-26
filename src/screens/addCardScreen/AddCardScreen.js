@@ -11,6 +11,7 @@ import {
   Modal,
   Dimensions,
   ImageBackground,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES, icons, images} from '../../constants';
@@ -57,7 +58,7 @@ export default function AddCardScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <View style={styles.header}>
             <Image source={icons.backButton} style={styles.backButtonSize} />
           </View>
@@ -202,8 +203,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontWeight: 'bold',
-  },
+    fontFamily:Platform.select({
+      ios:'Exo2-Bold',
+      android:'Exo2Bold'
+    }),  },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
