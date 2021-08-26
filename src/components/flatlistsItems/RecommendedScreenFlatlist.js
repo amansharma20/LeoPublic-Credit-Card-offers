@@ -179,7 +179,10 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    fontFamily: 'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    }),
   },
   feeText: {
     fontSize: 10,

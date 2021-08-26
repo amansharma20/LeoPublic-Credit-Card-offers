@@ -7,6 +7,7 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
+  LogBox,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -26,15 +27,12 @@ export default function MyCards(props) {
 
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
-  console.log('BankCards')
-  console.log(BankCards)
-  console.log('BankCards')
-
+  
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
   useEffect(() => {
-   
-  });
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested','Warning: Each', 'Warning: Failed'])
+  }, [])
 
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index}/>
@@ -49,7 +47,6 @@ export default function MyCards(props) {
           barStyle={'light-content'}
         />
         <View>
-
           <View>
             <MyCardsScreenHeader />
           </View>
@@ -59,7 +56,7 @@ export default function MyCards(props) {
               <Carousel
                 data={BankCards}
                 renderItem={renderCustomerUserCards}
-                keyExtractor={item => item.id}
+                keyExtractor={(item, index) => index.toString()}
                 horizontal={true}
                 sliderWidth={SLIDER_WIDTH}
                 itemWidth={ITEM_WIDTH}
