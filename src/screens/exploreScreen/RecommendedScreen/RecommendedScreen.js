@@ -66,15 +66,16 @@ export default function RecommendedScreen(props) {
 
   if (loading) {
     return Array.from({ length: 3 }).map((_, index) => (
-      <View key={index} style={{ marginBottom: 12 }}>
+      <View key={index} style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
-          <SkeletonPlaceholder.Item flexDirection="row" marginTop={60}>
-            <SkeletonPlaceholder.Item marginLeft={60} width={300} height={180} borderRadius={4} />
-            <SkeletonPlaceholder.Item
-              flex={1}
-              justifyContent={'space-between'}
-              marginLeft={12} />
-          </SkeletonPlaceholder.Item>
+            <View style={{ width: 80, height: 20 }} />
+            <View style={{ width: 80, height: 20, marginLeft: 150 }} />
+
+
+
+          <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
+          <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
+          <View style={{ width: 289, height: 169, borderRadius: 12, marginTop: 60 }} />
         </SkeletonPlaceholder>
       </View>
     ));
