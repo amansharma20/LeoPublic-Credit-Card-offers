@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Modal,
+  Platform,
 } from 'react-native';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -136,7 +137,9 @@ const styles = StyleSheet.create({
     color: '#626262', fontSize: 12, fontFamily: Platform.select({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold'
-    }), marginBottom: 8, width: 250
+    }),
+    marginBottom: 8,
+    width: 250,
   },
   feeContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   creditCardImage: {

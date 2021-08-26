@@ -116,7 +116,7 @@ export default function RecommendedScreen(props) {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
+        <View style={{paddingBottom: Responsive.height(150)}}>
           {_.map(recommendedCard, (value, index) => {
             return (
               <RecommendedScreenFlatlist cards={value} key={index.toString()} />

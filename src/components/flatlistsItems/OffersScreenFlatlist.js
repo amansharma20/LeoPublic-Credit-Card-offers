@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, Platform } from 'react-native';
 import { SIZES } from '../../constants';
+import { Responsive } from '../../utils/layouts/Layout';
 
 const Offers = ({ title, subtitle, image }) => (
   <View style={styles.container}>
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
     }),
   },
   imageSize: {
-    width: 100,
-    height: 80,
+    width: Responsive.width(75),
+    height: Responsive.height(75),
     resizeMode: 'contain',
   },
 });

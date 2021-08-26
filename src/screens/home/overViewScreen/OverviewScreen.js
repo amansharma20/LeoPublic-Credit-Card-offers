@@ -23,11 +23,12 @@ import MoreDetails from '../../../components/flatlistsItems/MoreDetailsItems';
 import BackButtonPurple from '../../../assets/svgs/backButtonPurple.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScreenWidth } from 'react-native-elements/dist/helpers';
-import {applicationProperties} from '../../../../application.properties';
+import { applicationProperties } from '../../../../application.properties';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function OverviewScreen(props) {
-  const cardData = props.cardData
+  const cardData = props.cardData;
   console.log(cardData.BankCard.Bank.Name);
   console.log(cardData.BankCard.Bank.CardProgram);
   const navigation = useNavigation();
@@ -42,7 +43,7 @@ export default function OverviewScreen(props) {
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.body}>
         {/* HEADER TITLE TAB  */}
         <LinearGradient style={styles.innerContainer} colors={['#EEE5FF', '#FFFFFF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
@@ -140,11 +141,11 @@ export default function OverviewScreen(props) {
             </View>
           </View>
 
-<TouchableOpacity onPress={() => setShowModal(true)} activeOpacity={0.85}>
-  <View style={styles.buttonContainer}>
-    <Text style={styles.buttonText}>More Details</Text>
-  </View>
-</TouchableOpacity>
+          <TouchableOpacity onPress={() => setShowModal(true)} activeOpacity={0.85}>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>More Details</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
       {/* MORE DETAILS MODAL  */}
@@ -166,16 +167,219 @@ export default function OverviewScreen(props) {
               </View>
             </View>
             {/* FLATLIST  */}
-            <FlatList
+            {/* <FlatList
               data={cardData.BankCard}
               renderItem={renderModalItem}
               keyExtractor={item => item.id}
               contentContainerStyle={styles.modalContentContainerStyle}
-            />
+            /> */}
+            <ScrollView style={{padding: SIZES.padding2}}>
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Issuing Bank</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>Default Card</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Card Program</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>Signature</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Joining Fees</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹999</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Annual Fees</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹999</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Interest Rate</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>7.89%</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Credit Limit</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹300,000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Card Level</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>Gold</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Reward Points Issued</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>3.50%</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Forex Markup</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Minimum Spend</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Redemption Handling Fee</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹99</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Over-limit Charge</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹80</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Late Payment Fee</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹500</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Cash Withdrawal Charges</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹500</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Key Highlights</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>A monthly spend of up to Rs. 10,000, gets 1 Union Point for every Rs. 100 spent.
+Monthly spends ranging between Rs. 10,001 to Rs. 30,000, gets 1.5 points for every Rs.100 spent.A monthly spend of above Rs. 30,000, gets 2 Union Points for every Rs. 100 spent.</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Travel Benefits</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹8000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Fuel Benefits</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Dining</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Dining</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Dining</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Hotel Benefits</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Reward Booster</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Reward Booster Sectors</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Lounge Access</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Card Focus Segment</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Priority Pass Membership</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Add-on Card</Text>
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+              <View style={styles.textContainerMain}>
+                <Text style={styles.titleText}>Best Suited for</Text>
+              </View>
+              <View style={[styles.textContainer, {paddingBottom: 50}]}>
+                <Text style={styles.subtitleText}>₹5000</Text>
+              </View>
+
+
+
+            </ScrollView>
+
+
           </View>
         </Modal>
       )}
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -212,17 +416,17 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#797E96',
     fontSize: 18,
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
     }),
   },
   subText: {
     color: '#1c1b1b',
     fontSize: 20,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
   },
   imageSize: {
@@ -252,9 +456,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#4D2D8F',
     fontSize: 14,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
   },
   modalContainer: {
@@ -269,12 +473,14 @@ const styles = StyleSheet.create({
   },
   iconSizeLeft: { width: 34, height: 34 },
   iconSizeRight: { width: 28, height: 28 },
-  modalHeaderText: { fontSize: 24,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+  modalHeaderText: {
+    fontSize: 24,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
-     color: '#4D2D8F' },
+    color: '#4D2D8F',
+  },
   leftIconContainer: {
     width: 44,
     height: 44,
@@ -310,18 +516,21 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     color: '#797E96',
     lineHeight: 20,
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
     }),
   },
   subtitleText: {
     fontSize: 18,
     color: '#1C1B1B',
     marginTop: 10,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
+  },
+  textContainerMain: {
+    marginTop: 24,
   },
 });

@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     // borderColor: '#F7D071',
     borderColor: '#247DFB',
     marginRight: 36, 
-    borderRadius: 5,
+    // borderRadius: 5,
   },
   tabTextStyle: {
     color: '#6F7FAF',

@@ -73,7 +73,7 @@ export default function RecommendedScreen() {
             <FilterIcon />
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{paddingBottom: Responsive.height(150)}}>
           {_.map(discoverCard, (value, index) => {
             return (
               <DiscoverScreenFlatlist cards={value} key={index.toString()} />

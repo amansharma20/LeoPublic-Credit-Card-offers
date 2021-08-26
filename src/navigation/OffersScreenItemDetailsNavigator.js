@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIZES} from '../constants/';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
@@ -81,17 +81,17 @@ const styles = StyleSheet.create({
   tabTextStyle: {
     color: '#6F7FAF',
     fontSize: 16,
-    fontFamily:Platform.select({
+    fontFamily: Platform.select({
       ios:'Exo2-Medium',
-      android:'Exo2Medium'
+      android:'Exo2Medium',
     }),
   },
   activeTabTextStyle: {
     color: '#060417',
     fontSize: 16,
-    fontFamily:Platform.select({
+    fontFamily: Platform.select({
       ios:'Exo2-Bold',
-      android:'Exo2Bold'
+      android:'Exo2Bold',
     }),
   },
 });
