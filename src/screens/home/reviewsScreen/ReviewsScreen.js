@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
       android:'Exo2Bold'
     }),
   },
-  emptyStateContainer: {flex: 1, height: 400, alignContent: 'center', alignItems: 'center', justifyContent: 'center'},
+  emptyStateContainer: {flex: 1, height: 500, alignContent: 'center', alignItems: 'center', justifyContent: 'center'},
   emptyStateText: {fontSize: 16,
      fontFamily:Platform.select({
       ios:'Exo2-SemiBold',

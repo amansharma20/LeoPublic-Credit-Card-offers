@@ -22,7 +22,7 @@ function OffersScreenTopNavigator() {
         activeTintColor: '#060417',
         inactiveTintColor: '#6F7FAF',
         style: { backgroundColor: '#ffffff', borderTopLeftRadius: 32, borderTopRightRadius: 32, elevation: 0, },
-      }}>
+  }}>
       <Tab.Screen name="BestOffers" component={BestOffers} options={{ tabBarLabel: 'Best Offers' }} />
       <Tab.Screen name="LatestOffers" component={LatestOffers} options={{ tabBarLabel: 'Latest Offers' }} />
       <Tab.Screen name="AllOffers" component={AllOffers} options={{ tabBarLabel: 'All Offers' }} />

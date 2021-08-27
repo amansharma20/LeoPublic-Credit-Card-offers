@@ -1,5 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
@@ -119,7 +119,7 @@ export default function RecommendedScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
+        <View style={{paddingBottom: Responsive.height(150)}}>
           {_.map(recommendedCard, (value, index) => {
             return (
               <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} index ={index}/>

@@ -6,7 +6,8 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
-  Modal, Animated, Dimensions
+  Modal, Animated, Dimensions,
+  Platform,
 } from 'react-native';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -52,8 +53,8 @@ export default function RecommendedScreenFlatlist(props) {
     inputRange: [0, 0.00001 + index * 1200],
     outputRange: [0, -index * CARD_HEIGHT],
     extrapolateRight: 'clamp',
-  })),position.interpolate({
-    inputRange:[isBottom, isAppering],
+  })), position.interpolate({
+    inputRange: [isBottom, isAppering],
     outputRange: [0, - CARD_HEIGHT / 4],
     extrapolate: 'clamp',
 
@@ -74,7 +75,7 @@ export default function RecommendedScreenFlatlist(props) {
     <TouchableOpacity
       activeOpacity={0.85}
       onPress={onCardClick} >
-      <Animated.View style={[styles.container, {opacity, transform: [{ translateY }, { scale }] }]}>
+      <Animated.View style={[styles.container, { opacity, transform: [{ translateY }, { scale }] }]}>
         <View style={styles.cardContainerBody}>
           <ImageBackground
             style={styles.creditCardContainer}
@@ -168,7 +169,9 @@ const styles = StyleSheet.create({
     color: '#626262', fontSize: 12, fontFamily: Platform.select({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold'
-    }), marginBottom: 8, width: 250
+    }),
+    marginBottom: 8,
+    width: 250,
   },
   feeContainer: { flexDirection: 'row', justifyContent: 'space-between' },
   creditCardImage: {

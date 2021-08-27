@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
     body: {
         padding: SIZES.padding,
         paddingVertical: 40,
-        borderRadius: 32,
+        borderTopLeftRadius: 32,
+        borderTopRightRadius: 32,
         backgroundColor: '#ffffff',
         flex: 1,
         justifyContent: 'space-between',

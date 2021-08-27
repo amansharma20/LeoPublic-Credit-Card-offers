@@ -37,7 +37,6 @@ export default function StackNavigator() {
                 <Stack.Screen name="Educate" component={Educate}/>
                 <Stack.Screen name="NewToCreditCards" component={NewToCreditCards}/>
                 <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
-                {/* <Stack.Screen name="StartScreen" component={StartScreen}/> */}
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="Signup" component={Signup}/>
                 <Stack.Screen name="Login" component={Login}/>

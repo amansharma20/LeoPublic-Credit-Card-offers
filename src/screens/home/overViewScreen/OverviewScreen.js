@@ -28,8 +28,7 @@ import {applicationProperties} from '../../../../application.properties';
 
 export default function OverviewScreen(props) {
   const cardData = props.cardData
-  console.log(cardData.BankCard.Bank.Name);
-  console.log(cardData.BankCard.Bank.CardProgram);
+
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
 

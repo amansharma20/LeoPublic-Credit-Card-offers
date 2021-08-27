@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Platform} from 'react-native';
 import {SIZES} from '../../constants';
 
 const OffersDetailsModalFlatlist = ({title, subtitle}) => (
@@ -25,18 +25,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#797E96',
     lineHeight: 20,
-    fontFamily:Platform.select({
+    fontFamily: Platform.select({
       ios:'Exo2-Medium',
-      android:'Exo2Medium'
+      android:'Exo2Medium',
     }),
   },
   subtitleText: {
     fontSize: SIZES.h4,
     color: '#172B4D',
     marginTop: 2,
-    fontFamily:Platform.select({
+    fontFamily: Platform.select({
       ios:'Exo2-Bold',
-      android:'Exo2Bold'
+      android:'Exo2Bold',
     }),
   },
 });

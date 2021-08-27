@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   StyleSheet,
   StatusBar,
@@ -19,7 +19,7 @@ import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
-import {onScrollEvent, useValues} from 'react-native-redash/lib/module/v1';
+import { onScrollEvent, useValues } from 'react-native-redash/lib/module/v1';
 
 
 
@@ -41,7 +41,7 @@ export default function MyCards(props) {
       <View style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
           <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
-          <View horizontal style={{flexDirection: 'row', marginTop: 60, width: 250}}>
+          <View horizontal style={{ flexDirection: 'row', marginTop: 60, width: 250 }}>
             <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
             <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
             <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
@@ -60,49 +60,49 @@ export default function MyCards(props) {
 
   return (
     <View style={styles.container}>
-       <Animated.ScrollView 
-      showsVerticalScrollIndicator={false} horizontal={false}
-      overScrollMode={'auto'}
+      <Animated.ScrollView
+        showsVerticalScrollIndicator={false} horizontal={false}
+        overScrollMode={'auto'}
       >
-       <StatusBar
+        <StatusBar
           hidden={false}
           backgroundColor={'#4d2d8f'}
           barStyle={'light-content'}
         />
-      
-          <View >
-            <MyCardsScreenHeader />
+
+        <View >
+          <MyCardsScreenHeader />
+        </View>
+
+
+        {/* MAIN BODY  */}
+        <View style={styles.mainBody}>
+          <TouchableOpacity style={styles.creditCardContainer}>
+            <Carousel
+              data={BankCards}
+              renderItem={renderCustomerUserCards}
+              keyExtractor={(item, index) => index.toString()}
+              horizontal={true}
+              sliderWidth={SLIDER_WIDTH}
+              itemWidth={ITEM_WIDTH}
+              containerCustomStyle={styles.carouselContainer}
+              inactiveSlideShift={0}
+              currentIndex={(c) => { console.log(c); }}
+              onSnapToItem={(index) => console.log(index + 1)}
+              scrollInterpolator={scrollInterpolator}
+              slideInterpolatedStyle={animatedStyles}
+              useScrollView={true}
+              inactiveSlideScale={0.9}
+              inactiveSlideOpacity={0.95}
+            />
+          </TouchableOpacity>
+          <View>
+            <HomeSegmentNavigator selectedCard={BankCards && BankCards[selectedCardIndex]} />
           </View>
-     
-       
-          {/* MAIN BODY  */}
-          <View style={styles.mainBody}>
-            <TouchableOpacity style={styles.creditCardContainer}>
-              <Carousel
-                data={BankCards}
-                renderItem={renderCustomerUserCards}
-                keyExtractor={(item, index) => index.toString()}
-                horizontal={true}
-                sliderWidth={SLIDER_WIDTH}
-                itemWidth={ITEM_WIDTH}
-                containerCustomStyle={styles.carouselContainer}
-                inactiveSlideShift={0}
-                currentIndex={(c) => { console.log(c); }}
-                onSnapToItem={(index) => console.log(index + 1)}
-                scrollInterpolator={scrollInterpolator}
-                slideInterpolatedStyle={animatedStyles}
-                useScrollView={true}
-                inactiveSlideScale={0.9}
-                inactiveSlideOpacity={0.95}
-              />
-            </TouchableOpacity>
-            <View>
-              <HomeSegmentNavigator selectedCard={BankCards && BankCards[selectedCardIndex]} />
-            </View>
-          </View>
-          </Animated.ScrollView>
-    
-      
+        </View>
+      </Animated.ScrollView>
+
+
     </View>
   );
 }

@@ -18,9 +18,6 @@ import { Responsive } from '../utils/layouts/Layout';
 export default function OffersSegmentNavigator() {
   const navigation = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log('selectedIndex');
-  console.log(selectedIndex);
-  console.log('selectedIndex');
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
   };
