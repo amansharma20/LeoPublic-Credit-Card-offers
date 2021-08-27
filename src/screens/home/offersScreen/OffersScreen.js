@@ -18,10 +18,6 @@ export default function OffersScreen(props) {
 
   const { loading, error, data } = useQuery(GQLQuery.GET_BEST_OFFERS);
   const latestOffer = data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOffers;
-
-  console.log(error);
-  console.log(latestOffer);
-
   const renderItem = ({ item }) => (
     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
   );

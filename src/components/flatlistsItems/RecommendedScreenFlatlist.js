@@ -6,7 +6,7 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
-  Modal,
+  Modal, Animated, Dimensions
 } from 'react-native';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -16,30 +16,65 @@ import Code from '../../assets/svgs/code.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CrossWithBackground from '../../assets/svgs/crossWithBackground.svg';
 import { applicationProperties } from '../../../application.properties';
-import Animated from 'react-native-reanimated';
 
 export default function RecommendedScreenFlatlist(props) {
   const card = props.cards;
+  const y = props.y;
+  const index = props.index;
+
+  const CARD_HEIGHT = 380 + 80 * 2;
+
   const [checkboxState, setCheckboxState] = useState(false);
-  const [cardClicked, setCardClicked] = useState(0);
+  const [cardClicked] = useState(0);
+
+  const { height: wheight } = Dimensions.get('window');
+
+  console.log(wheight)
+
+  const height = wheight - 120;
 
   const onCardClick = () => {
     setCheckboxState(!checkboxState, cardClicked);
-    console.log(cardClicked);
-    // if (cardClicked < 2) {
-    //   setCardClicked(cardClicked + 1);
-    // } else {
-    //   setShowModal(true);
-    // }
   };
   const [showModal, setShowModal] = useState(false);
+
+  const position = Animated.subtract(index * CARD_HEIGHT, y);
+
+  const isDisappering = -CARD_HEIGHT;
+
+  const isTop = 0;
+
+  const isBottom = height - CARD_HEIGHT;
+
+  const isAppering = CARD_HEIGHT;
+
+  const translateY = Animated.add(Animated.add(y, y.interpolate({
+    inputRange: [0, 0.00001 + index * 1200],
+    outputRange: [0, -index * CARD_HEIGHT],
+    extrapolateRight: 'clamp',
+  })),position.interpolate({
+    inputRange:[isBottom, isAppering],
+    outputRange: [0, - CARD_HEIGHT / 4],
+    extrapolate: 'clamp',
+
+  }))
+
+  const scale = position.interpolate({
+    inputRange: [isDisappering, isTop, isBottom, isAppering],
+    outputRange: [0.5, 1, 1, 0.5],
+    extrapolate: 'clamp',
+  });
+
+  const opacity = position.interpolate({
+    inputRange: [isDisappering, isTop, isBottom, isAppering],
+    outputRange: [0.5, 1, 1, 0.5],
+  })
 
   return (
     <TouchableOpacity
       activeOpacity={0.85}
-      onPress={onCardClick}
-    >
-      <Animated.View style={styles.container}>
+      onPress={onCardClick} >
+      <Animated.View style={[styles.container, {opacity, transform: [{ translateY }, { scale }] }]}>
         <View style={styles.cardContainerBody}>
           <ImageBackground
             style={styles.creditCardContainer}
@@ -66,9 +101,6 @@ export default function RecommendedScreenFlatlist(props) {
               <Code />
               <View style={styles.cardBottomContainer}>
                 <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
-                {/* <Text style={{color: '#ffffff'}}>
-                card type icon
-            </Text> */}
                 <MasterCardLogo />
               </View>
             </View>

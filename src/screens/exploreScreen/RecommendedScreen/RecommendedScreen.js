@@ -7,13 +7,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
-  Dimensions,
   FlatList,
   Modal,
   ImageBackground,
   Platform,
+  Animated
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import SIZES from '../../../constants/theme';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Responsive } from '../../../utils/layouts/Layout';
@@ -32,11 +31,9 @@ import _ from "lodash";
 import { ScrollView } from 'react-native-gesture-handler';
 
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
-export default function RecommendedScreen(props) {
-  const navigation = useNavigation();
+
+export default function RecommendedScreen() {
 
   const [openAllCategories, setOpenAllCategories] = useState(false);
   const [allCategories, setAllCategories] = useState([
@@ -45,10 +42,7 @@ export default function RecommendedScreen(props) {
   ]);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
-
-
   const [checkboxState, setCheckboxState] = useState(false);
-
   const [showCompareModal, setShowCompareModal] = useState(false);
 
   const renderCompareModalItem = ({ item }) => (
@@ -59,7 +53,7 @@ export default function RecommendedScreen(props) {
     />
   );
 
-  const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
+  const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
   const recommendedCard = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
 
   if (loading) {
@@ -74,39 +68,48 @@ export default function RecommendedScreen(props) {
     ));
   }
 
+  const DropDown = () => {
+    return <DropDownPicker
+      open={openAllCategories}
+      value={allCategoriesValue}
+      items={allCategories}
+      setOpen={setOpenAllCategories}
+      setValue={setAllCategoriesValue}
+      setItems={setAllCategories}
+      placeholder="All"
+      style={styles.categoriesContainer}
+      placeholderStyle={styles.placeholderText}
+      listMode="FLATLIST"
+      dropDownContainerStyle={styles.dropDownContainerStyle}
+      closeAfterSelecting={true}
+      listItemLabelStyle={{
+        fontFamily: Platform.select({
+          ios: 'Exo2-Medium',
+          android: 'Exo2Medium',
+        }),
+      }}
+      selectedItemLabelStyle={{
+        fontFamily: Platform.select({
+          ios: 'Exo2-Bold',
+          android: 'Exo2Bold',
+        }),
+      }}
+    />
+  }
+
+  const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
+  const y = new Animated.Value(0);
+  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true })
+
   return (
-    <ScrollView style={styles.container}>
+    <AnimatedScrollView style={styles.container}
+      scrollEventThrottle={16}
+      {...{ onScroll }}
+    >
       <View style={styles.body}>
         <View style={styles.buttonsContainer}>
           <View>
-            <DropDownPicker
-              open={openAllCategories}
-              value={allCategoriesValue}
-              items={allCategories}
-              setOpen={setOpenAllCategories}
-              setValue={setAllCategoriesValue}
-              setItems={setAllCategories}
-              // zIndex={10000}
-              // zIndexInverse={1000}
-              placeholder="All"
-              style={styles.categoriesContainer}
-              placeholderStyle={styles.placeholderText}
-              listMode="FLATLIST"
-              dropDownContainerStyle={styles.dropDownContainerStyle}
-              closeAfterSelecting={true}
-              listItemLabelStyle={{
-                fontFamily: Platform.select({
-                  ios: 'Exo2-Medium',
-                  android: 'Exo2Medium',
-                }),
-              }}
-              selectedItemLabelStyle={{
-                fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}
-            />
+            <DropDown />
           </View>
           <View>
             <TouchableOpacity onPress={() => setShowCompareModal(true)}>
@@ -119,16 +122,15 @@ export default function RecommendedScreen(props) {
         <View>
           {_.map(recommendedCard, (value, index) => {
             return (
-              <RecommendedScreenFlatlist cards={value} key={index.toString()} />
+              <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} index ={index}/>
             );
           })}
         </View>
+
         {/* COMPARE MODAL  */}
         {showCompareModal && (
           <Modal
             animationType="slide"
-            // transparent={true}
-            // statusBarTranslucent={true}
             showModal={showCompareModal}
             onRequestClose={() => setShowCompareModal(false)}>
             <View style={styles.compareModalContainer}>
@@ -195,7 +197,7 @@ export default function RecommendedScreen(props) {
           </Modal>
         )}
       </View>
-    </ScrollView>
+    </AnimatedScrollView>
   );
 }
 

@@ -6,31 +6,29 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../../constants/theme';
-import {FlatList} from 'react-native-gesture-handler';
-import {Responsive} from '../../../utils/layouts/Layout';
+import { SIZES } from '../../../constants/theme';
+import { FlatList } from 'react-native-gesture-handler';
+import { Responsive } from '../../../utils/layouts/Layout';
 import BestOffersFlatlist from '../../../components/flatlistsItems/BestOffersFlatlist';
 import BESTOFFERSDATA from '../../../assets/dummyData/bestOffersData';
 
 export default function BestOffers() {
-  const navigation = useNavigation();
-  const renderItem = ({item}) => (
-    <BestOffersFlatlist title={item.title} subtitle={item.subtitle} image={item.image}  />
+  const renderItem = ({ item }) => (
+    <BestOffersFlatlist title={item.title} subtitle={item.subtitle} image={item.image} />
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-      <View>
+        <View>
           <FlatList
             data={BESTOFFERSDATA}
             renderItem={renderItem}
             keyExtractor={item => item.id}
             numColumns={2}
-            contentContainerStyle={{paddingBottom: Responsive.height(140)}}
-           />
-      </View>
+            contentContainerStyle={{ paddingBottom: Responsive.height(140)}}
+          />
+        </View>
       </View>
     </View>
   );

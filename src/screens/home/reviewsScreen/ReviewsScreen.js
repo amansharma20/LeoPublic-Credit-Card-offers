@@ -24,7 +24,6 @@ import { GQLQuery } from '../../../persistence/query/Query';
 export default function ReviewsScreen(props) {
   const navigation = useNavigation();
   const cardData = props.cardData;
-  console.log(cardData.BankCard.Bank.Id);
   const RATING_STAR = require('../../../assets/icons/starRating.png');
   const renderItem = ({item}) => (
     <Reviews review ={item}  />
@@ -36,11 +35,8 @@ export default function ReviewsScreen(props) {
       BankCardId : cardData.BankCard.Bank.Id,
     },
   });
-  console.log(error);
   const ReviewList = data && data.BankCardReviewQuery && data.BankCardReviewQuery.GetBankCardReviewsByBankCardId;
-  console.log(ReviewList);
-  console.log('ReviewList');
-
+  
   {
     if ((ReviewList) === undefined) {return (
       <View style={styles.emptyStateContainer}>
