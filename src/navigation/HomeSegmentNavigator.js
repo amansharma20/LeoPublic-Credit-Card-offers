@@ -4,10 +4,10 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Platform } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import OffersScreen from '../screens/home/offersScreen/OffersScreen';
-import OverviewScreen from '../screens/home/overViewScreen/OverviewScreen';
-import ReviewsScreen from '../screens/home/reviewsScreen/ReviewsScreen';
-import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen';
+import OffersScreen from '../screens/home/offers/OffersScreen';
+import OverviewScreen from '../screens/home/overView/OverviewScreen';
+import ReviewsScreen from '../screens/home/review/ReviewsScreen';
+import MileStonesScreen from '../screens/home/milestones/MileStonesScreen';
 
 export default function HomeSegmentNavigator(props) {
   const selectedCardData = props.selectedCard;
