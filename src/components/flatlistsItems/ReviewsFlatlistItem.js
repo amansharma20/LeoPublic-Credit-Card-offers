@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         color: '#797E96',
         fontSize: 14,
         fontFamily:Platform.select({
-            ios:'Exo20-Regular',
+            ios:'Exo2-Regular',
             android:'Exo2Regular'
           }),
     },

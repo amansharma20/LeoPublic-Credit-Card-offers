@@ -18,7 +18,7 @@ import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -33,6 +33,13 @@ export default function MyCards() {
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [])
+
+
+  const cardIndexChanged = (cardId) => {
+    setSelectedCardIndex(cardId)
+    console.log(BankCards[cardId].Id)
+    console.log(cardId)
+  }
 
   if (loading)
     return (
@@ -79,8 +86,9 @@ export default function MyCards() {
               itemWidth={ITEM_WIDTH}
               containerCustomStyle={styles.carouselContainer}
               inactiveSlideShift={0}
-              currentIndex={(c) => { console.log(c); }}
-              onSnapToItem={(index) => console.log(index + 1)}
+              onSnapToItem={(index) => {
+                cardIndexChanged(index)
+              }}
               scrollInterpolator={scrollInterpolator}
               slideInterpolatedStyle={animatedStyles}
               useScrollView={true}

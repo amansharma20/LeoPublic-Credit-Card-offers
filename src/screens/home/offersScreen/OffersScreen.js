@@ -13,47 +13,48 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
 export default function OffersScreen(props) {
-  const Id = props.cardData.Id;
-  console.log(Id)
+  const Id = props.cardData.BankCard.Id;
   const { loading, error, data } = useQuery(GQLQuery.GET_BANK_CARD_OFFERS_BY_ID, {
     variables: {
       CardId: Id,
     },
   });
 
-  console.log(data)
+  const BankCardOfferData = data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOfferById;
+
+  console.log('Offer Data')
+  console.log(data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOfferById)
+  console.log('Offer Data')
+
 
   if (loading)
-  return (
-    <View style={{ marginBottom: 12, alignItems: 'center' }}>
-      <SkeletonPlaceholder>
-        <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
-        <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 90 }} />
-        <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
-        <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
-      </SkeletonPlaceholder>
-    </View>
-  );
+    return (
+      <View style={{ marginBottom: 12, alignItems: 'center' }}>
+        <SkeletonPlaceholder>
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
+        </SkeletonPlaceholder>
+      </View>
+    );
 
   console.log(error)
 
   const renderItem = ({ item }) => (
-    <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
+    <Offers offer = {item} />
   );
 
   return (
     <View style={styles.container}>
-      <View style={styles.body}>
-        <View style={styles.flatlistContainer}>
+       <View style={styles.flatlistContainer}>
           <FlatList
-            data={DATA}
+            data={BankCardOfferData}
             renderItem={renderItem}
             keyExtractor={item => item.id}
             contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}
           />
         </View>
-      </View>
     </View>
   );
 }
@@ -70,12 +71,13 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingBottom: Responsive.height(20),
   },
-  body: {
-    // padding: SIZES.padding,
-    // marginRight: SIZES.padding,
+  skeletonStyle: {
+    width: 300,
+    height: 100,
+    borderRadius: 8,
+    marginTop: 30
   },
   flatlistContainer: {
-    // alignItems: 'center',
     paddingHorizontal: SIZES.padding,
   },
 });
