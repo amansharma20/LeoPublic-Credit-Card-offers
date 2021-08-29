@@ -18,7 +18,7 @@ import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -35,10 +35,8 @@ export default function MyCards() {
   }, [])
 
 
-  const cardIndexChanged = (cardId) => {
+  const cardIndexChanged = (cardId)=> {
     setSelectedCardIndex(cardId)
-    console.log(BankCards[cardId].Id)
-    console.log(cardId)
   }
 
   if (loading)

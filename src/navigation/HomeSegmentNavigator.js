@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Platform } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import OffersScreen from '../screens/home/offersScreen/OffersScreen';
 import OverviewScreen from '../screens/home/overViewScreen/OverviewScreen';
@@ -62,10 +61,8 @@ const styles = StyleSheet.create({
   activeTabStyle: {
     backgroundColor: '#ffffff',
     borderBottomWidth: 2,
-    // borderColor: '#F7D071',
     borderColor: '#247DFB',
     marginRight: 36,
-    // borderRadius: 5,
   },
   tabTextStyle: {
     color: '#6F7FAF',
