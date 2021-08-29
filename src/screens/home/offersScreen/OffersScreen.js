@@ -7,13 +7,40 @@ import { FlatList } from 'react-native-gesture-handler';
 import DATA from '../../../assets/dummyData/offers';
 import Offers from '../../../components/flatlistsItems/OffersScreenFlatlist';
 import { Responsive } from '../../../utils/layouts/Layout';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../../persistence/query/Query';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
-export default function OffersScreen() {
+export default function OffersScreen(props) {
+  const Id = props.cardData.Id;
+  console.log(Id)
+  const { loading, error, data } = useQuery(GQLQuery.GET_BANK_CARD_OFFERS_BY_ID, {
+    variables: {
+      CardId: Id,
+    },
+  });
+
+  console.log(data)
+
+  if (loading)
+  return (
+    <View style={{ marginBottom: 12, alignItems: 'center' }}>
+      <SkeletonPlaceholder>
+        <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
+        <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 90 }} />
+        <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+        <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+      </SkeletonPlaceholder>
+    </View>
+  );
+
+  console.log(error)
 
   const renderItem = ({ item }) => (
     <Offers title={item.title} subtitle={item.subtitle} image={item.image} />
   );
+
   return (
     <View style={styles.container}>
       <View style={styles.body}>

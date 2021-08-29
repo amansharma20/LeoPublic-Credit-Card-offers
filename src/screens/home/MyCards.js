@@ -18,7 +18,7 @@ import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
-import { useValues } from 'react-native-redash/lib/module/v1';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -26,7 +26,7 @@ const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards() {
-  const [y] = useValues([0], []);
+  const dispatch = useDispatch();
   const { loading, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
@@ -60,17 +60,14 @@ export default function MyCards() {
     <View style={styles.container}>
       <Animated.ScrollView
         showsVerticalScrollIndicator={false} horizontal={false}
-        overScrollMode={'auto'}
-      >
+        overScrollMode={'auto'} >
         <StatusBar
           hidden={false}
           backgroundColor={'#4d2d8f'}
-          barStyle={'light-content'}
-        />
+          barStyle={'light-content'} />
         <View >
           <MyCardsScreenHeader />
         </View>
-        {/* MAIN BODY  */}
         <View style={styles.mainBody}>
           <TouchableOpacity style={styles.creditCardContainer}>
             <Carousel
@@ -96,8 +93,6 @@ export default function MyCards() {
           </View>
         </View>
       </Animated.ScrollView>
-
-
     </View>
   );
 }

@@ -12,37 +12,20 @@ import {
   Image,
 } from 'react-native';
 import * as yup from 'yup';
-import {useDispatch} from 'react-redux';
-import {AuthActions} from '../../persistence/actions/AuthActions';
-import {useNavigation} from '@react-navigation/native';
-import {Responsive} from '../../utils/layouts/Layout'; 
-import {SIZES} from '../../constants/theme';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '../../persistence/actions/AuthActions';
+import { useNavigation } from '@react-navigation/native';
+import { Responsive } from '../../utils/layouts/Layout';
+import { SIZES } from '../../constants/theme';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
-import {Formik} from 'formik';
-import {icons} from '../../constants';
+import { Formik } from 'formik';
+import { icons } from '../../constants';
 
 const screenHeight = Dimensions.get('window').height;
 
 export default function Login() {
   const dispatch = useDispatch();
-
-  const onSubmit = data => {
-    CommonLoading.show();
-    const signInData = {
-      MobileNumber: data.phone,
-    };
-    dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
-      response => {
-        CommonLoading.hide();
-        navigation.navigate('OTPScreen', {
-          phone: data.phone,
-          screenName: 'Login',
-        });
-      },
-    );
-  };
-
   const navigation = useNavigation();
 
   const schema = yup.object().shape({
@@ -51,6 +34,24 @@ export default function Login() {
       .required('Phone is' + ' ' + 'required.')
       .matches(/(\d){10}\b/, 'Enter a valid phone number'),
   });
+
+  const login = data => {
+    CommonLoading.show();
+    const signInData = {
+      MobileNumber: data.phone,
+    };
+    dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
+      (response) => {
+        CommonLoading.hide();
+        if (response.success) {
+          navigation.navigate('OTPScreen', {
+            phone: data.phone,
+            screenName: 'Login',
+          });
+        }
+      },
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -71,24 +72,24 @@ export default function Login() {
               initialValues={{
                 phone: '',
               }}
-              onSubmit={values => onSubmit(values)}>
+              onSubmit={values => login(values)}
+            >
               {({
                 handleChange,
                 handleBlur,
                 handleSubmit,
                 values,
                 errors,
-                isValid,
                 touched,
               }) => (
                 <>
                   <View style={styles.checkMarkContainer}>
                     <TextInput
-                      name="phone"
+                      name='phone'
                       style={styles.phoneInput}
                       onChangeText={handleChange('phone')}
                       onBlur={handleBlur('phone')}
-                      value={values.phone}
+                      value={() => values.phone}
                       keyboardType="numeric"
                       placeholder="Phone Number"
                       placeholderTextColor="#B4B4B4"
@@ -100,15 +101,14 @@ export default function Login() {
                   {errors.phone && touched.phone && (
                     <Text style={styles.error}>{errors.phone}</Text>
                   )}
+                  <TouchableOpacity onPress={handleSubmit}>
+                    <View style={styles.buttonContainer}>
+                      <Text style={styles.nextButtonText}>Next</Text>
+                    </View>
+                  </TouchableOpacity>
                 </>
               )}
             </Formik>
-            {/* <TouchableOpacity onPress={handleSubmit(onSubmit)}> */}
-            <TouchableOpacity onPress={onSubmit}>
-              <View style={styles.buttonContainer}>
-                <Text style={styles.nextButtonText}>Next</Text>
-              </View>
-            </TouchableOpacity>
           </View>
           <View style={styles.footerContainer}>
             <Text style={styles.footerTextOne}>Don’t have an account?</Text>
@@ -135,13 +135,13 @@ const styles = StyleSheet.create({
   headerContainer: {
     // marginTop: '20%',
   },
-  body: {padding: SIZES.padding},
-  bodyItems: {justifyContent: 'space-around', height: '100%'},
+  body: { padding: SIZES.padding },
+  bodyItems: { justifyContent: 'space-around', height: '100%' },
   headerText: {
     fontSize: 30,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     })
   },
   textInputContainer: {
@@ -150,9 +150,9 @@ const styles = StyleSheet.create({
   subTitleText: {
     fontSize: 16,
     color: '#797E96',
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:''
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: ''
     })
   },
   phoneInput: {
@@ -163,9 +163,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
     height: Responsive.height(50),
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
     }),
     width: '100%',
   },
@@ -185,9 +185,9 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     color: '#ffffff',
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     })
   },
   footerContainer: {
@@ -198,16 +198,16 @@ const styles = StyleSheet.create({
   footerTextOne: {
     fontSize: SIZES.h4,
     color: '#7a869a',
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
     }),
   },
   footerTextTwo: {
     fontSize: SIZES.h4,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
     color: '#4d2d8f',
     marginLeft: 2.5,

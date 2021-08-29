@@ -8,15 +8,15 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES, icons} from '../../constants';
+import { useNavigation } from '@react-navigation/native';
+import { SIZES, icons } from '../../constants';
 
 export default function CardHolder() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.goBack()}>
           <View style={styles.header}>
             <Image source={icons.backButton} style={styles.backButtonSize} />
           </View>
@@ -26,14 +26,14 @@ export default function CardHolder() {
         </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
-          onPress={() => navigation.navigate('AddCardScreen')}
+            onPress={() => navigation.navigate('AddCardScreen')}
           >
             <View style={styles.yesButtonContainer}>
               <Text style={styles.yesButtonText}>Yes, I am</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-          onPress={() => navigation.navigate('NewToCreditCards')}
+            onPress={() => navigation.navigate('NewToCreditCards')}
           >
             <View style={styles.noButtonContainer}>
               <Text style={styles.noButtonText}>No, I am not</Text>
@@ -52,8 +52,12 @@ const styles = StyleSheet.create({
   },
   body: {
     padding: SIZES.padding,
+    marginTop: Platform.select({
+      ios: 30,
+      android: 0
+    })
   },
-  backButtonSize: {width: 24, height: 24},
+  backButtonSize: { width: 24, height: 24 },
   headerTextContainer: {
     paddingVertical: 20,
   },
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     color: '#797E96',
   },
-  buttonsContainer: {marginTop: '50%'},
+  buttonsContainer: { marginTop: '50%' },
   yesButtonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
