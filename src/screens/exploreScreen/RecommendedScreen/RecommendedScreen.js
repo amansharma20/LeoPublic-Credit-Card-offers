@@ -31,19 +31,24 @@ import _ from "lodash";
 import { ScrollView } from 'react-native-gesture-handler';
 
 
-
-
 export default function RecommendedScreen() {
 
   const [openAllCategories, setOpenAllCategories] = useState(false);
+  const [allCategoriesValue, setAllCategoriesValue] = useState(null);
+  const [checkboxState, setCheckboxState] = useState(false);
+  const [showCompareModal, setShowCompareModal] = useState(false);
+
+  const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
+  const RecommendedCards = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
+
+  const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
+  const y = new Animated.Value(0);
+  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true })
+
   const [allCategories, setAllCategories] = useState([
     { label: 'Lifestyle', value: 'Lifestyle' },
     { label: 'Fashion', value: 'Fashion' },
   ]);
-  const [allCategoriesValue, setAllCategoriesValue] = useState(null);
-
-  const [checkboxState, setCheckboxState] = useState(false);
-  const [showCompareModal, setShowCompareModal] = useState(false);
 
   const renderCompareModalItem = ({ item }) => (
     <CompareModalItemFlatlist
@@ -53,8 +58,6 @@ export default function RecommendedScreen() {
     />
   );
 
-  const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
-  const recommendedCard = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
 
   if (loading) {
     return Array.from({ length: 3 }).map((_, index) => (
@@ -68,9 +71,6 @@ export default function RecommendedScreen() {
     ));
   }
 
-  const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
-  const y = new Animated.Value(0);
-  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true })
 
   return (
     <AnimatedScrollView style={styles.container}
@@ -108,7 +108,9 @@ export default function RecommendedScreen() {
             />
           </View>
           <View>
-            <TouchableOpacity onPress={() => setShowCompareModal(true)}>
+            <TouchableOpacity onPress={() => {
+              //setShowCompareModal(true)
+            }}>
               <View style={styles.compareButton}>
                 <Text style={styles.compareText}>Compare</Text>
               </View>
@@ -116,7 +118,7 @@ export default function RecommendedScreen() {
           </View>
         </View>
         <View >
-          {_.map(recommendedCard, (value, index) => {
+          {_.map(RecommendedCards, (value, index) => {
             return (
               <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} index={index} />
             );

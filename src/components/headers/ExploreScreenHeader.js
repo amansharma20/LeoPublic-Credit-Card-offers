@@ -12,7 +12,9 @@ const Explore = () => {
   return (
     <View style={styles.container}>
       <View style={styles.leftIconContainer}>
-      <MenuIcon />
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <MenuIcon />
+        </TouchableOpacity>
       </View>
       <Text style={styles.headerText}>Explore</Text>
     </View>

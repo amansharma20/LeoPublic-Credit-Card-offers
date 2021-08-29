@@ -26,7 +26,7 @@ export default function RecommendedScreenFlatlist(props) {
   const y = props.y;
   const index = props.index;
 
-  const onCardClick = () => {
+  const onCardClick = (card) => {
     setCheckboxState(!checkboxState, cardClicked);
   };
 
@@ -78,9 +78,6 @@ export default function RecommendedScreenFlatlist(props) {
 
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.85}
-      onPress={onCardClick} >
       <Animated.View style={[styles.container, { opacity, transform: [{ translateY }, { scale }] }]}>
         <View style={styles.cardContainerBody} onLayout={onLayout}>
           <ImageBackground
@@ -92,7 +89,9 @@ export default function RecommendedScreenFlatlist(props) {
                 style={styles.checkBoxContainer}
                 isChecked={checkboxState}
                 disableBuiltInState
-                onPress={onCardClick}
+                onPress={()=>{
+                  onCardClick(card)
+                }}
                 // onPress={() => setCheckboxState(!checkboxState)}
                 size={20}
                 iconStyle={styles.checkBoxIconStyle}
@@ -146,7 +145,6 @@ export default function RecommendedScreenFlatlist(props) {
           </Modal>
         )}
       </Animated.View>
-    </TouchableOpacity>
   );
 }
 
