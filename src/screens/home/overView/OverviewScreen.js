@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
     }),
   },
   imageSize: {
-    width: Responsive.width(120),
+    width: Responsive.width(80),
     height: Responsive.width(80),
     resizeMode: 'contain',
   },

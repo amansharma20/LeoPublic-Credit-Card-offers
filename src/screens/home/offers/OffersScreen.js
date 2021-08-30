@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     }),
   },
   contentContainer: {
-    paddingBottom: Responsive.height(20),
+    paddingBottom: Responsive.height(400),
+    // flex: 2,
   },
   skeletonStyle: {
     width: 300,
