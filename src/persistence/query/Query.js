@@ -216,23 +216,30 @@ export const GQLQuery = {
      }
     }`,
   GET_BEST_OFFERS: gql`
-    query MyQuery {
-      BankCardOfferQuery {
-        GetBankCardOffers {
-          BankCardId
-          Eligibility
-          ExpiryDate
-          HowToRedeem
-          Id
-          LinkToOfferDetails
-          LogoStoragePath
-          OfferCode
-          OfferDescription
-          OfferTitle
-          Platform
-          TermsAndConditions
-        }
-      }
+  query MyQuery {
+    BankCardOfferQuery {
+    GetBankCardOffers {
+    Bank {
+    Id
+    Name
+    }
+    BankCard {
+    CardName
+    }
+    BankCardId
+    Eligibility
+    ExpiryDate
+    HowToRedeem
+    Id
+    LinkToOfferDetails
+    LogoStoragePath
+    OfferCode
+    OfferDescription
+    OfferTitle
+    Platform
+    TermsAndConditions
+    }
+    }
     }
   `, GET_BANK_CARD_OFFERS_BY_ID: gql`
       query MyQuery($CardId: Long!){
@@ -253,44 +260,59 @@ export const GQLQuery = {
           }
         }
       }
-`,GET_LATEST_CARD_OFFERS: gql`
+`, GET_LATEST_CARD_OFFERS: gql`
 query MyQuery {
   BankCardOfferQuery {
-    GetBankCardOfferByDate {
-      BankCardId
-      Eligibility
-      ExpiryDate
-      HowToRedeem
-      Id
-      LinkToOfferDetails
-      LogoStoragePath
-      OfferCode
-      OfferDescription
-      OfferTitle
-      Platform
-      TermsAndConditions
-    }
+  GetBankCardOfferByDate {
+  Bank {
+  Id
+  Name
+  LogoStoragePath
   }
-}
-`,GET_ALL_CARD_OFFERS: gql`
+  BankCard {
+  CardName
+  }
+  BankCardId
+  Eligibility
+  ExpiryDate
+  HowToRedeem
+  Id
+  LinkToOfferDetails
+  LogoStoragePath
+  OfferCode
+  OfferDescription
+  OfferTitle
+  Platform
+  TermsAndConditions
+  }
+  }
+  }
+`, GET_ALL_CARD_OFFERS: gql`
 query MyQuery {
   BankCardOfferQuery {
-    GetBankCardOffers {
-      BankCardId
-      Eligibility
-      ExpiryDate
-      HowToRedeem
-      Id
-      LinkToOfferDetails
-      LogoStoragePath
-      OfferCode
-      OfferDescription
-      OfferTitle
-      Platform
-      TermsAndConditions
-    }
+  GetBankCardOffers {
+  Bank {
+  Id
+  Name
   }
-}
+  BankCard {
+  CardName
+  }
+  BankCardId
+  Eligibility
+  ExpiryDate
+  HowToRedeem
+  Id
+  LinkToOfferDetails
+  LogoStoragePath
+  OfferCode
+  OfferDescription
+  OfferTitle
+  Platform
+  TermsAndConditions
+  }
+  }
+  }
 `
 };
 

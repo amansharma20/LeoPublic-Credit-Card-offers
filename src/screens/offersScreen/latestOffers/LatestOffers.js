@@ -14,9 +14,7 @@ import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
-export default function LatestOffers() {
-
-
+export default function LatestOffers(props) {
 
   const {loading, data } = useQuery(GQLQuery.GET_LATEST_CARD_OFFERS);
 

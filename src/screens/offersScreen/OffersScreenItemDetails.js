@@ -3,46 +3,42 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants';
 import OfferDetailsScreenHeader from '../../components/headers/OfferDetailsScreenHeader';
 import AppleIcon from '../../assets/svgs/apple.svg';
 import { Responsive } from '../../utils/layouts/Layout';
 import OffersScreenItemDetailsNavigator from '../../navigation/OffersScreenItemDetailsNavigator';
 
-export default function OffersScreenItemDetails() {
-    const navigation = useNavigation();
+export default function OffersScreenItemDetails(props) {
+
+    const offer = props.route.params.offer;
     return (
         <View style={styles.container}>
             <View>
                 <OfferDetailsScreenHeader />
             </View>
-            <View style={{backgroundColor: '#4d2d8f'}}>
-
-            <View style={{ paddingHorizontal: SIZES.padding2, borderTopRightRadius: 32, borderTopLeftRadius: 32, backgroundColor: '#ffffff', marginTop: 0 }}>
-                <View style={styles.headerContainer}>
-                    <View>
-                        <Text style={styles.titleText}>Issuer Name</Text>
-                        <Text style={styles.subTitleText}>Axis Bank</Text>
-
-                        <Text style={styles.titleText}>Card Name</Text>
-                        <Text style={styles.subTitleText}>Regalia First</Text>
+            <View style={{ backgroundColor: '#4d2d8f' }}>
+                <View style={{ paddingHorizontal: SIZES.padding2, borderTopRightRadius: 32, borderTopLeftRadius: 32, backgroundColor: '#ffffff', marginTop: 0 }}>
+                    <View style={styles.headerContainer}>
+                        <View>
+                            <Text style={styles.titleText}>Issuer Name</Text>
+                            <Text style={styles.subTitleText}>{offer.Bank.Name}</Text>
+                            <Text style={styles.titleText}>Card Name</Text>
+                            <Text style={styles.subTitleText}>{offer.BankCard.CardName}</Text>
+                        </View>
+                        <TouchableOpacity style={styles.buttonContainer}>
+                            <Text style={styles.applyNowText}>Apply Now</Text>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.buttonContainer}>
-                        <Text style={styles.applyNowText}>Apply Now</Text>
-                    </TouchableOpacity>
+                    <View style={styles.offerDetailsContainer}>
+                        <AppleIcon />
+                        <Text style={styles.modalSubTitleDetailsText}>{offer.OfferDescription}</Text>
+                    </View>
                 </View>
-                <View style={styles.offerDetailsContainer}>
-                    <AppleIcon />
-                    {/* <Image source={{}} style={{ width: 24, height: 24 }} /> */}
-                    <Text style={styles.modalSubTitleDetailsText}>1000 off on apple watch
-                        and accessories </Text>
-                </View>
-            </View>
             </View>
 
             <ScrollView>
-                <OffersScreenItemDetailsNavigator />
+                <OffersScreenItemDetailsNavigator offer={offer} />
             </ScrollView>
         </View>
     );
@@ -60,17 +56,17 @@ const styles = StyleSheet.create({
         color: '#7A869A',
         fontSize: SIZES.h4,
         paddingTop: 10,
-        fontFamily:Platform.select({
-            ios:'Exo2-Medium',
-            android:'Exo2Medium'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Medium',
+            android: 'Exo2Medium'
+        }),
     },
     subTitleText: {
         fontSize: SIZES.h3,
-        fontFamily:Platform.select({
-            ios:'Exo2-Medium',
-            android:'Exo2Medium'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Medium',
+            android: 'Exo2Medium'
+        }),
     },
     headerContainer: {
         flexDirection: 'row',
@@ -89,21 +85,24 @@ const styles = StyleSheet.create({
         height: Responsive.height(28),
         borderRadius: 12,
     },
-    applyNowText: { color: '#ffffff', fontSize: 10,
-    fontFamily:Platform.select({
-        ios:'Exo2-Bold',
-        android:'Exo2Bold'
-      }),
+    applyNowText: {
+        color: '#ffffff', fontSize: 10,
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold'
+        }),
     },
-    offerDetailsContainer: {  borderBottomWidth: 1, borderColor: '#EDEAF2',
-    paddingVertical: SIZES.padding,
-    paddingHorizontal: SIZES.padding2, },
+    offerDetailsContainer: {
+        borderBottomWidth: 1, borderColor: '#EDEAF2',
+        paddingVertical: SIZES.padding,
+        paddingHorizontal: SIZES.padding2,
+    },
     modalSubTitleDetailsText: {
         paddingTop: 10,
         fontSize: 16,
-        fontFamily:Platform.select({
-            ios:'Exo2-Bold',
-            android:'Exo2Bold'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold'
+        }),
     },
 });

@@ -1,17 +1,12 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, StyleSheet, Text, FlatList, Platform } from 'react-native';
+import { View, StyleSheet, Text, Platform } from 'react-native';
 import { SIZES } from '../../constants';
-import MODALDATA from '../../assets/dummyData/overviewModal';
-import OffersDetailsModalFlatlist from '../../components/flatlistsItems/OffersDetailsModalFlatlist';
-import { ScrollView } from 'react-native-gesture-handler';
 
-export default function BottomTabOffersScreenModal() {
+export default function BottomTabOffersScreenModal(props) {
 
-  const renderModalItemOffersDetails = ({ item }) => (
-    <OffersDetailsModalFlatlist title={item.title} subtitle={item.subtitle} />
-  );
+  const offer = props.offer;
 
   return (
     <View style={styles.container}>
@@ -19,56 +14,56 @@ export default function BottomTabOffersScreenModal() {
         <Text style={styles.titleText}>Offer Title</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>Apple</Text>
+        <Text style={styles.subtitleText}>{offer.OfferTitle}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Offer Description</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>1000 off on apple watch and accessories</Text>
+        <Text style={styles.subtitleText}>{offer.OfferDescription}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Expiry Date</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>21/6/2021</Text>
+        <Text style={styles.subtitleText}>{offer.ExpiryDate}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Eligibility</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>Lorem ipsum dolor sit ame</Text>
+        <Text style={styles.subtitleText}>{offer.Eligibility}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Platform</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>Lorem ipsum dolor sit ame</Text>
+        <Text style={styles.subtitleText}>{offer.Platform}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Terms & Conditions</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>Lorem ipsum dolor sit ame</Text>
+        <Text style={styles.subtitleText}>{offer.TermsAndConditions}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Offer Code (if applicable)</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>Lorem ipsum dolor sit ame</Text>
+        <Text style={styles.subtitleText}>{offer.OfferCode}</Text>
       </View>
 
       <View style={styles.textContainerMain}>
         <Text style={styles.titleText}>Link to Offer Details</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.subtitleText}>Lorem ipsum dolor sit ame</Text>
+        <Text style={styles.subtitleText}>{offer.LinkToOfferDetails}</Text>
       </View>
 
 
@@ -101,13 +96,13 @@ const styles = StyleSheet.create({
       ios: 'Exo2-Medium',
       android: 'Exo2Medium',
     }),
-    marginLeft:10,
+    marginLeft: 10,
   },
   subtitleText: {
     fontSize: SIZES.h4,
     color: '#172B4D',
     marginTop: 2,
-    marginLeft:10,
+    marginLeft: 10,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold',

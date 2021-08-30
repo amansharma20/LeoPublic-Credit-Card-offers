@@ -17,6 +17,7 @@ import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton
 import { icons } from '../../../constants';
 
 export default function MonthlySpend() {
+    
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
 
@@ -106,7 +107,7 @@ export default function MonthlySpend() {
                         ₹1000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonContainer}> 
+                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonContainer}>
                     <Text style={styles.buttonText}>
                         Submit
                     </Text>
@@ -120,15 +121,13 @@ export default function MonthlySpend() {
                     statusBarTranslucent={true}
                     animationType="slide">
                     <View style={styles.modalBackground}>
-                        {/* HEADER  */}
                         <View style={styles.modalContainer}>
-                            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Text style={styles.modalHeader}>Your Monthly Spend</Text>
-                                <TouchableOpacity style={{width: 24, height: 24, alignItems: 'center', justifyContent: 'center'}} onPress={() => setShowModal(false)}>
-                                <Image source={icons.crossIcon} style={{ width: 14, height: 14 }} />
+                                <TouchableOpacity style={{ width: 24, height: 24, alignItems: 'center', justifyContent: 'center' }} onPress={() => setShowModal(false)}>
+                                    <Image source={icons.crossIcon} style={{ width: 14, height: 14 }} />
                                 </TouchableOpacity>
                             </View>
-
                             <View style={styles.writeReviewContainer}>
                                 <TextInput
                                     style={styles.inputText}
@@ -137,16 +136,8 @@ export default function MonthlySpend() {
                                     keyboardType={'numeric'}
                                 />
                                 <TouchableOpacity onPress={() => setShowModal(false)} >
-                                <Image source={icons.forwardButton} style={{width: 48, height: 48, marginLeft: 16}} />
+                                    <Image source={icons.forwardButton} style={{ width: 48, height: 48, marginLeft: 16 }} />
                                 </TouchableOpacity>
-
-
-                                {/* <View style={{backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', width: 48, hei4: 48}}>
-                                    <Text style={{color: '#ffffff'}}>
-                                        text
-                                    </Text>
-
-                                </View> */}
 
                             </View>
                         </View>
@@ -184,25 +175,25 @@ const styles = StyleSheet.create({
     leftContainer: { flexDirection: 'row', alignItems: 'center' },
     leftText: {
         fontSize: 14, color: '#455671',
-        fontFamily:Platform.select({
-            ios:'Exo2-Medium',
-            android:'Exo2Medium'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Medium',
+            android: 'Exo2Medium'
+        }),
     },
     headerTextCircle: {
         fontSize: 20, textAlign: 'center', marginTop: -140,
-        fontFamily:Platform.select({
-            ios:'Exo2-Medium',
-            android:'Exo2Medium'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Medium',
+            android: 'Exo2Medium'
+        }),
     },
     buttonContainer: { backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48), marginVertical: SIZES.padding, marginBottom: 50 },
     buttonText: {
         color: '#ffffff', fontSize: 16,
-        fontFamily:Platform.select({
-            ios:'Exo2-Bold',
-            android:'Exo2Bold'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold'
+        }),
     },
     modalBackground: {
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -220,10 +211,10 @@ const styles = StyleSheet.create({
     },
     modalHeader: {
         fontSize: 22,
-        fontFamily:Platform.select({
-            ios:'Exo2-Bold',
-            android:'Exo2Bold'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold'
+        }),
     },
     writeReviewContainer: {
         paddingVertical: SIZES.padding,
@@ -236,10 +227,10 @@ const styles = StyleSheet.create({
         color: '#3E3E3E',
         textAlignVertical: 'top',
         padding: 12,
-        fontFamily:Platform.select({
-            ios:'Exo2-Medium',
-            android:'Exo2Medium'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Medium',
+            android: 'Exo2Medium'
+        }),
         width: '80%',
     },
     buttonsContainer: {
@@ -256,10 +247,10 @@ const styles = StyleSheet.create({
     saveButtonText: {
         color: '#FFFFFF',
         fontSize: SIZES.h3,
-        fontFamily:Platform.select({
-            ios:'Exo2-Bold',
-            android:'Exo2Bold'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold'
+        }),
     },
     closeButtonContainer: {
         alignItems: 'center',
@@ -274,9 +265,9 @@ const styles = StyleSheet.create({
     closeButtonText: {
         color: '#4d2d8f',
         fontSize: SIZES.h3,
-        fontFamily:Platform.select({
-            ios:'Exo2-Bold',
-            android:'Exo2Bold'
-          }),
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold'
+        }),
     },
 });
