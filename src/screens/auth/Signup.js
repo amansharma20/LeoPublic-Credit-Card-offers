@@ -33,7 +33,7 @@ export default function Signup() {
       .string()
       .matches(/(\w.+\s).+/, 'Enter at least 2 names')
       .required('Full name is required'),
-      phone: yup
+    phone: yup
       .string()
       .matches(/(\d){10}\b/, 'Enter a valid phone number')
       .required('Phone number is required'),
@@ -43,11 +43,11 @@ export default function Signup() {
       .required('Email is required'),
   });
 
-
   const signup = data => {
- CommonLoading.show();
+    CommonLoading.show();
     const signUpData = {
       FirstName: data.fullName,
+      LastName: '',
       Email: data.email,
       MobileNumber: data.phone,
     };
@@ -55,11 +55,12 @@ export default function Signup() {
       AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
     ).then((response) => {
       console.log(response)
-      if(response.success){
-        CommonLoading.hide();
+      CommonLoading.hide();
+      if (response && response.success === false) { } else {
         navigation.navigate('OTPScreen', {
-          phone: data.phoneNumber,
+          phone: data.phone,
           screenName: 'Signup',
+          firstName: data.fullName
         });
       }
     });
@@ -107,7 +108,7 @@ export default function Signup() {
                       name="fullName"
                       style={styles.textInput}
                       placeholder="Full Name"
-                      value={() => values.fullName}
+                      value={values.fullName}
                     />
                     {!errors.fullName && touched.fullName && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />
@@ -122,7 +123,7 @@ export default function Signup() {
                       name="email"
                       style={styles.textInput}
                       placeholder="Email ID"
-                      value={() => values.email}
+                      value={values.email}
                     />
                     {!errors.email && touched.email && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />
@@ -138,7 +139,7 @@ export default function Signup() {
                       style={styles.textInput}
                       placeholder="Phone Number"
                       keyboardType="numeric"
-                      value={() => values.phone}
+                      value={values.phone}
                     />
                     {!errors.phone && touched.phone && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />

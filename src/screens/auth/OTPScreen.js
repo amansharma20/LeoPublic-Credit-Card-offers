@@ -22,6 +22,9 @@ export default function OTPScreen(props) {
   const navigation = useNavigation();
   const { phone } = props.route.params;
   const { screenName } = props.route.params;
+  const { firstName } = props.route.params;
+
+  
   const [otp, setOtp] = useState("0000");
 
   const dispatch = useDispatch();
@@ -45,15 +48,22 @@ export default function OTPScreen(props) {
         },
       );
     } else {
+      console.log("INSIDE SIGNUP")
       const otpData = {
         MobileNumber: phone,
         Code: otp,
       };
+      console.log(otpData)
       dispatch(
         AuthActions.signIn('/Account/RegisterCustomerComplete', otpData),
       ).then(response => {
+        console.log(response)
         CommonLoading.hide();
-        navigation.navigate('BasicDetailsInput');
+        if (response && response.success === false) {  } else {
+          navigation.navigate('BasicDetailsInput',{
+            firstName: firstName
+          });
+        }
       });
     }
   };
