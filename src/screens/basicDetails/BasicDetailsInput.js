@@ -22,9 +22,10 @@ import { format } from "date-fns";
 
 export default function BasicDetailsInput(props) {
 
-  const { firstName } = props.route.params;
+  //const { firstName } = props.route.params;
+  const firstName = "Name"
 
-
+   //navigation.navigate('CardHolder')
 
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
@@ -47,20 +48,26 @@ export default function BasicDetailsInput(props) {
     pincode: yup.number().required('Pincode' + ' ' + 'is required'),
   });
 
+
   const {
     control,
+    handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const onSubmit = (data) => {
+console.log('INSIDE')
+    console.log(data)
+
+  }
 
   const formatedDate = (date) => {
     var formattedDate = format(date, "MMMM do, yyyy");
     console.log(formattedDate);
     return formattedDate;
   }
-
-
 
   return (
     <View style={styles.container}>
@@ -165,7 +172,7 @@ export default function BasicDetailsInput(props) {
         <View>
           <TouchableOpacity
             // onPress={handleSubmit(onSubmit)}
-            onPress={() => navigation.navigate('CardHolder')}
+            onPress={handleSubmit(onSubmit)}
           >
             <View style={styles.submitButtonContainer}>
               <Text style={styles.submitButtonText}>Submit Details</Text>
