@@ -12,7 +12,7 @@ function OffersScreenTopNavigator() {
   return (
     <Tab.Navigator
       initialRouteName="All"
-      tabBarOptions={{
+      screenOptions={{
         labelStyle: {
           fontSize: 12, lineHeight: 18, fontFamily: Platform.select({
             ios: 'Exo2-Bold',
