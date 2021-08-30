@@ -10,6 +10,7 @@ import {
   Text,
   Dimensions,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -178,7 +179,7 @@ export default function Signup() {
           {/* <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
             /> */}
           <Text
-            style={{ fontSize: 16,  fontFamily:Platform.select({
+            style={{ fontSize: 16,  fontFamily: Platform.select({
               ios:'Exo2-Bold',
               android:'Exo2Bold'
             }), color: '#ffffff' }}>
