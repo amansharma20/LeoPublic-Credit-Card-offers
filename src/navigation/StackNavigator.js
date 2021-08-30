@@ -10,7 +10,7 @@ import OTPScreen from '../screens/auth/OTPScreen';
 import Signup from '../screens/auth/Signup';
 import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import CardHolder from '../screens/basicDetails/CardHolder';
-import AddCardScreen from '../screens/addCardScreen/AddCardScreen';
+import AddCardScreen from '../screens/addCard/AddCardScreen';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
 import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDetails';
@@ -31,15 +31,16 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
+
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
+                <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="CardHolder" component={CardHolder}/>
                 <Stack.Screen name="Educate" component={Educate}/>
+                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="NewToCreditCards" component={NewToCreditCards}/>
                 <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
                 <Stack.Screen name="StartScreen" component={StartScreen}/>
-                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="Signup" component={Signup}/>
-                <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="OTPScreen" component={OTPScreen}/>
                 <Stack.Screen name="MonthlySpend" component={MonthlySpend}/>
                 <Stack.Screen name="ExploreScreen" component={ExploreScreen}/>

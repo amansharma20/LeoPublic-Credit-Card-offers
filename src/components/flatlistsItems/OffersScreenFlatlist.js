@@ -1,22 +1,29 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { View, StyleSheet, Text, Image, Platform } from 'react-native';
+import { applicationProperties } from '../../../application.properties';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 
-const Offers = ({ title, subtitle, image }) => (
-  <View style={styles.container}>
-    <View style={styles.offerContainer}>
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: image }} style={styles.imageSize} />
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.titleText}>{title}</Text>
-        <Text style={styles.subtitleText}>{subtitle}</Text>
+export default function Offers(props) {
+  const offer = props.offer
+  return (
+    <View style={styles.container}>
+      <View style={styles.offerContainer}>
+        <View style={styles.imageContainer}>
+          <Image source={{
+            uri: applicationProperties.imageUrl + offer.LogoStoragePath,
+          }}
+            style={styles.imageSize} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.titleText}>{offer.OfferTitle}</Text>
+          <Text style={styles.subtitleText}>{offer.OfferDescription}</Text>
+        </View>
       </View>
     </View>
-  </View>
-);
+  )
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +36,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 15,
     flexDirection: 'row',
-    padding: SIZES.padding2,
     alignItems: 'center',
     width: '100%',
   },
@@ -40,9 +46,9 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 14,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
     }),
     color: '#172B4D',
     lineHeight: 20,
@@ -50,9 +56,9 @@ const styles = StyleSheet.create({
   subtitleText: {
     color: '#7A869A',
     marginTop: 10,
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
     }),
   },
   imageSize: {
@@ -61,5 +67,3 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
-
-export default Offers;

@@ -215,7 +215,7 @@ export const GQLQuery = {
      }
      }
     }`,
-    GET_BEST_OFFERS: gql`
+  GET_BEST_OFFERS: gql`
     query MyQuery {
       BankCardOfferQuery {
         GetBankCardOffers {
@@ -234,5 +234,26 @@ export const GQLQuery = {
         }
       }
     }
-  `,
+  `, GET_BANK_CARD_OFFERS_BY_ID: gql`
+      query MyQuery($CardId: Long!){
+        BankCardOfferQuery {
+          GetBankCardOfferById(CardId: $CardId) {
+            BankCardId
+            Eligibility
+            ExpiryDate
+            HowToRedeem
+            Id
+            LinkToOfferDetails
+            LogoStoragePath
+            OfferCode
+            OfferDescription
+            OfferTitle
+            Platform
+            TermsAndConditions
+          }
+        }
+      }
+`,
 };
+
+

@@ -20,7 +20,6 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CongratulationsAnimation from '../../components/animations/CongratulationsAnimation';
-import CongratulationsAnimation2 from '../../components/animations/CongratulationsAnimation2';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';

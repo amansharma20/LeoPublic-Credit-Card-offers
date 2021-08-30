@@ -19,17 +19,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ScreenWidth } from 'react-native-elements/dist/helpers';
 import { applicationProperties } from '../../../../application.properties';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
 
 
 export default function OverviewScreen(props) {
-  const navigation = useNavigation();
   const cardData = props.cardData;
   const [showModal, setShowModal] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
-        {/* HEADER TITLE TAB  */}
         <LinearGradient style={styles.innerContainer} colors={['#EEE5FF', '#FFFFFF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerText}>Issuing Bank</Text>
@@ -38,13 +35,11 @@ export default function OverviewScreen(props) {
           <View>
             <Image
               source={{
-                uri: applicationProperties.imageUrl + cardData.BankCard.Bank.ImageStoragePath,
+                uri: applicationProperties.imageUrl + cardData.BankCard.Bank.LogoStoragePath,
               }} style={styles.imageSize} />
           </View>
         </LinearGradient>
       </View>
-      {/* FLATLIST */}
-
       <View>
         <View style={styles.flatlistContainer}>
           <View style={{ flexDirection: 'row' }}>
@@ -54,7 +49,7 @@ export default function OverviewScreen(props) {
                   <Text style={styles.titleText}>Card Program</Text>
                 </View>
                 <View>
-                  <Text style={styles.subtitleText}>{cardData.BankCard.Bank.CardProgram}</Text>
+                  <Text style={styles.subtitleText}>{cardData.BankCard.CardProgram}</Text>
                 </View>
               </LinearGradient>
             </View>
@@ -141,9 +136,9 @@ export default function OverviewScreen(props) {
               <Text style={styles.modalHeaderText}>My Cards</Text>
               <View style={styles.rightIconContainer}>
                 <TouchableOpacity >
-                <Image source={icons.add} style={styles.iconSizeRight} />
+                  <Image source={icons.add} style={styles.iconSizeRight} />
                 </TouchableOpacity>
-                
+
               </View>
             </View>
             <ScrollView style={{ paddingHorizontal: SIZES.padding2 }}>
@@ -151,120 +146,119 @@ export default function OverviewScreen(props) {
                 <Text style={styles.titleText}>Issuing Bank</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>Default Card</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.Bank.Name}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Card Program</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>Signature</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.CardName}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Joining Fees</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹999</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.JoiningFees}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Annual Fees</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹999</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.AnnualFees}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Interest Rate</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>7.89%</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.InterestRate}%</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Credit Limit</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹300,000</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.CreditLimit}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Card Level</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>Gold</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.CardLevel}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Reward Points Issued</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>3.50%</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.RewardPointIssuedPer100RsSpend}%</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Forex Markup</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.ForexMarkUpInPercent}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Minimum Spend</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.MinSpendToWaiveAnnualFees}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Redemption Handling Fee</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹99</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.RedemptionHandlingFee}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Over-limit Charge</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹80</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.OverLimitCharge}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Late Payment Fee</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹500</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.LatePaymentFee}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Cash Withdrawal Charges</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹500</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.CashWithdrawalCharges}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Key Highlights</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>A monthly spend of up to Rs. 10,000, gets 1 Union Point for every Rs. 100 spent.
-                  Monthly spends ranging between Rs. 10,001 to Rs. 30,000, gets 1.5 points for every Rs.100 spent.A monthly spend of above Rs. 30,000, gets 2 Union Points for every Rs. 100 spent.</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.KeyHighlights}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Travel Benefits</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹8000</Text>
+                <Text style={styles.subtitleText}>{cardData.BankCard.TravelBenefits}</Text>
               </View>
 
               <View style={styles.textContainerMain}>
                 <Text style={styles.titleText}>Fuel Benefits</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
+                <Text style={styles.subtitleText}>₹ {cardData.BankCard.TravelBenefits}</Text>
               </View>
 
               <View style={styles.textContainerMain}>

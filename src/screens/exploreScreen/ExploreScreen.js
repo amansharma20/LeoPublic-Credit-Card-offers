@@ -23,14 +23,9 @@ export default function ExploreScreen() {
           barStyle={'light-content'}
         />
         <View>
-          {/* HEADER  */}
-          <View>
-            <ExploreScreenHeader />
-          </View>
-          {/* MAIN BODY  */}
+        <ExploreScreenHeader />
           <View style={styles.mainBody}>
             <View style={{width: WIDTH, height: '100%' }}>
-              {/* <ExploreSegmentNavigator /> */}
               <ExploreTopNavigator />
             </View>
           </View>

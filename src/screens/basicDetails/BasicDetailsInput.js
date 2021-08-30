@@ -1,26 +1,24 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
   Text,
   TouchableOpacity,
-  Image,
   Modal,
-  Button,
-  TouchableHighlight,
   TextInput,
+  Platform,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES, icons} from '../../constants/theme';
+import { useNavigation } from '@react-navigation/native';
+import { SIZES } from '../../constants/theme';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
-import {Controller, useForm} from 'react-hook-form';
-import {Responsive} from '../../utils/layouts/Layout';
-import {yupResolver} from '@hookform/resolvers/yup';
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
+import { format } from "date-fns";
 
 export default function BasicDetailsInput() {
   const navigation = useNavigation();
@@ -29,32 +27,41 @@ export default function BasicDetailsInput() {
   const [employmentValue, setEmploymentValue] = useState(null);
   const [genderValue, setGenderValue] = useState(null);
   const [employmentType, setEmploymentType] = useState([
-    {label: 'Employed', value: 'employed'},
-    {label: 'Unemployed', value: 'unemployed'},
+    { label: 'Employed', value: 'employed' },
+    { label: 'Unemployed', value: 'unemployed' },
   ]);
   const [gender, setGender] = useState([
-    {label: 'Male', value: 'male'},
-    {label: 'Female', value: 'female'},
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
   ]);
   // const [date, setDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
+
   const schema = yup.object().shape({
     pincode: yup.number().required('Pincode' + ' ' + 'is required'),
   });
+  
   const {
     control,
-    handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const formatedDate = (date) =>{
+   var formattedDate = format(date, "MMMM do, yyyy");
+    console.log(formattedDate);
+    return formattedDate;
+  }
+
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.body}>
         <TouchableOpacity>
           <View style={styles.header}>
-            {/* <Image source={icons.backButton} style={styles.backButtonSize} /> */}
             <BackButtonBlack />
           </View>
         </TouchableOpacity>
@@ -66,13 +73,9 @@ export default function BasicDetailsInput() {
           </Text>
         </View>
         <View>
-          {/* <Button title="showModal" onPress={() => setShowModal(true)} /> */}
           <TouchableOpacity onPress={() => setShowModal(true)}>
             <View style={styles.dobContainer}>
-              <Text style={styles.dobText}>Date of Birth</Text>
-              {/* <Text style={{marginLeft: 10, color: '#B4B4B4', fontSize: SIZES.h3}}>
-              {Date()}
-            </Text> */}
+              <Text style={styles.dobText}>{formatedDate(date)}</Text>
             </View>
           </TouchableOpacity>
 
@@ -81,6 +84,7 @@ export default function BasicDetailsInput() {
               animationType="fade"
               transparent={true}
               showModal={showModal}
+              backgroundColor='black'
               onRequestClose={() => setShowModal(false)}>
               <DatePicker
                 date={date}
@@ -92,7 +96,7 @@ export default function BasicDetailsInput() {
                 <TouchableOpacity
                   // onPress={() => setDate(new Date())}
                   onPress={() => setShowModal(false)}>
-                  <Text>Click here to submit</Text>
+                  <Text>Close</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
@@ -116,11 +120,10 @@ export default function BasicDetailsInput() {
           <View style={styles.annualSalaryContainer}>
             <Text style={styles.annualSalaryText}>Annual Salary Range</Text>
           </View>
-
           <View>
             <Controller
               control={control}
-              render={({field: {onChange, onBlur, value}}) => (
+              render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
                   label={'Pincode'}
                   onBlur={onBlur}
@@ -156,8 +159,8 @@ export default function BasicDetailsInput() {
         </View>
         <View>
           <TouchableOpacity
-          // onPress={handleSubmit(onSubmit)}
-          onPress={() => navigation.navigate('CardHolder')}
+            // onPress={handleSubmit(onSubmit)}
+            onPress={() => navigation.navigate('CardHolder')}
           >
             <View style={styles.submitButtonContainer}>
               <Text style={styles.submitButtonText}>Submit Details</Text>
@@ -183,8 +186,12 @@ const styles = StyleSheet.create({
   },
   body: {
     padding: SIZES.padding,
+    marginTop: Platform.select({
+      ios: 30,
+      android: 0
+    })
   },
-  backButtonSize: {width: 24, height: 24},
+  backButtonSize: { width: 24, height: 24 },
   headerTextContainer: {
     paddingVertical: 20,
   },
@@ -277,6 +284,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     fontSize: SIZES.h3,
     color: '#2A2525',
+    height: 50
   },
   annualSalaryContainer: {
     backgroundColor: '#f4f5f7',

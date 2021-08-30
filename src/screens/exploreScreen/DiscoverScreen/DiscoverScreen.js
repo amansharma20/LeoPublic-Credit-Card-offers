@@ -6,12 +6,9 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
-  FlatList,
   Modal,
   Text,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Responsive } from '../../../utils/layouts/Layout';
 import SearchIcon from '../../../assets/svgs/search.svg';
 import CommonSearchInput from '../../../components/CommonSearchInput';
@@ -26,23 +23,22 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
 export default function RecommendedScreen() {
-  const navigation = useNavigation();
+
+  const [allCategoriesValue, setAllCategoriesValue] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [openAllCategories, setOpenAllCategories] = useState(false);
+  
+  const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
+  const DiscoverCards = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
+
   const [allCategories, setAllCategories] = useState([
     { label: 'Lifestyle', value: 'Lifestyle' },
     { label: 'Fashion', value: 'Fashion' },
   ]);
-  const [allCategoriesValue, setAllCategoriesValue] = useState(null);
 
 
-  const [showModal, setShowModal] = useState(false);
-
-  const { loading, error, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
-  const discoverCard = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
 
   if (loading) {
     return Array.from({ length: 3 }).map((_, index) => (
@@ -74,8 +70,8 @@ export default function RecommendedScreen() {
             <FilterIcon />
           </TouchableOpacity>
         </View>
-        <View style={{paddingBottom: Responsive.height(150)}}>
-          {_.map(discoverCard, (value, index) => {
+        <View style={{ paddingBottom: Responsive.height(150) }}>
+          {_.map(DiscoverCards, (value, index) => {
             return (
               <DiscoverScreenFlatlist cards={value} key={index.toString()} />
             );

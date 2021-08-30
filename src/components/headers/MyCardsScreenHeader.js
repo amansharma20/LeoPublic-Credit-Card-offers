@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Platform, Touchable, Modal } from 'react-native';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
-import icons from '../../constants/icons';
+import { View, Text, StyleSheet, TouchableOpacity, Platform, Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants';
 import MenuIcon from '../../assets/svgs/menuIcon.svg';
 import AddIcon from '../../assets/svgs/addIcon.svg';
-import AddCardScreen from '../../screens/addCardScreen/AddCardScreen';
+import AddCardScreen from '../../screens/addCard/AddCardScreen';
 
 export default function MyCardsScreenHeader (props) {
   
