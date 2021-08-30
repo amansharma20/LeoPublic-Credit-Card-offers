@@ -43,7 +43,9 @@ export default function Login() {
     dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
       (response) => {
         CommonLoading.hide();
-        if (response.success) {
+        if (response && response.success === false) {
+          //Do Nothing. 
+        } else {
           navigation.navigate('OTPScreen', {
             phone: data.phone,
             screenName: 'Login',
@@ -89,7 +91,7 @@ export default function Login() {
                       style={styles.phoneInput}
                       onChangeText={handleChange('phone')}
                       onBlur={handleBlur('phone')}
-                      value={() => values.phone}
+                      value={values.phone}
                       keyboardType="numeric"
                       placeholder="Phone Number"
                       placeholderTextColor="#B4B4B4"

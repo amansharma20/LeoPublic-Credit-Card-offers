@@ -15,7 +15,7 @@ async function signIn(url, data) {
         Toast.show({
             type: 'error',
             position: 'top',
-            text1: 'Oops',
+            text1: '',
             text2: e.response.data,
             visibilityTime: 4000,
             autoHide: true,

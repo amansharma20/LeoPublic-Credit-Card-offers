@@ -5,31 +5,49 @@ import React from 'react';
 import {
   View,
   StyleSheet,
+  FlatList
 } from 'react-native';
 import { SIZES } from '../../../constants/theme';
-import { FlatList } from 'react-native-gesture-handler';
 import { Responsive } from '../../../utils/layouts/Layout';
 import BestOffersFlatlist from '../../../components/flatlistsItems/BestOffersFlatlist';
-import BESTOFFERSDATA from '../../../assets/dummyData/bestOffersData';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../../persistence/query/Query';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 export default function BestOffers() {
+
+  const { loading, data } = useQuery(GQLQuery.GET_BEST_OFFERS);
+  const BankCardOffers = data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOffers;
+
   const renderItem = ({ item }) => (
-    <BestOffersFlatlist title={item.title} subtitle={item.subtitle} image={item.image} />
+    <BestOffersFlatlist offer={item} />
   );
+
+  if (loading)
+  return (
+    <View style={{ marginBottom: 12, alignItems: 'center' }}>
+      <SkeletonPlaceholder>
+        <View style={styles.skeletonStyle} />
+        <View style={styles.skeletonStyle} />
+        <View style={styles.skeletonStyle} />
+      </SkeletonPlaceholder>
+    </View>
+  );
+
 
   return (
     <View style={styles.container}>
       <View style={styles.body}>
         <View>
           <FlatList
-            data={BESTOFFERSDATA}
+            data={BankCardOffers}
             renderItem={renderItem}
             keyExtractor={item => item.id}
             numColumns={2}
-            contentContainerStyle={{paddingBottom: Responsive.height(180)}}
+            contentContainerStyle={{ paddingBottom: Responsive.height(180) }}
             showsVerticalScrollIndicator={false}
-           />
-      </View>
+          />
+        </View>
       </View>
     </View>
   );
@@ -46,5 +64,11 @@ const styles = StyleSheet.create({
   body: {
     // paddingVertical: SIZES.padding,
     paddingHorizontal: SIZES.padding2,
+  },
+  skeletonStyle: {
+    width: 300,
+    height: 100,
+    borderRadius: 8,
+    marginTop: 30
   },
 });

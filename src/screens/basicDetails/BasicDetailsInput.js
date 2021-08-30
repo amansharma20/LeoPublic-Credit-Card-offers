@@ -20,7 +20,13 @@ import * as yup from 'yup';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import { format } from "date-fns";
 
-export default function BasicDetailsInput() {
+export default function BasicDetailsInput(props) {
+
+  //const { firstName } = props.route.params;
+  const firstName = "Name"
+
+   //navigation.navigate('CardHolder')
+
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
   const [openEmploymentType, setOpenEmploymentType] = useState(false);
@@ -41,21 +47,27 @@ export default function BasicDetailsInput() {
   const schema = yup.object().shape({
     pincode: yup.number().required('Pincode' + ' ' + 'is required'),
   });
-  
+
+
   const {
     control,
+    handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const formatedDate = (date) =>{
-   var formattedDate = format(date, "MMMM do, yyyy");
+  const onSubmit = (data) => {
+console.log('INSIDE')
+    console.log(data)
+
+  }
+
+  const formatedDate = (date) => {
+    var formattedDate = format(date, "MMMM do, yyyy");
     console.log(formattedDate);
     return formattedDate;
   }
-
-  
 
   return (
     <View style={styles.container}>
@@ -66,7 +78,7 @@ export default function BasicDetailsInput() {
           </View>
         </TouchableOpacity>
         <View style={styles.headerTextContainer}>
-          <Text style={styles.headerText}>Hello, Navneet</Text>
+          <Text style={styles.headerText}>Hello, {firstName}</Text>
           <Text style={styles.subTitleText}>
             To provide you the best experience,{'\n'}we need to know a few
             details about you.{'\n'}It would help us serve you better.
@@ -160,7 +172,7 @@ export default function BasicDetailsInput() {
         <View>
           <TouchableOpacity
             // onPress={handleSubmit(onSubmit)}
-            onPress={() => navigation.navigate('CardHolder')}
+            onPress={handleSubmit(onSubmit)}
           >
             <View style={styles.submitButtonContainer}>
               <Text style={styles.submitButtonText}>Submit Details</Text>

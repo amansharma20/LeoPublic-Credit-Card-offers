@@ -46,18 +46,20 @@ export default function Signup() {
     CommonLoading.show();
     const signUpData = {
       FirstName: data.fullName,
+      LastName: '',
       Email: data.email,
       MobileNumber: data.phone,
     };
     dispatch(
       AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
-    ).then(response => {
-      console.log(response);
-      if (response.success) {
-        CommonLoading.hide();
+    ).then((response) => {
+      console.log(response)
+      CommonLoading.hide();
+      if (response && response.success === false) { } else {
         navigation.navigate('OTPScreen', {
-          phone: data.phoneNumber,
+          phone: data.phone,
           screenName: 'Signup',
+          firstName: data.fullName
         });
       }
     });
@@ -99,7 +101,7 @@ export default function Signup() {
                       name="fullName"
                       style={styles.textInput}
                       placeholder="Full Name"
-                      value={() => values.fullName}
+                      value={values.fullName}
                     />
                     {!errors.fullName && touched.fullName && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />
@@ -114,7 +116,7 @@ export default function Signup() {
                       name="email"
                       style={styles.textInput}
                       placeholder="Email ID"
-                      value={() => values.email}
+                      value={values.email}
                     />
                     {!errors.email && touched.email && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />
@@ -130,7 +132,7 @@ export default function Signup() {
                       style={styles.textInput}
                       placeholder="Phone Number"
                       keyboardType="numeric"
-                      value={() => values.phone}
+                      value={values.phone}
                     />
                     {!errors.phone && touched.phone && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />

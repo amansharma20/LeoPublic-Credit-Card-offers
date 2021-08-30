@@ -14,44 +14,26 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import LinearGradient from 'react-native-linear-gradient';
 import { images, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
-import MoreDetails from './MoreDetailsItems';
-import OffersDetailsModalFlatlist from './OffersDetailsModalFlatlist';
 import { useNavigation } from '@react-navigation/native';
+import { applicationProperties } from '../../../application.properties';
 
-export default function BestOffersFlatlist({ title, subtitle, image }) {
+export default function BestOffersFlatlist(props) {
+
+  const offer = props.offer
+
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
-  renderModalItemOffersDetails
-  const renderModalItem = ({ item }) => (
-    <MoreDetails title={item.title} subtitle={item.subtitle} />
-  );
-  const renderModalItemOffersDetails = ({ item }) => (
-    <OffersDetailsModalFlatlist title={item.title} subtitle={item.subtitle} />
-  );
+  
   const [selectedIndex, setSelectedIndex] = useState(0);
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
-    console.log(index);
-    switch (index) {
-      case 0:
-        return console.log('offers');
-      case 1:
-        return console.log('offers2');
-      case 2:
-        return console.log('offers3');
-      case 3:
-        return console.log('offers4');
-      // break;
-      default:
-        break;
-    }
   };
+
   return (
     <TouchableOpacity
       style={styles.container}
       activeOpacity={0.85}
       onPress={() => navigation.navigate('OffersScreenItemDetails')}
-      // onPress={() => setShowModal(true)}
       >
       <LinearGradient
         style={styles.gradientContainer}
@@ -59,7 +41,7 @@ export default function BestOffersFlatlist({ title, subtitle, image }) {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}>
         <ImageBackground
-          source={{ uri: image }}
+          source={offer.LogoStoragePath == undefined ? { uri: 'https://picsum.photos/seed/picsum/200/300' } : { uri: applicationProperties.imageUrl + offer.LogoStoragePath }}
           style={styles.imageBackgroundSize}
           imageStyle={styles.image}>
           <View style={{ justifyContent: 'flex-end', flex: 1 }}>
@@ -73,8 +55,8 @@ export default function BestOffersFlatlist({ title, subtitle, image }) {
         </ImageBackground>
         <View style={styles.textContainer}>
           <View style={{ width: '70%' }}>
-            <Text style={styles.titleText}>{title}</Text>
-            <Text style={styles.subtitleText}>{subtitle}</Text>
+            <Text style={styles.titleText}>{offer.OfferTitle}</Text>
+            <Text style={styles.subtitleText}>{offer.OfferDescription}</Text>
             <TouchableOpacity>
               <Text style={styles.showMoreText}>Show more</Text>
             </TouchableOpacity>
@@ -89,7 +71,6 @@ export default function BestOffersFlatlist({ title, subtitle, image }) {
               width={3}
               fill={30}
               tintColor="#CD4D78"
-              // onAnimationComplete={() => console.log('onAnimationComplete')}
               backgroundColor="#b9b9b9"
             />
           </View>

@@ -253,7 +253,45 @@ export const GQLQuery = {
           }
         }
       }
-`,
+`,GET_LATEST_CARD_OFFERS: gql`
+query MyQuery {
+  BankCardOfferQuery {
+    GetBankCardOfferByDate {
+      BankCardId
+      Eligibility
+      ExpiryDate
+      HowToRedeem
+      Id
+      LinkToOfferDetails
+      LogoStoragePath
+      OfferCode
+      OfferDescription
+      OfferTitle
+      Platform
+      TermsAndConditions
+    }
+  }
+}
+`,GET_ALL_CARD_OFFERS: gql`
+query MyQuery {
+  BankCardOfferQuery {
+    GetBankCardOffers {
+      BankCardId
+      Eligibility
+      ExpiryDate
+      HowToRedeem
+      Id
+      LinkToOfferDetails
+      LogoStoragePath
+      OfferCode
+      OfferDescription
+      OfferTitle
+      Platform
+      TermsAndConditions
+    }
+  }
+}
+`
 };
 
 

@@ -19,6 +19,7 @@ import Code from '../../assets/svgs/code.svg';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CrossWithBackground from '../../assets/svgs/crossWithBackground.svg';
 import { applicationProperties } from '../../../application.properties';
+import _ from 'lodash';
 
 export default function RecommendedScreenFlatlist(props) {
 
@@ -26,13 +27,16 @@ export default function RecommendedScreenFlatlist(props) {
   const y = props.y;
   const index = props.index;
 
-  const onCardClick = (card) => {
-    setCheckboxState(!checkboxState, cardClicked);
+  const onCardClick = (card) => { 
+    
+    console.log(card)
+    // props.selectedCardsCallback(card)
+     setCheckboxState(!checkboxState, cardClicked);
   };
 
+  const { height: wheight } = Dimensions.get('window');
   const [checkboxState, setCheckboxState] = useState(false);
   const [cardClicked] = useState(0);
-
   const [showModal, setShowModal] = useState(false);
 
   const CARD_HEIGHT = 290 + 24 * 2;
@@ -41,7 +45,6 @@ export default function RecommendedScreenFlatlist(props) {
     //const {x, y, height, width} = event.nativeEvent.layout;
   }
 
-  const { height: wheight } = Dimensions.get('window');
   const height = wheight - 120;
 
 
@@ -76,7 +79,6 @@ export default function RecommendedScreenFlatlist(props) {
     outputRange: [0.0, 1, 1, 1],
   });
 
-
   return (
       <Animated.View style={[styles.container, { opacity, transform: [{ translateY }, { scale }] }]}>
         <View style={styles.cardContainerBody} onLayout={onLayout}>
@@ -89,10 +91,10 @@ export default function RecommendedScreenFlatlist(props) {
                 style={styles.checkBoxContainer}
                 isChecked={checkboxState}
                 disableBuiltInState
-                onPress={()=>{
-                  onCardClick(card)
+                onPress={(val)=>{
+                  console.log(val)
+                  onCardClick(val)
                 }}
-                // onPress={() => setCheckboxState(!checkboxState)}
                 size={20}
                 iconStyle={styles.checkBoxIconStyle}
                 fillColor={checkboxState ? '#000000' : '#f1f1f1'}
