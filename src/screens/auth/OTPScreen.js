@@ -34,9 +34,14 @@ export default function OTPScreen(props) {
         Code: otp,
       };
       dispatch(AuthActions.signIn('/Account/LoginComplete', otpData)).then(
-        response => {
+        (response) => {
           CommonLoading.hide();
-          navigation.navigate('BottomTabBarNavigator');
+          if (response && response.success === false) {
+            //Do Nothing. 
+          } else {
+            navigation.navigate('BottomTabBarNavigator');
+
+          }
         },
       );
     } else {
