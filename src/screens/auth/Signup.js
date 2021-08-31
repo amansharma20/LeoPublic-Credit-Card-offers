@@ -26,15 +26,16 @@ export default function Signup() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [checkboxState, setCheckboxState] = useState(false);
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   const signUpValidationSchema = yup.object().shape({
     fullName: yup
       .string()
-      .matches(/(\w.+\s).+/, 'Enter at least 2 names')
+      .matches(/(\w.+\s).+/, 'Please provide your last name too')
       .required('Full name is required'),
     phone: yup
       .string()
-      .matches(/(\d){10}\b/, 'Enter a valid phone number')
+      .matches(phoneRegExp, 'Enter a valid phone number')
       .required('Phone number is required'),
     email: yup
       .string()
@@ -53,13 +54,13 @@ export default function Signup() {
     dispatch(
       AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
     ).then((response) => {
-      console.log(response)
+      console.log(response);
       CommonLoading.hide();
       if (response && response.success === false) { } else {
         navigation.navigate('OTPScreen', {
           phone: data.phone,
           screenName: 'Signup',
-          firstName: data.fullName
+          firstName: data.fullName,
         });
       }
     });
@@ -133,6 +134,7 @@ export default function Signup() {
                       placeholder="Phone Number"
                       keyboardType="numeric"
                       value={values.phone}
+                      maxLength={10}
                     />
                     {!errors.phone && touched.phone && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />

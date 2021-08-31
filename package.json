@@ -59,7 +59,8 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
     "yarn": "^1.22.11",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "yup-phone": "^1.2.19"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
