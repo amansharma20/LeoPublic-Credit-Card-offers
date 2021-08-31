@@ -17,9 +17,6 @@ export function SessionReducer(state = initialState, action) {
           code: {},
         };
         case SessionConstant.SESSION_SUCCESS:
-            console.log('action.data')
-            console.log(action.data)
-            console.log('action.data')
         return {
           status: SessionConstant.SESSION_SUCCESS,
           data: {...state.data, ...{loggedIn: action.data.loggedIn, user: action.data}},

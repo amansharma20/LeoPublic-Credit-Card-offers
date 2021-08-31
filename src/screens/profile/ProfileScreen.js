@@ -14,11 +14,27 @@ import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
 import ProfileOffersScreenHeader from '../../components/headers/ProfileHeader';
 import { Responsive } from '../../utils/layouts/Layout';
-import { images } from '../../constants';
+import { icons } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
+import {SessionService} from '../../persistence/services/SessionService';
+import {SessionAction} from '../../persistence/actions/SessionAction';
+import { useDispatch } from 'react-redux';
+
 
 export default function ProfileScreen() {
+
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  async function logOutCalled() {
+    const dummyData = {
+      loggedIn: false,
+      user: ''
+    }
+    await SessionService.setSession(dummyData);
+    dispatch(SessionAction.getSession());
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.body}>
@@ -73,6 +89,23 @@ export default function ProfileScreen() {
               <AddButton />
             </TouchableOpacity>
           </View>
+        </View>
+        <View style={{ backgroundColor: '#ffffff' }}>
+          <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
+            await logOutCalled()
+          }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
+              <Text style={{
+                fontSize: 20, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#6F7FAF', marginLeft: 20
+              }}>
+                Logout
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

@@ -13,7 +13,7 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
 export default function OffersScreen(props) {
-  const Id = props.cardData.BankCard.Id;
+  const Id = props && props.cardData && props.cardData.BankCard.Id;
   const { loading, error, data } = useQuery(GQLQuery.GET_BANK_CARD_OFFERS_BY_ID, {
     variables: {
       CardId: Id,

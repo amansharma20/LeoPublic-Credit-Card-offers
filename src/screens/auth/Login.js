@@ -43,14 +43,13 @@ export default function Login() {
     dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
       (response) => {
         CommonLoading.hide();
-        if (response && response.success === false) {
-          //Do Nothing. 
-          console.log(response)
+        if (response && response.success === false) { } else {
           navigation.navigate('OTPScreen', {
             phone: data.phone,
             screenName: 'Login',
           });
         }
+        
       },
     );
   };

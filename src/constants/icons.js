@@ -18,6 +18,7 @@ export const tick = require('../assets/icons/tick.png');
 export const removeCardModalIcon = require('../assets/icons/removeCardModalIcon.png');
 export const crossIcon = require('../assets/icons/crossIcon.png');
 export const forwardButton = require('../assets/icons/forwardButton.png');
+export const logOutButtonIcon = require('../assets/icons/logOutButtonIcon.png');
 
 export default {
   backButton,
@@ -39,4 +40,5 @@ export default {
   removeCardModalIcon,
   crossIcon,
   forwardButton,
+  logOutButtonIcon,
 };
