@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
@@ -6,7 +7,8 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  LogBox
+  LogBox,
+  Text,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -19,7 +21,9 @@ import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
-
+import EmptyStateCards from '../../assets/dummyData/creditCards';
+import EmptyStateScreen from './EmptyStateScreen';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
@@ -27,7 +31,7 @@ const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards() {
   const dispatch = useDispatch();
-  const { loading, data } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
   useEffect(() => {
@@ -95,7 +99,15 @@ export default function MyCards() {
             />
           </TouchableOpacity>
           <View>
+          {
+            error == undefined ? 
             <HomeSegmentNavigator selectedCard={BankCards && BankCards[selectedCardIndex]} />
+            : 
+            <ScrollView>
+            <EmptyStateScreen />
+
+            </ScrollView>
+          } 
           </View>
         </View>
       </Animated.ScrollView>

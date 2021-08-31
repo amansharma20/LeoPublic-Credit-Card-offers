@@ -16,9 +16,10 @@ import ProfileOffersScreenHeader from '../../components/headers/ProfileHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { icons } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
-import {SessionService} from '../../persistence/services/SessionService';
-import {SessionAction} from '../../persistence/actions/SessionAction';
+import { SessionService } from '../../persistence/services/SessionService';
+import { SessionAction } from '../../persistence/actions/SessionAction';
 import { useDispatch } from 'react-redux';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 
 export default function ProfileScreen() {
@@ -90,24 +91,8 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{ backgroundColor: '#ffffff' }}>
-          <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
-            await logOutCalled()
-          }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
-              <Text style={{
-                fontSize: 20, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#6F7FAF', marginLeft: 20
-              }}>
-                Logout
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding }}>
+
+        <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1}}>
           <View>
             <Text style={{
               color: '#7a869a', fontFamily: Platform.select({
@@ -284,7 +269,25 @@ export default function ProfileScreen() {
               </Text>
             </View>
           </View>
+          
         </View>
+        <View style={{ backgroundColor: '#ffffff' }}>
+            <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
+              await logOutCalled()
+            }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
+                <Text style={{
+                  fontSize: 20, fontFamily: Platform.select({
+                    ios: 'Exo2-Bold',
+                    android: 'Exo2Bold'
+                  }), color: '#6F7FAF', marginLeft: 20
+                }}>
+                  Logout
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
       </ScrollView>
     </View>
   );
