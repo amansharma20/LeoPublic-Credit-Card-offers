@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
 import ProfileOffersScreenHeader from '../../components/headers/ProfileHeader';
 import { Responsive } from '../../utils/layouts/Layout';
-import { images } from '../../constants';
+import { icons, images } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
 
 export default function ProfileScreen() {
@@ -73,6 +73,16 @@ export default function ProfileScreen() {
               <AddButton />
             </TouchableOpacity>
           </View>
+        </View>
+        <View style={{backgroundColor: '#ffffff'}}>
+          <TouchableOpacity style={{padding: SIZES.padding}}>
+            <View style={{flexDirection: 'row'}}>
+            <Image source={icons.logOutButtonIcon} style={{width: 24, height: 24,}} />
+              <Text style={{fontSize: 20, fontFamily: 'Exo2Bold', color: '#6F7FAF', marginLeft: 20}}>
+                Logout
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
