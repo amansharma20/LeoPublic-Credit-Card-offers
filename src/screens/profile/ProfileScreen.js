@@ -16,6 +16,7 @@ import ProfileOffersScreenHeader from '../../components/headers/ProfileHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { icons, images } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 export default function ProfileScreen() {
   const navigation = useNavigation();
@@ -74,15 +75,193 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{backgroundColor: '#ffffff'}}>
-          <TouchableOpacity style={{padding: SIZES.padding}}>
-            <View style={{flexDirection: 'row'}}>
-            <Image source={icons.logOutButtonIcon} style={{width: 24, height: 24,}} />
-              <Text style={{fontSize: 20, fontFamily: 'Exo2Bold', color: '#6F7FAF', marginLeft: 20}}>
+        <View style={styles.logOutButtonContainer}>
+          <TouchableOpacity style={{ padding: SIZES.padding }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
+              <Text style={{ fontSize: 20, fontFamily: 'Exo2Bold', color: '#6F7FAF', marginLeft: 20 }}>
                 Logout
               </Text>
             </View>
           </TouchableOpacity>
+        </View>
+        <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding }}>
+          <View>
+            <Text style={{
+              color: '#7a869a', fontFamily: Platform.select({
+                ios: 'Exo2-Bold',
+                android: 'Exo2Bold'
+              }),
+            }}>
+              Monthly Expense
+            </Text>
+          </View>
+          <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row' }}>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{
+                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }),
+              }}>
+                60%
+              </Text>
+              <AnimatedCircularProgress
+                style={{ paddingHorizontal: SIZES.padding2 }}
+                size={75}
+                width={5}
+                fill={30}
+                tintColor="#4D2D8F"
+                // onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#b9b9b9"
+              />
+              <Text style={{
+                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#7A869A'
+              }}>
+                Shopping
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{
+                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }),
+              }}>
+                60%
+              </Text>
+              <AnimatedCircularProgress
+                style={{ paddingHorizontal: SIZES.padding2 }}
+                size={75}
+                width={5}
+                fill={30}
+                tintColor="#4D2D8F"
+                // onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#b9b9b9"
+              />
+              <Text style={{
+                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#7A869A'
+              }}>
+                Shopping
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{
+                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }),
+              }}>
+                60%
+              </Text>
+              <AnimatedCircularProgress
+                style={{ paddingHorizontal: SIZES.padding2 }}
+                size={75}
+                width={5}
+                fill={30}
+                tintColor="#4D2D8F"
+                // onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#b9b9b9"
+              />
+              <Text style={{
+                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#7A869A'
+              }}>
+                Shopping
+              </Text>
+            </View>
+          </View>
+          <View style={{ paddingVertical: SIZES.padding2, flexDirection: 'row' }}>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{
+                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }),
+              }}>
+                60%
+              </Text>
+              <AnimatedCircularProgress
+                style={{ paddingHorizontal: SIZES.padding2 }}
+                size={75}
+                width={5}
+                fill={30}
+                tintColor="#4D2D8F"
+                // onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#b9b9b9"
+              />
+              <Text style={{
+                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#7A869A'
+              }}>
+                Shopping
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{
+                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }),
+              }}>
+                60%
+              </Text>
+              <AnimatedCircularProgress
+                style={{ paddingHorizontal: SIZES.padding2 }}
+                size={75}
+                width={5}
+                fill={30}
+                tintColor="#4D2D8F"
+                // onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#b9b9b9"
+              />
+              <Text style={{
+                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#7A869A'
+              }}>
+                Shopping
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{
+                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }),
+              }}>
+                60%
+              </Text>
+              <AnimatedCircularProgress
+                style={{ paddingHorizontal: SIZES.padding2 }}
+                size={75}
+                width={5}
+                fill={30}
+                tintColor="#4D2D8F"
+                // onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#b9b9b9"
+              />
+              <Text style={{
+                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#7A869A'
+              }}>
+                Shopping
+              </Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -219,4 +398,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
   },
+  logOutButtonContainer: { backgroundColor: '#ffffff', borderBottomWidth: 1, borderBottomColor: '#e4e7f0' },
+
 });
