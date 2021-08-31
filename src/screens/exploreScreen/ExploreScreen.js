@@ -24,11 +24,11 @@ export default function ExploreScreen() {
         />
         <View>
         <ExploreScreenHeader />
-          <View style={styles.mainBody}>
-            <View style={{width: WIDTH, height: '100%' }}>
-              <ExploreTopNavigator />
+            <View style={styles.mainBody}>
+            <View style={{width: WIDTH, height: '100%',  paddingVertical: 0}}>
+            <ExploreTopNavigator />
             </View>
-          </View>
+            </View>
         </View>
       </View>
   );
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   mainBody: {
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    height:'100%',
+    height: '100%',
   },
 });

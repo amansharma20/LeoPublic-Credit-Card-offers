@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import icons from '../../constants/icons';
 import { SIZES } from '../../constants';
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: SIZES.padding2,
     alignItems: 'center',
-    marginTop:Platform.select({
+    marginTop: Platform.select({
       ios: 30,
       android: 0,
     }),
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
       ios:'Exo2-Bold',
       android:'Exo2Bold'
     }),
-     color: '#ffffff', paddingLeft: '26%',},
+     color: '#ffffff', paddingLeft: '26%'},
   leftIconContainer: {
     width: 44,
     height: 44,

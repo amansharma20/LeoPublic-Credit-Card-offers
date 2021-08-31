@@ -12,15 +12,15 @@ function ExploreTopNavigator() {
     <Tab.Navigator
       initialRouteName="All"
       screenOptions={{
-        labelStyle: {
+        tabBarLabelStyle: {
           fontSize: 12, lineHeight: 18, fontFamily: Platform.select({
             ios: 'Exo2-Bold',
             android: 'Exo2Bold',
-          })
+          }),
         },
         activeTintColor: '#060417',
         inactiveTintColor: '#6F7FAF',
-        style: { backgroundColor: '#ffffff', borderTopLeftRadius: 32, borderTopRightRadius: 32, elevation: 0 },
+        tabBarStyle: { backgroundColor: '#ffffff', borderTopLeftRadius: 32, borderTopRightRadius: 32, elevation: 0 },
       }}>
       <Tab.Screen name="RecommendedScreen" component={RecommendedScreen} options={{ tabBarLabel: 'Recommended' }} />
       <Tab.Screen name="DiscoverScreen" component={DiscoverScreen} options={{ tabBarLabel: 'Discover' }} />
