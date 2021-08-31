@@ -13,7 +13,7 @@ function OffersScreenTopNavigator() {
     <Tab.Navigator
       initialRouteName="All"
       screenOptions={{
-        labelStyle: {
+        tabBarLabelStyle: {
           fontSize: 12, lineHeight: 18, fontFamily: Platform.select({
             ios: 'Exo2-Bold',
             android: 'Exo2Bold',
@@ -21,7 +21,7 @@ function OffersScreenTopNavigator() {
         },
         activeTintColor: '#060417',
         inactiveTintColor: '#6F7FAF',
-        style: { backgroundColor: '#ffffff', borderTopLeftRadius: 32, borderTopRightRadius: 32, elevation: 0, },
+        tabBarStyle: { backgroundColor: '#ffffff', borderTopLeftRadius: 32, borderTopRightRadius: 32, elevation: 0, },
   }}>
       <Tab.Screen name="BestOffers" component={BestOffers} options={{ tabBarLabel: 'Best Offers' }} />
       <Tab.Screen name="LatestOffers" component={LatestOffers} options={{ tabBarLabel: 'Latest Offers' }} />

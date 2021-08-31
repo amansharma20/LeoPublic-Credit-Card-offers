@@ -4,7 +4,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import About from '../screens/drawer/About';
 import TermsAndConditions from '../screens/drawer/TermsAndConditions';
 import StackNavigator from './StackNavigator';
-import {Image, StyleSheet} from 'react-native';
+import {Image, Platform, StyleSheet} from 'react-native';
 import {icons} from '../constants';
 import Support from '../screens/drawer/Support';
 import FAQs from '../screens/drawer/FAQs';
@@ -19,7 +19,7 @@ export default function MyDrawer() {
         drawerLabelStyle: {
           fontSize: 16,
           color: '#6F7FAF',
-          fontFamily:Platform.select({
+          fontFamily: Platform.select({
             ios:'Exo2-Bold',
             android:'Exo2Bold'
           }),
