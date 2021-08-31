@@ -20,19 +20,19 @@ export default function BestOffers() {
   const BankCardOffers = data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOffers;
 
   const renderItem = ({ item }) => (
-    <BestOffersFlatlist offer={item} />
+    <BestOffersFlatlist offer={item} key={item.Id} />
   );
 
   if (loading)
-  return (
-    <View style={{ marginBottom: 12, alignItems: 'center' }}>
-      <SkeletonPlaceholder>
-        <View style={styles.skeletonStyle} />
-        <View style={styles.skeletonStyle} />
-        <View style={styles.skeletonStyle} />
-      </SkeletonPlaceholder>
-    </View>
-  );
+    return (
+      <View style={{ marginBottom: 12, alignItems: 'center' }}>
+        <SkeletonPlaceholder>
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
+        </SkeletonPlaceholder>
+      </View>
+    );
 
 
   return (

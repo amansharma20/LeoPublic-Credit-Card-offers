@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -9,19 +8,19 @@ import {
   TouchableOpacity,
   Text,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { AuthActions } from '../../persistence/actions/AuthActions';
-import { useNavigation } from '@react-navigation/native';
-import { SIZES } from '../../constants/theme/';
+import {useDispatch} from 'react-redux';
+import {AuthActions} from '../../persistence/actions/AuthActions';
+import {useNavigation} from '@react-navigation/native';
+import {SIZES} from '../../constants/theme/';
 import icons from '../../constants/icons';
-import { Formik, Field } from 'formik';
+import {Formik, Field} from 'formik';
 import CustomInput from '../../components/CustomInput';
-import { Responsive } from '../../utils/layouts/Layout';
+import {Responsive} from '../../utils/layouts/Layout';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CommonLoading from '../../components/CommonLoading';
-
 
 export default function Signup() {
   const dispatch = useDispatch();
@@ -77,7 +76,6 @@ export default function Signup() {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={icons.backButton} style={styles.backButtonSize} />
           </TouchableOpacity>
-
         </View>
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Register with us</Text>
@@ -94,15 +92,10 @@ export default function Signup() {
               phone: '',
             }}
             onSubmit={values => signup(values)}>
-            {({
-              handleSubmit,
-              errors,
-              touched,
-              values
-            }) => (
+            {({handleSubmit, errors, touched, values}) => (
               <>
                 <View style={styles.inputContainer}>
-                  <View style={{ flexDirection: 'row' }}>
+                  <View style={{flexDirection: 'row'}}>
                     <Field
                       component={CustomInput}
                       name="fullName"
@@ -117,7 +110,7 @@ export default function Signup() {
                 </View>
 
                 <View style={styles.inputContainer}>
-                  <View style={{ flexDirection: 'row' }}>
+                  <View style={{flexDirection: 'row'}}>
                     <Field
                       component={CustomInput}
                       name="email"
@@ -132,7 +125,7 @@ export default function Signup() {
                 </View>
 
                 <View style={styles.inputContainer}>
-                  <View style={{ flexDirection: 'row' }}>
+                  <View style={{flexDirection: 'row'}}>
                     <Field
                       component={CustomInput}
                       name="phone"
@@ -147,7 +140,7 @@ export default function Signup() {
                   </View>
                 </View>
                 <View style={styles.termsContainer}>
-                  <View style={{ width: '10%', marginTop: 10 }}>
+                  <View style={{width: '10%', marginTop: 10}}>
                     <View>
                       <BouncyCheckbox
                         style={styles.checkBoxContainer}
@@ -163,7 +156,8 @@ export default function Signup() {
                     </View>
                   </View>
                   <Text style={styles.termsText}>
-                    By creating an account, you agree to our{'\n'}Terms and Conditions
+                    By creating an account, you agree to our{'\n'}Terms and
+                    Conditions
                   </Text>
                 </View>
                 <TouchableOpacity onPress={handleSubmit}>
@@ -172,10 +166,12 @@ export default function Signup() {
             /> */}
                     <Text
                       style={{
-                        fontSize: 16, fontFamily: Platform.select({
+                        fontSize: 16,
+                        fontFamily: Platform.select({
                           ios: 'Exo2-Bold',
-                          android: 'Exo2Bold'
-                        }), color: '#ffffff'
+                          android: 'Exo2Bold',
+                        }),
+                        color: '#ffffff',
                       }}>
                       Register Now
                     </Text>
@@ -186,17 +182,17 @@ export default function Signup() {
           </Formik>
         </View>
 
-
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{
-              color: '#4d2d8f',
-              fontFamily: Platform.select({
-                ios: 'Exo2-Bold',
-                android: 'Exo2Bold'
-              }),
-            }}>
+            <Text
+              style={{
+                color: '#4d2d8f',
+                fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold',
+                }),
+              }}>
               {' '}
               Sign In
             </Text>
@@ -219,9 +215,8 @@ const styles = StyleSheet.create({
   body: {
     padding: SIZES.padding,
   },
-  header: {
-  },
-  backButtonSize: { width: 24, height: 24 },
+  header: {},
+  backButtonSize: {width: 24, height: 24},
   headerTextContainer: {
     paddingVertical: 20,
   },
@@ -229,7 +224,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h1,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   subTitleText: {
@@ -237,7 +232,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     color: '#797E96',
   },
@@ -254,7 +249,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h4,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     color: '#979797',
     alignItems: 'center',
@@ -267,11 +262,11 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     marginVertical: 16,
     width: '100%',
-    height: 50
+    height: 50,
   },
   buttonContainer: {
     alignItems: 'center',
@@ -289,14 +284,14 @@ const styles = StyleSheet.create({
   footerTextContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 130
+    marginTop: 130,
   },
   footerText: {
     fontSize: SIZES.h4,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
-    })
+      android: 'Exo2Medium',
+    }),
   },
   checkMarkIcon: {
     width: 20,
@@ -309,7 +304,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
   },
-  checkBoxContainer: { marginTop: 0, width: 24, height: 24, borderRadius: 4 },
-  checkBoxIconStyle: { borderRadius: 4, borderWidth: 0 },
-
+  checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
+  checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
 });

@@ -17,7 +17,7 @@ import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton
 import { icons } from '../../../constants';
 
 export default function MonthlySpend() {
-    
+
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
 
@@ -133,7 +133,7 @@ export default function MonthlySpend() {
                                     style={styles.inputText}
                                     autoCapitalize
                                     multiline={true}
-                                    keyboardType={'numeric'}
+                                    keyboardType={'nu meric'}
                                 />
                                 <TouchableOpacity onPress={() => setShowModal(false)} >
                                     <Image source={icons.forwardButton} style={{ width: 48, height: 48, marginLeft: 16 }} />

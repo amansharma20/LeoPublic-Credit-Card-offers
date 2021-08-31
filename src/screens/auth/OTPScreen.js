@@ -17,6 +17,8 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Responsive } from '../../utils/layouts/Layout';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
+import { SessionService } from '../../persistence/services/SessionService';
+import { SessionAction } from '../../persistence/actions/SessionAction';
 
 export default function OTPScreen(props) {
   const navigation = useNavigation();
@@ -24,7 +26,7 @@ export default function OTPScreen(props) {
   const { screenName } = props.route.params;
   const { firstName } = props.route.params;
 
-  
+
   const [otp, setOtp] = useState("0000");
 
   const dispatch = useDispatch();
@@ -42,8 +44,11 @@ export default function OTPScreen(props) {
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
-            navigation.navigate('BottomTabBarNavigator');
-
+            const userData = {
+              loggedIn: true,
+              user: response.data
+            }
+            saveTokenAsyncHome(userData)
           }
         },
       );
@@ -59,14 +64,30 @@ export default function OTPScreen(props) {
       ).then(response => {
         console.log(response)
         CommonLoading.hide();
-        if (response && response.success === false) {  } else {
-          navigation.navigate('BasicDetailsInput',{
-            firstName: firstName
-          });
+        if (response && response.success === false) { } else {
+          const userData = {
+            loggedIn: true,
+            user: response.data
+          }
+          saveTokenAsyncDetails(userData)
         }
       });
     }
   };
+
+  async function saveTokenAsyncHome(user) {
+    await SessionService.setSession(user);
+    dispatch(SessionAction.getSession());
+    navigation.navigate('BottomTabBarNavigator');
+  }
+
+  async function saveTokenAsyncDetails(user) {
+    await SessionService.setSession(user);
+    dispatch(SessionAction.getSession());
+    navigation.navigate('BasicDetailsInput', {
+      firstName: firstName
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -139,17 +160,17 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
     }),
     color: '#797E96',
   },
@@ -164,9 +185,9 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: SIZES.h3,
     color: '#FFFFFF',
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
   },
   resendButton: {
@@ -201,17 +222,17 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: SIZES.h4,
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
     }),
     color: '#7a869a',
   },
   footerTextBold: {
     color: '#4d2d8f',
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
   },
 });

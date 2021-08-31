@@ -9,11 +9,9 @@ import {
 import OffersScreenHeader from '../../components/headers/OffersScreenHeader';
 import OffersScreenTopNavigator from '../../navigation/OffersScreenTopNavigator';
 
-const SLIDER_WIDTH = Dimensions.get('window').width;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 const { width: WIDTH } = Dimensions.get('window');
 
-export default function OffersScreen(props) {
+export default function OffersScreen() {
 
   return (
     <View style={styles.container}>
