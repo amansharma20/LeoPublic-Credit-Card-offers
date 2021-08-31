@@ -31,7 +31,7 @@ export default function Login() {
   const schema = yup.object().shape({
     phone: yup
       .string()
-      .required('Phone is' + ' ' + 'required.')
+      .required('This field is' + ' ' + 'required.')
       .matches(/(\d){10}\b/, 'Enter a valid phone number'),
   });
 
@@ -45,7 +45,7 @@ export default function Login() {
         CommonLoading.hide();
         if (response && response.success === false) {
           //Do Nothing. 
-        } else {
+          console.log(response)
           navigation.navigate('OTPScreen', {
             phone: data.phone,
             screenName: 'Login',
@@ -58,9 +58,11 @@ export default function Login() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
-        <View style={styles.backButton}>
-          <BackButtonBlack />
-        </View>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={{}}>
+          <View style={styles.backButton}>
+            <BackButtonBlack />
+          </View>
+        </TouchableOpacity>
         <View style={styles.bodyItems}>
           <View style={styles.headerContainer}>
             <Text style={styles.headerText}>Sign in to Leo</Text>
@@ -95,6 +97,7 @@ export default function Login() {
                       keyboardType="numeric"
                       placeholder="Phone Number"
                       placeholderTextColor="#B4B4B4"
+                      maxLength={10}
                     />
                     {!errors.phone && touched.phone && (
                       <Image source={icons.tick} style={styles.checkMarkIcon} />
@@ -103,7 +106,10 @@ export default function Login() {
                   {errors.phone && touched.phone && (
                     <Text style={styles.error}>{errors.phone}</Text>
                   )}
-                  <TouchableOpacity onPress={handleSubmit}>
+                  <TouchableOpacity
+                    onPress={handleSubmit}
+                  // onPress={handleSubmit}
+                  >
                     <View style={styles.buttonContainer}>
                       <Text style={styles.nextButtonText}>Next</Text>
                     </View>
