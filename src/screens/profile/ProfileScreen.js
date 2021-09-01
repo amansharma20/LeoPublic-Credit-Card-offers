@@ -31,7 +31,7 @@ export default function ProfileScreen() {
   const navigation = useNavigation();
 
   async function logOutCalled() {
-    const dummyData = {  }
+    const dummyData = {}
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
   }
@@ -59,7 +59,7 @@ export default function ProfileScreen() {
                 // }}
                 style={styles.profileImage}
               />
-              <Text style={styles.nameText}>{ UserProfileData && UserProfileData.FirstName} {UserProfileData && UserProfileData.LastName}</Text>
+              <Text style={styles.nameText}>{UserProfileData && UserProfileData.FirstName} {UserProfileData && UserProfileData.LastName}</Text>
               <Text style={styles.emailText}>{UserProfileData && UserProfileData.ApplicationUser.Email}</Text>
               <Text style={styles.birthDateText}>{UserProfileData && UserProfileData.DateOfBirth}</Text>
             </View>
@@ -100,7 +100,7 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1}}>
+        <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}>
           <View>
             <Text style={{
               color: '#7a869a', fontFamily: Platform.select({
@@ -111,7 +111,7 @@ export default function ProfileScreen() {
               Monthly Expense
             </Text>
           </View>
-          <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row' }}>
+          <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
             <View style={{ alignItems: 'center' }}>
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
@@ -194,7 +194,7 @@ export default function ProfileScreen() {
               </Text>
             </View>
           </View>
-          <View style={{ paddingVertical: SIZES.padding2, flexDirection: 'row' }}>
+          <View style={{ paddingVertical: SIZES.padding2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
             <View style={{ alignItems: 'center' }}>
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
@@ -277,25 +277,25 @@ export default function ProfileScreen() {
               </Text>
             </View>
           </View>
-          
+
         </View>
         <View style={{ backgroundColor: '#ffffff' }}>
-            <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
-              await logOutCalled()
-            }}>
-              <View style={{ flexDirection: 'row' }}>
-                <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
-                <Text style={{
-                  fontSize: 20, fontFamily: Platform.select({
-                    ios: 'Exo2-Bold',
-                    android: 'Exo2Bold'
-                  }), color: '#6F7FAF', marginLeft: 20
-                }}>
-                  Logout
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
+            await logOutCalled()
+          }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
+              <Text style={{
+                fontSize: 20, fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
+                }), color: '#6F7FAF', marginLeft: 20
+              }}>
+                Logout
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
