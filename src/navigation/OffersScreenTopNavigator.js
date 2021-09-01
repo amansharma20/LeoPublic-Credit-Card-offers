@@ -11,6 +11,7 @@ const Tab = createMaterialTopTabNavigator();
 function OffersScreenTopNavigator() {
   return (
     <Tab.Navigator
+    
       initialRouteName="All"
       screenOptions={{
         tabBarLabelStyle: {

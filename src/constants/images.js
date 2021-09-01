@@ -14,6 +14,8 @@ export const axisBankWhite = require('../assets/images/axisBankWhite.png');
 export const myCardsEmptyState = require('../assets/images/myCardsEmptyState.png');
 export const educate = require('../assets/images/educate.png');
 export const explore = require('../assets/images/explore.png');
+export const emptyStateCardImage = require('../assets/images/emptyStateCardImage.png');
+export const emptyStateGirl = require('../assets/images/emptyStateGirl.png');
 
 export default {
     startScreenBackgroundImage,
@@ -31,4 +33,6 @@ export default {
     myCardsEmptyState,
     educate,
     explore,
+    emptyStateCardImage,
+    emptyStateGirl,
 };
