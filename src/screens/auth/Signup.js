@@ -52,9 +52,8 @@ export default function Signup() {
       MobileNumber: data.phone,
     };
     dispatch(
-      AuthActions.signUp('/Account/RegisterCustomerStart', signUpData),
+      AuthActions.signIn('Account/RegisterCustomerStart', signUpData),
     ).then((response) => {
-      console.log(response);
       CommonLoading.hide();
       if (response && response.success === false) { } else {
         navigation.navigate('OTPScreen', {

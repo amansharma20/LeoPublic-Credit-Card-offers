@@ -15,6 +15,9 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { applicationProperties } from '../../application.properties';
 import { useDispatch, useSelector } from 'react-redux';
 import { SessionAction } from '../persistence/actions/SessionAction';
+import CardHolder from '../screens/basicDetails/CardHolder';
+import Educate from '../screens/basicDetails/Educate';
+import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
 
 const Stack = createStackNavigator();
 
@@ -45,8 +48,12 @@ export default function StackNavigator() {
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                     keyboardHidesTabBar: true,
                 }}
-            >       
-                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator}/>
+            >
+
+                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
+                <Stack.Screen name="CardHolder" component={CardHolder} />
+                <Stack.Screen name="Educate" component={Educate} />
+                <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
                 <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="MonthlySpend" component={MonthlySpend} />

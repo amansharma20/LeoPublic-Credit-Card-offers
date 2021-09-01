@@ -40,7 +40,7 @@ export default function Login() {
     const signInData = {
       MobileNumber: data.phone,
     };
-    dispatch(AuthActions.signIn('/Account/LoginStart', signInData)).then(
+    dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(
       (response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {

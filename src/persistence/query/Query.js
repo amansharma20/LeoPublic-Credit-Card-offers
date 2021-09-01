@@ -313,6 +313,27 @@ query MyQuery {
   }
   }
   }
+`, GET_USER_PROFILE: gql`
+query MyQuery {
+  UserProfileQuery {
+    GetUserProfile {
+      AnnualSalary
+      ApplicationUser {
+        Email
+        PhoneNumber
+      }
+      ApplicationUserId
+      DateOfBirth
+      EmploymentType
+      FirstName
+      Gender
+      Id
+      LastName
+      PinCode
+      ProfilePictureStoragePath
+    }
+  }
+}
 `
 };
 

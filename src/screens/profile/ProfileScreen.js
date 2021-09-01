@@ -19,6 +19,10 @@ import AddButton from '../../assets/svgs/profileScreenAddButton';
 import {SessionService} from '../../persistence/services/SessionService';
 import {SessionAction} from '../../persistence/actions/SessionAction';
 import { useDispatch } from 'react-redux';
+import { useQuery } from '@apollo/client';
+import { GQLQuery } from '../../persistence/query/Query';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { applicationProperties } from '../../../application.properties';
 
 
 export default function ProfileScreen() {
@@ -27,13 +31,18 @@ export default function ProfileScreen() {
   const navigation = useNavigation();
 
   async function logOutCalled() {
-    const dummyData = {
-      loggedIn: false,
-      user: ''
-    }
+    const dummyData = {  }
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
   }
+
+
+  const { loading, error, data } = useQuery(GQLQuery.GET_USER_PROFILE);
+
+  console.log(error)
+
+  const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
+  //console.log(applicationProperties.imageUrl+UserProfileData.ProfilePictureStoragePath)
 
   return (
     <View style={styles.container}>
@@ -45,25 +54,25 @@ export default function ProfileScreen() {
           <View style={styles.profilePictureHeaderContainer}>
             <View style={styles.pfpAlignmentContainer}>
               <Image
-                source={{
-                  uri: 'https://images.askmen.com/1080x540/2016/01/25-021526-facebook_profile_picture_affects_chances_of_getting_hired.jpg',
-                }}
+                // source={{
+                //   uri: applicationProperties.imageUrl+UserProfileData && UserProfileData.ProfilePictureStoragePath,
+                // }}
                 style={styles.profileImage}
               />
-              <Text style={styles.nameText}>Navneet Singh</Text>
-              <Text style={styles.emailText}>navneet@webority.com</Text>
-              <Text style={styles.birthDateText}>28 July 1984</Text>
+              <Text style={styles.nameText}>{ UserProfileData && UserProfileData.FirstName} {UserProfileData && UserProfileData.LastName}</Text>
+              <Text style={styles.emailText}>{UserProfileData && UserProfileData.ApplicationUser.Email}</Text>
+              <Text style={styles.birthDateText}>{UserProfileData && UserProfileData.DateOfBirth}</Text>
             </View>
           </View>
         </View>
         <View style={styles.topContainer}>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Employment Type</Text>
-            <Text style={styles.topContainerSubtitleText}>Business</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType}</Text>
           </View>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Annual Salary Range</Text>
-            <Text style={styles.topContainerSubtitleText}>10 L - 50 L</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary}</Text>
           </View>
         </View>
         <View style={styles.addContainer}>

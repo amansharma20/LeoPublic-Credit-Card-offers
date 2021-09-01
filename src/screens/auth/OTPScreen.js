@@ -38,7 +38,7 @@ export default function OTPScreen(props) {
         MobileNumber: phone,
         Code: otp,
       };
-      dispatch(AuthActions.signIn('/Account/LoginComplete', otpData)).then(
+      dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
         (response) => {
           CommonLoading.hide();
           if (response && response.success === false) {
@@ -60,9 +60,8 @@ export default function OTPScreen(props) {
       };
       console.log(otpData)
       dispatch(
-        AuthActions.signIn('/Account/RegisterCustomerComplete', otpData),
-      ).then(response => {
-        console.log(response)
+        AuthActions.signIn('Account/RegisterCustomerComplete', otpData),
+      ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
           const userData = {
