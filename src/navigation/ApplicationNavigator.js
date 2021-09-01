@@ -26,7 +26,7 @@ export default function ApplicationNavigator() {
 
   return (
     <NavigationContainer>
-      {session.loggedIn == true ? (<DrawerNavigator />): (<AuthNavigator />) }
+      {session.loggedIn === true ? (<DrawerNavigator />): (<AuthNavigator />) }
     </NavigationContainer>
   );
 }

@@ -8,7 +8,16 @@ export const GQLMutation = {
       UpdateUserBasicDetails(AnnualSalary: $AnnualSalary, DateOfBirth: $DateOfBirth, EmploymentType: $EmploymentType, Gender: $Gender, PinCode: $PinCode)
     }
   }
+  `  
+  ,
+  ADD_USER_CREDIT_CARD: gql`
+  mutation MyMutation($BankCardId: Long!, $BankId: Long!, $CardNumber: Long!) {
+    AddCustomerUserBankCardMutation {
+      AddCustomerUserBankCard(BankCardId: $BankCardId, BankId: $BankId, CardNumber: $CardNumber)
+    }
+  }
   `
 };
+
 
 

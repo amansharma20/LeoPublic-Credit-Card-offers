@@ -34,6 +34,7 @@ export default function MyCards() {
   const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
+
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [])
@@ -105,7 +106,6 @@ export default function MyCards() {
             : 
             <ScrollView>
             <EmptyStateScreen />
-
             </ScrollView>
           } 
           </View>
