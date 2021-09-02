@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import {
@@ -31,7 +32,7 @@ export default function ProfileScreen() {
   const navigation = useNavigation();
 
   async function logOutCalled() {
-    const dummyData = {}
+    const dummyData = {};
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
   }
@@ -39,7 +40,7 @@ export default function ProfileScreen() {
 
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_PROFILE);
 
-  console.log(error)
+  console.log(error);
 
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
   //console.log(applicationProperties.imageUrl+UserProfileData.ProfilePictureStoragePath)
@@ -105,7 +106,7 @@ export default function ProfileScreen() {
             <Text style={{
               color: '#7a869a', fontFamily: Platform.select({
                 ios: 'Exo2-Bold',
-                android: 'Exo2Bold'
+                android: 'Exo2Bold',
               }),
             }}>
               Monthly Expense
@@ -116,7 +117,7 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
+                  android: 'Exo2Bold',
                 }),
               }}>
                 60%
@@ -133,8 +134,8 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 2, fontSize: 14, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#7A869A'
+                  android: 'Exo2Bold',
+                }), color: '#7A869A',
               }}>
                 Shopping
               </Text>
@@ -143,7 +144,7 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
+                  android: 'Exo2Bold',
                 }),
               }}>
                 60%
@@ -160,8 +161,8 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 2, fontSize: 14, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#7A869A'
+                  android: 'Exo2Bold',
+                }), color: '#7A869A',
               }}>
                 Shopping
               </Text>
@@ -170,7 +171,7 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
+                  android: 'Exo2Bold',
                 }),
               }}>
                 60%
@@ -187,8 +188,8 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 2, fontSize: 14, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#7A869A'
+                  android: 'Exo2Bold',
+                }), color: '#7A869A',
               }}>
                 Shopping
               </Text>
@@ -199,7 +200,7 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
+                  android: 'Exo2Bold',
                 }),
               }}>
                 60%
@@ -216,8 +217,8 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 2, fontSize: 14, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#7A869A'
+                  android: 'Exo2Bold',
+                }), color: '#7A869A',
               }}>
                 Shopping
               </Text>
@@ -226,7 +227,7 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
+                  android: 'Exo2Bold',
                 }),
               }}>
                 60%
@@ -243,8 +244,8 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 2, fontSize: 14, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#7A869A'
+                  android: 'Exo2Bold',
+                }), color: '#7A869A',
               }}>
                 Shopping
               </Text>
@@ -253,7 +254,7 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
+                  android: 'Exo2Bold',
                 }),
               }}>
                 60%
@@ -270,8 +271,8 @@ export default function ProfileScreen() {
               <Text style={{
                 marginTop: 2, fontSize: 14, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#7A869A'
+                  android: 'Exo2Bold',
+                }), color: '#7A869A',
               }}>
                 Shopping
               </Text>
@@ -281,15 +282,15 @@ export default function ProfileScreen() {
         </View>
         <View style={{ backgroundColor: '#ffffff' }}>
           <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
-            await logOutCalled()
+            await logOutCalled();
           }}>
             <View style={{ flexDirection: 'row' }}>
-              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24, }} />
+              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24 }} />
               <Text style={{
                 fontSize: 20, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
-                  android: 'Exo2Bold'
-                }), color: '#6F7FAF', marginLeft: 20
+                  android: 'Exo2Bold',
+                }), color: '#6F7FAF', marginLeft: 20,
               }}>
                 Logout
               </Text>
@@ -332,7 +333,7 @@ const styles = StyleSheet.create({
     color: '#060417',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
     lineHeight: 28,
     paddingTop: 8,
@@ -344,14 +345,14 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   birthDateText: {
     fontSize: SIZES.h3, color: '#6F7FAF', lineHeight: 20,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   }
   ,
@@ -373,14 +374,14 @@ const styles = StyleSheet.create({
     color: '#6F7FAF', fontSize: 14,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   topContainerSubtitleText: {
     color: '#060417', fontSize: 18,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   addContainer: {
@@ -405,7 +406,7 @@ const styles = StyleSheet.create({
     paddingBottom: 22, fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   addContainerSubtitleTextContainer: {
@@ -420,7 +421,7 @@ const styles = StyleSheet.create({
     color: '#1C1B1B', fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   addMonthlyExpenseContainer: {

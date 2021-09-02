@@ -39,9 +39,7 @@ export default function AddCardScreen() {
   const [cardValue, setCardValue] = useState(null);
 
   const [bankName, setBankName] = useState();
-
-
-
+ 
   const [userCardNumber, setUserCardNumber] = useState(1);
   const [selectedBankId, setSelectedBankId] = useState(1);
   const [selectedCardId, setSelectedCardId] = useState(1);
@@ -60,14 +58,10 @@ export default function AddCardScreen() {
   });
   const onSubmit = data => {
    addCard({ variables: { BankId: selectedBankId, BankCardId: selectedCardId, CardNumber:  data.cardNumber} });
-   if(userCardData && userCardData.AddCustomerUserBankCardMutation && userCardData.AddCustomerUserBankCardMutation.AddCustomerUserBankCard == 'Created'){
-    setShowModal(true)
+   if (userCardData && userCardData.AddCustomerUserBankCardMutation && userCardData.AddCustomerUserBankCardMutation.AddCustomerUserBankCard == 'Created'){
+    setShowModal(true);
    }
   };
-
-
-
-
 
   var bankArray = [];
   var bankCardsArray = [];
@@ -82,33 +76,33 @@ export default function AddCardScreen() {
     },
   });
 
-  const BankCards = data2 && data2.BankCardQuery && data2.BankCardQuery.GetBankCardById
+  const BankCards = data2 && data2.BankCardQuery && data2.BankCardQuery.GetBankCardById;
 
   useEffect(() => {
-    retriveBanks()
-  }, [Bank, BankCards])
+    retriveBanks();
+  }, [Bank, BankCards]);
 
 
   function getCardByBankId() {
     BankCards && BankCards.map((item) => {
       const tempName = {
         label: item.CardName,
-        value: item.Id
-      }
-      bankCardsArray.push(tempName)
-    })
-    setCardType(bankCardsArray)
+        value: item.Id,
+      };
+      bankCardsArray.push(tempName);
+    });
+    setCardType(bankCardsArray);
   }
 
   function retriveBanks() {
     Bank && Bank.map((item) => {
       const tempName = {
         label: item.Name,
-        value: item.Id
-      }
-      bankArray.push(tempName)
-    })
-    setBankName(bankArray)
+        value: item.Id,
+      };
+      bankArray.push(tempName);
+    });
+    setBankName(bankArray);
   }
 
 
@@ -168,8 +162,8 @@ export default function AddCardScreen() {
             setOpen={setOpenBankList}
             setValue={setSelectedBank}
             onChangeValue={(value) => {
-              setSelectedBankId(value)
-              getCardByBankId()
+              setSelectedBankId(value);
+              getCardByBankId();
             }}
             setItems={setBankName}
             zIndex={10000}
@@ -252,12 +246,12 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingTop: Platform.select({
       ios: 30,
-      android: 0
-    })
+      android: 0,
+    }),
   },
   body: {
     padding: SIZES.padding,
-    height: '100%'
+    height: '100%',
   },
   backButtonSize: {
     width: 24,
@@ -270,7 +264,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h1,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   subTitleText: {
@@ -316,7 +310,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     fontSize: SIZES.h3,
     color: '#2A2525',
-    height: 50
+    height: 50,
   },
   bankNamePickerContainer: {
     backgroundColor: '#f4f5f7',
@@ -424,6 +418,9 @@ const styles = StyleSheet.create({
   cardNumberText: {
     color: '#ffffff',
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
   },
 });

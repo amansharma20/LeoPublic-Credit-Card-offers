@@ -49,7 +49,7 @@ export default function Login() {
             screenName: 'Login',
           });
         }
-        
+
       },
     );
   };
@@ -88,7 +88,7 @@ export default function Login() {
                 <>
                   <View style={styles.checkMarkContainer}>
                     <TextInput
-                      name='phone'
+                      name="phone"
                       style={styles.phoneInput}
                       onChangeText={handleChange('phone')}
                       onBlur={handleBlur('phone')}
@@ -148,8 +148,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
-    })
+      android: 'Exo2Bold',
+    }),
   },
   textInputContainer: {
     marginTop: '20%',
@@ -159,8 +159,8 @@ const styles = StyleSheet.create({
     color: '#797E96',
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: ''
-    })
+      android: '',
+    }),
   },
   phoneInput: {
     marginTop: '10%',
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     height: Responsive.height(50),
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     width: '100%',
   },
@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
-    })
+      android: 'Exo2Bold',
+    }),
   },
   footerContainer: {
     alignItems: 'center',
@@ -207,14 +207,14 @@ const styles = StyleSheet.create({
     color: '#7a869a',
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   footerTextTwo: {
     fontSize: SIZES.h4,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
     color: '#4d2d8f',
     marginLeft: 2.5,
