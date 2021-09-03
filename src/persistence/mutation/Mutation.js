@@ -8,8 +8,7 @@ export const GQLMutation = {
       UpdateUserBasicDetails(AnnualSalary: $AnnualSalary, DateOfBirth: $DateOfBirth, EmploymentType: $EmploymentType, Gender: $Gender, PinCode: $PinCode)
     }
   }
-  `  
-  ,
+  `  ,
   ADD_USER_CREDIT_CARD: gql`
   mutation MyMutation($BankCardId: Long!, $BankId: Long!, $CardNumber: Long!) {
     AddCustomerUserBankCardMutation {
@@ -17,7 +16,12 @@ export const GQLMutation = {
     }
   }
   `
+  ,
+  DELETE_USER_CARD: gql`
+    mutation MyMutation($Id: Long!) {
+      DeleteCustomerUserBankCardMutation {
+        DeleteCustomerUserBankCard(Id: $Id)
+      }
+    }
+  `
 };
-
-
-

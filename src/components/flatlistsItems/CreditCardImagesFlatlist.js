@@ -9,17 +9,29 @@ import {
   Modal,
   Image,
 } from 'react-native';
-import { icons, images, SIZES } from '../../constants';
+import { icons, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
 import { applicationProperties } from '../../../application.properties';
+import { useMutation } from '@apollo/client';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
 
 export default function CreditCardImagesFlatlist(props) {
   const card = props.card.item;
   const cardDetails = card.BankCard;
   const [showModal, setShowModal] = useState(false);
+
+  const [deleteCard, { data, error}] = useMutation(GQLMutation.DELETE_USER_CARD);
+  
+  const deleteUserCard = ()=>{
+    deleteCard({ variables: { Id: card.Id} });
+    if(data && data.DeleteCustomerUserBankCardMutation && data.DeleteCustomerUserBankCardMutation.DeleteCustomerUserBankCard == "Deleted"){
+      setShowModal(false)
+    }
+  }
+
 
   return (
     <TouchableOpacity
@@ -76,7 +88,10 @@ export default function CreditCardImagesFlatlist(props) {
                     <Text style={styles.noModalButtonText}>No</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(false)}>
+                <TouchableOpacity onPress={() => {
+                  deleteUserCard()
+                  //
+                }}>
                   <View style={styles.yesModalButton}>
                     <Text style={styles.yesModalButtonText}>Yes</Text>
                   </View>

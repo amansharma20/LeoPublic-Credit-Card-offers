@@ -65,9 +65,7 @@ export default function Signup() {
     });
   };
 
-  const onCardClick = () => {
-    setCheckboxState(!checkboxState);
-  };
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -146,9 +144,7 @@ export default function Signup() {
                       <BouncyCheckbox
                         style={styles.checkBoxContainer}
                         isChecked={checkboxState}
-                        disableBuiltInState
-                        onPress={onCardClick}
-                        // onPress={() => setCheckboxState(!checkboxState)}
+                        onPress={() => setCheckboxState(!checkboxState)}
                         size={20}
                         iconStyle={styles.checkBoxIconStyle}
                         fillColor={checkboxState ? '#4D2D8F' : '#f1f1f1'}
@@ -161,10 +157,8 @@ export default function Signup() {
                     Conditions
                   </Text>
                 </View>
-                <TouchableOpacity onPress={handleSubmit}>
+                <TouchableOpacity onPress={handleSubmit} disabled={!checkboxState}>
                   <View style={styles.buttonContainer}>
-                    {/* <Button title='ggg'  onPress={()=> handleSubmit(onSubmit)}
-            /> */}
                     <Text
                       style={{
                         fontSize: 16,

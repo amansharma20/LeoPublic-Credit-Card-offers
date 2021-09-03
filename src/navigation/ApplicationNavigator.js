@@ -18,9 +18,6 @@ export default function ApplicationNavigator() {
 
   async function getData(){
     const result =  await SessionService.getSession()
-    console.log('result')
-    console.log(result)
-    console.log('result')
   }
 
 
