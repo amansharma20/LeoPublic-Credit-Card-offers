@@ -395,6 +395,7 @@ const styles = StyleSheet.create({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold',
     }),
+    width: 200,
   },
   imageSize: {
     width: Responsive.width(80),

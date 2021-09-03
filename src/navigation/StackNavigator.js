@@ -18,6 +18,7 @@ import { SessionAction } from '../persistence/actions/SessionAction';
 import CardHolder from '../screens/basicDetails/CardHolder';
 import Educate from '../screens/basicDetails/Educate';
 import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
+import TempOnBoarding from '../screens/tempOnBoarding/TempOnBoarding';
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,7 @@ export default function StackNavigator() {
                 }}
             >
 
+                <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
                 <Stack.Screen name="CardHolder" component={CardHolder} />
                 <Stack.Screen name="Educate" component={Educate} />

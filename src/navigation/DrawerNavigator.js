@@ -182,7 +182,7 @@ const DrawerContent = ({ }) => {
 export default function DrawerNavigator() {
   return (
     <Drawer.Navigator
-      initialRouteName="Showing"
+      initialRouteName="BottomTabBarNavigator"
       drawerType="slide"
       overlayColor="transparent"
       drawerStyle={styles.drawerStyles}
@@ -200,46 +200,6 @@ export default function DrawerNavigator() {
       <Drawer.Screen name="MyCineScreens">
         {props => <StackNavigator {...props} />}
       </Drawer.Screen>
-      <Drawer.Screen
-        options={{
-          title: 'About',
-          drawerIcon: () => (
-            <Image source={icons.aboutIcon} style={styles.iconStyle} />
-          ),
-        }}
-        name="About"
-        component={About}
-      />
-      <Drawer.Screen
-        options={{
-          title: 'FAQs',
-          drawerIcon: () => (
-            <Image source={icons.faqsIcon} style={styles.iconStyle} />
-          ),
-        }}
-        name="FAQs"
-        component={FAQs}
-      />
-      <Drawer.Screen
-        options={{
-          title: 'T&C',
-          drawerIcon: () => (
-            <Image source={icons.tndcIcon} style={styles.iconStyle} />
-          ),
-        }}
-        name="TermsAndConditions"
-        component={TermsAndConditions}
-      />
-      <Drawer.Screen
-        options={{
-          title: 'Support',
-          drawerIcon: () => (
-            <Image source={icons.supportIcon} style={styles.iconStyle} />
-          ),
-        }}
-        name="Support"
-        component={Support}
-      />
     </Drawer.Navigator>
   );
 }

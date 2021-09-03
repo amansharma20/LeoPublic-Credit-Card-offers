@@ -11,7 +11,7 @@ import {
   Modal,
   ImageBackground,
   Platform,
-  Animated
+  Animated,
 } from 'react-native';
 import SIZES from '../../../constants/theme';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -27,7 +27,7 @@ import Visa from '../../../assets/svgs/visasvg.svg';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import _ from "lodash";
+import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -43,7 +43,7 @@ export default function RecommendedScreen() {
 
   const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
   const y = new Animated.Value(0);
-  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true })
+  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true });
 
   const [allCategories, setAllCategories] = useState([
     { label: 'Lifestyle', value: 'Lifestyle' },
@@ -75,27 +75,27 @@ export default function RecommendedScreen() {
 
   selectedCardsForCompare = (card) => {
     if (compareCardArray.length > 2) {
-      alert("Big")
+      alert('Big');
     } else {
       if (compareCardArray.length == 0) {
-        compareCardArray.push(card)
+        compareCardArray.push(card);
       } else {
-        console.log(compareCardArray.length)
+        console.log(compareCardArray.length);
         _.map(compareCardArray, (item) => {
-          console.log(item && item.Id)
-          if(item && item.Id === card.Id) {
+          console.log(item && item.Id);
+          if (item && item.Id === card.Id) {
             console.log('POP');
              compareCardArray.pop();
-           return compareCardArray
+           return compareCardArray;
           } else {
             console.log('PUSH');
-            compareCardArray.push(card)
-           return compareCardArray
+            compareCardArray.push(card);
+           return compareCardArray;
           }
-        })
+        });
       }
     }
-  }
+  };
     return (
       <AnimatedScrollView style={styles.container}
         scrollEventThrottle={16}
@@ -133,8 +133,8 @@ export default function RecommendedScreen() {
             </View>
             <View>
               <TouchableOpacity onPress={() => {
-                console.log(compareCardArray.length)
-                console.log(compareCardArray)
+                console.log(compareCardArray.length);
+                console.log(compareCardArray);
                 //setShowCompareModal(true)
               }}>
                 <View style={styles.compareButton}>
@@ -303,7 +303,7 @@ export default function RecommendedScreen() {
         ios: 'Exo2-Bold',
         android: 'Exo2Bold',
       }),
-      color: '#ffffff'
+      color: '#ffffff',
     },
     leftIconContainer: {
       width: 44,
@@ -337,7 +337,7 @@ export default function RecommendedScreen() {
         ios: 'Exo2-Bold',
         android: 'Exo2Bold',
       }),
-      fontSize: 8, paddingVertical: 4, color: '#ffffff'
+      fontSize: 8, paddingVertical: 4, color: '#ffffff',
     },
     cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },
     flatlistBackgroundColor: { backgroundColor: '#fff' },

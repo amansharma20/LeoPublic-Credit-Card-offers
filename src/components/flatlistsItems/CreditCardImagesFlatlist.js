@@ -49,7 +49,7 @@ export default function CreditCardImagesFlatlist(props) {
             <Text numberOfLines={2} style={styles.cardTypeText}>
               {cardDetails.CardName}
             </Text>
-            <BankLogo style={styles.bankLogo} />
+            <Image source={images.axisBankWhite} style={styles.bankLogo} />
           </View>
           <Code />
           <View style={styles.cardBottomContainer}>
@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
     width: 120,
   },
   bankLogo: {
+    width: 80, height: 40, resizeMode: 'contain'
   },
   cardBottomContainer: {
     flexDirection: 'row',
