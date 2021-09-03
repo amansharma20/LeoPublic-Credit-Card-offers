@@ -18,23 +18,30 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 export default function BasicDetailsInput(props) {
 
   //const { firstName } = props.route.params;
-  const firstName = "Name"
+  const firstName = 'Name';
 
-   //navigation.navigate('CardHolder')
+  //navigation.navigate('CardHolder')
 
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
   const [openEmploymentType, setOpenEmploymentType] = useState(false);
+  const [openSalaryRange, setOpenSalaryRange] = useState(false);
+  const [salaryValue, setSalaryValue] = useState(null);
   const [employmentValue, setEmploymentValue] = useState(null);
   const [genderValue, setGenderValue] = useState(null);
   const [employmentType, setEmploymentType] = useState([
     { label: 'Employed', value: 'employed' },
     { label: 'Unemployed', value: 'unemployed' },
+  ]);
+  const [salaryType, setSalaryType] = useState([
+    { label: 'Less than 2.5 Lacs', value: 'Less than 2.5 Lacs' },
+    { label: 'Between 2.5 Lacs to 5 Lacs', value: 'Between 2.5 Lacs to 5 Lacs' },
+    { label: 'More than 5 Lacs', value: 'More than 5 Lacs' },
   ]);
   const [gender, setGender] = useState([
     { label: 'Male', value: 'male' },
@@ -58,16 +65,22 @@ export default function BasicDetailsInput(props) {
   });
 
   const onSubmit = (data) => {
-console.log('INSIDE')
-    console.log(data)
+    console.log('INSIDE');
+    console.log(data);
 
-  }
+  };
 
   const formatedDate = (date) => {
-    var formattedDate = format(date, "MMMM do, yyyy");
+    var formattedDate = format(date, 'MMMM do, yyyy');
+    // DATE 
     console.log(formattedDate);
     return formattedDate;
-  }
+  };
+
+  // EMPLOYMENT TYPE 
+  console.log(employmentValue)
+  console.log(genderValue)
+
 
   return (
     <View style={styles.container}>
@@ -96,7 +109,7 @@ console.log('INSIDE')
               animationType="fade"
               transparent={true}
               showModal={showModal}
-              backgroundColor='black'
+              backgroundColor="black"
               onRequestClose={() => setShowModal(false)}>
               <DatePicker
                 date={date}
@@ -108,7 +121,7 @@ console.log('INSIDE')
                 <TouchableOpacity
                   // onPress={() => setDate(new Date())}
                   onPress={() => setShowModal(false)}>
-                  <Text>Close</Text>
+                  <Text style={styles.submitDateButtonText}>Submit</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
@@ -120,7 +133,7 @@ console.log('INSIDE')
             setOpen={setOpenEmploymentType}
             setValue={setEmploymentValue}
             setItems={setEmploymentType}
-            zIndex={6000}
+            zIndex={10000}
             zIndexInverse={1000}
             placeholder="Employment Type"
             style={styles.pickerContainer}
@@ -128,10 +141,35 @@ console.log('INSIDE')
             listMode="FLATLIST"
             dropDownContainerStyle={styles.dropDownContainerStyle}
             closeAfterSelecting={true}
+            textStyle={{
+              fontFamily: Platform.select({
+                ios: 'Exo2-Medium',
+                android: 'Exo2Medium',
+              }),
+            }}
           />
-          <View style={styles.annualSalaryContainer}>
-            <Text style={styles.annualSalaryText}>Annual Salary Range</Text>
-          </View>
+          <DropDownPicker
+            open={openSalaryRange}
+            value={salaryValue}
+            items={salaryType}
+            setOpen={setOpenSalaryRange}
+            setValue={setSalaryValue}
+            setItems={setSalaryType}
+            zIndex={6000}
+            zIndexInverse={1000}
+            placeholder="Annual Salary Range (₹)"
+            style={styles.pickerContainer}
+            placeholderStyle={styles.placeholderText}
+            listMode="FLATLIST"
+            dropDownContainerStyle={styles.dropDownContainerStyle}
+            closeAfterSelecting={true}
+            textStyle={{
+              fontFamily: Platform.select({
+                ios: 'Exo2-Medium',
+                android: 'Exo2Medium',
+              }),
+            }}
+          />
           <View>
             <Controller
               control={control}
@@ -167,6 +205,12 @@ console.log('INSIDE')
             placeholderStyle={styles.placeholderText}
             dropDownContainerStyle={styles.dropDownContainerStyle}
             closeAfterSelecting={true}
+            textStyle={{
+              fontFamily: Platform.select({
+                ios: 'Exo2-Medium',
+                android: 'Exo2Medium',
+              }),
+            }}
           />
         </View>
         <View>
@@ -200,8 +244,8 @@ const styles = StyleSheet.create({
     padding: SIZES.padding,
     marginTop: Platform.select({
       ios: 30,
-      android: 0
-    })
+      android: 0,
+    }),
   },
   backButtonSize: { width: 24, height: 24 },
   headerTextContainer: {
@@ -209,12 +253,19 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: SIZES.h1,
-    fontWeight: 'bold',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
   },
   subTitleText: {
     fontSize: SIZES.h3,
     marginTop: 12,
     color: '#797E96',
+    fontFamily: Platform.select({
+      ios: 'Exo2-SemiBold',
+      android: 'Exo2SemiBold',
+    }),
   },
   submitButtonContainer: {
     alignItems: 'center',
@@ -237,12 +288,18 @@ const styles = StyleSheet.create({
   submitButtonText: {
     fontSize: SIZES.h3,
     color: '#FFFFFF',
-    fontWeight: '700',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
   },
   notNowButtonText: {
     fontSize: SIZES.h3,
     color: '#4d2d8f',
-    fontWeight: '700',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
   },
   pickerContainer: {
     backgroundColor: '#f4f5f7',
@@ -258,6 +315,10 @@ const styles = StyleSheet.create({
   placeholderText: {
     fontSize: SIZES.h3,
     color: '#B4B4B4',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
+    }),
   },
   dropDownContainerStyle: {
     backgroundColor: '#f4f5f7',
@@ -272,6 +333,10 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     width: 360,
     height: 500,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
+    }),
   },
   dobContainer: {
     backgroundColor: '#f4f5f7',
@@ -288,6 +353,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: '#B4B4B4',
     fontSize: SIZES.h3,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
+    }),
   },
   pincodeInput: {
     backgroundColor: '#f4f5f7',
@@ -296,7 +365,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     fontSize: SIZES.h3,
     color: '#2A2525',
-    height: 50
+    height: 50,
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
+    }),
   },
   annualSalaryContainer: {
     backgroundColor: '#f4f5f7',
@@ -309,5 +382,15 @@ const styles = StyleSheet.create({
   annualSalaryText: {
     fontSize: SIZES.h3,
     color: '#b4b4b4',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
+    }),
+  },
+  submitDateButtonText: {
+    fontSize: 16, color: '#4D2D8F', fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    })
   },
 });
