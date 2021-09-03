@@ -1,23 +1,44 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, Text, Image, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme/';
 import LottieView from 'lottie-react-native';
 import TempOnBoardingAnimation from '../../components/animations/TempOnBoardingAnimation';
 import { images } from '../../constants';
+import { useSelector } from 'react-redux';
+import { SessionService } from '../../persistence/services/SessionService';
 
 export default function TempOnBoarding() {
     const navigation = useNavigation();
-    setTimeout(function () {
-        navigation.navigate('BottomTabBarNavigator');
-      }, 5000);
+
+
+      const session = useSelector(state => state.SessionReducer.data);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData(){
+    const result =  await SessionService.getSession();
+    console.log('result');
+    console.log(result);
+    console.log('result');
+  }
+  setTimeout(function () {
+    {session.loggedIn === true ? (navigation.navigate('BottomTabBarNavigator'))
+     :
+     (navigation.navigate('StartScreen')); }
+
+  }, 5000);
+
     return (
         <View style={styles.container}>
             <StatusBar
-                hidden={true}
-                backgroundColor={'#F7D071'}
+                hidden={false}
+                backgroundColor={'#ffffff'}
                 barStyle={'dark-content'}
             />
             <View style={styles.body}>
@@ -40,6 +61,6 @@ const styles = StyleSheet.create({
     },
     body: {
         padding: SIZES.padding,
-        marginTop: 80
+        marginTop: 80,
     },
 });

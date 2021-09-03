@@ -39,6 +39,8 @@ export default function AddCardScreen() {
   const [cardValue, setCardValue] = useState(null);
 
   const [bankName, setBankName] = useState();
+  const [cardNumberText, setCardNumberText] = useState('******');
+
  
   const [userCardNumber, setUserCardNumber] = useState(1);
   const [selectedBankId, setSelectedBankId] = useState(1);
@@ -130,7 +132,7 @@ export default function AddCardScreen() {
               </View>
               <Code />
               <View style={styles.cardBottomContainer}>
-                <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
+                <Text style={styles.cardNumberText}>{cardNumberText}** **** ****</Text>
                 <MasterCardLogo />
               </View>
             </View>
@@ -143,8 +145,9 @@ export default function AddCardScreen() {
               <TextInput
                 label={'cardNumber'}
                 onBlur={onBlur}
-                onChangeText={value => onChange(value)}
-                value={value}
+                onChangeText={(text) => setCardNumberText(text)}
+                onSubmitEditing={(value) => setCardNumberText(value)}
+                // value={value}
                 style={styles.digitsInput}
                 placeholderTextColor={'#B4B4B4'}
                 placeholder={'First 6 digits of your Credit Card'}

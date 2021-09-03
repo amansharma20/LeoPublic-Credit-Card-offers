@@ -4,12 +4,12 @@
         "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-xhdpi\\node_modules_reactnavigation_elements_src_assets_backicon.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_node_modules_reactnativedropdownpicker_src_themes_light_icons_arrowdown.png.flat",
-        "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-mdpi\\node_modules_reactnativedropdownpicker_src_themes_light_icons_arrowdown.png"
-    },
-    {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_src_assets_images_creditcardbluebg.jpg.flat",
         "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-mdpi\\src_assets_images_creditcardbluebg.jpg"
+    },
+    {
+        "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_node_modules_reactnativedropdownpicker_src_themes_light_icons_arrowdown.png.flat",
+        "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-mdpi\\node_modules_reactnativedropdownpicker_src_themes_light_icons_arrowdown.png"
     },
     {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_src_assets_icons_emptystateaddbutton.png.flat",
@@ -28,12 +28,12 @@
         "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-mdpi\\src_assets_icons_logoutbuttonicon.png"
     },
     {
-        "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\raw_node_modules_csstree_package.json.flat",
-        "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\raw\\node_modules_csstree_package.json"
-    },
-    {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_src_assets_icons_forwardbutton.png.flat",
         "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-mdpi\\src_assets_icons_forwardbutton.png"
+    },
+    {
+        "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\raw_node_modules_csstree_package.json.flat",
+        "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\raw\\node_modules_csstree_package.json"
     },
     {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_src_assets_icons_supporticon.png.flat",
@@ -194,6 +194,10 @@
     {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\raw_node_modules_reactnativevectoricons_glyphmaps_ionicons.json.flat",
         "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\raw\\node_modules_reactnativevectoricons_glyphmaps_ionicons.json"
+    },
+    {
+        "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\raw_src_assets_lotties_temponboardingcustom2.json.flat",
+        "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\raw\\src_assets_lotties_temponboardingcustom2.json"
     },
     {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_node_modules_reactnativebouncycheckbox_build_dist_check.png.flat",
@@ -358,6 +362,10 @@
     {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_src_assets_images_leologo.png.flat",
+        "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\generated\\res\\react\\release\\drawable-mdpi\\src_assets_images_leologo.png"
     },
     {
         "merged": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\res\\merged\\release\\drawable-mdpi_src_assets_images_comparecardtwo.png.flat",

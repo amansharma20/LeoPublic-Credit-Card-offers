@@ -8,7 +8,7 @@ import {SessionReducer} from '../reducers/SessionReducer';
 const allReducers = combineReducers({
   AuthReducer,
   CustomerUserCardReducer,
-  SessionReducer
+  SessionReducer,
 });
 const applicationStore = createStore(
   allReducers,

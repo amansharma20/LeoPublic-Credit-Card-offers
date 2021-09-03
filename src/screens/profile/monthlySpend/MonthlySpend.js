@@ -21,13 +21,53 @@ export default function MonthlySpend() {
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
 
+    const [expense, setExpense] = useState('');
+    const [expenseShopping, setExpenseShopping] = useState('');
+
+    const onPressInputItem = () => setShowModal(true);
+
+
+    // const setExpense ()
+
+    const spendTextFieldSelected = (id) => {
+        switch (id) {
+
+            case 1:
+                setExpenseShopping(expense);
+                break;
+
+            case 2:
+                console.log(id);
+
+                break;
+
+            case 3:
+                console.log(id);
+
+                break;
+
+            case 4:
+                console.log(id);
+
+                break;
+
+            case 5:
+                console.log(id);
+
+                break;
+
+            default:
+
+        }
+    };
+
     return (
         <ScrollView style={styles.container}>
             <View>
                 <CommonHeader children="Monthly Spend Pattern" />
             </View>
             <View style={styles.body}>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.topContainer}>
+                <TouchableOpacity onPress={{}} style={styles.topContainer}>
                     <AnimatedCircularProgress
                         style={styles.animatedCircleSize}
                         size={200}
@@ -41,7 +81,7 @@ export default function MonthlySpend() {
                         Monthly{'\n'}Expenses{'\n'}20,000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => spendTextFieldSelected(1)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <ShoppingIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -49,10 +89,10 @@ export default function MonthlySpend() {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹1000
+                    s
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => spendTextFieldSelected(2)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <TravelIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -63,7 +103,7 @@ export default function MonthlySpend() {
                         ₹1000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => spendTextFieldSelected(3)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <GroceriesIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -74,7 +114,7 @@ export default function MonthlySpend() {
                         ₹1000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => spendTextFieldSelected(4)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <EntertainmentIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -85,7 +125,7 @@ export default function MonthlySpend() {
                         ₹1000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => spendTextFieldSelected(5)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <OthersIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -96,18 +136,7 @@ export default function MonthlySpend() {
                         ₹1000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(true)} style={styles.itemContainer}>
-                    <View style={styles.leftContainer}>
-                        <TotalSpendIcon style={{ marginRight: 8 }} />
-                        <Text style={styles.leftText}>
-                            Shopping
-                        </Text>
-                    </View>
-                    <Text style={{ fontSize: 18 }}>
-                        ₹1000
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.buttonContainer}>
+                <TouchableOpacity onPress={onPressInputItem} style={styles.buttonContainer}>
                     <Text style={styles.buttonText}>
                         Submit
                     </Text>
@@ -132,8 +161,13 @@ export default function MonthlySpend() {
                                 <TextInput
                                     style={styles.inputText}
                                     autoCapitalize
-                                    multiline={true}
-                                    keyboardType={'nu meric'}
+                                    keyboardType={'numeric'}
+                                    onChangeText={(text) => setExpense(text)}
+                                    onSubmitEditing={() => setShowModal(false)}
+                                    autoFocus={true}
+                                    enablesReturnKeyAutomatically={true}
+                                    returnKeyType={'go'}
+                                    maxLength={6}
                                 />
                                 <TouchableOpacity onPress={() => setShowModal(false)} >
                                     <Image source={icons.forwardButton} style={{ width: 48, height: 48, marginLeft: 16 }} />
@@ -177,14 +211,14 @@ const styles = StyleSheet.create({
         fontSize: 14, color: '#455671',
         fontFamily: Platform.select({
             ios: 'Exo2-Medium',
-            android: 'Exo2Medium'
+            android: 'Exo2Medium',
         }),
     },
     headerTextCircle: {
         fontSize: 20, textAlign: 'center', marginTop: -140,
         fontFamily: Platform.select({
             ios: 'Exo2-Medium',
-            android: 'Exo2Medium'
+            android: 'Exo2Medium',
         }),
     },
     buttonContainer: { backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48), marginVertical: SIZES.padding, marginBottom: 50 },
@@ -192,7 +226,7 @@ const styles = StyleSheet.create({
         color: '#ffffff', fontSize: 16,
         fontFamily: Platform.select({
             ios: 'Exo2-Bold',
-            android: 'Exo2Bold'
+            android: 'Exo2Bold',
         }),
     },
     modalBackground: {
@@ -213,7 +247,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: Platform.select({
             ios: 'Exo2-Bold',
-            android: 'Exo2Bold'
+            android: 'Exo2Bold',
         }),
     },
     writeReviewContainer: {
@@ -229,7 +263,7 @@ const styles = StyleSheet.create({
         padding: 12,
         fontFamily: Platform.select({
             ios: 'Exo2-Medium',
-            android: 'Exo2Medium'
+            android: 'Exo2Medium',
         }),
         width: '80%',
     },
@@ -249,7 +283,7 @@ const styles = StyleSheet.create({
         fontSize: SIZES.h3,
         fontFamily: Platform.select({
             ios: 'Exo2-Bold',
-            android: 'Exo2Bold'
+            android: 'Exo2Bold',
         }),
     },
     closeButtonContainer: {
@@ -267,7 +301,7 @@ const styles = StyleSheet.create({
         fontSize: SIZES.h3,
         fontFamily: Platform.select({
             ios: 'Exo2-Bold',
-            android: 'Exo2Bold'
+            android: 'Exo2Bold',
         }),
     },
 });
