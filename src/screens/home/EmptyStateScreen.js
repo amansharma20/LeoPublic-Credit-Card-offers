@@ -19,7 +19,12 @@ export default function EmptyStateScreen() {
             </View>
             <View style={{ marginTop: 50, alignItems: 'center', justifyContent: 'center', backgroundColor: '#DBF9FC', marginHorizontal: 80, height: 50, borderRadius: 12 }}>
                 <TouchableOpacity onPress={() => navigation.navigate('AddCardScreen')} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 20, fontFamily: 'Exo2SemiBold' }}>
+                    <Text style={{
+                        fontSize: 20, fontFamily: Platform.select({
+                            ios: 'Exo2-SemiBold',
+                            android: 'Exo2SemiBold'
+                        })
+                    }}>
                         Add Card
                     </Text>
                     <Image source={icons.emptyStateAddButton} style={{ width: 24, height: 30, resizeMode: 'contain', marginLeft: 25 }} />

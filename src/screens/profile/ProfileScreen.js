@@ -35,6 +35,8 @@ export default function ProfileScreen() {
     const dummyData = {};
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
+    navigation.replace( "Login" )
+
   }
 
 

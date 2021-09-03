@@ -9,6 +9,7 @@ import {
   Modal,
   TextInput,
   Platform,
+  DatePickerAndroid,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
@@ -19,6 +20,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import { format } from 'date-fns';
+import { useMutation } from '@apollo/client';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
+import {
+  GraphQLDate,
+  GraphQLTime,
+  GraphQLDateTime,
+} from 'graphql-iso-date';
+import CommonLoading from '../../components/CommonLoading';
+
+
 
 export default function BasicDetailsInput(props) {
 
@@ -39,14 +50,18 @@ export default function BasicDetailsInput(props) {
     { label: 'Unemployed', value: 'unemployed' },
   ]);
   const [salaryType, setSalaryType] = useState([
-    { label: 'Less than 2.5 Lacs', value: 'Less than 2.5 Lacs' },
-    { label: 'Between 2.5 Lacs to 5 Lacs', value: 'Between 2.5 Lacs to 5 Lacs' },
-    { label: 'More than 5 Lacs', value: 'More than 5 Lacs' },
+    { label: 'Less than 2.5 Lacs', value: '250000' },
+    { label: 'Between 2.5 Lacs to 5 Lacs', value: '500000' },
+    { label: 'More than 5 Lacs', value: '1000000' },
   ]);
   const [gender, setGender] = useState([
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' },
   ]);
+
+  const [pin, setPin] = useState(0);
+
+
   // const [date, setDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
@@ -70,16 +85,46 @@ export default function BasicDetailsInput(props) {
 
   };
 
+  const onDataSubmit = () => {
+    console.log('INSIDE');
+    console.log('pin');
+    console.log(pin);
+    console.log('pin');
+    console.log(employmentValue);
+    console.log(genderValue);
+    console.log(salaryValue);
+    console.log(pinCode);
+    CommonLoading.show();
+
+    submitBasicDetails({ variables: { AnnualSalary: salaryValue,
+      EmploymentType: employmentValue,
+      Gender: genderValue,
+      PinCode: pin,
+    } });
+    if (data && data.UserBasicDetailsMutation && data.UserBasicDetailsMutation.UserBasicDetailsMutation == 'Updated'){
+      CommonLoading.hide();
+    }
+  if (error) {
+    CommonLoading.hide();
+
+  }
+    console.log(data)
+    console.log(error)
+  };
+
+  const [submitBasicDetails, { data, error}] = useMutation(GQLMutation.SAVE_USER_BASIC_DETAILS);
+
+
   const formatedDate = (date) => {
     var formattedDate = format(date, 'MMMM do, yyyy');
-    // DATE 
-    console.log(formattedDate);
+    // DATE
+    // console.log(formattedDate);
     return formattedDate;
   };
 
-  // EMPLOYMENT TYPE 
-  console.log(employmentValue)
-  console.log(genderValue)
+  const [pinCode, setPinCode] = useState('Pin Code');
+
+  console.log(pinCode)
 
 
   return (
@@ -177,14 +222,16 @@ export default function BasicDetailsInput(props) {
                 <TextInput
                   label={'Pincode'}
                   onBlur={onBlur}
-                  onChangeText={value => onChange(value)}
-                  value={value}
+                  // onChangeText={(value) => setPin(value)}
                   error={errors.pincode}
                   style={styles.pincodeInput}
                   placeholderTextColor={'#B4B4B4'}
-                  placeholder={'Pin Code'}
+                  placeholder={pinCode}
                   keyboardType={'number-pad'}
                   maxLength={6}
+                // onSubmitEditing={value => setPin(value)}
+                // onSubmitEditing={(text) => setPinCode(text)}
+
                 />
               )}
               name="pincode"
@@ -216,7 +263,9 @@ export default function BasicDetailsInput(props) {
         <View>
           <TouchableOpacity
             // onPress={handleSubmit(onSubmit)}
-            onPress={handleSubmit(onSubmit)}
+            onPress={() => {
+              onDataSubmit();
+            }}
           >
             <View style={styles.submitButtonContainer}>
               <Text style={styles.submitButtonText}>Submit Details</Text>
@@ -391,6 +440,6 @@ const styles = StyleSheet.create({
     fontSize: 16, color: '#4D2D8F', fontFamily: Platform.select({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold',
-    })
+    }),
   },
 });

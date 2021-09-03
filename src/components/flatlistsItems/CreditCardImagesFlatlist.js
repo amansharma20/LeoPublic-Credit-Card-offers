@@ -15,11 +15,23 @@ import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
 import { applicationProperties } from '../../../application.properties';
+import { useMutation } from '@apollo/client';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
 
 export default function CreditCardImagesFlatlist(props) {
   const card = props.card.item;
   const cardDetails = card.BankCard;
   const [showModal, setShowModal] = useState(false);
+
+  const [deleteCard, { data, error}] = useMutation(GQLMutation.DELETE_USER_CARD);
+
+  const deleteUserCard = ()=>{
+    deleteCard({ variables: { Id: card.Id} });
+    if (data && data.DeleteCustomerUserBankCardMutation && data.DeleteCustomerUserBankCardMutation.DeleteCustomerUserBankCard == 'Deleted'){
+      setShowModal(false);
+    }
+  };
+
 
   return (
     <TouchableOpacity
@@ -50,7 +62,7 @@ export default function CreditCardImagesFlatlist(props) {
       </ImageBackground>
       {showModal && (
         <Modal
-          animationType='slide'
+          animationType="slide"
           transparent={true}
           showModal={showModal}
           onRequestClose={() => setShowModal(false)}>
@@ -76,7 +88,10 @@ export default function CreditCardImagesFlatlist(props) {
                     <Text style={styles.noModalButtonText}>No</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setShowModal(false)}>
+                <TouchableOpacity onPress={() => {
+                  deleteUserCard();
+                  //
+                }}>
                   <View style={styles.yesModalButton}>
                     <Text style={styles.yesModalButtonText}>Yes</Text>
                   </View>
@@ -123,12 +138,12 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
     width: 120,
   },
   bankLogo: {
-    width: 80, height: 40, resizeMode: 'contain'
+    width: 80, height: 40, resizeMode: 'contain',
   },
   cardBottomContainer: {
     flexDirection: 'row',
@@ -140,7 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   modalBackground: {
@@ -162,7 +177,7 @@ const styles = StyleSheet.create({
     color: '#797E96',
     fontFamily: Platform.select({
       ios: 'Exo2-SemiBold',
-      android: 'Exo2SemiBold'
+      android: 'Exo2SemiBold',
     }),
   },
   noModalButton: {
@@ -188,14 +203,14 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   yesModalButtonText: {
     color: '#ED4C5C',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
 });
