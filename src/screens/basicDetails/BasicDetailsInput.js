@@ -43,7 +43,7 @@ export default function BasicDetailsInput(props) {
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' },
   ]);
-
+  
   const [pin, setPin] = useState(false);
 
 
@@ -73,6 +73,11 @@ export default function BasicDetailsInput(props) {
   const onDataSubmit = () => {
     console.log('INSIDE')
     console.log(pin)
+    console.log(openEmploymentType)
+    console.log(employmentValue)
+    console.log(genderValue)
+    console.log(employmentType)
+       
   }
 
   const formatedDate = (date) => {
