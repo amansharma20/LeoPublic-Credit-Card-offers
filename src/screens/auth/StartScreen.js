@@ -9,10 +9,9 @@ import {
   Text,
   ImageBackground,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES, COLORS, images} from '../../constants';
+import { useNavigation } from '@react-navigation/native';
+import { SIZES, COLORS, images } from '../../constants';
 
-const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function StartScreen() {
@@ -47,9 +46,9 @@ export default function StartScreen() {
               style={{
                 color: '#4D2D8F',
                 fontSize: 16,
-                fontFamily:Platform.select({
-                  ios:'Exo2-Bold',
-                  android:'Exo2Bold'
+                fontFamily: Platform.select({
+                  ios: 'Exo2-Bold',
+                  android: 'Exo2Bold'
                 }),
               }}>
               Sign in
@@ -73,11 +72,12 @@ export default function StartScreen() {
                 borderColor: 'white',
               },
             ]}>
-            <Text style={{color: 'white', fontSize: 16,
-            fontFamily:Platform.select({
-              ios:'Exo2-Bold',
-              android:'Exo2Bold'
-            }),
+            <Text style={{
+              color: 'white', fontSize: 16,
+              fontFamily: Platform.select({
+                ios: 'Exo2-Bold',
+                android: 'Exo2Bold'
+              }),
             }}>
               Register
             </Text>
@@ -104,9 +104,9 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 36,
     color: COLORS.white,
-    fontFamily:Platform.select({
-      ios:'Exo2-Bold',
-      android:'Exo2Bold'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
     }),
     marginTop: screenHeight / 3,
   },
@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: 'white',
     marginTop: 10,
-    fontFamily:Platform.select({
-      ios:'Exo2-Medium',
-      android:'Exo2Medium'
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium'
     }),
   },
 });

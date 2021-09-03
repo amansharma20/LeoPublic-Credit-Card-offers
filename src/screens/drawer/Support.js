@@ -28,7 +28,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#4d2d8f',
   },
-  headerText: {fontSize: 16, fontFamily: 'Exo2SemiBold', color: '#1C1B1B', lineHeight: 24},
+  headerText: {fontSize: 16, fontFamily: Platform.select({
+    ios: 'Exo2-SemiBold',
+    android: 'Exo2SemiBold'
+  }), color: '#1C1B1B', lineHeight: 24},
   body: {
     padding: SIZES.padding,
     backgroundColor: '#ffffff',

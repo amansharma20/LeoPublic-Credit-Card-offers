@@ -9,7 +9,7 @@ import {
   Modal,
   Image,
 } from 'react-native';
-import { icons, SIZES } from '../../constants';
+import { icons, images, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
 import BankLogo from '../../assets/svgs/bankLogo.svg';

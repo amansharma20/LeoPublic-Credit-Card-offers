@@ -20,12 +20,15 @@ import * as yup from 'yup';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import { format } from "date-fns";
 
+
+
+
 export default function BasicDetailsInput(props) {
 
   //const { firstName } = props.route.params;
   const firstName = "Name"
 
-   //navigation.navigate('CardHolder')
+  //navigation.navigate('CardHolder')
 
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
@@ -40,6 +43,10 @@ export default function BasicDetailsInput(props) {
     { label: 'Male', value: 'male' },
     { label: 'Female', value: 'female' },
   ]);
+
+  const [pin, setPin] = useState(false);
+
+
   // const [date, setDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
@@ -58,9 +65,14 @@ export default function BasicDetailsInput(props) {
   });
 
   const onSubmit = (data) => {
-console.log('INSIDE')
+    console.log('INSIDE')
     console.log(data)
 
+  }
+
+  const onDataSubmit = () => {
+    console.log('INSIDE')
+    console.log(pin)
   }
 
   const formatedDate = (date) => {
@@ -139,7 +151,7 @@ console.log('INSIDE')
                 <TextInput
                   label={'Pincode'}
                   onBlur={onBlur}
-                  onChangeText={value => onChange(value)}
+                  onChangeText={value => setPin(value)}
                   value={value}
                   error={errors.pincode}
                   style={styles.pincodeInput}
@@ -172,7 +184,9 @@ console.log('INSIDE')
         <View>
           <TouchableOpacity
             // onPress={handleSubmit(onSubmit)}
-            onPress={handleSubmit(onSubmit)}
+            onPress={()=>{
+              onDataSubmit()
+            }}
           >
             <View style={styles.submitButtonContainer}>
               <Text style={styles.submitButtonText}>Submit Details</Text>
