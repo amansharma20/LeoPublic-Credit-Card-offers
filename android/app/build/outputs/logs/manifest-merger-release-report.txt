@@ -13,6 +13,7 @@ MERGED from [:react-native-gesture-handler] C:\Users\amana\apps\Leo\Mobile\node_
 MERGED from [:react-native-pager-view] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-pager-view\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-screens\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-splash-screen] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-14:12
 MERGED from [:react-native-svg] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-svg\android\build\intermediates\library_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\5c64f35c4f864d4cd139ccbbff91ceb9\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -83,6 +84,8 @@ MERGED from [:lottie-react-native] C:\Users\amana\apps\Leo\Mobile\node_modules\l
 		ADDED from C:\Users\amana\apps\Leo\Mobile\android\app\src\main\AndroidManifest.xml:4:22-64
 application
 ADDED from C:\Users\amana\apps\Leo\Mobile\android\app\src\main\AndroidManifest.xml:6:5-24:19
+MERGED from [:react-native-splash-screen] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-splash-screen] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\release\AndroidManifest.xml:11:5-12:19
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
 MERGED from [com.airbnb.android:lottie:3.4.0] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\7b9663c45e5a1cb9b39c2ee80a23babd\jetified-lottie-3.4.0\AndroidManifest.xml:9:5-20
@@ -155,6 +158,8 @@ MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\nod
 MERGED from [:react-native-safe-area-context] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-screens\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-screens] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-screens\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\release\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-svg] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-svg\android\build\intermediates\library_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-svg] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-svg\android\build\intermediates\library_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:7:5-9:41
