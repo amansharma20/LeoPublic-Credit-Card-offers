@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
 import CommonHeaderWithBackButton from '../../components/headers/CommonHeaderWithBackButton';
@@ -28,7 +28,7 @@ export default function Educate() {
             setOpen={setOpenBankName}
             setValue={setBankValue}
             setItems={setBankName}
-            zIndex={10000}
+            zIndex={20000}
             zIndexInverse={1000}
             placeholder="Title text goes here"
             style={styles.bankNamePickerContainer}
@@ -145,10 +145,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   placeholderText: {
-      fontSize: 16, 
-      fontFamily:Platform.select({
+      fontSize: 16,
+      fontFamily: Platform.select({
         ios:'Exo2-Bold',
-        android:'Exo2Bold'
+        android:'Exo2Bold',
       }),
   },
   dropDownContainerStyle: {

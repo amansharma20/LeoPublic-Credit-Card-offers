@@ -18,6 +18,8 @@ export const emptyStateCardImage = require('../assets/images/emptyStateCardImage
 export const emptyStateGirl = require('../assets/images/emptyStateGirl.png');
 export const leoLogo = require('../assets/images/leoLogo.png');
 export const onBoardingBackground = require('../assets/images/onBoardingBackground.png');
+export const creditCardLight = require('../assets/images/creditCardLight.png');
+export const educateCreditCard = require('../assets/images/educateCreditCard.png');
 
 export default {
     startScreenBackgroundImage,
@@ -39,4 +41,6 @@ export default {
     emptyStateGirl,
     leoLogo,
     onBoardingBackground,
+    creditCardLight,
+    educateCreditCard,
 };
