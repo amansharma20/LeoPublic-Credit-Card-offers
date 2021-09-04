@@ -28,20 +28,19 @@ export default function BestOffers() {
     return (
       <View style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
-
-          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <View style={styles.skeletonStyle} />
             <View style={styles.skeletonStyle} />
           </View>
-          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <View style={styles.skeletonStyle} />
             <View style={styles.skeletonStyle} />
           </View>
-          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <View style={styles.skeletonStyle} />
             <View style={styles.skeletonStyle} />
           </View>
-          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <View style={styles.skeletonStyle} />
             <View style={styles.skeletonStyle} />
           </View>
