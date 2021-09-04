@@ -21,45 +21,61 @@ export default function MonthlySpend() {
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
 
-    const [expense, setExpense] = useState('');
-    const [expenseShopping, setExpenseShopping] = useState('');
+
+    const [selectedId, setSelectedId] = useState(1);
+
+    const [expense, setExpense] = useState(0);
+    const [expenseShopping, setExpenseShopping] = useState(0);
+    const [expenseTravelling, setExpenseTravelling] = useState(0);
+    const [expenseGroceries, setExpenseGroceries] = useState(0);
+    const [expenseEntermainment, setExpenseEntermainment] = useState(0);
+    const [expenseOthers, setExpenseOthers] = useState(0);
 
     const onPressInputItem = () => setShowModal(true);
+
+
 
 
     // const setExpense ()
 
     const spendTextFieldSelected = (id) => {
+        setShowModal(false)
         switch (id) {
-
             case 1:
                 setExpenseShopping(expense);
+                setExpense(0)
                 break;
 
             case 2:
-                console.log(id);
-
+                setExpenseTravelling(expense);
+                setExpense(0)
                 break;
 
             case 3:
-                console.log(id);
-
+                setExpenseGroceries(expense);
+                setExpense(0)
                 break;
 
             case 4:
-                console.log(id);
-
+                setExpenseEntermainment(expense);
+                setExpense(0)
                 break;
 
             case 5:
-                console.log(id);
-
+                setExpenseOthers(expense);
+                setExpense(0)
                 break;
 
             default:
 
         }
     };
+
+
+    const openExpenseModel = (id) => {
+        setSelectedId(id)
+        setShowModal(true)
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -81,7 +97,7 @@ export default function MonthlySpend() {
                         Monthly{'\n'}Expenses{'\n'}20,000
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => spendTextFieldSelected(1)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => openExpenseModel(1)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <ShoppingIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -89,10 +105,10 @@ export default function MonthlySpend() {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                    s
+                        ₹{expenseShopping}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => spendTextFieldSelected(2)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => openExpenseModel(2)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <TravelIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -100,10 +116,10 @@ export default function MonthlySpend() {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹1000
+                        ₹{expenseTravelling}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => spendTextFieldSelected(3)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => openExpenseModel(3)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <GroceriesIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -111,10 +127,10 @@ export default function MonthlySpend() {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹1000
+                        ₹{expenseGroceries}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => spendTextFieldSelected(4)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => openExpenseModel(4)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <EntertainmentIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -122,10 +138,10 @@ export default function MonthlySpend() {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹1000
+                        ₹{expenseEntermainment}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => spendTextFieldSelected(5)} style={styles.itemContainer}>
+                <TouchableOpacity onPress={() => openExpenseModel(5)} style={styles.itemContainer}>
                     <View style={styles.leftContainer}>
                         <OthersIcon style={{ marginRight: 8 }} />
                         <Text style={styles.leftText}>
@@ -133,7 +149,7 @@ export default function MonthlySpend() {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹1000
+                        ₹{expenseOthers}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={onPressInputItem} style={styles.buttonContainer}>
@@ -169,7 +185,7 @@ export default function MonthlySpend() {
                                     returnKeyType={'go'}
                                     maxLength={6}
                                 />
-                                <TouchableOpacity onPress={() => setShowModal(false)} >
+                                <TouchableOpacity onPress={() => spendTextFieldSelected(selectedId)} >
                                     <Image source={icons.forwardButton} style={{ width: 48, height: 48, marginLeft: 16 }} />
                                 </TouchableOpacity>
 

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\amana\\apps\\Leo\\Mobile\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-no\\values-no.xml",
+            "outputFile": "/Users/shanu/Desktop/Mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-no/values-no.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\amana\\apps\\Leo\\Mobile\\node_modules\\react-native-date-picker\\android\\build\\intermediates\\packaged_res\\debug\\values-no\\values-no.xml",
+                    "source": "/Users/shanu/Desktop/Mobile/node_modules/react-native-date-picker/android/build/intermediates/packaged_res/debug/values-no/values-no.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

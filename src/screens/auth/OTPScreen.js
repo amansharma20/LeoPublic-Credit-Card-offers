@@ -77,7 +77,7 @@ export default function OTPScreen(props) {
   async function saveTokenAsyncHome(user) {
     await SessionService.setSession(user);
     dispatch(SessionAction.getSession());
-    // navigation.navigate('BottomTabBarNavigator');
+    navigation.navigate('BottomTabBarNavigator');
   }
 
   async function saveTokenAsyncDetails(user) {
