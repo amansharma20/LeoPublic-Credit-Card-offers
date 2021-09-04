@@ -21,6 +21,7 @@ import { format } from 'date-fns';
 import { useMutation } from '@apollo/client';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
 import CommonLoading from '../../components/CommonLoading';
+import { useNavigation } from '@react-navigation/core';
 
 
 
@@ -88,7 +89,7 @@ export default function BasicDetailsInput() {
         EmploymentType: employmentValue,
         Gender: genderValue,
         PinCode: pin,
-      }
+      },
     });
     if (data && data.UserBasicDetailsMutation && data.UserBasicDetailsMutation.UserBasicDetailsMutation == 'Updated') {
       CommonLoading.hide();
@@ -97,8 +98,8 @@ export default function BasicDetailsInput() {
       CommonLoading.hide();
 
     }
-    console.log(data)
-    console.log(error)
+    console.log(data);
+    console.log(error);
   };
 
   const [submitBasicDetails, { data, error }] = useMutation(GQLMutation.SAVE_USER_BASIC_DETAILS);
@@ -113,8 +114,9 @@ export default function BasicDetailsInput() {
 
   const [pinCode, setPinCode] = useState('Pin Code');
 
-  console.log(pinCode)
+  console.log(pinCode);
 
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -261,7 +263,7 @@ export default function BasicDetailsInput() {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-          // onPress={handleSubmit(onSubmit)}
+            onPress={() => { navigation.navigate('CardHolder'); }}
           >
             <View style={styles.notNowButtonContainer}>
               <Text style={styles.notNowButtonText}>Not Now</Text>
