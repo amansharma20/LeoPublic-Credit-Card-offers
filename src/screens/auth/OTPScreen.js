@@ -99,9 +99,10 @@ export default function OTPScreen(props) {
           </TouchableOpacity>
         </View>
         <View style={styles.headerTextContainer}>
-          <Text style={styles.headerText}>Register with us</Text>
+          <Text style={styles.headerText}>OTP Authentication</Text>
           <Text style={styles.subTitleText}>
-            We’ll send you a code to verify your contact number
+            An authentication code has been sent to {"\n"}
+            (+91) {phone}
           </Text>
         </View>
         <View style={styles.otpContainer}>
@@ -123,7 +124,15 @@ export default function OTPScreen(props) {
         </TouchableOpacity>
         <View style={styles.footerTextContainer}>
           <Text style={styles.footerText}>I didn't receive the code.</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity onPress={() => {
+            CommonLoading.show();
+            const signInData = {
+              MobileNumber: phone,
+            };
+            dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(response => {
+              CommonLoading.hide();
+            })
+          }}>
             <Text style={styles.footerTextBold}> Resend Code</Text>
           </TouchableOpacity>
         </View>

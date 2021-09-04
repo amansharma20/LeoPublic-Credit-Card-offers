@@ -152,14 +152,15 @@ const styles = StyleSheet.create({
     }),
   },
   textInputContainer: {
-    marginTop: '20%',
+    marginTop: '15%',
   },
   subTitleText: {
     fontSize: 16,
     color: '#797E96',
+    marginTop:10,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: '',
+      android: 'Exo2Medium',
     }),
   },
   phoneInput: {
@@ -187,7 +188,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#4d2d8f',
     borderRadius: 10,
     height: 48,
-    marginVertical: 20,
+    marginTop:20
+    
+
   },
   nextButtonText: {
     fontSize: 16,

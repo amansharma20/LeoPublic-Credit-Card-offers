@@ -39,7 +39,7 @@ export default function StartScreen() {
               {
                 alignItems: 'center',
                 backgroundColor: 'white',
-                marginTop: 0,
+                marginTop: 10,
               },
             ]}>
             <Text
@@ -60,7 +60,7 @@ export default function StartScreen() {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            marginTop: 15,
+            marginTop: 0,
           }}>
           <View
             style={[
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold'
     }),
-    marginTop: screenHeight / 3,
+    marginTop: screenHeight / 2,
   },
   MainContainer: {
     flex: 1,
