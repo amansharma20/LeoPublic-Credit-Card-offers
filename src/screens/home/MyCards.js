@@ -8,7 +8,6 @@ import {
   Dimensions,
   TouchableOpacity,
   LogBox,
-  Text,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -20,8 +19,6 @@ import { scrollInterpolator, animatedStyles } from '../../utils/animations';
 import { GQLQuery } from '../../persistence/query/Query';
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
-import { useDispatch, useSelector } from 'react-redux';
-import EmptyStateCards from '../../assets/dummyData/creditCards';
 import EmptyStateScreen from './EmptyStateScreen';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -30,7 +27,6 @@ const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards() {
-  const dispatch = useDispatch();
   const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
@@ -40,7 +36,7 @@ export default function MyCards() {
   }, [])
 
 
-  const cardIndexChanged = (cardId)=> {
+  const cardIndexChanged = (cardId) => {
     setSelectedCardIndex(cardId)
   }
 
@@ -83,7 +79,7 @@ export default function MyCards() {
             <Carousel
               data={BankCards}
               renderItem={renderCustomerUserCards}
-              keyExtractor={(item, index) => index.toString()}
+              keyExtractor={(_item, index) => index.toString()}
               horizontal={true}
               sliderWidth={SLIDER_WIDTH}
               itemWidth={ITEM_WIDTH}
@@ -100,14 +96,14 @@ export default function MyCards() {
             />
           </TouchableOpacity>
           <View>
-          {
-            error == undefined ? 
-            <HomeSegmentNavigator selectedCard={BankCards && BankCards[selectedCardIndex]} />
-            : 
-            <ScrollView>
-            <EmptyStateScreen />
-            </ScrollView>
-          } 
+            {
+              error == undefined ?
+                <HomeSegmentNavigator selectedCard={BankCards && BankCards[selectedCardIndex]} />
+                :
+                <ScrollView>
+                  <EmptyStateScreen />
+                </ScrollView>
+            }
           </View>
         </View>
       </Animated.ScrollView>

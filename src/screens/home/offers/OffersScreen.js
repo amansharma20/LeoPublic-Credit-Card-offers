@@ -4,7 +4,6 @@ import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 import { SIZES } from '../../../constants/theme';
 import { FlatList } from 'react-native-gesture-handler';
-import DATA from '../../../assets/dummyData/offers';
 import Offers from '../../../components/flatlistsItems/OffersScreenFlatlist';
 import { Responsive } from '../../../utils/layouts/Layout';
 import { useQuery } from '@apollo/client';
@@ -22,11 +21,6 @@ export default function OffersScreen(props) {
 
   const BankCardOfferData = data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOfferById;
 
-  console.log('Offer Data')
-  console.log(data && data.BankCardOfferQuery && data.BankCardOfferQuery.GetBankCardOfferById)
-  console.log('Offer Data')
-
-
   if (loading)
     return (
       <View style={{ marginBottom: 12, alignItems: 'center' }}>
@@ -38,10 +32,8 @@ export default function OffersScreen(props) {
       </View>
     );
 
-  console.log(error)
-
   const renderItem = ({ item }) => (
-    <Offers offer = {item} />
+    <Offers offer = {item} key={item.Id}/>
   );
 
   return (

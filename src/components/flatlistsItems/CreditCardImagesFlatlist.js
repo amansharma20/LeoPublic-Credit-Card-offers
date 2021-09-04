@@ -12,7 +12,6 @@ import {
 import { icons, images, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import MasterCardLogo from '../../assets/svgs/mastercardLogo.svg';
-import BankLogo from '../../assets/svgs/bankLogo.svg';
 import Code from '../../assets/svgs/code.svg';
 import { applicationProperties } from '../../../application.properties';
 import { useMutation } from '@apollo/client';
@@ -23,15 +22,14 @@ export default function CreditCardImagesFlatlist(props) {
   const cardDetails = card.BankCard;
   const [showModal, setShowModal] = useState(false);
 
-  const [deleteCard, { data, error}] = useMutation(GQLMutation.DELETE_USER_CARD);
+  const [deleteCard, { data }] = useMutation(GQLMutation.DELETE_USER_CARD);
 
-  const deleteUserCard = ()=>{
-    deleteCard({ variables: { Id: card.Id} });
-    if (data && data.DeleteCustomerUserBankCardMutation && data.DeleteCustomerUserBankCardMutation.DeleteCustomerUserBankCard == 'Deleted'){
+  const deleteUserCard = () => {
+    deleteCard({ variables: { Id: card.Id } });
+    if (data && data.DeleteCustomerUserBankCardMutation && data.DeleteCustomerUserBankCardMutation.DeleteCustomerUserBankCard == 'Deleted') {
       setShowModal(false);
     }
   };
-
 
   return (
     <TouchableOpacity
@@ -49,14 +47,20 @@ export default function CreditCardImagesFlatlist(props) {
             <Text numberOfLines={2} style={styles.cardTypeText}>
               {cardDetails.CardName}
             </Text>
-            <Image source={images.axisBankWhite} style={styles.bankLogo} />
+            <Image source={{
+              uri: applicationProperties.imageUrl + cardDetails.Bank.LogoStoragePath,
+            }} style={styles.bankLogo} />
           </View>
-          <Code />
+          <View style={{ marginLeft: 10 }}>
+            <Code />
+          </View>
           <View style={styles.cardBottomContainer}>
             <Text style={styles.cardNumberText}>
               {card.CardNumber}** **** ****
             </Text>
-            <MasterCardLogo />
+            <View style={{ marginRight: 15 }}>
+              <MasterCardLogo />
+            </View>
           </View>
         </View>
       </ImageBackground>
@@ -90,7 +94,6 @@ export default function CreditCardImagesFlatlist(props) {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                   deleteUserCard();
-                  //
                 }}>
                   <View style={styles.yesModalButton}>
                     <Text style={styles.yesModalButtonText}>Yes</Text>
@@ -141,6 +144,7 @@ const styles = StyleSheet.create({
       android: 'Exo2Bold',
     }),
     width: 120,
+    marginLeft: 10
   },
   bankLogo: {
     width: 80, height: 40, resizeMode: 'contain',
@@ -157,6 +161,8 @@ const styles = StyleSheet.create({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold',
     }),
+    marginLeft: 10,
+    marginBottom: 10
   },
   modalBackground: {
     flex: 1,

@@ -4,9 +4,17 @@ import { View, StyleSheet, Text, Image, Platform } from 'react-native';
 import { applicationProperties } from '../../../application.properties';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
+import { format } from 'date-fns';
 
 export default function Offers(props) {
   const offer = props.offer
+
+  const formatedDate = (offerdate) => {
+    var date = new Date(offerdate)
+    var formattedDate = format(date, 'do MMM');
+    return formattedDate;
+  };
+  
   return (
     <View style={styles.container}>
       <View style={styles.offerContainer}>
@@ -17,13 +25,17 @@ export default function Offers(props) {
             style={styles.imageSize} />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.titleText}>{offer.OfferTitle}</Text>
-          <Text style={styles.subtitleText}>{offer.OfferDescription}</Text>
+          <Text numberOfLines={2} style={styles.titleText}>
+            {offer.OfferTitle}
+          </Text>
+          <Text numberOfLines={1} style={styles.subtitleText}>Valid till {formatedDate(offer.ExpiryDate)}</Text>
         </View>
       </View>
     </View>
   )
 };
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -38,8 +50,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
+    height: Responsive.height(100),
+    padding: 16,
   },
-  imageContainer: {},
+  imageContainer: {
+    //  backgroundColor:'red'
+  },
   textContainer: {
     width: '67.5%',
     paddingHorizontal: SIZES.padding2,
@@ -62,8 +78,8 @@ const styles = StyleSheet.create({
     }),
   },
   imageSize: {
-    width: Responsive.width(75),
-    height: Responsive.height(75),
+    width: Responsive.width(68),
+    height: Responsive.height(68),
     resizeMode: 'contain',
   },
 });
