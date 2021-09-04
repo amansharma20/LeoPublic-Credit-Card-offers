@@ -5,7 +5,8 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  FlatList
+  FlatList,
+  Text,
 } from 'react-native';
 import { SIZES } from '../../../constants/theme';
 import { Responsive } from '../../../utils/layouts/Layout';
@@ -23,16 +24,32 @@ export default function BestOffers() {
     <BestOffersFlatlist offer={item} key={item.Id} />
   );
 
-  if (loading)
+  if (loading) {
     return (
       <View style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
-          <View style={styles.skeletonStyle} />
-          <View style={styles.skeletonStyle} />
+
+          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+            <View style={styles.skeletonStyle} />
+            <View style={styles.skeletonStyle} />
+          </View>
+          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+            <View style={styles.skeletonStyle} />
+            <View style={styles.skeletonStyle} />
+          </View>
+          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+            <View style={styles.skeletonStyle} />
+            <View style={styles.skeletonStyle} />
+          </View>
+          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
+            <View style={styles.skeletonStyle} />
+            <View style={styles.skeletonStyle} />
+          </View>
           <View style={styles.skeletonStyle} />
         </SkeletonPlaceholder>
       </View>
     );
+  }
 
 
   return (
@@ -66,9 +83,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding2,
   },
   skeletonStyle: {
-    width: 300,
-    height: 100,
-    borderRadius: 8,
-    marginTop: 30
+    width: 120,
+    height: 120,
+    borderRadius: 12,
+    marginTop: 30,
+    marginHorizontal: 50,
   },
 });
