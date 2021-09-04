@@ -3,7 +3,7 @@ import {
     CardStyleInterpolators,
     createStackNavigator,
 } from '@react-navigation/stack';
-import React, { useEffect } from 'react';
+import React from 'react';
 import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import AddCardScreen from '../screens/addCard/AddCardScreen';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
@@ -14,7 +14,6 @@ import MonthlySpend from '../screens/profile/monthlySpend/MonthlySpend';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { applicationProperties } from '../../application.properties';
 import { useDispatch, useSelector } from 'react-redux';
-import { SessionAction } from '../persistence/actions/SessionAction';
 import CardHolder from '../screens/basicDetails/CardHolder';
 import Educate from '../screens/basicDetails/Educate';
 import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
@@ -59,7 +58,6 @@ export default function StackNavigator() {
                 <Stack.Screen name="Educate" component={Educate} />
                 <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
                 <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
-                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="MonthlySpend" component={MonthlySpend} />
                 <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
                 <Stack.Screen name="AddCardScreen" component={AddCardScreen} />
@@ -67,6 +65,7 @@ export default function StackNavigator() {
                 <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
+                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="OTPScreen" component={OTPScreen} />
 
 

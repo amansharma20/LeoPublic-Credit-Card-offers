@@ -17,6 +17,7 @@ export const explore = require('../assets/images/explore.png');
 export const emptyStateCardImage = require('../assets/images/emptyStateCardImage.png');
 export const emptyStateGirl = require('../assets/images/emptyStateGirl.png');
 export const leoLogo = require('../assets/images/leoLogo.png');
+export const onBoardingBackground = require('../assets/images/onBoardingBackground.png');
 
 export default {
     startScreenBackgroundImage,
@@ -37,4 +38,5 @@ export default {
     emptyStateCardImage,
     emptyStateGirl,
     leoLogo,
+    onBoardingBackground,
 };

@@ -128,7 +128,10 @@ export default function AddCardScreen() {
             <View style={styles.creditCardDetailsContainer}>
               <View style={styles.cardTopContainer}>
                 <Text style={styles.cardTypeText}>Platinum Cards</Text>
-                <BankLogo style={styles.bankLogo} />
+                {/* <BankLogo style={styles.bankLogo} /> */}
+                <Text style={styles.bankLogo}>
+                  bank name
+                </Text>
               </View>
               <Code />
               <View style={styles.cardBottomContainer}>
@@ -177,6 +180,12 @@ export default function AddCardScreen() {
             listMode="FLATLIST"
             dropDownContainerStyle={styles.dropDownContainerStyle}
             closeAfterSelecting={true}
+            textStyle={{
+              fontFamily: Platform.select({
+                ios: 'Exo2-Medium',
+                android: 'Exo2Medium',
+              }),
+            }}
           />
           <DropDownPicker
             open={openCardType}
@@ -196,6 +205,12 @@ export default function AddCardScreen() {
             listMode="FLATLIST"
             dropDownContainerStyle={styles.dropDownContainerStyle}
             closeAfterSelecting={true}
+            textStyle={{
+              fontFamily: Platform.select({
+                ios: 'Exo2-Medium',
+                android: 'Exo2Medium',
+              }),
+            }}
           />
         </View>
         <View style={styles.buttonsContainer}>

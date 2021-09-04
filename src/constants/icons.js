@@ -20,6 +20,7 @@ export const crossIcon = require('../assets/icons/crossIcon.png');
 export const forwardButton = require('../assets/icons/forwardButton.png');
 export const logOutButtonIcon = require('../assets/icons/logOutButtonIcon.png');
 export const emptyStateAddButton = require('../assets/icons/emptyStateAddButton.png');
+export const forwardButtonOnboarding = require('../assets/icons/forwardButtonOnboarding.png');
 
 export default {
   backButton,
@@ -43,4 +44,5 @@ export default {
   forwardButton,
   logOutButtonIcon,
   emptyStateAddButton,
+  forwardButtonOnboarding,
 };
