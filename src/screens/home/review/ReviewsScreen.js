@@ -24,15 +24,20 @@ export default function ReviewsScreen(props) {
   const cardData = props.cardData;
   const RATING_STAR = require('../../../assets/icons/starRating.png');
   const renderItem = ({ item }) => (
-    <Reviews review={item} />
+    <Reviews review={item} key={item.Id} />
   );
   const [showModal, setShowModal] = useState(false);
 
-  const { loading, data } = useQuery(GQLQuery.GET_USER_BANK_CARD_REVIEW, {
+  const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARD_REVIEW, {
     variables: {
       BankCardId: cardData.BankCard.Bank.Id,
     },
   });
+
+  console.log(cardData.IsReviewGiven)
+
+  const ReviewList = data && data.BankCardReviewQuery && data.BankCardReviewQuery.GetBankCardReviewsByBankCardId;
+  console.log(ReviewList)
 
   if (loading)
     return (
@@ -41,108 +46,110 @@ export default function ReviewsScreen(props) {
           <View style={styles.skeletonStyle} />
           <View style={styles.skeletonStyle} />
           <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
         </SkeletonPlaceholder>
       </View>
     );
-
-
-  const ReviewList = data && data.BankCardReviewQuery && data.BankCardReviewQuery.GetBankCardReviewsByBankCardId;
   {
-    if ((ReviewList) === undefined) {
-      return (
-        <View style={styles.emptyStateContainer}>
-          <Text style={styles.emptyStateText}>
-            No reviews for this card yet
-          </Text>
 
-        </View>
-      );
-    }
-    else {
-      return (
-        <View style={styles.container}>
-          <View style={styles.body}>
-            {/* AVERAGE REVIEW  */}
-            <View style={styles.defaultReviewContainer}>
-              <View style={styles.leftContainer}>
-                <StarIcon />
-                <View style={styles.ratingTextContainer}>
-                  <Text style={styles.ratingText}>3.5</Text>
-                  <Text style={styles.reviewText}>{ReviewList.length} Reviews</Text>
-                </View>
-              </View>
-              <View style={styles.ratingContainer}>
-                <Rating
-                  type="custom"
-                  ratingImage={RATING_STAR}
-                  ratingColor="#f6cb61"
-                  count={4}
-                  ratingCount={5}
-                  imageSize={16}
-                // onFinishRating={this.ratingCompleted}
-                />
-                <TouchableOpacity
-                  onPress={() => setShowModal(true)}
-                  style={styles.writeReviewButtonContainer}>
-                  <Text style={styles.writeReviewText}>Write a review</Text>
-                </TouchableOpacity>
+    return (
+      <View style={styles.container}>
+        <View style={styles.body}>
+          {/* AVERAGE REVIEW  */}
+          <View style={styles.defaultReviewContainer}>
+            <View style={styles.leftContainer}>
+              <StarIcon />
+              <View style={styles.ratingTextContainer}>
+                <Text style={styles.ratingText}>{cardData.BankCard.Rating}</Text>
+                <Text style={styles.reviewText}>{error ? 0 : ReviewList.length} Reviews</Text>
               </View>
             </View>
-            {/* REVIEWS FLATLIST */}
-            <View style={styles.flatlistContainer}>
-              <FlatList
-                data={ReviewList}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                contentContainerStyle={styles.contentContainerStyle}
+            <View style={styles.ratingContainer}>
+              <Rating
+                type="custom"
+                ratingImage={RATING_STAR}
+                ratingColor="#f6cb61"
+                count={4}
+                ratingCount={5}
+                imageSize={16}
+              // onFinishRating={this.ratingCompleted}
               />
+              {
+                cardData.IsReviewGiven == true ? null :
+
+                  <TouchableOpacity
+                    onPress={() => setShowModal(true)}
+                    style={styles.writeReviewButtonContainer}>
+                    <Text style={styles.writeReviewText}>Write a review</Text>
+                  </TouchableOpacity>
+              }
+
             </View>
           </View>
-          {/* WRITE A REVIEW MODAL  */}
-          {showModal && (
-            <Modal
-              showModal={showModal}
-              onRequestClose={() => setShowModal(false)}
-              transparent={true}
-              statusBarTranslucent={true}
-              animationType="slide">
-              <View style={styles.modalBackground}>
-                {/* HEADER  */}
-                <View style={styles.modalContainer}>
-                  <Text style={styles.modalHeader}>Write Review</Text>
-                  <View style={styles.writeReviewContainer}>
-                    <TextInput
-                      style={styles.inputText}
-                      autoCapitalize
-                      multiline={true}
-                    />
-                  </View>
-                  <View style={styles.buttonsContainer}>
-                    <TouchableOpacity
-                      // onPress={handleSubmit(onSubmit)}
-                      onPress={{}}>
-                      <View style={styles.saveButtonContainer}>
-                        <Text style={styles.saveButtonText}>Save</Text>
-                      </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      // onPress={handleSubmit(onSubmit)}
-                      onPress={() => setShowModal(false)}>
-                      <View style={styles.closeButtonContainer}>
-                        <Text style={styles.closeButtonText}>Close</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
+          {/* REVIEWS FLATLIST */}
+          {
+            error ? <View style={styles.emptyStateContainer}>
+              <Text style={styles.emptyStateText}>
+                No reviews for this card yet
+              </Text>
+
+            </View> :
+              <View style={styles.flatlistContainer}>
+                <FlatList
+                  data={ReviewList}
+                  renderItem={renderItem}
+                  keyExtractor={item => item.id}
+                  contentContainerStyle={styles.contentContainerStyle}
+                />
+              </View>
+          }
+        </View>
+        {/* WRITE A REVIEW MODAL  */}
+        {showModal && (
+          <Modal
+            showModal={showModal}
+            onRequestClose={() => setShowModal(false)}
+            transparent={true}
+            statusBarTranslucent={true}
+            animationType="slide">
+            <View style={styles.modalBackground}>
+              {/* HEADER  */}
+              <View style={styles.modalContainer}>
+                <Text style={styles.modalHeader}>Write Review</Text>
+                <View style={styles.writeReviewContainer}>
+                  <TextInput
+                    style={styles.inputText}
+                    autoCapitalize
+                    multiline={true}
+                  />
+                </View>
+                <View style={styles.buttonsContainer}>
+                  <TouchableOpacity
+                    // onPress={handleSubmit(onSubmit)}
+                    onPress={{}}>
+                    <View style={styles.saveButtonContainer}>
+                      <Text style={styles.saveButtonText}>Save</Text>
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    // onPress={handleSubmit(onSubmit)}
+                    onPress={() => setShowModal(false)}>
+                    <View style={styles.closeButtonContainer}>
+                      <Text style={styles.closeButtonText}>Close</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
               </View>
-            </Modal>
-          )}
-        </View>
+            </View>
+          </Modal>
+        )}
+      </View>
 
-      );
-    }
+    );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -152,6 +159,7 @@ const styles = StyleSheet.create({
       ios: 20,
       android: 20,
     }),
+    paddingBottom: 300,
   },
   body: {
     padding: SIZES.padding,
@@ -172,20 +180,22 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   ratingText: {
+    color: '#1C1B1B',
     fontSize: 30,
     fontFamily: Platform.select({
-      ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      ios: 'Exo2-ExtraBold',
+      android: 'Exo2ExtraBold'
     }),
   },
   ratingContainer: {
     alignItems: 'center',
   },
   reviewText: {
+    color: '#8D92A3',
     fontSize: 11,
     fontFamily: Platform.select({
-      ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      ios: 'Exo2-ExtraBold',
+      android: 'Exo2ExtraBold'
     }),
   },
   flatlistContainer: {},
@@ -273,7 +283,7 @@ const styles = StyleSheet.create({
       android: 'Exo2Bold'
     }),
   },
-  emptyStateContainer: { flex: 1, height: 500, alignContent: 'center', alignItems: 'center', justifyContent: 'center' },
+  emptyStateContainer: { flex: 1, height: 250, alignContent: 'center', alignItems: 'center', justifyContent: 'center' },
   emptyStateText: {
     fontSize: 16,
     fontFamily: Platform.select({

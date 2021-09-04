@@ -19,6 +19,7 @@ export const GQLQuery = {
         GetCustomerUserBankCard {
           CardNumber
           Id
+          IsReviewGiven
           BankCard {
             AddOnCards
             AdditionalQualificationRequirements
@@ -71,6 +72,7 @@ export const GQLQuery = {
             CardName
             CardMaterial
             CardLevel
+            Rating
           }
         }
       }
@@ -80,12 +82,16 @@ export const GQLQuery = {
     query MyQuery($BankCardId: Long!) {
       BankCardReviewQuery {
         GetBankCardReviewsByBankCardId(BankCardId: $BankCardId) {
-          BankCardId
-          CustomerUserId
+          CustomerUser {
+            FirstName
+            Id
+            LastName
+            ProfilePictureStoragePath
+          }
           Id
           Rating
           Review
-          Status
+          UpdatedDateTimeUtc
         }
       }
     }

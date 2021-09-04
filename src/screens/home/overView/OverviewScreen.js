@@ -337,12 +337,7 @@ export default function OverviewScreen(props) {
               <View style={[styles.textContainer, { paddingBottom: 50 }]}>
                 <Text style={styles.subtitleText}>₹5000</Text>
               </View>
-
-
-
             </ScrollView>
-
-
           </View>
         </Modal>
       )}
@@ -384,16 +379,16 @@ const styles = StyleSheet.create({
     color: '#797E96',
     fontSize: 18,
     fontFamily: Platform.select({
-      ios: 'Exo2-Medium',
-      android: 'Exo2Medium',
+      ios: 'Exo2-Regular',
+      android: 'Exo2Regular',
     }),
   },
   subText: {
     color: '#1c1b1b',
     fontSize: 20,
     fontFamily: Platform.select({
-      ios: 'Exo2-Bold',
-      android: 'Exo2Bold',
+      ios: 'Exo2-SemiBold',
+      android: 'Exo2SemiBold',
     }),
     width: 200,
   },
@@ -496,17 +491,17 @@ const styles = StyleSheet.create({
     color: '#797E96',
     lineHeight: 20,
     fontFamily: Platform.select({
-      ios: 'Exo2-Medium',
-      android: 'Exo2Medium',
+      ios: 'Exo2-Regular',
+      android: 'Exo2Regular',
     }),
   },
   subtitleText: {
     fontSize: 18,
     color: '#1C1B1B',
-    marginTop: 10,
+    marginTop: 3,
     fontFamily: Platform.select({
-      ios: 'Exo2-Bold',
-      android: 'Exo2Bold',
+      ios: 'Exo2-SemiBold',
+      android: 'Exo2SemiBold',
     }),
   },
   textContainerMain: {
