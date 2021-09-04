@@ -23,5 +23,18 @@ export const GQLMutation = {
         DeleteCustomerUserBankCard(Id: $Id)
       }
     }
+  ` ,
+  ADD_CARD_REVIEW: gql`
+  mutation MyMutation($BankCardId: Long!, $Review: String!) {
+    CardReviewMutation {
+      CreateCardReview(BankCardId: $BankCardId, Review: $Review)
+    }
+  }
+  ` ,EDIT_CARD_REVIEW: gql`
+  mutation MyMutation($Id: Long!, $Review: String!) {
+    CardReviewMutation {
+      EditBankCardReview(Id: $Id, Review: $Review)
+    }
+  }
   `
 };

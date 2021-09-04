@@ -16,9 +16,11 @@ import { SIZES } from '../../../constants/theme';
 import StarIcon from '../../../assets/svgs/star.svg';
 import { Rating } from 'react-native-ratings';
 import Reviews from '../../../components/flatlistsItems/ReviewsFlatlistItem';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { GQLMutation } from '../../../persistence/mutation/Mutation';
+import CommonLoading from '../../../components/CommonLoading';
 
 export default function ReviewsScreen(props) {
   const cardData = props.cardData;
@@ -28,16 +30,36 @@ export default function ReviewsScreen(props) {
   );
   const [showModal, setShowModal] = useState(false);
 
+
+  const [customerCardReview, setCustomerCardReview] = useState('');
+  const [writeReview, { data: reviewData, error: reviewError }] = useMutation(GQLMutation.ADD_CARD_REVIEW);
+
+
   const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARD_REVIEW, {
     variables: {
-      BankCardId: cardData.BankCard.Bank.Id,
+      BankCardId: cardData.BankCard.Id,
     },
   });
 
-  console.log(cardData.IsReviewGiven)
 
   const ReviewList = data && data.BankCardReviewQuery && data.BankCardReviewQuery.GetBankCardReviewsByBankCardId;
-  console.log(ReviewList)
+
+
+  const createReview = () => {
+    writeReview({
+      variables: {
+        BankCardId: cardData.BankCard.Id,
+        Review: customerCardReview
+      }
+    });
+    if (reviewData && reviewData.CardReviewMutation && reviewData.CardReviewMutation.CreateCardReview == 'Created') {
+      setShowModal(false);
+    }
+    if (reviewError) {
+      setShowModal(false);
+    }
+  };
+
 
   if (loading)
     return (
@@ -77,14 +99,12 @@ export default function ReviewsScreen(props) {
               />
               {
                 cardData.IsReviewGiven == true ? null :
-
                   <TouchableOpacity
                     onPress={() => setShowModal(true)}
                     style={styles.writeReviewButtonContainer}>
                     <Text style={styles.writeReviewText}>Write a review</Text>
                   </TouchableOpacity>
               }
-
             </View>
           </View>
           {/* REVIEWS FLATLIST */}
@@ -93,7 +113,6 @@ export default function ReviewsScreen(props) {
               <Text style={styles.emptyStateText}>
                 No reviews for this card yet
               </Text>
-
             </View> :
               <View style={styles.flatlistContainer}>
                 <FlatList
@@ -122,12 +141,14 @@ export default function ReviewsScreen(props) {
                     style={styles.inputText}
                     autoCapitalize
                     multiline={true}
+                    onChangeText={val => setCustomerCardReview(val)}
                   />
                 </View>
                 <View style={styles.buttonsContainer}>
                   <TouchableOpacity
-                    // onPress={handleSubmit(onSubmit)}
-                    onPress={{}}>
+                    onPress={() => {
+                      createReview()
+                    }}>
                     <View style={styles.saveButtonContainer}>
                       <Text style={styles.saveButtonText}>Save</Text>
                     </View>
