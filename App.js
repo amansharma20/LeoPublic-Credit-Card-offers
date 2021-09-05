@@ -8,8 +8,14 @@ import RootStore from './src/persistence/stores/RootStore';
 import {StatusBar} from 'react-native';
 import CommonLoading from './src/components/CommonLoading';
 import { SessionAction } from './src/persistence/actions/SessionAction';
+import SplashScreen from  'react-native-splash-screen';
 
 export default function App() {
+
+  React.useEffect(() => {
+    SplashScreen.hide();
+  });
+  
   return (
     <Provider store={RootStore}>
         <SafeAreaProvider>
