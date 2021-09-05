@@ -53,12 +53,12 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
-                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
+                <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
                 <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
                 <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
-                <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
+                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
                 <Stack.Screen name="CardHolder" component={CardHolder} />
                 <Stack.Screen name="Educate" component={Educate} />
                 <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
