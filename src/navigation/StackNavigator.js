@@ -18,6 +18,7 @@ import CardHolder from '../screens/basicDetails/CardHolder';
 import Educate from '../screens/basicDetails/Educate';
 import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
 import TempOnBoarding from '../screens/tempOnBoarding/TempOnBoarding';
+import CardOverviewScreen from '../screens/offersScreen/CardOverviewScreen';
 
 import Login from '../screens/auth/Login';
 import OTPScreen from '../screens/auth/OTPScreen';
@@ -55,6 +56,7 @@ export default function StackNavigator() {
                 <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
                 <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
+                <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
                 <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
                 <Stack.Screen name="CardHolder" component={CardHolder} />

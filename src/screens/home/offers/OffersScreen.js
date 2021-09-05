@@ -12,6 +12,7 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
 export default function OffersScreen(props) {
+  
   const Id = props && props.cardData && props.cardData.BankCard.Id;
   const { loading, error, data } = useQuery(GQLQuery.GET_BANK_CARD_OFFERS_BY_ID, {
     variables: {
@@ -25,6 +26,9 @@ export default function OffersScreen(props) {
     return (
       <View style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
+          <View style={styles.skeletonStyle} />
           <View style={styles.skeletonStyle} />
           <View style={styles.skeletonStyle} />
           <View style={styles.skeletonStyle} />
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
       ios: 20,
       android: 20,
     }),
+    paddingBottom: 20,
   },
   contentContainer: {
     paddingBottom: Responsive.height(400),

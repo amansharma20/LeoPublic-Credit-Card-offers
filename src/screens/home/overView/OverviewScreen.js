@@ -12,18 +12,20 @@ import {
   Platform,
 } from 'react-native';
 import { SIZES } from '../../../constants/theme';
-import { icons } from '../../../constants';
 import { Responsive } from '../../../utils/layouts/Layout';
-import BackButtonPurple from '../../../assets/svgs/backButtonPurple.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScreenWidth } from 'react-native-elements/dist/helpers';
 import { applicationProperties } from '../../../../application.properties';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/core';
 
 
 export default function OverviewScreen(props) {
   const cardData = props.cardData;
   const [showModal, setShowModal] = useState(false);
+
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
@@ -97,7 +99,7 @@ export default function OverviewScreen(props) {
                   <Text style={styles.titleText}>Credit Limit</Text>
                 </View>
                 <View>
-                  <Text style={styles.subtitleText}>{cardData.BankCard.CreditLimit}</Text>
+                  <Text style={styles.subtitleText}>₹ {cardData.BankCard.CreditLimit}</Text>
                 </View>
               </LinearGradient>
             </View>
@@ -113,7 +115,9 @@ export default function OverviewScreen(props) {
             </View>
           </View>
 
-          <TouchableOpacity onPress={() => setShowModal(true)} activeOpacity={0.85}>
+          <TouchableOpacity onPress={() => navigation.navigate('CardOverviewScreen',{
+            card: cardData
+          })} activeOpacity={0.85}>
             <View style={styles.buttonContainer}>
               <Text style={styles.buttonText}>More Details</Text>
             </View>
@@ -121,226 +125,7 @@ export default function OverviewScreen(props) {
         </View>
       </View>
       {/* MORE DETAILS MODAL  */}
-      {showModal && (
-        <Modal
-          showModal={showModal}
-          onRequestClose={() => setShowModal(false)}
-          animationType="slide">
-          {/* <OverViewScreenModal /> */}
-          <View style={styles.modalContainer}>
-            {/* HEADER  */}
-            <View style={styles.iconContainer}>
-              <TouchableOpacity onPress={() => setShowModal(false)}>
-                <BackButtonPurple />
-              </TouchableOpacity>
-              <Text style={styles.modalHeaderText}>My Cards</Text>
-              <View style={styles.rightIconContainer}>
-                <TouchableOpacity >
-                  <Image source={icons.add} style={styles.iconSizeRight} />
-                </TouchableOpacity>
 
-              </View>
-            </View>
-            <ScrollView style={{ paddingHorizontal: SIZES.padding2 }}>
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Issuing Bank</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.Bank.Name}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Card Program</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.CardName}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Joining Fees</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.JoiningFees}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Annual Fees</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.AnnualFees}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Interest Rate</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.InterestRate}%</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Credit Limit</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.CreditLimit}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Card Level</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.CardLevel}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Reward Points Issued</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.RewardPointIssuedPer100RsSpend}%</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Forex Markup</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.ForexMarkUpInPercent}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Minimum Spend</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.MinSpendToWaiveAnnualFees}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Redemption Handling Fee</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.RedemptionHandlingFee}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Over-limit Charge</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.OverLimitCharge}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Late Payment Fee</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.LatePaymentFee}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Cash Withdrawal Charges</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.CashWithdrawalCharges}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Key Highlights</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.KeyHighlights}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Travel Benefits</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>{cardData.BankCard.TravelBenefits}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Fuel Benefits</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹ {cardData.BankCard.TravelBenefits}</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Dining</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Dining</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Dining</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Hotel Benefits</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Reward Booster</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Reward Booster Sectors</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Lounge Access</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Card Focus Segment</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Priority Pass Membership</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Add-on Card</Text>
-              </View>
-              <View style={styles.textContainer}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-
-              <View style={styles.textContainerMain}>
-                <Text style={styles.titleText}>Best Suited for</Text>
-              </View>
-              <View style={[styles.textContainer, { paddingBottom: 50 }]}>
-                <Text style={styles.subtitleText}>₹5000</Text>
-              </View>
-            </ScrollView>
-          </View>
-        </Modal>
-      )}
     </SafeAreaView>
   );
 }

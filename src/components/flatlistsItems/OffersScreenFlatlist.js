@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginHorizontal: 8,
+    paddingBottom: 20,
   },
   offerContainer: {
     backgroundColor: '#F9F4F2',
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
   imageSize: {
     width: Responsive.width(68),
     height: Responsive.height(68),
-    resizeMode: 'contain',
+    resizeMode: 'cover',
+    borderRadius: 8,
   },
 });
