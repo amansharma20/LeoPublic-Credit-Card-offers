@@ -64,9 +64,9 @@ export default function AddCardScreen() {
   });
   const onSubmit = data => {
     CommonLoading.show();
-   addCard({ variables: { BankId: selectedBankId, BankCardId: selectedCardId, CardNumber:  data.cardNumber} });
-   console.log(userCardData)
-   console.log(cardAddError)
+   addCard({ variables: { BankId: parseFloat(selectedCardId), BankCardId: parseFloat(selectedCardId), CardNumber:  parseFloat(data.cardNumber)} });
+   setShowModal(true)
+   CommonLoading.hide();
    if(userCardData && userCardData.AddCustomerUserBankCardMutation && userCardData.AddCustomerUserBankCardMutation.AddCustomerUserBankCard == 'Created'){
     setShowModal(true)
     CommonLoading.hide();
