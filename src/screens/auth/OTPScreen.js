@@ -21,11 +21,11 @@ import { SessionService } from '../../persistence/services/SessionService';
 import { SessionAction } from '../../persistence/actions/SessionAction';
 
 export default function OTPScreen(props) {
+
   const navigation = useNavigation();
   const { phone } = props.route.params;
   const { screenName } = props.route.params;
   const { firstName } = props.route.params;
-
 
   const [otp, setOtp] = useState("0000");
 

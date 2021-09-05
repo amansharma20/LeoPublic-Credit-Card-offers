@@ -25,19 +25,17 @@ import { useNavigation } from '@react-navigation/core';
 
 
 
-export default function BasicDetailsInput() {
+export default function BasicDetailsInput(props) {
 
-  //const { firstName } = props.route.params;
-  const firstName = 'Name';
-
-  //navigation.navigate('CardHolder')
-
+  const { firstName } = props.route.params;
+  
   const [open, setOpen] = useState(false);
   const [openEmploymentType, setOpenEmploymentType] = useState(false);
   const [openSalaryRange, setOpenSalaryRange] = useState(false);
   const [salaryValue, setSalaryValue] = useState(null);
   const [employmentValue, setEmploymentValue] = useState(null);
   const [genderValue, setGenderValue] = useState(null);
+  
   const [employmentType, setEmploymentType] = useState([
     { label: 'Employed', value: 'employed' },
     { label: 'Unemployed', value: 'unemployed' },

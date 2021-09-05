@@ -29,6 +29,7 @@ import { GQLQuery } from '../../../persistence/query/Query';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
+import Toast from 'react-native-toast-message';
 
 
 export default function RecommendedScreen() {
@@ -133,9 +134,19 @@ export default function RecommendedScreen() {
             </View>
             <View>
               <TouchableOpacity onPress={() => {
-                console.log(compareCardArray.length);
-                console.log(compareCardArray);
-                //setShowCompareModal(true)
+                // console.log(compareCardArray.length);
+                // console.log(compareCardArray);
+                Toast.show({
+                  type: 'error',
+                  position: 'top',
+                  text1: 'HI,',
+                  text2: 'Compare Feature is under Development.',
+                  visibilityTime: 4000,
+                  autoHide: true,
+                  topOffset: 30,
+                  bottomOffset: 40,
+                });
+                setShowCompareModal(true)
               }}>
                 <View style={styles.compareButton}>
                   <Text style={styles.compareText}>Compare</Text>

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Modal, Image, ScrollView, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
@@ -15,6 +15,8 @@ import { Responsive } from '../../../utils/layouts/Layout';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 import { icons } from '../../../constants';
+import Toast from 'react-native-toast-message';
+
 
 export default function MonthlySpend() {
 
@@ -34,7 +36,18 @@ export default function MonthlySpend() {
     const onPressInputItem = () => setShowModal(true);
 
 
-
+    useEffect(() => {
+        Toast.show({
+            type: 'error',
+            position: 'top',
+            text1: 'HI,',
+            text2: 'Monthly Spend is under Development.',
+            visibilityTime: 4000,
+            autoHide: true,
+            topOffset: 30,
+            bottomOffset: 40,
+          });
+      });
 
     // const setExpense ()
 

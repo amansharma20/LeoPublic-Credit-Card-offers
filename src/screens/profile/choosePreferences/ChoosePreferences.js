@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
@@ -15,6 +15,8 @@ import { Responsive } from '../../../utils/layouts/Layout';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 import { Avatar, Badge, Icon, withBadge } from 'react-native-elements'
 import { useSelector } from 'react-redux';
+import Toast from 'react-native-toast-message';
+
 
 
 export default function ChoosePreferences() {
@@ -27,6 +29,21 @@ export default function ChoosePreferences() {
     const navigation = useNavigation();
     const [value, onSetValue] = useState(0);
     const onPressValue = () => onSetValue(value + 1);
+
+  
+
+      useEffect(() => {
+        Toast.show({
+            type: 'error',
+            position: 'top',
+            text1: 'HI,',
+            text2: 'Preference Feature is under Development.',
+            visibilityTime: 4000,
+            autoHide: true,
+            topOffset: 30,
+            bottomOffset: 40,
+          });
+      });
 
     return (
         <View style={styles.container}>

@@ -16,9 +16,25 @@ import CommonHeaderWithBackButton from '../../components/headers/CommonHeaderWit
 import { images } from '../../constants';
 import LinearGradient from 'react-native-linear-gradient';
 import { Responsive } from '../../utils/layouts/Layout';
+import Toast from 'react-native-toast-message';
 
 export default function NewToCreditCards() {
   const navigation = useNavigation();
+  
+  const featureInDevelopment = ()=>{
+    Toast.show({
+      type: 'error',
+      position: 'top',
+      text1: 'Hi,',
+      text2:'This feature is under development. Will be available in next build.',
+      visibilityTime: 4000,
+      autoHide: true,
+      topOffset: 30,
+      bottomOffset: 40,
+    });
+  }
+
+
   return (
     <View style={styles.container}>
       <CommonHeaderWithBackButton children="New to Credit Cards?" />
@@ -49,7 +65,7 @@ export default function NewToCreditCards() {
                 </ImageBackground>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> featureInDevelopment()}>
               <LinearGradient
                 colors={['#fcfcff', '#f2ecff']}
                 style={styles.gradientContainer}>
@@ -70,7 +86,7 @@ export default function NewToCreditCards() {
             </TouchableOpacity>
           </View>
           <View style={styles.rowContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> featureInDevelopment()} >
               <LinearGradient
                 colors={['#fcfcff', '#f2ecff']}
                 style={styles.gradientContainer}>
@@ -89,7 +105,7 @@ export default function NewToCreditCards() {
                 </ImageBackground>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> featureInDevelopment()}>
               <LinearGradient
                 colors={['#fcfcff', '#f2ecff']}
                 style={styles.gradientContainer}>
@@ -110,7 +126,7 @@ export default function NewToCreditCards() {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity style={styles.skipButtonContainer}>
+        <TouchableOpacity style={styles.skipButtonContainer} onPress={()=> navigation.navigate('BottomTabBarNavigator')}>
           <Text style={styles.skipButtonText}>Skip</Text>
         </TouchableOpacity>
       </View>

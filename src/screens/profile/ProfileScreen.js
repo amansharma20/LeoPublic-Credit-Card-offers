@@ -24,6 +24,7 @@ import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../persistence/query/Query';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { applicationProperties } from '../../../application.properties';
+import Toast from 'react-native-toast-message';
 
 
 export default function ProfileScreen() {
@@ -35,10 +36,9 @@ export default function ProfileScreen() {
     const dummyData = {};
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
-    navigation.replace( "Login" )
+    navigation.replace("Login")
 
   }
-
 
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_PROFILE);
 
@@ -46,6 +46,7 @@ export default function ProfileScreen() {
 
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
   //console.log(applicationProperties.imageUrl+UserProfileData.ProfilePictureStoragePath)
+
 
   return (
     <View style={styles.container}>
@@ -57,9 +58,9 @@ export default function ProfileScreen() {
           <View style={styles.profilePictureHeaderContainer}>
             <View style={styles.pfpAlignmentContainer}>
               <Image
-                // source={{
-                //   uri: applicationProperties.imageUrl+UserProfileData && UserProfileData.ProfilePictureStoragePath,
-                // }}
+                source={{
+                  uri: 'https://picsum.photos/200/300/?blur=2',
+                }}
                 style={styles.profileImage}
               />
               <Text style={styles.nameText}>{UserProfileData && UserProfileData.FirstName} {UserProfileData && UserProfileData.LastName}</Text>
@@ -71,11 +72,11 @@ export default function ProfileScreen() {
         <View style={styles.topContainer}>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Employment Type</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? "Nil":  UserProfileData && UserProfileData.EmploymentType}</Text>
           </View>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Annual Salary Range</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? "Nil": UserProfileData &&  UserProfileData.AnnualSalary}</Text>
           </View>
         </View>
         <View style={styles.addContainer}>
@@ -103,8 +104,10 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}>
-          <View>
+        {/* <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}> */}
+         
+         
+          {/* <View>
             <Text style={{
               color: '#7a869a', fontFamily: Platform.select({
                 ios: 'Exo2-Bold',
@@ -279,17 +282,17 @@ export default function ProfileScreen() {
                 Shopping
               </Text>
             </View>
-          </View>
+          </View> */}
 
-        </View>
+        {/* </View> */}
         <View style={{ backgroundColor: '#ffffff' }}>
           <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
             await logOutCalled();
           }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Image source={icons.logOutButtonIcon} style={{ width: 24, height: 24 }} />
+            <View style={{ flexDirection: 'row', paddingBottom:200 }}>
+              <Image source={icons.logOutButtonIcon} style={{ width: 22, height: 22 }} />
               <Text style={{
-                fontSize: 20, fontFamily: Platform.select({
+                fontSize: 17, fontFamily: Platform.select({
                   ios: 'Exo2-Bold',
                   android: 'Exo2Bold',
                 }), color: '#6F7FAF', marginLeft: 20,
@@ -328,7 +331,7 @@ const styles = StyleSheet.create({
     height: Responsive.height(88),
     resizeMode: 'cover',
     borderRadius: 100,
-    borderWidth: 10,
+    borderWidth: 1,
   },
   nameText: {
     fontSize: 18,

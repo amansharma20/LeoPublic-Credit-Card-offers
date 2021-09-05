@@ -38,7 +38,7 @@ export default function Educate() {
             closeAfterSelecting={true}
           />
         </View>
-        <View style={{borderColor: '#F1F2F7', borderBottomWidth: 1}}>
+        {/* <View style={{borderColor: '#F1F2F7', borderBottomWidth: 1}}>
           <DropDownPicker
             open={openBankName}
             value={bankValue}
@@ -127,7 +127,7 @@ export default function Educate() {
             dropDownContainerStyle={styles.dropDownContainerStyle}
             closeAfterSelecting={true}
           />
-        </View>
+        </View> */}
       </View>
     </View>
   );

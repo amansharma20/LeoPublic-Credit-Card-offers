@@ -22,6 +22,8 @@ import DiscoverScreenFlatlist from '../../../components/flatlistsItems/DiscoverS
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
+import Toast from 'react-native-toast-message';
+
 
 
 export default function RecommendedScreen() {
@@ -65,7 +67,19 @@ export default function RecommendedScreen() {
             leftIcon={<SearchIcon />}
           />
           <TouchableOpacity
-            onPress={() => setShowModal(true)}
+            onPress={() => {
+              Toast.show({
+                type: 'error',
+                position: 'top',
+                text1: 'HI,',
+                text2: 'Filter Feature is under Development.',
+                visibilityTime: 4000,
+                autoHide: true,
+                topOffset: 30,
+                bottomOffset: 40,
+              });
+              setShowModal(true)
+            }}
             style={styles.filterButtonContainer}>
             <FilterIcon />
           </TouchableOpacity>

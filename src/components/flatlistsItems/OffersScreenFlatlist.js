@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginHorizontal: 8,
-    paddingBottom: 20,
   },
   offerContainer: {
     backgroundColor: '#F9F4F2',
