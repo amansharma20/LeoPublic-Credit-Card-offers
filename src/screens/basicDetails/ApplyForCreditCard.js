@@ -377,8 +377,7 @@ export default function ApplyForCreditCard() {
                 </View>
 
                 <TouchableOpacity
-                  onPress={handleSubmit}
-                  disabled={!checkboxState}>
+                  onPress={handleSubmit}>
                   <View style={styles.buttonContainer}>
                     <Text style={styles.registerNowButtonText}>Apply Now</Text>
                   </View>

@@ -930,6 +930,7 @@ color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color primary_dark
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -1449,6 +1450,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable overlay
 drawable redbox_top_border_background
+drawable splash
 drawable src_assets_icons_abouticon
 drawable src_assets_icons_add
 drawable src_assets_icons_backbuttonpurple
@@ -1459,6 +1461,7 @@ drawable src_assets_icons_emptystateaddbutton
 drawable src_assets_icons_explore_icon
 drawable src_assets_icons_faqsicon
 drawable src_assets_icons_forwardbutton
+drawable src_assets_icons_forwardbuttononboarding
 drawable src_assets_icons_home_icon
 drawable src_assets_icons_homeicon
 drawable src_assets_icons_leftarrow
@@ -1479,7 +1482,9 @@ drawable src_assets_images_congratulationsbackground
 drawable src_assets_images_creditcard
 drawable src_assets_images_creditcardbackground
 drawable src_assets_images_creditcardbluebg
+drawable src_assets_images_creditcardlight
 drawable src_assets_images_educate
+drawable src_assets_images_educatecreditcard
 drawable src_assets_images_emptystatecardimage
 drawable src_assets_images_emptystategirl
 drawable src_assets_images_explore
@@ -1487,6 +1492,7 @@ drawable src_assets_images_leohome
 drawable src_assets_images_leologo
 drawable src_assets_images_mastercard
 drawable src_assets_images_mycardsemptystate
+drawable src_assets_images_onboardingbackground
 drawable src_assets_images_pfp
 drawable src_assets_images_stockmodel
 drawable test_custom_background
@@ -1901,6 +1907,7 @@ layout design_text_input_start_icon
 layout dev_loading_view
 layout fps_view
 layout ios_clone
+layout launch_screen
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -2434,6 +2441,9 @@ style ShapeAppearanceOverlay_TopLeftCut
 style ShapeAppearanceOverlay_TopRightDifferentCornerSize
 style SpinnerDatePickerDialog
 style SpinnerDatePickerStyle
+style SplashScreen_Fullscreen
+style SplashScreen_SplashAnimation
+style SplashScreen_SplashTheme
 style Test_ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day
 style Test_Theme_MaterialComponents_MaterialCalendar
 style Test_Widget_MaterialComponents_MaterialCalendar

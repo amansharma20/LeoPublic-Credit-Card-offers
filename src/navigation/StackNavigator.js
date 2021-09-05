@@ -76,12 +76,3 @@ export default function StackNavigator() {
         </ApolloProvider>
     );
 }
-
-
-
-
-
-{/* 
-
-
- */}

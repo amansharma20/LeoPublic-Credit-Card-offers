@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
+import React from 'react';
 import ApplicationNavigator from './src/navigation/ApplicationNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
@@ -10,7 +10,6 @@ import CommonLoading from './src/components/CommonLoading';
 import { SessionAction } from './src/persistence/actions/SessionAction';
 
 export default function App() {
-
   return (
     <Provider store={RootStore}>
         <SafeAreaProvider>
