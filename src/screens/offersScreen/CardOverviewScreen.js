@@ -27,7 +27,7 @@ export default function CardOverviewScreen(props) {
                 </TouchableOpacity>
                 <Text style={styles.modalHeaderText}>My Cards</Text>
                 <View style={styles.rightIconContainer}>
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={() => navigation.navigate('ApplyForCreditCard')}>
                         <Image source={icons.add} style={styles.iconSizeRight} />
                     </TouchableOpacity>
 
