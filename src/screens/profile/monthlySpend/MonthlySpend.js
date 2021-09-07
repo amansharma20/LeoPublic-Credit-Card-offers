@@ -3,14 +3,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Modal, Image, ScrollView, TextInput, TouchableOpacity, Platform } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../../constants/theme';
 import ShoppingIcon from '../../../assets/svgs/shoppingIcon.svg';
 import TravelIcon from '../../../assets/svgs/travelIcon.svg';
 import GroceriesIcon from '../../../assets/svgs/groceriesIcon.svg';
 import EntertainmentIcon from '../../../assets/svgs/entertainmentIcon.svg';
 import OthersIcon from '../../../assets/svgs/othersIcon.svg';
-import TotalSpendIcon from '../../../assets/svgs/totalSpendIcon.svg';
 import { Responsive } from '../../../utils/layouts/Layout';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
@@ -20,10 +18,7 @@ import Toast from 'react-native-toast-message';
 
 export default function MonthlySpend() {
 
-    const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
-
-
     const [selectedId, setSelectedId] = useState(1);
 
     const [expense, setExpense] = useState(0);
@@ -35,7 +30,6 @@ export default function MonthlySpend() {
 
     const onPressInputItem = () => setShowModal(true);
 
-
     useEffect(() => {
         Toast.show({
             type: 'error',
@@ -46,10 +40,8 @@ export default function MonthlySpend() {
             autoHide: true,
             topOffset: 30,
             bottomOffset: 40,
-          });
-      });
-
-    // const setExpense ()
+        });
+    });
 
     const spendTextFieldSelected = (id) => {
         setShowModal(false)
@@ -216,7 +208,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#4d2d8f',
     },
-    topContainer: { alignItems: 'center', height: 220 },
+    topContainer: {
+        alignItems: 'center',
+        height: 220
+    },
     body: {
         padding: SIZES.padding,
         paddingVertical: 20,
@@ -226,16 +221,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
     },
-    titleContainer: {
-
+    itemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eff0f2'
     },
-    headerText: { fontSize: 18, fontWeight: '700', color: '#172B4D', paddingVertical: 8 },
-    subtitleText: { fontSize: 12, color: '#6F7FAF' },
-    firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
-    secondRow: { justifyContent: 'space-around', flexDirection: 'row' },
-    borderWidth: { borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F' },
-    itemContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#eff0f2' },
-    leftContainer: { flexDirection: 'row', alignItems: 'center' },
+    leftContainer: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     leftText: {
         fontSize: 14, color: '#455671',
         fontFamily: Platform.select({
@@ -250,7 +247,15 @@ const styles = StyleSheet.create({
             android: 'Exo2Medium',
         }),
     },
-    buttonContainer: { backgroundColor: '#4D2D8F', alignItems: 'center', justifyContent: 'center', borderRadius: 10, height: Responsive.height(48), marginVertical: SIZES.padding, marginBottom: 50 },
+    buttonContainer: {
+        backgroundColor: '#4D2D8F',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        height: Responsive.height(48),
+        marginVertical: SIZES.padding,
+        marginBottom: 50
+    },
     buttonText: {
         color: '#ffffff', fontSize: 16,
         fontFamily: Platform.select({

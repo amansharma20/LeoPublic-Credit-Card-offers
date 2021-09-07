@@ -25,7 +25,6 @@ export default function TempOnBoarding() {
 
 
     setTimeout(function () {
-        
         { isLoggedIn === true ? navigation.navigate('BottomTabBarNavigator') : navigation.navigate('StartScreen') }
     }, 5000);
 
