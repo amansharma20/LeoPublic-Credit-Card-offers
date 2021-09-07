@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
   LogBox,
+  Platform,
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -21,12 +22,16 @@ import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import Animated from 'react-native-reanimated';
 import EmptyStateScreen from './EmptyStateScreen';
 import { ScrollView } from 'react-native-gesture-handler';
+import SplashScreen from 'react-native-splash-screen';
 
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.84);
 
 export default function MyCards() {
+  useEffect(() => {
+    Platform.OS === 'ios' ? 200 : SplashScreen.hide();
+  });
   const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
@@ -61,6 +66,7 @@ export default function MyCards() {
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index} />
   );
+  
 
   return (
     <View style={styles.container}>

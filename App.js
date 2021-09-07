@@ -11,9 +11,9 @@ import SplashScreen from 'react-native-splash-screen';
 
 export default function App() {
 
-  useEffect(() => {
-    Platform.OS === 'ios' ? 200 : SplashScreen.hide();
-  });
+  // useEffect(() => {
+  //   Platform.OS === 'ios' ? 200 : SplashScreen.hide();
+  // });
 
   return (
     <Provider store={RootStore}>

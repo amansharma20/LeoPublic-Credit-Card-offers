@@ -24,6 +24,7 @@ import { icons } from '../../constants';
 
 const screenHeight = Dimensions.get('window').height;
 
+
 export default function Login() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ export default function Login() {
     phone: yup
       .string()
       .required('This field is' + ' ' + 'required.')
-      .matches(/(\d){10}\b/, 'Enter a valid phone number'),
+      .matches(/(\d){10}\b/ , 'Enter a valid phone number'),
   });
 
   const login = data => {

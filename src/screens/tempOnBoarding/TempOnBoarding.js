@@ -2,15 +2,19 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text, Image, StatusBar } from 'react-native';
+import { View, StyleSheet, Text, Image, StatusBar, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme/';
 import TempOnBoardingAnimation from '../../components/animations/TempOnBoardingAnimation';
 import { images } from '../../constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { SessionService } from '../../persistence/services/SessionService';
+import SplashScreen from 'react-native-splash-screen';
 
 export default function TempOnBoarding() {
+    // useEffect(() => {
+    //     Platform.OS === 'ios' ? 200 : SplashScreen.hide();
+    //   });
     const navigation = useNavigation();
     const dispatch = useDispatch();
 

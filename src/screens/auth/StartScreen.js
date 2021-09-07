@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Dimensions,
   View,
@@ -8,15 +8,19 @@ import {
   StyleSheet,
   Text,
   ImageBackground,
+  Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES, COLORS, images } from '../../constants';
+import SplashScreen from 'react-native-splash-screen';
 
 const screenHeight = Dimensions.get('window').height;
 
 export default function StartScreen() {
   const navigation = useNavigation();
-
+  useEffect(() => {
+    Platform.OS === 'ios' ? 200 : SplashScreen.hide();
+  });
   return (
     <ImageBackground
       source={images.startScreenBackgroundImage}

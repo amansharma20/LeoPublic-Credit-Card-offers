@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-bitwise */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
@@ -29,6 +30,7 @@ export default function ReviewsScreen(props) {
     <Reviews review={item} key={item.Id} />
   );
   const [showModal, setShowModal] = useState(false);
+  const [showModalRating, setShowModalRating] = useState(false);
 
 
   const [customerCardReview, setCustomerCardReview] = useState('');
@@ -49,8 +51,8 @@ export default function ReviewsScreen(props) {
     writeReview({
       variables: {
         BankCardId: cardData.BankCard.Id,
-        Review: customerCardReview
-      }
+        Review: customerCardReview,
+      },
     });
     if (reviewData && reviewData.CardReviewMutation && reviewData.CardReviewMutation.CreateCardReview == 'Created') {
       setShowModal(false);
@@ -61,7 +63,7 @@ export default function ReviewsScreen(props) {
   };
 
 
-  if (loading)
+  if (loading) {
     return (
       <View style={{ marginBottom: 12, alignItems: 'center' }}>
         <SkeletonPlaceholder>
@@ -73,6 +75,7 @@ export default function ReviewsScreen(props) {
         </SkeletonPlaceholder>
       </View>
     );
+  }
   {
 
     return (
@@ -146,9 +149,12 @@ export default function ReviewsScreen(props) {
                 </View>
                 <View style={styles.buttonsContainer}>
                   <TouchableOpacity
-                    onPress={() => {
-                      createReview()
-                    }}>
+                    // onPress={() => {
+                    //   createReview()
+                    // }}
+                    onPress={() => setShowModalRating(true) | setShowModal(false)}
+
+                  >
                     <View style={styles.saveButtonContainer}>
                       <Text style={styles.saveButtonText}>Save</Text>
                     </View>
@@ -161,6 +167,49 @@ export default function ReviewsScreen(props) {
                     </View>
                   </TouchableOpacity>
                 </View>
+              </View>
+            </View>
+          </Modal>
+        )}
+        {showModalRating && (
+          <Modal
+            showModal={showModalRating}
+            onRequestClose={() => setShowModalRating(false)}
+            transparent={true}
+            statusBarTranslucent={true}
+            animationType="slide">
+            <View style={styles.modalBackgroundRating}>
+              {/* HEADER  */}
+              <View style={styles.modalContainerRating}>
+                <View style={styles.modalContentRating}>
+                  <View>
+                    <Text style={styles.modalHeaderRating}>Do you want to submit your rating?</Text>
+                  </View>
+                  <View>
+                    <Rating
+                      type="custom"
+                      ratingImage={RATING_STAR}
+                      ratingColor="#f6cb61"
+                      count={4}
+                      ratingCount={5}
+                      imageSize={30}
+                    // onFinishRating={this.ratingCompleted}
+                    />
+                  </View>
+                  <View>
+                    <TouchableOpacity onPress={() => setShowModalRating(false)} style={styles.ratingSubmitButtonContainer}>
+                      <Text style={styles.ratingSubmitButtonText}>
+                        Submit
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setShowModalRating(false)} style={styles.ratingCancelButtonContainer}>
+                      <Text style={styles.ratingCancelButtonText}>
+                        Cancel
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
               </View>
             </View>
           </Modal>
@@ -205,7 +254,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: Platform.select({
       ios: 'Exo2-ExtraBold',
-      android: 'Exo2ExtraBold'
+      android: 'Exo2ExtraBold',
     }),
   },
   ratingContainer: {
@@ -216,7 +265,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: Platform.select({
       ios: 'Exo2-ExtraBold',
-      android: 'Exo2ExtraBold'
+      android: 'Exo2ExtraBold',
     }),
   },
   flatlistContainer: {},
@@ -227,7 +276,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
     color: '#4D2D8F',
   },
@@ -249,7 +298,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   writeReviewContainer: {
@@ -264,7 +313,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   buttonsContainer: {
@@ -283,7 +332,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   closeButtonContainer: {
@@ -301,21 +350,93 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h3,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
-  emptyStateContainer: { flex: 1, height: 250, alignContent: 'center', alignItems: 'center', justifyContent: 'center' },
+  emptyStateContainer: {
+    flex: 1,
+    height: 250,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   emptyStateText: {
     fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-SemiBold',
-      android: 'Exo2SemiBold'
+      android: 'Exo2SemiBold',
     }),
   },
   skeletonStyle: {
     width: 300,
     height: 100,
     borderRadius: 8,
-    marginTop: 30
+    marginTop: 30,
+  },
+  modalBackgroundRating: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContainerRating: {
+    backgroundColor: '#ffffff',
+    width: '75%',
+    height: '35%',
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    marginVertical: '55%',
+    marginHorizontal: '12%',
+  },
+  modalContentRating: {
+    justifyContent: 'space-around',
+    flex: 1,
+    alignItems: 'center',
+    padding: 20,
+  },
+  ratingSubmitButtonContainer: {
+    backgroundColor: '#4D2D8F',
+    width: 189,
+    height: 32,
+    borderRadius: 10,
+    marginVertical: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalHeaderRating: {
+    fontSize: 15,
+    color: '#8c99bf',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Medium',
+      android: 'Exo2Medium',
+    }),
+    textAlign: 'center',
+  },
+  ratingSubmitButtonText: {
+    color: '#ffffff',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
+  },
+  ratingCancelButtonContainer: {
+    backgroundColor: '#ffffff',
+    width: 189,
+    height: 32,
+    borderRadius: 10,
+    marginVertical: 5,
+    borderWidth: 2,
+    borderColor: '#4D2D8F',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ratingCancelButtonText: {
+    color: '#4D2D8F',
+    fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold',
+    }),
   },
 });
