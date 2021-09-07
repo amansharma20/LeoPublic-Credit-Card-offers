@@ -65,7 +65,7 @@ export default function NewToCreditCards() {
                 </ImageBackground>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=> featureInDevelopment()}>
+            <TouchableOpacity onPress={()=> navigation.navigate('CreditProfile')}>
               <LinearGradient
                 colors={['#fcfcff', '#f2ecff']}
                 style={styles.gradientContainer}>
