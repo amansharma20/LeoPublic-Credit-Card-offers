@@ -20,6 +20,7 @@ export const leoLogo = require('../assets/images/leoLogo.png');
 export const onBoardingBackground = require('../assets/images/onBoardingBackground.png');
 export const creditCardLight = require('../assets/images/creditCardLight.png');
 export const educateCreditCard = require('../assets/images/educateCreditCard.png');
+export const errorCross = require('../assets/images/errorCross.png');
 
 export default {
     startScreenBackgroundImage,
@@ -43,4 +44,5 @@ export default {
     onBoardingBackground,
     creditCardLight,
     educateCreditCard,
+    errorCross,
 };

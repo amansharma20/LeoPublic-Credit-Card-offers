@@ -54,15 +54,15 @@ export default function StackNavigator() {
                     keyboardHidesTabBar: true,
                 }}
             >
-                <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
-                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
-                {/* <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} /> */}
+                <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
                 <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
                 <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
                 <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
+                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
                 <Stack.Screen name="CardHolder" component={CardHolder} />
                 <Stack.Screen name="Educate" component={Educate} />
+                <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
                 <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
                 <Stack.Screen name="MonthlySpend" component={MonthlySpend} />
                 <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
@@ -70,8 +70,8 @@ export default function StackNavigator() {
                 <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
-                <Stack.Screen name="CreditProfile" component={CreditProfile} />
                 <Stack.Screen name="OTPScreen" component={OTPScreen} />
+                <Stack.Screen name="CreditProfile" component={CreditProfile} />
 
 
             </Stack.Navigator>

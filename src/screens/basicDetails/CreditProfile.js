@@ -1,14 +1,17 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Platform, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Platform, ScrollView, TouchableOpacity, Modal, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
 import CommonHeaderWithBackButton from '../../components/headers/CommonHeaderWithBackButton';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { images } from '../../constants';
 
 export default function CreditProfile() {
     const navigation = useNavigation();
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <ScrollView style={styles.container}>
             <CommonHeaderWithBackButton children="Your Credit Profile" />
@@ -321,13 +324,39 @@ export default function CreditProfile() {
                                 Skip
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.continueButtonContainer}>
+                        <TouchableOpacity onPress={() => setShowModal(true)} style={styles.continueButtonContainer}>
                             <Text style={styles.continueText}>
                                 Continue
                             </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
+                {showModal && (
+                    <Modal
+                        animationType="fade"
+                        transparent={true}
+                        statusBarTranslucent={true}
+                        showModal={showModal}
+                        onRequestClose={() => setShowModal(false)}>
+                        <View style={styles.modalBackground}>
+                            <View style={styles.modalContainer}>
+                                <View>
+                                    <Image source={images.errorCross} style={styles.errorCrossContainer} />
+                                </View>
+                                <View>
+                                    <Text style={styles.modalErrorText}>
+                                        We’re sorry! No credit cards match your interest. Please try again.
+                                    </Text>
+                                </View>
+                                <TouchableOpacity onPress={() => setShowModal(false)} style={styles.modalButtonContainer}>
+                                    <Text style={styles.modalContinueButtonText}>
+                                        Continue
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
+                )}
             </View>
         </ScrollView>
     );
@@ -419,4 +448,50 @@ const styles = StyleSheet.create({
             android: 'Exo2Bold',
         }),
     },
+    modalContainer: {
+        backgroundColor: '#ffffff',
+        width: '75%',
+        height: '40%',
+        alignItems: 'center',
+        borderRadius: 20,
+        marginVertical: '55%',
+        marginHorizontal: '12%',
+        justifyContent: 'space-around',
+        padding: 12,
+    },
+    modalBackground: {
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        flex: 1,
+    },
+    errorCrossContainer: {
+        width: 120,
+        height: 120,
+    },
+    modalErrorText: {
+        color: '#7B7B7B',
+        fontSize: 12,
+        fontFamily: Platform.select({
+            ios: 'Exo2-Medium',
+            android: 'Exo2Medium',
+        }),
+        textAlign: 'center',
+    },
+    modalButtonContainer: {
+        backgroundColor: '#4D2D8F',
+        width: 200,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 40,
+        borderRadius: 8,
+    },
+    modalContinueButtonText: {
+        color: '#FFFFFF',
+        fontSize: 12,
+        fontFamily: Platform.select({
+            ios: 'Exo2-Bold',
+            android: 'Exo2Bold',
+        }),
+    },
+
+
 });
