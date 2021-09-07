@@ -8,9 +8,10 @@ import OfferDetailsScreenHeader from '../../components/headers/OfferDetailsScree
 import AppleIcon from '../../assets/svgs/apple.svg';
 import { Responsive } from '../../utils/layouts/Layout';
 import OffersScreenItemDetailsNavigator from '../../navigation/OffersScreenItemDetailsNavigator';
+import { useNavigation } from '@react-navigation/native';
 
 export default function OffersScreenItemDetails(props) {
-
+    const navigation = useNavigation();
     const offer = props.route.params.offer;
     return (
         <View style={styles.container}>
@@ -26,7 +27,7 @@ export default function OffersScreenItemDetails(props) {
                             <Text style={styles.titleText}>Card Name</Text>
                             <Text style={styles.subTitleText}>{offer.BankCard.CardName}</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ApplyForCreditCard')} style={styles.buttonContainer}>
                             <Text style={styles.applyNowText}>Apply Now</Text>
                         </TouchableOpacity>
                     </View>
