@@ -22,9 +22,7 @@ import { SessionAction } from '../../persistence/actions/SessionAction';
 import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../persistence/query/Query';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { applicationProperties } from '../../../application.properties';
-import Toast from 'react-native-toast-message';
+import MonthlySpendCircularView from './monthlySpend/MonthlySpendCircularView';
 
 
 export default function ProfileScreen() {
@@ -40,13 +38,13 @@ export default function ProfileScreen() {
 
   }
 
-  const { loading, error, data } = useQuery(GQLQuery.GET_USER_PROFILE);
-
-  console.log(error);
-
+  const { data } = useQuery(GQLQuery.GET_USER_PROFILE);
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
-  //console.log(applicationProperties.imageUrl+UserProfileData.ProfilePictureStoragePath)
 
+
+  const { data: userExpenseQlResponse, error: userExpenseError } = useQuery(GQLQuery.GET_USER_EXPENSE);
+
+  const userExpense = userExpenseQlResponse && userExpenseQlResponse.UserExpenseQuery && userExpenseQlResponse.UserExpenseQuery.GetUserExpenses
 
   return (
     <View style={styles.container}>
@@ -72,11 +70,11 @@ export default function ProfileScreen() {
         <View style={styles.topContainer}>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Employment Type</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? "Nil":  UserProfileData && UserProfileData.EmploymentType}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? "Nil" : UserProfileData && UserProfileData.EmploymentType}</Text>
           </View>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Annual Salary Range</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? "Nil": UserProfileData &&  UserProfileData.AnnualSalary}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? "Nil" : UserProfileData && UserProfileData.AnnualSalary}</Text>
           </View>
         </View>
         <View style={styles.addContainer}>
@@ -91,205 +89,28 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.addContainerBottom}>
-          <Text style={styles.addContainerHeaderText}>Monthly Spend Pattern</Text>
-          <View style={styles.addMonthlyExpenseContainer}>
-            <Text style={styles.addContainerSubtitleText}>
-              Add your monthly expense
-            </Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('MonthlySpend')}>
-              <AddButton />
-            </TouchableOpacity>
+        {userExpense === null || userExpense === undefined ? <>
+          <View style={styles.addContainerBottom}>
+            <Text style={styles.addContainerHeaderText}>Monthly Spend Pattern</Text>
+            <View style={styles.addMonthlyExpenseContainer}>
+              <Text style={styles.addContainerSubtitleText}>
+                Add your monthly expense
+              </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('MonthlySpend',{
+                  expense: userExpense
+                })}>
+                <AddButton />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
+        </> : <MonthlySpendCircularView />}
 
-        {/* <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}> */}
-         
-         
-          {/* <View>
-            <Text style={{
-              color: '#7a869a', fontFamily: Platform.select({
-                ios: 'Exo2-Bold',
-                android: 'Exo2Bold',
-              }),
-            }}>
-              Monthly Expense
-            </Text>
-          </View>
-          <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-            <View style={{ alignItems: 'center' }}>
-              <Text style={{
-                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}>
-                60%
-              </Text>
-              <AnimatedCircularProgress
-                style={{ paddingHorizontal: SIZES.padding2 }}
-                size={75}
-                width={5}
-                fill={30}
-                tintColor="#4D2D8F"
-                // onAnimationComplete={() => console.log('onAnimationComplete')}
-                backgroundColor="#b9b9b9"
-              />
-              <Text style={{
-                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#7A869A',
-              }}>
-                Shopping
-              </Text>
-            </View>
-            <View style={{ alignItems: 'center' }}>
-              <Text style={{
-                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}>
-                60%
-              </Text>
-              <AnimatedCircularProgress
-                style={{ paddingHorizontal: SIZES.padding2 }}
-                size={75}
-                width={5}
-                fill={30}
-                tintColor="#4D2D8F"
-                // onAnimationComplete={() => console.log('onAnimationComplete')}
-                backgroundColor="#b9b9b9"
-              />
-              <Text style={{
-                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#7A869A',
-              }}>
-                Shopping
-              </Text>
-            </View>
-            <View style={{ alignItems: 'center' }}>
-              <Text style={{
-                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}>
-                60%
-              </Text>
-              <AnimatedCircularProgress
-                style={{ paddingHorizontal: SIZES.padding2 }}
-                size={75}
-                width={5}
-                fill={30}
-                tintColor="#4D2D8F"
-                // onAnimationComplete={() => console.log('onAnimationComplete')}
-                backgroundColor="#b9b9b9"
-              />
-              <Text style={{
-                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#7A869A',
-              }}>
-                Shopping
-              </Text>
-            </View>
-          </View>
-          <View style={{ paddingVertical: SIZES.padding2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-            <View style={{ alignItems: 'center' }}>
-              <Text style={{
-                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}>
-                60%
-              </Text>
-              <AnimatedCircularProgress
-                style={{ paddingHorizontal: SIZES.padding2 }}
-                size={75}
-                width={5}
-                fill={30}
-                tintColor="#4D2D8F"
-                // onAnimationComplete={() => console.log('onAnimationComplete')}
-                backgroundColor="#b9b9b9"
-              />
-              <Text style={{
-                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#7A869A',
-              }}>
-                Shopping
-              </Text>
-            </View>
-            <View style={{ alignItems: 'center' }}>
-              <Text style={{
-                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}>
-                60%
-              </Text>
-              <AnimatedCircularProgress
-                style={{ paddingHorizontal: SIZES.padding2 }}
-                size={75}
-                width={5}
-                fill={30}
-                tintColor="#4D2D8F"
-                // onAnimationComplete={() => console.log('onAnimationComplete')}
-                backgroundColor="#b9b9b9"
-              />
-              <Text style={{
-                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#7A869A',
-              }}>
-                Shopping
-              </Text>
-            </View>
-            <View style={{ alignItems: 'center' }}>
-              <Text style={{
-                marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }),
-              }}>
-                60%
-              </Text>
-              <AnimatedCircularProgress
-                style={{ paddingHorizontal: SIZES.padding2 }}
-                size={75}
-                width={5}
-                fill={30}
-                tintColor="#4D2D8F"
-                // onAnimationComplete={() => console.log('onAnimationComplete')}
-                backgroundColor="#b9b9b9"
-              />
-              <Text style={{
-                marginTop: 2, fontSize: 14, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#7A869A',
-              }}>
-                Shopping
-              </Text>
-            </View>
-          </View> */}
-
-        {/* </View> */}
         <View style={{ backgroundColor: '#ffffff' }}>
           <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
             await logOutCalled();
           }}>
-            <View style={{ flexDirection: 'row', paddingBottom:200 }}>
+            <View style={{ flexDirection: 'row', paddingBottom: 200 }}>
               <Image source={icons.logOutButtonIcon} style={{ width: 22, height: 22 }} />
               <Text style={{
                 fontSize: 17, fontFamily: Platform.select({

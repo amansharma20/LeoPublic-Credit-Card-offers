@@ -13,10 +13,16 @@ import { Responsive } from '../../../utils/layouts/Layout';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 import { icons } from '../../../constants';
-import Toast from 'react-native-toast-message';
+import { useMutation } from '@apollo/client';
+import { GQLMutation } from '../../../persistence/mutation/Mutation';
+import CommonLoading from '../../../components/CommonLoading';
+import { useNavigation } from '@react-navigation/core';
 
 
-export default function MonthlySpend() {
+export default function MonthlySpend(props) {
+
+
+    const navigation = useNavigation();
 
     const [showModal, setShowModal] = useState(false);
     const [selectedId, setSelectedId] = useState(1);
@@ -27,21 +33,42 @@ export default function MonthlySpend() {
     const [expenseGroceries, setExpenseGroceries] = useState(0);
     const [expenseEntermainment, setExpenseEntermainment] = useState(0);
     const [expenseOthers, setExpenseOthers] = useState(0);
-
-    const onPressInputItem = () => setShowModal(true);
+    const [expenseTotalSpendCreditCard, setExpenseTotalSpendCreditCard] = useState(0);
 
     useEffect(() => {
-        Toast.show({
-            type: 'error',
-            position: 'top',
-            text1: 'HI,',
-            text2: 'Monthly Spend is under Development.',
-            visibilityTime: 4000,
-            autoHide: true,
-            topOffset: 30,
-            bottomOffset: 40,
-        });
+
     });
+
+    const [addSpend, { data, error }] = useMutation(GQLMutation.ADD_USER_EXPENSE);
+
+    const onPressSubmitData = () => {
+        CommonLoading.show()
+        addSpend({
+            variables: {
+                Entertainment: expenseEntermainment,
+                Groceries: expenseGroceries,
+                Others: expenseOthers,
+                Shopping: expenseShopping,
+                TotalCreditCardSpend: expenseTotalSpendCreditCard,
+                Travel: expenseTravelling
+            }
+        });
+
+        if (data) {
+            CommonLoading.hide();
+            navigation.goBack();
+        }
+
+        if(error){
+            CommonLoading.hide();
+            navigation.goBack();
+        }
+        CommonLoading.hide();
+    };
+
+    const totalExpense = () => {
+        return +expenseShopping + +expenseTravelling + +expenseGroceries + +expenseEntermainment + +expenseOthers
+    }
 
     const spendTextFieldSelected = (id) => {
         setShowModal(false)
@@ -68,6 +95,10 @@ export default function MonthlySpend() {
 
             case 5:
                 setExpenseOthers(expense);
+                setExpense(0)
+                break;
+            case 6:
+                setExpenseTotalSpendCreditCard(expense);
                 setExpense(0)
                 break;
 
@@ -99,7 +130,7 @@ export default function MonthlySpend() {
                         backgroundColor="#b9b9b9"
                     />
                     <Text style={styles.headerTextCircle}>
-                        Monthly{'\n'}Expenses{'\n'}20,000
+                        Monthly{'\n'}Expenses{'\n'}₹ {totalExpense()}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openExpenseModel(1)} style={styles.itemContainer}>
@@ -157,7 +188,18 @@ export default function MonthlySpend() {
                         ₹{expenseOthers}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={onPressInputItem} style={styles.buttonContainer}>
+                <TouchableOpacity onPress={() => openExpenseModel(6)} style={styles.itemContainer}>
+                    <View style={styles.leftContainer}>
+                        <OthersIcon style={{ marginRight: 8 }} />
+                        <Text style={styles.leftText}>
+                            Total Spend(Credit Card)
+                        </Text>
+                    </View>
+                    <Text style={{ fontSize: 18 }}>
+                        ₹{expenseTotalSpendCreditCard}
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onPressSubmitData} style={styles.buttonContainer}>
                     <Text style={styles.buttonText}>
                         Submit
                     </Text>
@@ -220,6 +262,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         flex: 1,
         justifyContent: 'space-between',
+        paddingBottom: 100
     },
     itemContainer: {
         flexDirection: 'row',
