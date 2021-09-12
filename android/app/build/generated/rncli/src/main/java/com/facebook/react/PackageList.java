@@ -23,6 +23,8 @@ import com.airbnb.android.react.lottie.LottiePackage;
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-image-picker
+import com.imagepicker.ImagePickerPackage;
 // react-native-linear-gradient
 import com.BV.LinearGradient.LinearGradientPackage;
 // react-native-pager-view
@@ -88,6 +90,7 @@ public class PackageList {
       new LottiePackage(),
       new DatePickerPackage(),
       new RNGestureHandlerPackage(),
+      new ImagePickerPackage(),
       new LinearGradientPackage(),
       new PagerViewPackage(),
       new ReanimatedPackage(),

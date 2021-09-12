@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -19,10 +19,14 @@ import { icons } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
 import { SessionService } from '../../persistence/services/SessionService';
 import { SessionAction } from '../../persistence/actions/SessionAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../persistence/query/Query';
 import MonthlySpendCircularView from './monthlySpend/MonthlySpendCircularView';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { applicationProperties } from '../../../application.properties';
+import axios from 'axios';
+
 
 
 export default function ProfileScreen() {
@@ -30,21 +34,90 @@ export default function ProfileScreen() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
+  const session = useSelector(state => state.SessionReducer.data);
+
+  const Bearer = 'Bearer ' + session.user.user;
+
   async function logOutCalled() {
     const dummyData = {};
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
     navigation.replace("Login")
-
   }
+
+  const [profilePic, setProfilePic] = useState("https://picsum.photos/200/300/?blur=2");
 
   const { data } = useQuery(GQLQuery.GET_USER_PROFILE);
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
 
-
   const { data: userExpenseQlResponse, error: userExpenseError } = useQuery(GQLQuery.GET_USER_EXPENSE);
 
   const userExpense = userExpenseQlResponse && userExpenseQlResponse.UserExpenseQuery && userExpenseQlResponse.UserExpenseQuery.GetUserExpenses
+
+  const selectFile = () => {
+    var options = {
+      title: 'Select Image',
+      customButtons: [
+        {
+          name: 'customOptionKey',
+          title: 'Choose file from Custom Option'
+        },
+      ],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    launchImageLibrary(options, (response) => {
+
+      console.log(response)
+
+      const FileName = response.assets && response.assets[0] && response.assets[0].fileName
+      const type = response.assets && response.assets[0] && response.assets[0].type
+      const uri = response.assets && response.assets[0] && response.assets[0].uri
+
+
+      const datas = new FormData();
+      datas.append('ImageFile', {
+        fileName: FileName,
+        type: type,
+        uri:
+          Platform.OS === 'android' ? uri : uri.replace('file://', ''),
+      });
+      uploadImage(datas)
+    });
+  };
+
+  async function uploadImage(data) {
+
+    const headers = {
+      'Authorization': Bearer,
+      'Accept': '*/*',
+      'Content-Type': 'multipart/form-data'
+    }
+
+    axios.post(applicationProperties.baseUrl + 'Profile/CustomerProfileUpdate', data, {
+      headers: headers
+    })
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  console.log(UserProfileData)
+
+
+
+  const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath
+
+  useEffect(() => {
+
+  }, [profilePic]);
+
 
   return (
     <View style={styles.container}>
@@ -53,17 +126,27 @@ export default function ProfileScreen() {
           <ProfileOffersScreenHeader />
         </View>
         <View style={styles.backgroundColorView}>
+
           <View style={styles.profilePictureHeaderContainer}>
             <View style={styles.pfpAlignmentContainer}>
-              <Image
-                source={{
-                  uri: 'https://picsum.photos/200/300/?blur=2',
-                }}
-                style={styles.profileImage}
-              />
+              <TouchableOpacity onPress={() => {
+                selectFile()
+              }}>
+                <Image
+                  source={{
+                    uri: applicationProperties.imageUrl + profilePicture,
+                  }}
+                  style={styles.profileImage}
+                />
+              </TouchableOpacity>
               <Text style={styles.nameText}>{UserProfileData && UserProfileData.FirstName} {UserProfileData && UserProfileData.LastName}</Text>
               <Text style={styles.emailText}>{UserProfileData && UserProfileData.ApplicationUser.Email}</Text>
               <Text style={styles.birthDateText}>{UserProfileData && UserProfileData.DateOfBirth}</Text>
+              <TouchableOpacity onPress={() => {
+                navigation.navigate('EditProfile')
+              }}>
+                <Text>Edit Profile</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -97,7 +180,7 @@ export default function ProfileScreen() {
                 Add your monthly expense
               </Text>
               <TouchableOpacity
-                onPress={() => navigation.navigate('MonthlySpend',{
+                onPress={() => navigation.navigate('MonthlySpend', {
                   expense: userExpense
                 })}>
                 <AddButton />
