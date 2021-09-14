@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -20,23 +20,20 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CrossWithBackground from '../../assets/svgs/crossWithBackground.svg';
 import { applicationProperties } from '../../../application.properties';
 import _ from 'lodash';
+import { useDispatch } from 'react-redux';
+import { CompareCardAction } from '../../persistence/actions/CompareCardAction';
+
 
 export default function RecommendedScreenFlatlist(props) {
+
+  const dispatch = useDispatch();
 
   const card = props.cards;
   const y = props.y;
   const index = props.index;
 
-  const onCardClick = (card) => { 
-    
-    console.log(card)
-    // props.selectedCardsCallback(card)
-     setCheckboxState(!checkboxState, cardClicked);
-  };
-
   const { height: wheight } = Dimensions.get('window');
   const [checkboxState, setCheckboxState] = useState(false);
-  const [cardClicked] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
   const CARD_HEIGHT = 290 + 24 * 2;
@@ -48,13 +45,13 @@ export default function RecommendedScreenFlatlist(props) {
   const height = wheight - 120;
 
 
-  const position = Animated.subtract(index * CARD_HEIGHT , y);
+  const position = Animated.subtract(index * CARD_HEIGHT, y);
 
   const isDisappering = - CARD_HEIGHT;
 
   const isTop = 0;
 
-  const isBottom = height - CARD_HEIGHT - 200;
+  const isBottom = height - CARD_HEIGHT - 100;
 
   const isAppering = CARD_HEIGHT - 20;
 
@@ -64,7 +61,7 @@ export default function RecommendedScreenFlatlist(props) {
     extrapolateRight: 'clamp',
   })), position.interpolate({
     inputRange: [isBottom, isAppering],
-    outputRange: [0, - CARD_HEIGHT / 30 ],
+    outputRange: [0, - CARD_HEIGHT / 30],
     extrapolate: 'clamp',
   }));
 
@@ -79,74 +76,78 @@ export default function RecommendedScreenFlatlist(props) {
     outputRange: [0.0, 1, 1, 1],
   });
 
+  useEffect(() => {
+    
+  },[checkboxState]);
+
   return (
-      <Animated.View style={[styles.container, { opacity, transform: [{ translateY }, { scale }] }]}>
-        <View style={styles.cardContainerBody} onLayout={onLayout}>
-          <ImageBackground
-            style={styles.creditCardContainer}
-            source={{ uri: applicationProperties.imageUrl + card.ImageStoragePath }}
-            imageStyle={styles.backgroundImageStyle}>
-            <View>
-              <BouncyCheckbox
-                style={styles.checkBoxContainer}
-                isChecked={checkboxState}
-                disableBuiltInState
-                onPress={(val)=>{
-                  console.log(val)
-                  onCardClick(val)
-                }}
-                size={20}
-                iconStyle={styles.checkBoxIconStyle}
-                fillColor={checkboxState ? '#000000' : '#f1f1f1'}
-                unfillColor={checkboxState ? '#000000' : '#f1f1f1'}
-              />
+    <Animated.View style={[styles.container, { opacity, transform: [{ translateY }, { scale }] }]}>
+      <View style={styles.cardContainerBody} onLayout={onLayout}>
+        <ImageBackground
+          style={styles.creditCardContainer}
+          source={{ uri: applicationProperties.imageUrl + card.ImageStoragePath }}
+          imageStyle={styles.backgroundImageStyle}>
+          <View>
+            <BouncyCheckbox
+              style={styles.checkBoxContainer}
+              isChecked={checkboxState}
+              disableBuiltInState
+              onPress={(val) => {
+                dispatch(CompareCardAction.addItem(card))
+                setCheckboxState(!checkboxState);
+              }}
+              size={20}
+              iconStyle={styles.checkBoxIconStyle}
+              fillColor={checkboxState ? '#000000' : '#f1f1f1'}
+              unfillColor={checkboxState ? '#000000' : '#f1f1f1'}
+            />
+          </View>
+          <View style={styles.creditCardDetailsContainer}>
+            <View style={styles.cardTopContainer}>
+              <Text style={styles.cardTypeText}>{card.CardName}</Text>
+              <BankLogo style={styles.bankLogo} />
             </View>
-            <View style={styles.creditCardDetailsContainer}>
-              <View style={styles.cardTopContainer}>
-                <Text style={styles.cardTypeText}>{card.CardName}</Text>
-                <BankLogo style={styles.bankLogo} />
-              </View>
-              <Code />
-              <View style={styles.cardBottomContainer}>
-                <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
-                <MasterCardLogo />
-              </View>
-            </View>
-          </ImageBackground>
-          <View style={styles.cardContainerBodyPadding}>
-            <View>
-              <Text numberOfLines={2} style={styles.rewardsText}>{card.RewardBoosterSectors}</Text>
-            </View>
-            <View style={styles.feeContainer}>
-              <Text style={styles.feeText}>Joining Fee: ₹{card.JoiningFees}</Text>
-              <Text style={styles.feeText}>Annual Fee: ₹{card.AnnualFees}</Text>
+            <Code />
+            <View style={styles.cardBottomContainer}>
+              <Text style={styles.cardNumberText}>1800 **** **** ****</Text>
+              <MasterCardLogo />
             </View>
           </View>
+        </ImageBackground>
+        <View style={styles.cardContainerBodyPadding}>
+          <View>
+            <Text numberOfLines={2} style={styles.rewardsText}>{card.RewardBoosterSectors}</Text>
+          </View>
+          <View style={styles.feeContainer}>
+            <Text style={styles.feeText}>Joining Fee: ₹{card.JoiningFees}</Text>
+            <Text style={styles.feeText}>Annual Fee: ₹{card.AnnualFees}</Text>
+          </View>
         </View>
-        {showModal && (
-          <Modal
-            animationType="fade"
-            transparent={true}
-            statusBarTranslucent={true}
-            showModal={showModal}
-            onRequestClose={() => setShowModal(false)}>
-            <View style={styles.modalBackground}>
-              <View style={styles.modalContainer}>
-                {/* <Text style={styles.modalHeaderText}>Congratulations</Text> */}
-                <CrossWithBackground />
-                <Text style={styles.modalHeaderText}>
-                  You can select only two{'\n'}cards at a time
-                </Text>
-                <TouchableOpacity onPress={() => setShowModal(false)} style={styles.modalButtonContainer} activeOpacity={0.8}>
-                  <View>
-                    <Text style={styles.modalButtonText}>Continue</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
+      </View>
+      {showModal && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          statusBarTranslucent={true}
+          showModal={showModal}
+          onRequestClose={() => setShowModal(false)}>
+          <View style={styles.modalBackground}>
+            <View style={styles.modalContainer}>
+              {/* <Text style={styles.modalHeaderText}>Congratulations</Text> */}
+              <CrossWithBackground />
+              <Text style={styles.modalHeaderText}>
+                You can select only two{'\n'}cards at a time
+              </Text>
+              <TouchableOpacity onPress={() => setShowModal(false)} style={styles.modalButtonContainer} activeOpacity={0.8}>
+                <View>
+                  <Text style={styles.modalButtonText}>Continue</Text>
+                </View>
+              </TouchableOpacity>
             </View>
-          </Modal>
-        )}
-      </Animated.View>
+          </View>
+        </Modal>
+      )}
+    </Animated.View>
   );
 }
 

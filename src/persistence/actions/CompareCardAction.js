@@ -2,17 +2,17 @@ import { RequestConstant, ResponseConstant } from '../../module/api/CommanConsta
 import { CompareCardConstant } from '../constants/CompareCardConstant';
 
 export const CompareCardAction = {
-    getCustomerUserCard
+    addItem
 };
 
 function addItem(data) {
     return async dispatch => {
-        dispatch(RequestConstant(CompareCardConstant.COMPARE_CARD_CONSTANT_REQUEST, data));
+        dispatch(RequestConstant(CompareCardConstant.ADD_REQUEST, data));
         const result = {
             success: true,
             data: data,
         };
-        dispatch(ResponseConstant(CompareCardConstant.COMPARE_CARD_CONSTANT_SUCCESS, CompareCardConstant.COMPARE_CARD_CONSTANT_FAILURE, result));
+        dispatch(ResponseConstant(CompareCardConstant.ADD_SUCCESS, CompareCardConstant.ADD_FAILURE, result));
     };
 }
 

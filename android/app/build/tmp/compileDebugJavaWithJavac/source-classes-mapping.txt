@@ -1,5 +1,9 @@
 com/leo/BuildConfig.java
  com.leo.BuildConfig
+com/leo/MainActivity.java
+ com.leo.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
 com/leo/MainApplication.java
  com.leo.MainApplication
  com.leo.MainApplication$1
@@ -8,7 +12,3 @@ com/leo/ReactNativeFlipper.java
  com.leo.ReactNativeFlipper$1
  com.leo.ReactNativeFlipper$2
  com.leo.ReactNativeFlipper$2$1
-com/facebook/react/PackageList.java
- com.facebook.react.PackageList
-com/leo/MainActivity.java
- com.leo.MainActivity

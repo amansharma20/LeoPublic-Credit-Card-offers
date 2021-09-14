@@ -33,17 +33,9 @@ export default function ProfileScreen() {
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-
   const session = useSelector(state => state.SessionReducer.data);
-
   const Bearer = 'Bearer ' + session.user.user;
 
-  async function logOutCalled() {
-    const dummyData = {};
-    await SessionService.setSession(dummyData);
-    dispatch(SessionAction.getSession());
-    navigation.replace("Login")
-  }
 
   const [profilePic, setProfilePic] = useState("https://picsum.photos/200/300/?blur=2");
 
@@ -71,19 +63,18 @@ export default function ProfileScreen() {
 
     launchImageLibrary(options, (response) => {
 
-      console.log(response)
-
       const FileName = response.assets && response.assets[0] && response.assets[0].fileName
       const type = response.assets && response.assets[0] && response.assets[0].type
       const uri = response.assets && response.assets[0] && response.assets[0].uri
+
 
 
       const datas = new FormData();
       datas.append('ImageFile', {
         fileName: FileName,
         type: type,
-        uri:
-          Platform.OS === 'android' ? uri : uri.replace('file://', ''),
+        name:type,
+        uri: Platform.OS === 'android' ? uri : uri.replace('file://', ''),
       });
       uploadImage(datas)
     });
@@ -91,32 +82,33 @@ export default function ProfileScreen() {
 
   async function uploadImage(data) {
 
-    const headers = {
-      'Authorization': Bearer,
-      'Accept': '*/*',
+
+    const client = axios.create({
+      baseURL: applicationProperties.baseUrl,
+    });
+    const header = {
+      Authorization: Bearer,
       'Content-Type': 'multipart/form-data'
     }
-
-    axios.post(applicationProperties.baseUrl + 'Profile/CustomerProfileUpdate', data, {
-      headers: headers
+    client.post('Profile/CustomerProfileUpdate', data, {
+      headers:header
+    }).then((response) => {
+      console.log(response)
+      console.log('response.data')
     })
-      .then((response) => {
-        console.log(response.data)
-      })
       .catch((error) => {
         console.log(error)
+        console.log('error')
       })
   }
-
-  console.log(UserProfileData)
-
-
-
   const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath
 
-  useEffect(() => {
-
-  }, [profilePic]);
+  async function logOutCalled() {
+    const dummyData = {};
+    await SessionService.setSession(dummyData);
+    dispatch(SessionAction.getSession());
+    navigation.replace("Login")
+  }
 
 
   return (
