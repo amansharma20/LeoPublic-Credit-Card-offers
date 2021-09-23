@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* LeoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LeoTests.m */; };
+		11330C6ACD2003D76BFFCA77 /* libPods-Leo-LeoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F87E2104B59616F38B66F06F /* libPods-Leo-LeoTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		35044F7D26D7B752009E6FA5 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35044F7426D7B741009E6FA5 /* Lottie.framework */; };
-		35044F7E26D7B752009E6FA5 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35044F7426D7B741009E6FA5 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		353B5EF126FB47E600F81C19 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35044F7426D7B741009E6FA5 /* Lottie.framework */; };
+		353B5EF226FB47E600F81C19 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35044F7426D7B741009E6FA5 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		359B3C8426CE521E00C5D9A0 /* Leo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B3C8326CE521E00C5D9A0 /* Leo.swift */; };
 		35C47DD926D65C0000B4853C /* Exo2Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825626D11DB2000594C8 /* Exo2Bold.otf */; };
 		35C47DDA26D65C0000B4853C /* Exo2ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825326D11DB0000594C8 /* Exo2ExtraBold.otf */; };
@@ -21,7 +22,7 @@
 		35C47DDD26D65C0000B4853C /* Exo2Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825226D11DAF000594C8 /* Exo2Regular.otf */; };
 		35C47DDE26D65C0000B4853C /* Exo2SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825726D11DB3000594C8 /* Exo2SemiBold.otf */; };
 		35C47DDF26D65C0000B4853C /* Exo2Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3588825526D11DB1000594C8 /* Exo2Thin.otf */; };
-		5D37B5F835AE6D208F1F4A25 /* libPods-Leo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A7E848E838E8854D3D76D3 /* libPods-Leo.a */; };
+		7D3A88027DB8262408FF715E /* libPods-Leo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C8FE3277B95EA48A65D962 /* libPods-Leo.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -71,13 +72,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		35044F7F26D7B752009E6FA5 /* Embed Frameworks */ = {
+		353B5EF326FB47E600F81C19 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				35044F7E26D7B752009E6FA5 /* Lottie.framework in Embed Frameworks */,
+				353B5EF226FB47E600F81C19 /* Lottie.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,10 +108,10 @@
 		359B3C8226CE521D00C5D9A0 /* Leo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Leo-Bridging-Header.h"; sourceTree = "<group>"; };
 		359B3C8326CE521E00C5D9A0 /* Leo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leo.swift; sourceTree = "<group>"; };
 		5D94DFB8E6F141A5B855F85D /* Exo2Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Black.otf; path = ../src/assets/fonts/Exo2Black.otf; sourceTree = "<group>"; };
-		68A7E848E838E8854D3D76D3 /* libPods-Leo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Leo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A52D7C06CB30D80F2B7B266 /* Pods-Leo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo.debug.xcconfig"; path = "Target Support Files/Pods-Leo/Pods-Leo.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Leo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1BC7381AB2D98210CD37A8 /* Pods-Leo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo.release.xcconfig"; path = "Target Support Files/Pods-Leo/Pods-Leo.release.xcconfig"; sourceTree = "<group>"; };
+		90C8FE3277B95EA48A65D962 /* libPods-Leo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Leo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9714AD79523E47B097AFEE09 /* Exo2Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Medium.otf; path = ../src/assets/fonts/Exo2Medium.otf; sourceTree = "<group>"; };
 		9C59CB1D37581786F09194D6 /* Pods-Leo-LeoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoTests.release.xcconfig"; path = "Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8A47B3CC11F40FF98428D41 /* Exo2Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2Bold.otf; path = ../src/assets/fonts/Exo2Bold.otf; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		DFB8171788334C141EC931B3 /* Pods-Leo-LeoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoTests.debug.xcconfig"; path = "Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0EC62F92F6E48B0924F4F5A /* Exo2ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Exo2ExtraBold.otf; path = ../src/assets/fonts/Exo2ExtraBold.otf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F87E2104B59616F38B66F06F /* libPods-Leo-LeoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Leo-LeoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11330C6ACD2003D76BFFCA77 /* libPods-Leo-LeoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,8 +136,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D37B5F835AE6D208F1F4A25 /* libPods-Leo.a in Frameworks */,
-				35044F7D26D7B752009E6FA5 /* Lottie.framework in Frameworks */,
+				7D3A88027DB8262408FF715E /* libPods-Leo.a in Frameworks */,
+				353B5EF126FB47E600F81C19 /* Lottie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +197,8 @@
 			children = (
 				35044F6B26D7B741009E6FA5 /* Lottie.xcodeproj */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				68A7E848E838E8854D3D76D3 /* libPods-Leo.a */,
+				90C8FE3277B95EA48A65D962 /* libPods-Leo.a */,
+				F87E2104B59616F38B66F06F /* libPods-Leo-LeoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,8 +283,7 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				A29688393623552DE5C18234 /* [CP] Embed Pods Frameworks */,
-				A149801228C591A31B34D64D /* [CP] Copy Pods Resources */,
+				5A08310FAE3B3B0B07E953C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,9 +305,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				6019DB938279BDAA4F0E1A27 /* [CP] Embed Pods Frameworks */,
-				2F5AE22F437642F2ADA31397 /* [CP] Copy Pods Resources */,
-				35044F7F26D7B752009E6FA5 /* Embed Frameworks */,
+				2376B99F0FE42EFA512D3440 /* [CP] Copy Pods Resources */,
+				353B5EF326FB47E600F81C19 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -458,7 +460,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2F5AE22F437642F2ADA31397 /* [CP] Copy Pods Resources */ = {
+		2376B99F0FE42EFA512D3440 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -468,30 +470,14 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6019DB938279BDAA4F0E1A27 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Leo/Pods-Leo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A149801228C591A31B34D64D /* [CP] Copy Pods Resources */ = {
+		5A08310FAE3B3B0B07E953C6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -506,23 +492,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A29688393623552DE5C18234 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Leo-LeoTests/Pods-Leo-LeoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C2AF42F75D340D9938082D75 /* [CP] Check Pods Manifest.lock */ = {
@@ -661,6 +630,7 @@
 				DEVELOPMENT_TEAM = 379X3N8623;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Leo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -688,6 +658,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 379X3N8623;
 				INFOPLIST_FILE = Leo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -2,18 +2,24 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigator from './DrawerNavigator';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { SessionAction } from '../persistence/actions/SessionAction';
+import AuthNavigator from './AuthNavigator';
 
 export default function ApplicationNavigator() {
   dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(SessionAction.getSession());
-}, [])
+    console.log(session)
+  }, [])
+  const session = useSelector(state => state.SessionReducer.data);
+
+  console.log(session)
   return (
     <NavigationContainer>
-      <DrawerNavigator />
+      {
+        session.loggedIn == true ? <DrawerNavigator /> : <AuthNavigator />
+      }
     </NavigationContainer>
   );
 }

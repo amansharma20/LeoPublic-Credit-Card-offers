@@ -40,33 +40,31 @@ export default function OTPScreen(props) {
       };
       dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
         (response) => {
+          //console.log(response)
           CommonLoading.hide();
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
+            console.log("INSIDE")
             const userData = {
-              loggedIn: true,
-              user: response.data
+              user: response.data,
             }
             saveTokenAsyncHome(userData)
           }
         },
       );
     } else {
-      console.log("INSIDE SIGNUP")
       const otpData = {
         MobileNumber: phone,
         Code: otp,
       };
-      console.log(otpData)
       dispatch(
-        AuthActions.signIn('Account/RegisterCustomerComplete', otpData),
+        AuthActions.signup('Account/RegisterCustomerComplete', otpData),
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
           const userData = {
-            loggedIn: true,
-            user: response.data
+            user: response.data,
           }
           saveTokenAsyncDetails(userData)
         }
@@ -75,17 +73,13 @@ export default function OTPScreen(props) {
   };
 
   async function saveTokenAsyncHome(user) {
-    await SessionService.setSession(user);
+    dispatch(SessionAction.setSession(user));
     dispatch(SessionAction.getSession());
-    navigation.navigate('BottomTabBarNavigator');
   }
 
   async function saveTokenAsyncDetails(user) {
-    await SessionService.setSession(user);
+    dispatch(SessionAction.setSession(user));
     dispatch(SessionAction.getSession());
-    navigation.navigate('BasicDetailsInput', {
-      firstName: firstName
-    });
   }
 
   return (

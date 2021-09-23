@@ -4,7 +4,8 @@ import {AuthConstants} from '../constants/AuthConstants';
 import {RequestConstant, ResponseConstant} from '../../utils/constants/CommanConstants';
 
 export const AuthActions = {
-  signIn
+  signIn,
+  signup
 };
 
 function signIn(url, data) {
@@ -15,6 +16,21 @@ function signIn(url, data) {
       ResponseConstant(
         AuthConstants.SIGNIN_SUCCESS,
         AuthConstants.SIGNIN_FAILURE,
+        result,
+      ),
+    );
+    return result;
+  };
+}
+
+function signup(url, data) {
+  return async dispatch => {
+    dispatch(RequestConstant(AuthConstants.SIGNUP_REQUEST, data));
+    const result = await AuthService.signIn(url, data);
+    dispatch(
+      ResponseConstant(
+        AuthConstants.SIGNUP_SUCCESS,
+        AuthConstants.SIGNUP_FAILURE,
         result,
       ),
     );

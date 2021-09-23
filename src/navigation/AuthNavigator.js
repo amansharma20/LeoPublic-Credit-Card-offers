@@ -24,10 +24,6 @@ function AuthNavigator() {
         headerShown: false,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
-      <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
-      <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
-      <Stack.Screen name="MonthlySpend" component={MonthlySpend} />
-      <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
       <Stack.Screen name="StartScreen" component={StartScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />

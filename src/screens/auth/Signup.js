@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -11,14 +11,14 @@ import {
   Platform,
 } from 'react-native';
 import * as yup from 'yup';
-import {useDispatch} from 'react-redux';
-import {AuthActions} from '../../persistence/actions/AuthActions';
-import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../../constants/theme/';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '../../persistence/actions/AuthActions';
+import { useNavigation } from '@react-navigation/native';
+import { SIZES } from '../../constants/theme/';
 import icons from '../../constants/icons';
-import {Formik, Field} from 'formik';
+import { Formik, Field } from 'formik';
 import CustomInput from '../../components/CustomInput';
-import {Responsive} from '../../utils/layouts/Layout';
+import { Responsive } from '../../utils/layouts/Layout';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import CommonLoading from '../../components/CommonLoading';
 
@@ -52,7 +52,7 @@ export default function Signup() {
       MobileNumber: data.phone,
     };
     dispatch(
-      AuthActions.signIn('Account/RegisterCustomerStart', signUpData),
+      AuthActions.signup('Account/RegisterCustomerStart', signUpData),
     ).then((response) => {
       CommonLoading.hide();
       if (response && response.success === false) { } else {
@@ -65,7 +65,7 @@ export default function Signup() {
     });
   };
 
-  
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -90,10 +90,10 @@ export default function Signup() {
               phone: '',
             }}
             onSubmit={values => signup(values)}>
-            {({handleSubmit, errors, touched, values}) => (
+            {({ handleSubmit, errors, touched, values }) => (
               <>
                 <View style={styles.inputContainer}>
-                  <View style={{flexDirection: 'row'}}>
+                  <View style={{ flexDirection: 'row' }}>
                     <Field
                       component={CustomInput}
                       name="fullName"
@@ -108,7 +108,7 @@ export default function Signup() {
                 </View>
 
                 <View style={styles.inputContainer}>
-                  <View style={{flexDirection: 'row'}}>
+                  <View style={{ flexDirection: 'row' }}>
                     <Field
                       component={CustomInput}
                       name="email"
@@ -123,7 +123,7 @@ export default function Signup() {
                 </View>
 
                 <View style={styles.inputContainer}>
-                  <View style={{flexDirection: 'row'}}>
+                  <View style={{ flexDirection: 'row' }}>
                     <Field
                       component={CustomInput}
                       name="phone"
@@ -139,7 +139,7 @@ export default function Signup() {
                   </View>
                 </View>
                 <View style={styles.termsContainer}>
-                  <View style={{width: '10%', marginTop: 10}}>
+                  <View style={{ width: '10%', marginTop: 10 }}>
                     <View>
                       <BouncyCheckbox
                         style={styles.checkBoxContainer}
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     padding: SIZES.padding,
   },
   header: {},
-  backButtonSize: {width: 24, height: 24},
+  backButtonSize: { width: 24, height: 24 },
   headerTextContainer: {
     paddingVertical: 20,
   },
@@ -299,6 +299,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
   },
-  checkBoxContainer: {marginTop: 0, width: 24, height: 24, borderRadius: 4},
-  checkBoxIconStyle: {borderRadius: 4, borderWidth: 0},
+  checkBoxContainer: { marginTop: 0, width: 24, height: 24, borderRadius: 4 },
+  checkBoxIconStyle: { borderRadius: 4, borderWidth: 0 },
 });
