@@ -4,16 +4,16 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, ScrollView, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../constants/';
+import {SIZES} from '../../constants';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import OffersScreen from '../screens/home/offersScreen/OffersScreen';
 import OverviewScreen from '../screens/home/overViewScreen/OverviewScreen';
 import ReviewsScreen from '../screens/home/reviewsScreen/ReviewsScreen';
 import MileStonesScreen from '../screens/home/milestonesScreen/MileStonesScreen';
-import BestOffers from '../screens/offersScreen/bestOffers/BestOffers';
-import LatestOffers from '../screens/offersScreen/latestOffers/LatestOffers';
-import AllOffers from '../screens/offersScreen/allOffers/AllOffers';
-import { Responsive } from '../utils/layouts/Layout';
+import BestOffers from '../../screens/offersScreen/bestOffers/BestOffers';
+import LatestOffers from '../../screens/offersScreen/latestOffers/LatestOffers';
+import AllOffers from '../../screens/offersScreen/allOffers/AllOffers';
+import { Responsive } from '../../utils/layouts/Layout';
 
 export default function OffersSegmentNavigator() {
   const navigation = useNavigation();

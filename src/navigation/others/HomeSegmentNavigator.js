@@ -2,31 +2,26 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView, Platform } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import BottomTabOffersScreenModal from '../screens/offersScreen/BottomTabOffersScreenModal';
-import Rectangle from '../assets/svgs/Rectangle.svg';
-import MoreOffers from '../screens/offersScreen/latestOffers/MoreOffers';
+import OffersScreen from '../../screens/home/offers/OffersScreen';
+import OverviewScreen from '../../screens/home/overView/OverviewScreen';
+import ReviewsScreen from '../../screens/home/review/ReviewsScreen';
+import MileStonesScreen from '../../screens/home/milestones/MileStonesScreen';
 
-export default function OffersScreenItemDetailsNavigator(props) {
-
-  const offer = props.offer;
-
+export default function HomeSegmentNavigator(props) {
+  const selectedCardData = props.selectedCard;
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleSingleIndexSelect = index => {
     setSelectedIndex(index);
-
   };
 
   return (
-    <View style={{
-      alignItems: 'center',
-      backgroundColor: '#ffffff',
-    }}>
-      <View contentContainerStyle={{ alignItems: 'center' }} style={styles.container}>
+    <View style={{ marginTop: 20 }}>
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={styles.container}>
         <SegmentedControlTab
-          values={['Offer Details', 'More Offers']}
+          values={['Offers', 'Overview', 'Reviews', 'Milestones']}
           selectedIndex={selectedIndex}
           tabStyle={styles.tabStyle}
           tabsContainerStyle={styles.tabsContainerStyle}
@@ -36,34 +31,38 @@ export default function OffersScreenItemDetailsNavigator(props) {
           activeTabTextStyle={styles.activeTabTextStyle}
           firstTabStyle={styles.firstTabStyle}
         />
-      </View>
-      {selectedIndex === 0 ? <Rectangle style={{ marginLeft: -190 }} /> : <></>}
-      {selectedIndex === 0 ? <BottomTabOffersScreenModal offer={offer} /> : <></>}
-      {/* or more offers */}
-      {selectedIndex === 1 ? <Rectangle style={{ marginLeft: 170 }} /> : <></>}
-      {selectedIndex === 1 ? <MoreOffers offer={offer} /> : <></>}
+      </ScrollView>
+      {selectedIndex === 0 ? <OffersScreen cardData={selectedCardData} /> : <></>}
+      {selectedIndex === 1 ? <OverviewScreen cardData={selectedCardData} /> : <></>}
+      {selectedIndex === 2 ? <ReviewsScreen cardData={selectedCardData} /> : <></>}
+      {selectedIndex === 3 ? <MileStonesScreen cardData={selectedCardData} /> : <></>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    backgroundColor: '#ffffff',
+    flex: 1,
+    marginLeft: Platform.select({
+      ios: 30,
+      android: 30
+    })
   },
   tabStyle: {
     borderWidth: 0,
+    paddingBottom: 2,
+    marginRight: 40,
   },
   tabsContainerStyle: {
     paddingHorizontal: 0,
     paddingVertical: 0,
     alignContent: 'center',
-    borderWidth: 0,
-    alignItems: 'center',
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',
-    borderWidth: 0,
+    borderBottomWidth: 2,
+    borderColor: '#247DFB',
+    marginRight: 36,
   },
   tabTextStyle: {
     color: '#6F7FAF',
@@ -80,5 +79,6 @@ const styles = StyleSheet.create({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold'
     }),
+
   },
 });

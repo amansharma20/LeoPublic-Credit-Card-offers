@@ -10,7 +10,7 @@ export default function ApplicationNavigator() {
   dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(session)
+ 
   }, [])
   const session = useSelector(state => state.SessionReducer.data);
 

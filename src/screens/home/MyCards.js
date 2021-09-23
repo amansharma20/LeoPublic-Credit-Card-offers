@@ -13,7 +13,7 @@ import {
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useQuery } from '@apollo/client';
-import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';
+import HomeSegmentNavigator from '../../navigation/others/HomeSegmentNavigator';
 import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
 import Carousel from 'react-native-snap-carousel';
 import { scrollInterpolator, animatedStyles } from '../../utils/animations';

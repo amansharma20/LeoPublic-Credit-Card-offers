@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import RecommendedScreen from '../screens/exploreScreen/RecommendedScreen/RecommendedScreen';
-import DiscoverScreen from '../screens/exploreScreen/DiscoverScreen/DiscoverScreen';
+import RecommendedScreen from '../../screens/exploreScreen/RecommendedScreen/RecommendedScreen';
+import DiscoverScreen from '../../screens/exploreScreen/DiscoverScreen/DiscoverScreen';
 import { Platform } from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();

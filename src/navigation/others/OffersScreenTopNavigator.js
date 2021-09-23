@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import BestOffers from '../screens/offersScreen/bestOffers/BestOffers';
-import LatestOffers from '../screens/offersScreen/latestOffers/LatestOffers';
-import AllOffers from '../screens/offersScreen/allOffers/AllOffers';
+import BestOffers from '../../screens/offersScreen/bestOffers/BestOffers';
+import LatestOffers from '../../screens/offersScreen/latestOffers/LatestOffers';
+import AllOffers from '../../screens/offersScreen/allOffers/AllOffers';
 import { Platform } from 'react-native';
 
 const Tab = createMaterialTopTabNavigator();

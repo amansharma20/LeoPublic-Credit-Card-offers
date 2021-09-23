@@ -4,10 +4,10 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, ScrollView, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {SIZES} from '../constants/';
+import {SIZES} from '../../constants';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
-import RecommendedScreen from '../screens/exploreScreen/RecommendedScreen/RecommendedScreen';
-import DiscoverScreen from '../screens/exploreScreen/DiscoverScreen/DiscoverScreen';
+import RecommendedScreen from '../../screens/exploreScreen/RecommendedScreen/RecommendedScreen';
+import DiscoverScreen from '../../screens/exploreScreen/DiscoverScreen/DiscoverScreen';
 import Rectangle from '../assets/svgs/Rectangle.svg';
 
 export default function ExploreSegmentNavigator() {

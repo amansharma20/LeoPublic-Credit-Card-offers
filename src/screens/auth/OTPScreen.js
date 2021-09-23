@@ -40,7 +40,7 @@ export default function OTPScreen(props) {
       };
       dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
         (response) => {
-          //console.log(response)
+          console.log(response)
           CommonLoading.hide();
           if (response && response.success === false) {
             //Do Nothing. 

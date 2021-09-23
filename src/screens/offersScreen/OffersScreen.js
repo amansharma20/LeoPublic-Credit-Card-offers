@@ -7,7 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import OffersScreenHeader from '../../components/headers/OffersScreenHeader';
-import OffersScreenTopNavigator from '../../navigation/OffersScreenTopNavigator';
+import OffersScreenTopNavigator from '../../navigation/others/OffersScreenTopNavigator';
 
 const { width: WIDTH } = Dimensions.get('window');
 
