@@ -13,13 +13,7 @@ import {
   Platform
 } from 'react-native';
 import { Responsive } from '../utils/layouts/Layout';
-import { icons, SIZES } from '../constants';
-
-import About from '../screens/drawer/About';
-import TermsAndConditions from '../screens/drawer/TermsAndConditions';
-
-import Support from '../screens/drawer/Support';
-import FAQs from '../screens/drawer/FAQs';
+import { icons } from '../constants';
 import { useNavigation } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
@@ -66,7 +60,7 @@ const DrawerContent = ({ }) => {
         <TouchableOpacity onPress={() => navigation.navigate('FAQs')} activeOpacity={0.5} style={styles.item}>
           <View style={styles.leftIcon}>{/* <Mail/> */}</View>
           <View style={styles.content}>
-          <Image source={icons.faqsIcon} style={styles.iconStyle} />
+            <Image source={icons.faqsIcon} style={styles.iconStyle} />
             <Text style={styles.text}>FAQs</Text>
           </View>
           <View style={styles.rightIcon} />
@@ -75,7 +69,7 @@ const DrawerContent = ({ }) => {
         <TouchableOpacity onPress={() => navigation.navigate('TermsAndConditions')} activeOpacity={0.5} style={styles.item}>
           <View style={styles.leftIcon}>{/* <Mail/> */}</View>
           <View style={styles.content}>
-          <Image source={icons.tndcIcon} style={styles.iconStyle} />
+            <Image source={icons.tndcIcon} style={styles.iconStyle} />
             <Text style={styles.text}>T&C</Text>
           </View>
           <View style={styles.rightIcon} />
@@ -84,7 +78,7 @@ const DrawerContent = ({ }) => {
         <TouchableOpacity onPress={() => navigation.navigate('Support')} activeOpacity={0.5} style={styles.item}>
           <View style={styles.leftIcon}>{/* <Mail/> */}</View>
           <View style={styles.content}>
-          <Image source={icons.supportIcon} style={styles.iconStyle} />
+            <Image source={icons.supportIcon} style={styles.iconStyle} />
             <Text style={styles.text}>Support</Text>
           </View>
           <View style={styles.rightIcon} />
@@ -98,6 +92,9 @@ const DrawerContent = ({ }) => {
 
 
 export default function DrawerNavigator() {
+
+console.log('HI Iam Drawer')
+
   return (
     <Drawer.Navigator
       initialRouteName="BottomTabBarNavigator"
@@ -136,10 +133,12 @@ const styles = StyleSheet.create({
     // overflow: 'scroll',
     // borderWidth: 1,
   },
-  text: { fontSize: Responsive.width(16), color: '#6F7FAF', fontFamily: Platform.select({
-    ios: 'Exo2-Bold',
-    android:'Exo2Bold'
-  }) },
+  text: {
+    fontSize: Responsive.width(16), color: '#6F7FAF', fontFamily: Platform.select({
+      ios: 'Exo2-Bold',
+      android: 'Exo2Bold'
+    })
+  },
   drawerStyles: { flex: 1, width: '60%', backgroundColor: 'transparent' },
   header: {
     // height: Responsive.height(80),

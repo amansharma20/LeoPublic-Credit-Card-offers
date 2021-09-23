@@ -6,32 +6,21 @@ import {
   ResponseConstant,
 } from '../../utils/constants/CommanConstants';
 
-export const SessionAction = { getSession, setSession };
+export const SessionAction = { getSession };
 
 function getSession() {
   return async dispatch => {
     dispatch(RequestConstant(SessionConstant.SESSION_REQUEST, {}));
     var result = await SessionService.getSession();
+    const resultJson = {
+      success: true,
+      data: result,
+    };
     dispatch(
       ResponseConstant(
         SessionConstant.SESSION_SUCCESS,
         SessionConstant.SESSION_FAILURE,
-        result,
-      ),
-    );
-  };
-}
-
-
-function setSession(data) {
-  return async dispatch => {
-    dispatch(RequestConstant(SessionConstant.SET_SESSION_REQUEST, {}));
-    var result = await SessionService.setSession(data);
-    dispatch(
-      ResponseConstant(
-        SessionConstant.SET_SESSION_SUCCESS,
-        SessionConstant.SET_SESSION_FAILURE,
-        result,
+        resultJson,
       ),
     );
   };

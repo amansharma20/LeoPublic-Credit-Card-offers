@@ -27,7 +27,7 @@ import { useNavigation } from '@react-navigation/core';
 
 export default function BasicDetailsInput(props) {
 
-  const { firstName } = props.route.params;
+  const { firstName } = "props.route.params;";
   
   const [open, setOpen] = useState(false);
   const [openEmploymentType, setOpenEmploymentType] = useState(false);

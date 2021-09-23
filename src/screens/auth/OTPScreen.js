@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   Text,
   Platform,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AuthActions } from '../../persistence/actions/AuthActions';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
@@ -30,6 +30,12 @@ export default function OTPScreen(props) {
   const [otp, setOtp] = useState("0000");
 
   const dispatch = useDispatch();
+  const session = useSelector(state => state.SessionReducer.data);
+  
+  useEffect(()=>{
+    
+    console.log(session)
+  },[])
 
   const onSubmit = () => {
     CommonLoading.show();
@@ -40,16 +46,17 @@ export default function OTPScreen(props) {
       };
       dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
         (response) => {
-          console.log(response)
           CommonLoading.hide();
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
-            console.log("INSIDE")
-            const userData = {
-              user: response.data,
+            const data ={
+             data : {
+                token: response.data,
+                signUp: false
+              }
             }
-            saveTokenAsyncHome(userData)
+            saveTokenAsyncDetails(data)
           }
         },
       );
@@ -63,22 +70,20 @@ export default function OTPScreen(props) {
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
-          const userData = {
-            user: response.data,
-          }
-          saveTokenAsyncDetails(userData)
+          const data ={
+            data : {
+               token: response.data,
+               signUp: true
+             }
+           }
+          saveTokenAsyncDetails(data)
         }
       });
     }
   };
 
-  async function saveTokenAsyncHome(user) {
-    dispatch(SessionAction.setSession(user));
-    dispatch(SessionAction.getSession());
-  }
-
   async function saveTokenAsyncDetails(user) {
-    dispatch(SessionAction.setSession(user));
+    SessionService.setSession(user)
     dispatch(SessionAction.getSession());
   }
 
@@ -123,7 +128,7 @@ export default function OTPScreen(props) {
             const signInData = {
               MobileNumber: phone,
             };
-            dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(response => {
+            dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(() => {
               CommonLoading.hide();
             })
           }}>

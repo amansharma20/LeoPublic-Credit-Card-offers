@@ -8,7 +8,6 @@ import { SIZES } from '../../constants/theme/';
 import TempOnBoardingAnimation from '../../components/animations/TempOnBoardingAnimation';
 import { images } from '../../constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { SessionService } from '../../persistence/services/SessionService';
 import SplashScreen from 'react-native-splash-screen';
 
 export default function TempOnBoarding() {
@@ -21,16 +20,16 @@ export default function TempOnBoarding() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-    useEffect(() => {
-        const result = SessionService.getSession().then(response => {
-            setIsLoggedIn(response.loggedIn);
-        })
-    }, [isLoggedIn]);
+    // useEffect(() => {
+    //     const result = SessionService.getSession().then(response => {
+    //         setIsLoggedIn(response.loggedIn);
+    //     })
+    // }, [isLoggedIn]);
 
 
-    setTimeout(function () {
-        { isLoggedIn === true ? navigation.navigate('BottomTabBarNavigator') : navigation.navigate('StartScreen') }
-    }, 5000);
+    // setTimeout(function () {
+    //     { isLoggedIn === true ? navigation.navigate('BottomTabBarNavigator') : navigation.navigate('StartScreen') }
+    // }, 5000);
 
     return (
         <View style={styles.container}>

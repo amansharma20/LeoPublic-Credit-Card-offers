@@ -13,16 +13,13 @@ import ChoosePreferences from '../screens/profile/choosePreferences/ChoosePrefer
 import MonthlySpend from '../screens/profile/monthlySpend/MonthlySpend';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { applicationProperties } from '../../application.properties';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CardHolder from '../screens/basicDetails/CardHolder';
 import Educate from '../screens/basicDetails/Educate';
 import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
 import TempOnBoarding from '../screens/tempOnBoarding/TempOnBoarding';
 import CardOverviewScreen from '../screens/offersScreen/CardOverviewScreen';
 
-import Login from '../screens/auth/Login';
-import OTPScreen from '../screens/auth/OTPScreen';
-import Signup from '../screens/auth/Signup';
 import StartScreen from '../screens/auth/StartScreen';
 import ApplyForCreditCard from '../screens/basicDetails/ApplyForCreditCard';
 import CreditProfile from '../screens/basicDetails/CreditProfile';
@@ -32,10 +29,8 @@ const Stack = createStackNavigator();
 
 export default function StackNavigator() {
 
-    const dispatch = useDispatch()
     const session = useSelector(state => state.SessionReducer.data);
-
-    const Bearer = 'Bearer ' + session.user.user;
+    const Bearer = 'Bearer ' + session && session.user && session.user.data && session.user.data.token;
     const client = new ApolloClient({
         uri: applicationProperties.baseUrl + '/graphql',
         cache: new InMemoryCache(),
@@ -43,11 +38,6 @@ export default function StackNavigator() {
             Authorization: Bearer
         },
     });
-
-
-
-
-
     return (
         <ApolloProvider client={client}>
             <Stack.Navigator
@@ -58,12 +48,8 @@ export default function StackNavigator() {
                 }}
             >
                 {
-                    session.loggedIn == true ?
+                    session && session.user && session.user.data && session.user.data.signUp == false ?
                         <>
-                            <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
-                            <Stack.Screen name="StartScreen" component={StartScreen} />
-                            <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
-                            <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
                             <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
                             <Stack.Screen name="CardHolder" component={CardHolder} />
                             <Stack.Screen name="Educate" component={Educate} />
@@ -75,6 +61,10 @@ export default function StackNavigator() {
                             <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails} />
                             <Stack.Screen name="CreditProfile" component={CreditProfile} />
                             <Stack.Screen name="EditProfile" component={EditProfile} />
+                            <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
+                            <Stack.Screen name="StartScreen" component={StartScreen} />
+                            <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
+                            <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
                         </>
                         :
                         <>
