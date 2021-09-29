@@ -34,9 +34,7 @@ export default function ProfileScreen() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const session = useSelector(state => state.SessionReducer.data);
-  const Bearer = 'Bearer ' + session.user.user;
-
-
+  
   const [profilePic, setProfilePic] = useState("https://picsum.photos/200/300/?blur=2");
 
   const { data } = useQuery(GQLQuery.GET_USER_PROFILE);
@@ -104,10 +102,14 @@ export default function ProfileScreen() {
   const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath
 
   async function logOutCalled() {
-    const dummyData = {};
-    await SessionService.setSession(dummyData);
+    const data ={
+      data : {
+         token: '',
+         signUp: false
+       }
+     }
+    await SessionService.setSession(data);
     dispatch(SessionAction.getSession());
-    navigation.replace("Login")
   }
 
 

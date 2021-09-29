@@ -8,10 +8,14 @@ import DrawerNavigator from './DrawerNavigator'
 export default function AppNav() {
 
   const session = useSelector(state => state.SessionReducer.data);
+
+  console.log(session)
   
   return (
     <NavigationContainer>
-      {session.user != {} ? <DrawerNavigator /> : <AuthNavigator />}
+      {console.log('he')}
+      {console.log(session.user && session.user)}
+      {/* {session.user.user.token === undefined ? <AuthNavigator/> : <DrawerNavigator /> } */}
     </NavigationContainer>
   );
 }
