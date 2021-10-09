@@ -10,8 +10,6 @@ import CommonLoading from './src/components/CommonLoading';
 
 export default function App() {
 
-
-
   return (
     <Provider store={RootStore}>
       <SafeAreaProvider>

@@ -80,7 +80,6 @@ export default function ProfileScreen() {
 
   async function uploadImage(data) {
 
-
     const client = axios.create({
       baseURL: applicationProperties.baseUrl,
     });
@@ -92,11 +91,10 @@ export default function ProfileScreen() {
       headers:header
     }).then((response) => {
       console.log(response)
-      console.log('response.data')
+     
     })
       .catch((error) => {
-        console.log(error)
-        console.log('error')
+        
       })
   }
   const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath

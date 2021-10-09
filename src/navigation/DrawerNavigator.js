@@ -83,8 +83,6 @@ const DrawerContent = ({ }) => {
           </View>
           <View style={styles.rightIcon} />
         </TouchableOpacity>
-        {/* <CommonLine style={{marginTop: Responsive.height(2)}}/>
-              <CommonLine style={{marginTop: Responsive.height(2)}}/> */}
       </ScrollView>
     </View>
   );
@@ -92,8 +90,6 @@ const DrawerContent = ({ }) => {
 
 
 export default function DrawerNavigator() {
-
-console.log('HI Iam Drawer')
 
   return (
     <Drawer.Navigator
@@ -130,19 +126,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 5,
-    // overflow: 'scroll',
-    // borderWidth: 1,
   },
   text: {
-    fontSize: Responsive.width(16), color: '#6F7FAF', fontFamily: Platform.select({
+    fontSize:
+      Responsive.width(16),
+    color: '#6F7FAF',
+    fontFamily: Platform.select({
       ios: 'Exo2-Bold',
       android: 'Exo2Bold'
     })
   },
-  drawerStyles: { flex: 1, width: '60%', backgroundColor: 'transparent' },
+  drawerStyles: {
+     flex: 1,
+     width: '60%', 
+     backgroundColor: 'transparent' },
   header: {
-    // height: Responsive.height(80),
-    // width: '100%',
   },
   userInformation: {
     marginTop: Responsive.height(6),
@@ -155,8 +153,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    // marginTop: Responsive.height(8),
-    // paddingVertical: SIZES.padding3
   },
   leftIcon: {
     width: Responsive.width(42),

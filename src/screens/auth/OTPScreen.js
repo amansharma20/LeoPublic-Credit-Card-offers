@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -19,8 +19,13 @@ import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
 import { SessionService } from '../../persistence/services/SessionService';
 import { SessionAction } from '../../persistence/actions/SessionAction';
+import { AuthContext } from '../../navigation/StackNavigator';
+
 
 export default function OTPScreen(props) {
+
+  const { signIn } = useContext(AuthContext);
+
 
   const navigation = useNavigation();
   const { phone } = props.route.params;
@@ -31,11 +36,10 @@ export default function OTPScreen(props) {
 
   const dispatch = useDispatch();
   const session = useSelector(state => state.SessionReducer.data);
-  
-  useEffect(()=>{
-    
+
+  useEffect(() => {
     console.log(session)
-  },[])
+  }, [])
 
   const onSubmit = () => {
     CommonLoading.show();
@@ -50,8 +54,8 @@ export default function OTPScreen(props) {
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
-            const data ={
-             data : {
+            const data = {
+              data: {
                 token: response.data,
                 signUp: false
               }
@@ -70,12 +74,12 @@ export default function OTPScreen(props) {
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
-          const data ={
-            data : {
-               token: response.data,
-               signUp: true
-             }
-           }
+          const data = {
+            data: {
+              token: response.data,
+              signUp: true
+            }
+          }
           saveTokenAsyncDetails(data)
         }
       });
@@ -83,6 +87,9 @@ export default function OTPScreen(props) {
   };
 
   async function saveTokenAsyncDetails(user) {
+    console.log('user')
+    let token = 'Bearer '+user.data.token;
+    signIn(token)
     SessionService.setSession(user)
     dispatch(SessionAction.getSession());
   }
