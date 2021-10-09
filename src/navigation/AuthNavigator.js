@@ -11,8 +11,7 @@ import StartScreen from '../screens/auth/StartScreen';
 
 const Stack = createStackNavigator();
 
-function AuthNavigator() {
-console.log('HI Iam Auth')
+export default function AuthNavigator() {
 
   return (
     <Stack.Navigator
@@ -28,4 +27,3 @@ console.log('HI Iam Auth')
   );
 }
 
-export default AuthNavigator;
