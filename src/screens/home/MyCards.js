@@ -67,7 +67,7 @@ export default function MyCards() {
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index} />
   );
-  
+
 
   return (
     <View style={styles.container}>

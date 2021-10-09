@@ -18,22 +18,16 @@ export default class CongratulationsAnimation extends React.Component {
       toValue: 1,
       duration: 2000,
       easing: Easing.linear,
+      useNativeDriver:true
     }).start();
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {/* <FastImage source={images.congrats} style={{width: 150, height: 150, marginTop: (ScreenHeight / 4.5)}} /> */}
         <LottieView
-          // ref={animation => {
-          //   this.animation = animation;
-          // }}
-          // source={require('../../assets/lotties/partyPopper.json')}
           source={require('../../assets/lotties/congratulations.json')}
           style={{width: '100%', height: 160, marginBottom: 60}}
-          // autoPlay
-          // loop
           progress={this.state.progress}
 
         />
