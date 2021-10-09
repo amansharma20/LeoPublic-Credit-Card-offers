@@ -38,7 +38,7 @@ export default function StackNavigator() {
         return () => {
             //CLEAR NOW
         }
-    })
+    },[showOneTimeScreen])
 
     const checkUser = async () => {
         let user = await MyAsyncStorage.getData('newUserStatus')

@@ -34,7 +34,6 @@ export default function NewToCreditCards() {
     });
   }
 
-
   return (
     <View style={styles.container}>
       <CommonHeaderWithBackButton children="New to Credit Cards?" />
@@ -86,7 +85,7 @@ export default function NewToCreditCards() {
             </TouchableOpacity>
           </View>
           <View style={styles.rowContainer}>
-            <TouchableOpacity onPress={()=> featureInDevelopment()} >
+            <TouchableOpacity onPress={()=> navigation.navigate('BottomTabBarNavigator')} >
               <LinearGradient
                 colors={['#fcfcff', '#f2ecff']}
                 style={styles.gradientContainer}>

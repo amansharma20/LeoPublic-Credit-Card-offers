@@ -22,12 +22,14 @@ import { useMutation } from '@apollo/client';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
 import CommonLoading from '../../components/CommonLoading';
 import { useNavigation } from '@react-navigation/core';
+import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
 
 
 
 export default function BasicDetailsInput(props) {
 
   const { firstName } = "props.route.params;";
+
 
   const [open, setOpen] = useState(false);
   const [openEmploymentType, setOpenEmploymentType] = useState(false);
@@ -50,12 +52,13 @@ export default function BasicDetailsInput(props) {
     { label: 'Female', value: 'female' },
   ]);
 
-  const [pin, setPin] = useState(0);
+  const [pinCode, setPinCode] = useState();
 
-
-  // const [date, setDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
+
+  const navigation = useNavigation();
+
 
   const schema = yup.object().shape({
     pincode: yup.number().required('Pincode' + ' ' + 'is required'),
@@ -78,48 +81,36 @@ export default function BasicDetailsInput(props) {
     resolver: yupResolver(schema),
   });
 
+  const [submitBasicDetails, { data, error }] = useMutation(GQLMutation.SAVE_USER_BASIC_DETAILS);
 
   const onDataSubmit = () => {
-    console.log('INSIDE');
-    console.log('pin');
-    console.log(pin);
-    console.log('pin');
-    console.log(employmentValue);
-    console.log(genderValue);
-    console.log(salaryValue);
-    console.log(pinCode);
     CommonLoading.show();
-
     submitBasicDetails({
       variables: {
         AnnualSalary: salaryValue,
         EmploymentType: employmentValue,
         Gender: genderValue,
-        PinCode: pin,
+        PinCode: pinCode,
+        DateOfBirth : date.toISOString()
       },
     });
-    if (data && data.UserBasicDetailsMutation && data.UserBasicDetailsMutation.UserBasicDetailsMutation == 'Updated') {
-      CommonLoading.hide();
-    }
-    if (error) {
-      CommonLoading.hide();
-
-    }
-    console.log(data);
-    console.log(error);
   };
 
-  const [submitBasicDetails, { data, error }] = useMutation(GQLMutation.SAVE_USER_BASIC_DETAILS);
+  if (data && data.UserBasicDetailsMutation && data.UserBasicDetailsMutation.UpdateUserBasicDetails === 'Updated') {
+    navigation.navigate('CardHolder'); 
+    CommonLoading.hide();
+  }
+  if (error != undefined) {
+    CommonLoading.hide();
+  }
+
   const formatedDate = (date) => {
     var formattedDate = format(date, 'MMMM do, yyyy');
     return formattedDate;
   };
 
-  const [pinCode, setPinCode] = useState('Pin Code');
 
-  console.log(pinCode);
 
-  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -158,7 +149,6 @@ export default function BasicDetailsInput(props) {
               />
               <View style={styles.dateSubmitContainer}>
                 <TouchableOpacity
-                  // onPress={() => setDate(new Date())}
                   onPress={() => setShowModal(false)}>
                   <Text style={styles.submitDateButtonText}>Submit</Text>
                 </TouchableOpacity>
@@ -216,16 +206,13 @@ export default function BasicDetailsInput(props) {
                 <TextInput
                   label={'Pincode'}
                   onBlur={onBlur}
-                  // onChangeText={(value) => setPin(value)}
+                  onChangeText={(value) => setPinCode(value)}
                   error={errors.pincode}
                   style={styles.pincodeInput}
                   placeholderTextColor={'#B4B4B4'}
-                  placeholder={pinCode}
+                  placeholder={'0000'}
                   keyboardType={'number-pad'}
                   maxLength={6}
-                // onSubmitEditing={value => setPin(value)}
-                // onSubmitEditing={(text) => setPinCode(text)}
-
                 />
               )}
               name="pincode"
@@ -376,10 +363,6 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     width: 360,
     height: 500,
-    fontFamily: Platform.select({
-      ios: 'Exo2-Medium',
-      android: 'Exo2Medium',
-    }),
   },
   dobContainer: {
     backgroundColor: '#f4f5f7',

@@ -3,6 +3,7 @@ import {
     CardStyleInterpolators, createStackNavigator,
 } from '@react-navigation/stack';
 import React, { } from 'react';
+import AddCardScreen from '../screens/addCard/AddCardScreen';
 import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import Educate from '../screens/basicDetails/Educate';
 import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
@@ -22,6 +23,7 @@ export default function BasicDetailsNavigator() {
             <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
             <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
             <Stack.Screen name="Educate" component={Educate} />
+            <Stack.Screen name="AddCardScreen" component={AddCardScreen} />
         </Stack.Navigator>
     );
 }

@@ -47,11 +47,11 @@ export default function OTPScreen(props) {
       };
       dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
         (response) => {
+          setUserStatus(false);
           CommonLoading.hide();
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
-            setUserStatus(false);
             let token = 'Bearer ' + response.data;
             signIn(token)
           }
@@ -62,12 +62,13 @@ export default function OTPScreen(props) {
         MobileNumber: phone,
         Code: otp,
       };
+      setUserStatus(true);
       dispatch(
         AuthActions.signup('Account/RegisterCustomerComplete', otpData),
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
-          setUserStatus(true);
+       
           let token = 'Bearer ' + response.data;
           singUp(token)
         }
