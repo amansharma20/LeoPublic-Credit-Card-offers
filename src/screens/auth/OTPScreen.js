@@ -87,7 +87,6 @@ export default function OTPScreen(props) {
   };
 
   async function saveTokenAsyncDetails(user) {
-    console.log('user')
     let token = 'Bearer '+user.data.token;
     signIn(token)
     SessionService.setSession(user)

@@ -3,7 +3,7 @@ import {
     CardStyleInterpolators,
     createStackNavigator,
 } from '@react-navigation/stack';
-import React, { useEffect, useMemo, useReducer } from 'react';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
 import AddCardScreen from '../screens/addCard/AddCardScreen';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
@@ -65,13 +65,13 @@ export default function StackNavigator() {
         }
     );
 
-    const session = useSelector(state => state.SessionReducer.data);
-    const Bearer = 'Bearer ' + session && session.user && session.user.data && session.user.data.token;
+    const [authToken, setNewAuthToken] = useState();
+
     const client = new ApolloClient({
         uri: applicationProperties.baseUrl + '/graphql',
         cache: new InMemoryCache(),
         headers: {
-            Authorization: Bearer
+            Authorization: authToken
         },
     });
 
@@ -83,24 +83,25 @@ export default function StackNavigator() {
 
             try {
                 userToken = await Keychain.getGenericPassword();
+                setNewAuthToken(userToken.password)
             } catch (e) {
                 // Restoring token failed
             }
-
             userToken === false ? dispatch({ type: 'RESTORE_TOKEN', token: null }) : dispatch({ type: 'RESTORE_TOKEN', token: userToken })
         };
-
         bootstrapAsync();
-    }, []);
+    }, [authToken]);
 
     const authContext = useMemo(
         () => ({
             signIn: async data => {
                 await Keychain.setGenericPassword("email", data);
+                setNewAuthToken(data)
                 dispatch({ type: 'SIGN_IN', token: data });
             },
             signOut: async () => {
                 await Keychain.resetGenericPassword();
+                setNewAuthToken('null')
                 dispatch({ type: 'SIGN_OUT' })
             }
         }),
@@ -121,11 +122,12 @@ export default function StackNavigator() {
                         headerShown: false,
                         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                         keyboardHidesTabBar: true,
+                      
                     }}
                 >
                     {state.userToken == null ? (
                         <>
-                            <Stack.Screen name="StartScreen" component={StartScreen} />
+                            <Stack.Screen name="StartScreen" component={StartScreen} options={{gestureEnabled: false}}/>
                             <Stack.Screen name="Login" component={Login} />
                             <Stack.Screen name="OTPScreen" component={OTPScreen} />
                             <Stack.Screen name="Signup" component={Signup} />

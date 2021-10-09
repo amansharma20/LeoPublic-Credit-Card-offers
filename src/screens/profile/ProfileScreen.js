@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -26,10 +26,14 @@ import MonthlySpendCircularView from './monthlySpend/MonthlySpendCircularView';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { applicationProperties } from '../../../application.properties';
 import axios from 'axios';
+import { AuthContext } from '../../navigation/StackNavigator';
+
 
 
 
 export default function ProfileScreen() {
+
+  const { signOut } = useContext(AuthContext);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -183,7 +187,8 @@ export default function ProfileScreen() {
 
         <View style={{ backgroundColor: '#ffffff' }}>
           <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
-            await logOutCalled();
+            //await logOutCalled();
+            signOut();
           }}>
             <View style={{ flexDirection: 'row', paddingBottom: 200 }}>
               <Image source={icons.logOutButtonIcon} style={{ width: 22, height: 22 }} />
