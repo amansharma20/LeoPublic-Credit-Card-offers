@@ -26,7 +26,8 @@ import MonthlySpendCircularView from './monthlySpend/MonthlySpendCircularView';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { applicationProperties } from '../../../application.properties';
 import axios from 'axios';
-import { AuthContext } from '../../navigation/StackNavigator';
+import { AuthContext } from '../../navigation/ApplicationNavigator';
+
 
 
 

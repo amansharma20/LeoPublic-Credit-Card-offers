@@ -18,6 +18,7 @@ export default class TempOnBoardingAnimation extends React.Component {
       toValue: 1,
       duration: 2500,
       easing: Easing.linear,
+      useNativeDriver: true
     }).start();
   }
 
@@ -25,9 +26,6 @@ export default class TempOnBoardingAnimation extends React.Component {
     return (
       <View style={styles.container}>
         <LottieView
-          // source={require('../../assets/lotties/tempOnBoarding.json')}
-          // source={require('../../assets/lotties/bankCardAnimation.json')}
-          // source={require('../../assets/lotties/tempOnBoardingCustom.json')}
           source={require('../../assets/lotties/tempOnBoardingCustom2.json')}
           style={{width: 500, height: 450}}
           autoPlay

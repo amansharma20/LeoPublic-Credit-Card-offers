@@ -25,6 +25,8 @@ import com.henninghall.date_picker.DatePickerPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-image-picker
 import com.imagepicker.ImagePickerPackage;
+// react-native-keychain
+import com.oblador.keychain.KeychainPackage;
 // react-native-linear-gradient
 import com.BV.LinearGradient.LinearGradientPackage;
 // react-native-pager-view
@@ -91,6 +93,7 @@ public class PackageList {
       new DatePickerPackage(),
       new RNGestureHandlerPackage(),
       new ImagePickerPackage(),
+      new KeychainPackage(),
       new LinearGradientPackage(),
       new PagerViewPackage(),
       new ReanimatedPackage(),

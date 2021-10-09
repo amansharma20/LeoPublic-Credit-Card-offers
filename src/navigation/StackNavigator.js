@@ -15,6 +15,10 @@ import CardOverviewScreen from '../screens/offersScreen/CardOverviewScreen';
 import ApplyForCreditCard from '../screens/basicDetails/ApplyForCreditCard';
 import CreditProfile from '../screens/basicDetails/CreditProfile';
 import EditProfile from '../screens/profile/EditProfile';
+import About from '../screens/drawer/About';
+import FAQs from '../screens/drawer/FAQs';
+import Support from '../screens/drawer/Support';
+import TermsAndConditions from '../screens/drawer/TermsAndConditions';
 const Stack = createStackNavigator();
 
 
@@ -41,6 +45,10 @@ export default function StackNavigator() {
             <Stack.Screen name="EditProfile" component={EditProfile} />
             <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
             <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
+            <Stack.Screen name="FAQs" component={FAQs} />
+            <Stack.Screen name="About" component={About} />
+            <Stack.Screen name="Support" component={Support} />
+            <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
         </Stack.Navigator>
 
     );

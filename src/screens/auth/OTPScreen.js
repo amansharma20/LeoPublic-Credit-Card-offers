@@ -19,7 +19,7 @@ import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
 import { SessionService } from '../../persistence/services/SessionService';
 import { SessionAction } from '../../persistence/actions/SessionAction';
-import { AuthContext } from '../../navigation/StackNavigator';
+import { AuthContext } from '../../navigation/ApplicationNavigator';
 
 
 export default function OTPScreen(props) {

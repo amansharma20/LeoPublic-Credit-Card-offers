@@ -16,12 +16,12 @@
         "source": "/Users/shanu/Desktop/Mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/shanu/Desktop/Mobile/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/shanu/Desktop/Mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/shanu/Desktop/Mobile/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "/Users/shanu/Desktop/Mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/shanu/Desktop/Mobile/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/shanu/Desktop/Mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/shanu/Desktop/Mobile/android/app/build/intermediates/res/merged/debug/drawable_splash.png.flat",
