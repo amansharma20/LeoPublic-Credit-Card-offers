@@ -2,7 +2,7 @@
 import {
     CardStyleInterpolators, createStackNavigator,
 } from '@react-navigation/stack';
-import React, { } from 'react';
+import React, { useEffect, useState } from 'react';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
 import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDetails';
@@ -19,10 +19,50 @@ import About from '../screens/drawer/About';
 import FAQs from '../screens/drawer/FAQs';
 import Support from '../screens/drawer/Support';
 import TermsAndConditions from '../screens/drawer/TermsAndConditions';
+import { View } from 'react-native-animatable';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import BasicDetailsNavigator from './BasicDetailsNavigator';
+import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
 const Stack = createStackNavigator();
 
-
 export default function StackNavigator() {
+
+    const [showOneTimeScreen, setShowOneTimeScreen] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+
+
+        checkUser();
+
+        return () => {
+            //CLEAR NOW
+        }
+    })
+
+    const checkUser = async () => {
+        let user = await MyAsyncStorage.getData('newUserStatus')
+        setShowOneTimeScreen(user.newUser)
+        setLoading(false)
+    }
+
+    if (loading)
+        return (
+            <View style={{ marginBottom: 12, alignItems: 'center' }}>
+                <SkeletonPlaceholder>
+                    <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
+                    <View horizontal style={{ flexDirection: 'row', marginTop: 60, width: 250 }}>
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                    </View>
+                    <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 90 }} />
+                    <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+                    <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+                </SkeletonPlaceholder>
+            </View>
+        );
 
     return (
         <Stack.Navigator
@@ -33,6 +73,9 @@ export default function StackNavigator() {
 
             }}
         >
+            {showOneTimeScreen && (
+                <Stack.Screen name="BasicDetailsNavigator" component={BasicDetailsNavigator} />
+            )}
             <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
             <Stack.Screen name="CardHolder" component={CardHolder} />
             <Stack.Screen name="Educate" component={Educate} />
@@ -50,6 +93,5 @@ export default function StackNavigator() {
             <Stack.Screen name="Support" component={Support} />
             <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
         </Stack.Navigator>
-
     );
 }

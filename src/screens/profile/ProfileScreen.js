@@ -32,9 +32,12 @@ import { AuthContext } from '../../navigation/ApplicationNavigator';
 
 
 
+
 export default function ProfileScreen() {
 
   const { signOut } = useContext(AuthContext);
+
+  console.log(AuthContext)
 
   const dispatch = useDispatch();
   const navigation = useNavigation();

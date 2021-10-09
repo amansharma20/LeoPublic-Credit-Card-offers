@@ -20,11 +20,12 @@ import CommonLoading from '../../components/CommonLoading';
 import { SessionService } from '../../persistence/services/SessionService';
 import { SessionAction } from '../../persistence/actions/SessionAction';
 import { AuthContext } from '../../navigation/ApplicationNavigator';
+import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
 
 
 export default function OTPScreen(props) {
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, singUp } = useContext(AuthContext);
 
 
   const navigation = useNavigation();
@@ -36,10 +37,6 @@ export default function OTPScreen(props) {
 
   const dispatch = useDispatch();
   const session = useSelector(state => state.SessionReducer.data);
-
-  useEffect(() => {
-    console.log(session)
-  }, [])
 
   const onSubmit = () => {
     CommonLoading.show();
@@ -54,13 +51,9 @@ export default function OTPScreen(props) {
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
-            const data = {
-              data: {
-                token: response.data,
-                signUp: false
-              }
-            }
-            saveTokenAsyncDetails(data)
+            setUserStatus(false);
+            let token = 'Bearer ' + response.data;
+            signIn(token)
           }
         },
       );
@@ -74,23 +67,18 @@ export default function OTPScreen(props) {
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
-          const data = {
-            data: {
-              token: response.data,
-              signUp: true
-            }
-          }
-          saveTokenAsyncDetails(data)
+          setUserStatus(true);
+          let token = 'Bearer ' + response.data;
+          singUp(token)
         }
       });
     }
   };
 
-  async function saveTokenAsyncDetails(user) {
-    let token = 'Bearer ' + user.data.token;
-    signIn(token)
-    SessionService.setSession(user)
-    dispatch(SessionAction.getSession());
+  const setUserStatus = async (flag) => {
+    await MyAsyncStorage.storeData('newUserStatus', {
+      newUser: flag
+    })
   }
 
   return (

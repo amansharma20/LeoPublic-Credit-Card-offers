@@ -89,8 +89,10 @@ const DrawerContent = ({ }) => {
 };
 
 
-export default function DrawerNavigator() {
-
+export default function DrawerNavigator(props) {
+console.log('props')
+console.log(props)
+console.log('props')
   return (
     <Drawer.Navigator
       initialRouteName="BottomTabBarNavigator"

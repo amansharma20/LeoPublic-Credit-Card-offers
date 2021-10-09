@@ -9,6 +9,7 @@ import TempOnBoarding from '../screens/tempOnBoarding/TempOnBoarding';
 import * as Keychain from 'react-native-keychain';
 import DrawerNavigator from './DrawerNavigator';
 import AuthNavigator from './AuthNavigator';
+import BasicDetailsNavigator from './BasicDetailsNavigator';
 
 
 const Stack = createStackNavigator();
@@ -37,6 +38,13 @@ export default function ApplicationNavigator() {
             isSignout: true,
             userToken: null,
           };
+        case 'SIGN_UP':
+          console.log('SIGN_UP')
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+          };
       }
     },
     {
@@ -58,18 +66,18 @@ export default function ApplicationNavigator() {
 
 
   useEffect(() => {
-
     const bootstrapAsync = async () => {
       let userToken;
 
       try {
         userToken = await Keychain.getGenericPassword();
-        setNewAuthToken(userToken.password)
+        setNewAuthToken(userToken.password);
       } catch (e) {
         // Restoring token failed
       }
       userToken === false ? dispatch({ type: 'RESTORE_TOKEN', token: null }) : dispatch({ type: 'RESTORE_TOKEN', token: userToken })
     };
+
     bootstrapAsync();
   }, [authToken]);
 
@@ -84,7 +92,12 @@ export default function ApplicationNavigator() {
         await Keychain.resetGenericPassword();
         setNewAuthToken('null')
         dispatch({ type: 'SIGN_OUT' })
-      }
+      },
+      singUp: async data => {
+        await Keychain.setGenericPassword("email", data);
+        setNewAuthToken(data)
+        dispatch({ type: 'SIGN_UP', token: data });
+      },
     }),
     []
   );

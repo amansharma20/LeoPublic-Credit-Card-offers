@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -28,14 +28,14 @@ import { useNavigation } from '@react-navigation/core';
 export default function BasicDetailsInput(props) {
 
   const { firstName } = "props.route.params;";
-  
+
   const [open, setOpen] = useState(false);
   const [openEmploymentType, setOpenEmploymentType] = useState(false);
   const [openSalaryRange, setOpenSalaryRange] = useState(false);
   const [salaryValue, setSalaryValue] = useState(null);
   const [employmentValue, setEmploymentValue] = useState(null);
   const [genderValue, setGenderValue] = useState(null);
-  
+
   const [employmentType, setEmploymentType] = useState([
     { label: 'Employed', value: 'employed' },
     { label: 'Unemployed', value: 'unemployed' },
@@ -61,6 +61,15 @@ export default function BasicDetailsInput(props) {
     pincode: yup.number().required('Pincode' + ' ' + 'is required'),
   });
 
+  useEffect(() => {
+    setUserStatus();
+  }, [])
+
+  const setUserStatus = async () => {
+    await MyAsyncStorage.storeData('newUserStatus', {
+      newUser: false
+    })
+  }
 
   const {
     control,
@@ -101,12 +110,8 @@ export default function BasicDetailsInput(props) {
   };
 
   const [submitBasicDetails, { data, error }] = useMutation(GQLMutation.SAVE_USER_BASIC_DETAILS);
-
-
   const formatedDate = (date) => {
     var formattedDate = format(date, 'MMMM do, yyyy');
-    // DATE
-    // console.log(formattedDate);
     return formattedDate;
   };
 
