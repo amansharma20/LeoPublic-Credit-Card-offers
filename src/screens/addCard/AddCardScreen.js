@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
@@ -55,38 +56,34 @@ export default function AddCardScreen() {
     cardNumber: yup.number().required('Card Number' + ' ' + 'is required'),
   });
 
-  const [addCard, { data: userCardData, error: cardAddError}] = useMutation(GQLMutation.ADD_USER_CREDIT_CARD);
+  const [addCard, { data: userCardData, error: cardAddError }] = useMutation(GQLMutation.ADD_USER_CREDIT_CARD);
 
-  const {control, handleSubmit, errors} = useForm({
+  const { control, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = data => {
     CommonLoading.show();
-   addCard({ variables: { BankId: parseFloat(selectedCardId), BankCardId: parseFloat(selectedCardId), CardNumber:  parseFloat(data.cardNumber)} });
-   setShowModal(true);
-   CommonLoading.hide();
-   if (userCardData && userCardData.AddCustomerUserBankCardMutation && userCardData.AddCustomerUserBankCardMutation.AddCustomerUserBankCard == 'Created'){
+    addCard({ variables: { BankId: parseFloat(selectedCardId), BankCardId: parseFloat(selectedCardId), CardNumber: parseFloat(data.cardNumber) } });
     setShowModal(true);
     CommonLoading.hide();
-   }
-   if (cardAddError){
-    CommonLoading.hide();
-    Toast.show({
-      type: 'error',
-      position: 'top',
-      text1: 'Failed',
-      text2: 'Please Try Again.',
-      visibilityTime: 4000,
-      autoHide: true,
-      topOffset: 30,
-      bottomOffset: 40,
-    });
-   }
+    if (userCardData && userCardData.AddCustomerUserBankCardMutation && userCardData.AddCustomerUserBankCardMutation.AddCustomerUserBankCard == 'Created') {
+      setShowModal(true);
+      CommonLoading.hide();
+    }
+    if (cardAddError) {
+      CommonLoading.hide();
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Failed',
+        text2: 'Please Try Again.',
+        visibilityTime: 4000,
+        autoHide: true,
+        topOffset: 30,
+        bottomOffset: 40,
+      });
+    }
   };
-
-
-
-
 
   var bankArray = [];
   var bankCardsArray = [];
@@ -161,7 +158,7 @@ export default function AddCardScreen() {
             </View>
           </ImageBackground>
         </View>
-        <View style={{marginTop:60}}>
+        <View style={{ marginTop: 60 }}>
           <Controller
             control={control}
             render={({ field: { onChange, onBlur, value } }) => (

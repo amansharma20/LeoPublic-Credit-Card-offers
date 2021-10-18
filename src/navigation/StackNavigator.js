@@ -26,6 +26,7 @@ import Signup from '../screens/auth/Signup';
 import StartScreen from '../screens/auth/StartScreen';
 import ApplyForCreditCard from '../screens/basicDetails/ApplyForCreditCard';
 import CreditProfile from '../screens/basicDetails/CreditProfile';
+import OnBoardingScreen from '../screens/onBoarding/OnBoardingScreen';
 
 const Stack = createStackNavigator();
 
@@ -72,6 +73,7 @@ export default function StackNavigator() {
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="OTPScreen" component={OTPScreen} />
                 <Stack.Screen name="CreditProfile" component={CreditProfile} />
+                <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} />
 
 
             </Stack.Navigator>

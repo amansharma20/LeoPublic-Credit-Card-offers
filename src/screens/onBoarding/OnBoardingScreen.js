@@ -1,15 +1,19 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { View, Button, Text, StyleSheet, ImageBackground } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Button, Text, StyleSheet, ImageBackground, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import OnBoardingCarousel from './OnBoardingCarousel';
 import onBoardingData from '../../assets/dummyData/onBoardingData';
 import { images } from '../../constants';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
+import SplashScreen from 'react-native-splash-screen';
 
 
 export default function OnBoardingScreen() {
+    useEffect(() => {
+        Platform.OS === 'ios' ? 200 : SplashScreen.hide();
+      });
     const navigation = useNavigation();
     return (
         <View style={{flex: 1, backgroundColor: '#ffffff'}}>

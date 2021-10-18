@@ -36,8 +36,7 @@ export default function ProfileScreen() {
     const dummyData = {};
     await SessionService.setSession(dummyData);
     dispatch(SessionAction.getSession());
-    navigation.replace("Login")
-
+    navigation.replace('Login');
   }
 
   const { loading, error, data } = useQuery(GQLQuery.GET_USER_PROFILE);
@@ -72,11 +71,11 @@ export default function ProfileScreen() {
         <View style={styles.topContainer}>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Employment Type</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? "Nil":  UserProfileData && UserProfileData.EmploymentType}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? 'Nil' :  UserProfileData && UserProfileData.EmploymentType}</Text>
           </View>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Annual Salary Range</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? "Nil": UserProfileData &&  UserProfileData.AnnualSalary}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? 'Nil' : UserProfileData &&  UserProfileData.AnnualSalary}</Text>
           </View>
         </View>
         <View style={styles.addContainer}>
@@ -105,8 +104,8 @@ export default function ProfileScreen() {
         </View>
 
         {/* <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}> */}
-         
-         
+
+
           {/* <View>
             <Text style={{
               color: '#7a869a', fontFamily: Platform.select({

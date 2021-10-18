@@ -4,7 +4,7 @@ import {AuthConstants} from '../constants/AuthConstants';
 import {RequestConstant, ResponseConstant} from '../../utils/constants/CommanConstants';
 
 export const AuthActions = {
-  signIn
+  signIn,
 };
 
 function signIn(url, data) {

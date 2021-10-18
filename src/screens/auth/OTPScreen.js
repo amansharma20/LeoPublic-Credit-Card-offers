@@ -27,7 +27,7 @@ export default function OTPScreen(props) {
   const { screenName } = props.route.params;
   const { firstName } = props.route.params;
 
-  const [otp, setOtp] = useState("0000");
+  const [otp, setOtp] = useState('0000');
 
   const dispatch = useDispatch();
 
@@ -42,23 +42,23 @@ export default function OTPScreen(props) {
         (response) => {
           CommonLoading.hide();
           if (response && response.success === false) {
-            //Do Nothing. 
+            //Do Nothing.
           } else {
             const userData = {
               loggedIn: true,
-              user: response.data
-            }
-            saveTokenAsyncHome(userData)
+              user: response.data,
+            };
+            saveTokenAsyncHome(userData);
           }
         },
       );
     } else {
-      console.log("INSIDE SIGNUP")
+      console.log('INSIDE SIGNUP');
       const otpData = {
         MobileNumber: phone,
         Code: otp,
       };
-      console.log(otpData)
+      console.log(otpData);
       dispatch(
         AuthActions.signIn('Account/RegisterCustomerComplete', otpData),
       ).then((response) => {
@@ -66,9 +66,9 @@ export default function OTPScreen(props) {
         if (response && response.success === false) { } else {
           const userData = {
             loggedIn: true,
-            user: response.data
-          }
-          saveTokenAsyncDetails(userData)
+            user: response.data,
+          };
+          saveTokenAsyncDetails(userData);
         }
       });
     }
@@ -84,7 +84,7 @@ export default function OTPScreen(props) {
     await SessionService.setSession(user);
     dispatch(SessionAction.getSession());
     navigation.navigate('BasicDetailsInput', {
-      firstName: firstName
+      firstName: firstName,
     });
   }
 
@@ -93,7 +93,7 @@ export default function OTPScreen(props) {
       <View style={styles.body}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => {
-            navigation.goBack()
+            navigation.goBack();
           }}>
             <BackButtonBlack />
           </TouchableOpacity>
@@ -101,7 +101,7 @@ export default function OTPScreen(props) {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>OTP Authentication</Text>
           <Text style={styles.subTitleText}>
-            An authentication code has been sent to {"\n"}
+            An authentication code has been sent to {'\n'}
             (+91) {phone}
           </Text>
         </View>
@@ -131,7 +131,7 @@ export default function OTPScreen(props) {
             };
             dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(response => {
               CommonLoading.hide();
-            })
+            });
           }}>
             <Text style={styles.footerTextBold}> Resend Code</Text>
           </TouchableOpacity>
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h1,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   subTitleText: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     color: '#797E96',
   },
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   resendButton: {
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h4,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     color: '#7a869a',
   },
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     color: '#4d2d8f',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
 });

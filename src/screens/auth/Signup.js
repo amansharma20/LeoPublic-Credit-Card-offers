@@ -65,7 +65,7 @@ export default function Signup() {
     });
   };
 
-  
+
 
   return (
     <SafeAreaView style={styles.container}>

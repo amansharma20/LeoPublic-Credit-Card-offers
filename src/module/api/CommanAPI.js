@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
 import {applicationProperties} from '../../../application.properties';
 //import CommonLoading from '../../components/CommonLoading';
@@ -6,8 +7,8 @@ const post = async (endPoint, data, header) => {
   try {
     let response = await axios.post(
       applicationProperties.baseUrl + '/' + endPoint,
-       data,
-       header
+      data,
+      header,
     );
     if (response.data !== undefined && response.data.status) {
       return {
