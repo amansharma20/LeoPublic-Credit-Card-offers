@@ -23,6 +23,7 @@ import { View } from 'react-native-animatable';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import BasicDetailsNavigator from './BasicDetailsNavigator';
 import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
+import AddCardHome from '../screens/addCard/AddCardHome';
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
@@ -78,6 +79,7 @@ export default function StackNavigator() {
             )}
             <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
             <Stack.Screen name="CardHolder" component={CardHolder} />
+            <Stack.Screen name="AddCardHome" component={AddCardHome} />
             <Stack.Screen name="Educate" component={Educate} />
             <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
             <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />

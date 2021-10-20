@@ -18,7 +18,7 @@ export default function EmptyStateScreen() {
                 </View>
             </View>
             <View style={{ marginTop: 50, alignItems: 'center', justifyContent: 'center', backgroundColor: '#DBF9FC', marginHorizontal: 80, height: 50, borderRadius: 12 }}>
-                <TouchableOpacity onPress={() => navigation.navigate('AddCardScreen')} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('AddCardHome')} style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{
                         fontSize: 20, fontFamily: Platform.select({
                             ios: 'Exo2-SemiBold',

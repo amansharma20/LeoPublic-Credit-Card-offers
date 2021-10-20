@@ -39,7 +39,7 @@ export default function MyCards() {
 
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
-  }, [])
+  }, [BankCards])
 
 
   const cardIndexChanged = (cardId) => {
