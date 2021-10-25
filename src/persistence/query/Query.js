@@ -166,9 +166,15 @@ export const GQLQuery = {
     SalariedEligibilityAgeMin
     SelfEligibilityAgeMax
     SelfEligibilityAgeMin
-     }
-     }
+    Bank {
+      Id
+      Name
+      LogoStoragePath
     }
+     }
+     }
+    } 
+    
   `,
   GET_EXPLORE_DISCOVER_CARDS: gql`
   query MyQuery {
@@ -220,9 +226,15 @@ export const GQLQuery = {
           SalariedEligibilityAgeMin
           SelfEligibilityAgeMax
           SelfEligibilityAgeMin
+          Bank {
+            Id
+            Name
+            LogoStoragePath
+          }
      }
      }
-    }`,
+    }
+    `,
   GET_BEST_OFFERS: gql`
   query MyQuery {
     BankCardOfferQuery {

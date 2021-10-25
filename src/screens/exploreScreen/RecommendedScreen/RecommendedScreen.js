@@ -29,19 +29,17 @@ import { GQLQuery } from '../../../persistence/query/Query';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import Toast from 'react-native-toast-message';
 
 
 export default function RecommendedScreen() {
 
   const [openAllCategories, setOpenAllCategories] = useState(false);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
-  const [checkboxState, setCheckboxState] = useState(false);
   const [showCompareModal, setShowCompareModal] = useState(false);
 
   const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
   const RecommendedCards = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
-  const ss = useSelector(state => state.CompareCardReducer.data)
 
   const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
   const y = new Animated.Value(0);
@@ -59,6 +57,26 @@ export default function RecommendedScreen() {
       card2={item.card2}
     />
   );
+
+
+  const selectedCardArray = [];
+
+  const selectedCardCallback = (card) => {
+    selectedCardArray.push(card);
+
+    if (selectedCardArray.length > 2) {
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Sorry',
+        text2: ' You can select only two cards at a time',
+        visibilityTime: 4000,
+        autoHide: true,
+        topOffset: 30,
+        bottomOffset: 40,
+      });
+    }
+  }
 
 
   if (loading) {
@@ -111,8 +129,7 @@ export default function RecommendedScreen() {
           </View>
           <View>
             <TouchableOpacity onPress={() => {
-              console.log(ss)
-              //setShowCompareModal(true)
+              setShowCompareModal(true)
             }}>
               <View style={styles.compareButton}>
                 <Text style={styles.compareText}>Compare</Text>
@@ -123,7 +140,7 @@ export default function RecommendedScreen() {
         <View style={{ paddingBottom: Responsive.height(150) }}>
           {_.map(RecommendedCards, (value, index) => {
             return (
-              <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} index={index}/>
+              <RecommendedScreenFlatlist cards={value} key={index.toString()} y={y} callback={selectedCardCallback} />
             );
           })}
         </View>
