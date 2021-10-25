@@ -181,6 +181,7 @@ const styles = StyleSheet.create({
     width: Responsive.width(80),
     height: Responsive.width(80),
     resizeMode: 'contain',
+    tintColor: '#737373'
   },
   flatlistContainer: {
     paddingVertical: SIZES.padding2,

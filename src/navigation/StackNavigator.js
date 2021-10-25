@@ -24,6 +24,7 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import BasicDetailsNavigator from './BasicDetailsNavigator';
 import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
 import AddCardHome from '../screens/addCard/AddCardHome';
+import CompareCardsScreen from '../screens/exploreScreen/CompareCardsScreen';
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
@@ -94,6 +95,7 @@ export default function StackNavigator() {
             <Stack.Screen name="About" component={About} />
             <Stack.Screen name="Support" component={Support} />
             <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+            <Stack.Screen name="CompareCardsScreen" component={CompareCardsScreen} />
         </Stack.Navigator>
     );
 }
