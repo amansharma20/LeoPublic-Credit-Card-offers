@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,8 +17,6 @@ import ProfileOffersScreenHeader from '../../components/headers/ProfileHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { icons } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
-import { SessionService } from '../../persistence/services/SessionService';
-import { SessionAction } from '../../persistence/actions/SessionAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../persistence/query/Query';
@@ -39,18 +37,17 @@ export default function ProfileScreen() {
 
   console.log(AuthContext)
 
-  const dispatch = useDispatch();
   const navigation = useNavigation();
-  const session = useSelector(state => state.SessionReducer.data);
   
   const [profilePic, setProfilePic] = useState("https://picsum.photos/200/300/?blur=2");
 
   const { data } = useQuery(GQLQuery.GET_USER_PROFILE);
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
 
-  const { data: userExpenseQlResponse, error: userExpenseError } = useQuery(GQLQuery.GET_USER_EXPENSE);
+  const { data: userExpenseQlResponse } = useQuery(GQLQuery.GET_USER_EXPENSE);
 
   const userExpense = userExpenseQlResponse && userExpenseQlResponse.UserExpenseQuery && userExpenseQlResponse.UserExpenseQuery.GetUserExpenses
+
 
   const selectFile = () => {
     var options = {
@@ -101,22 +98,11 @@ export default function ProfileScreen() {
       console.log(response)
      
     })
-      .catch((error) => {
+      .catch(() => {
         
       })
   }
   const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath
-
-  async function logOutCalled() {
-    const data ={
-      data : {
-         token: '',
-         signUp: false
-       }
-     }
-    await SessionService.setSession(data);
-    dispatch(SessionAction.getSession());
-  }
 
 
   return (
@@ -187,11 +173,10 @@ export default function ProfileScreen() {
               </TouchableOpacity>
             </View>
           </View>
-        </> : <MonthlySpendCircularView />}
+        </> : <MonthlySpendCircularView spends ={userExpense}/>}
 
         <View style={{ backgroundColor: '#ffffff' }}>
           <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
-            //await logOutCalled();
             signOut();
           }}>
             <View style={{ flexDirection: 'row', paddingBottom: 200 }}>

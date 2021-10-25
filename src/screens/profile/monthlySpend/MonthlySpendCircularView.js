@@ -16,11 +16,43 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { useNavigation } from '@react-navigation/core';
 
 
-export default function MonthlySpendCircularView() {
+export default function MonthlySpendCircularView(props) {
+
+    const spends = props.spends
     const navigation = useNavigation();
     return (
         <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}>
 
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{
+                    color: '#172B4D', fontFamily: Platform.select({
+                        ios: 'Exo2-Bold',
+                        android: 'Exo2Bold',
+                    }),
+                    fontSize: 18
+                }}>
+                    Monthly Spend Pattern
+                </Text>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('MonthlySpend')
+                }}>
+                    <Text style={{ marginRight: 10, color: '#4D2D8F', }}>
+                        EDIT
+                    </Text>
+                </TouchableOpacity>
+
+
+            </View>
+            <Text style={{
+                color: '#172B4D', fontFamily: Platform.select({
+                    ios: 'Exo2-Bold',
+                    android: 'Exo2Bold',
+                }),
+                fontSize: 32,
+                paddingVertical: 20
+            }}>
+                ₹ {spends.TotalSpend}
+            </Text>
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{
@@ -31,15 +63,15 @@ export default function MonthlySpendCircularView() {
                 }}>
                     Monthly Expense
                 </Text>
-                <TouchableOpacity onPress={()=>{
+                <TouchableOpacity onPress={() => {
                     navigation.navigate('MonthlySpend')
                 }}>
-                <Text style={{ marginRight: 10 }}>
-                    EDIT
-                </Text>
+                    <Text style={{ marginRight: 10 }}>
+                        EDIT
+                    </Text>
                 </TouchableOpacity>
             </View>
-            <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
                         marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
@@ -78,6 +110,7 @@ export default function MonthlySpendCircularView() {
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
+
                         size={75}
                         width={5}
                         fill={30}
@@ -91,7 +124,7 @@ export default function MonthlySpendCircularView() {
                             android: 'Exo2Bold',
                         }), color: '#7A869A',
                     }}>
-                        Shopping
+                        Groceries
                     </Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
@@ -105,6 +138,7 @@ export default function MonthlySpendCircularView() {
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
+
                         size={75}
                         width={5}
                         fill={30}
@@ -118,11 +152,12 @@ export default function MonthlySpendCircularView() {
                             android: 'Exo2Bold',
                         }), color: '#7A869A',
                     }}>
-                        Shopping
+                        Travel
                     </Text>
                 </View>
             </View>
-            <View style={{ paddingVertical: SIZES.padding2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row', justifyContent: 'space-between' }}>
+
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
                         marginTop: 30, position: 'absolute', color: '#4D2D8F', fontFamily: Platform.select({
@@ -147,7 +182,7 @@ export default function MonthlySpendCircularView() {
                             android: 'Exo2Bold',
                         }), color: '#7A869A',
                     }}>
-                        Shopping
+                        Entertainment
                     </Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
@@ -174,7 +209,7 @@ export default function MonthlySpendCircularView() {
                             android: 'Exo2Bold',
                         }), color: '#7A869A',
                     }}>
-                        Shopping
+                        Others
                     </Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
@@ -200,8 +235,10 @@ export default function MonthlySpendCircularView() {
                             ios: 'Exo2-Bold',
                             android: 'Exo2Bold',
                         }), color: '#7A869A',
-                    }}>
-                        Shopping
+                    }}
+                        numberOfLines={2}
+                    >
+                        Total Spend{'\n'}(Credit Card)
                     </Text>
                 </View>
             </View>
