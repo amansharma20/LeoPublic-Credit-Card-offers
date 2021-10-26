@@ -164,7 +164,7 @@ export default function BasicDetailsInput(props) {
             setItems={setEmploymentType}
             zIndex={10000}
             zIndexInverse={1000}
-            placeholder="Employment Type"
+            placeholder="Monthly"
             style={styles.pickerContainer}
             placeholderStyle={styles.placeholderText}
             listMode="FLATLIST"

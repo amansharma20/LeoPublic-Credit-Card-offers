@@ -7,14 +7,14 @@ import { Responsive } from '../../utils/layouts/Layout';
 import { format } from 'date-fns';
 
 export default function Offers(props) {
-  const offer = props.offer
+  const offer = props.offer;
 
   const formatedDate = (offerdate) => {
-    var date = new Date(offerdate)
+    var date = new Date(offerdate);
     var formattedDate = format(date, 'do MMM');
     return formattedDate;
   };
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.offerContainer}>
@@ -32,8 +32,8 @@ export default function Offers(props) {
         </View>
       </View>
     </View>
-  )
-};
+  );
+}
 
 
 
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
   },
   imageSize: {

@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable eqeqeq */
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import {
@@ -12,10 +13,11 @@ import {
 } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import LinearGradient from 'react-native-linear-gradient';
-import { images, SIZES } from '../../constants';
+import { icons, images, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useNavigation } from '@react-navigation/native';
 import { applicationProperties } from '../../../application.properties';
+import * as Progress from 'react-native-progress';
 
 export default function BestOffersFlatlist(props) {
 
@@ -27,75 +29,89 @@ export default function BestOffersFlatlist(props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      activeOpacity={0.85}
-      onPress={() => navigation.navigate('OffersScreenItemDetails', {
-        offer: offer
-      })}
-    >
-      <LinearGradient
-        style={styles.gradientContainer}
-        colors={['#EEE5FF', '#FFFFFF']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}>
-        <ImageBackground
-          source={offer.LogoStoragePath == undefined ? { uri: 'https://picsum.photos/seed/picsum/200/300' } : { uri: applicationProperties.imageUrl + offer.LogoStoragePath }}
-          style={styles.imageBackgroundSize}
-          imageStyle={styles.image}>
-          <View style={{ justifyContent: 'flex-end', flex: 1 }}>
-            <View style={styles.bankIconLogoOnImageContainer}>
-              <Image
-                source={images.axisBankWhite}
-                style={styles.bankIconLogoOnImageSize}
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <TouchableOpacity
+        style={styles.container}
+        activeOpacity={0.85}
+        onPress={() => navigation.navigate('OffersScreenItemDetails', {
+          offer: offer,
+        })}>
+        <View style={styles.itemContainer}>
+          <Image
+            source={offer.LogoStoragePath == undefined ? { uri: 'https://picsum.photos/seed/picsum/200/300' } : { uri: applicationProperties.imageUrl + offer.LogoStoragePath }}
+            style={styles.imageBackgroundSize}
+            imageStyle={styles.image} />
+          <View style={styles.textContainer}>
+            <View>
+              <Image source={images.axis} style={{ width: Responsive.width(48), height: Responsive.height(12), resizeMode: 'contain' }} />
+            </View>
+            <View style={{ paddingTop: 5, paddingBottom: 12, borderBottomWidth: 1, borderBottomColor: '#C8C6C6' }}>
+              <Text style={{
+                color: '#000000', fontFamily: Platform.select({
+                  ios: 'Exo2-Medium',
+                  android: 'Exo2Medium',
+                }),
+                fontSize: 12,
+              }}>
+                The American Express Membership Rewards Credit Card
+              </Text>
+            </View>
+            <View style={{ paddingTop: 12 }}>
+              <Text style={styles.titleText}>{offer.OfferTitle}</Text>
+              <Text style={styles.subtitleText}>{offer.OfferDescription}</Text>
+              <TouchableOpacity>
+                <Text style={styles.showMoreText}>Show more</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.progressBarContainer}>
+              <Progress.Bar
+                progress={30 / 100}
+                width={Responsive.width(130)}
+                unfilledColor={'#eff0f2'}
+                borderWidth={0}
+                height={3}
+                color={'#364FFB'}
               />
+              <View style={{ justifyContent: 'flex-end', flexDirection: 'row' }}>
+                <Text style={{
+                  color: '#000000', fontFamily: Platform.select({
+                    ios: 'Exo2-Medium',
+                    android: 'Exo2Medium',
+                  }),
+                  fontSize: 8,
+                  marginTop: 2,
+                }}>
+                  15 Days Left
+                </Text>
+              </View>
             </View>
           </View>
-        </ImageBackground>
-        <View style={styles.textContainer}>
-          <View style={{ width: '70%' }}>
-            <Text style={styles.titleText}>{offer.OfferTitle}</Text>
-            <Text style={styles.subtitleText}>{offer.OfferDescription}</Text>
-            <TouchableOpacity>
-              <Text style={styles.showMoreText}>Show more</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.progressCircleContainer}>
-            <Text style={styles.daysLeftText}>
-              15{'\n'}days{'\n'}left
-            </Text>
-            <AnimatedCircularProgress
-              style={styles.animatedCircleSize}
-              size={34}
-              width={3}
-              fill={30}
-              tintColor="#CD4D78"
-              backgroundColor="#b9b9b9"
-            />
-          </View>
         </View>
-        <View />
-      </LinearGradient>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 0,
-    width: Responsive.width(180),
     paddingVertical: SIZES.padding2,
-    paddingHorizontal: 12,
   },
-  gradientContainer: {
+  itemContainer: {
     elevation: 8,
-    width: Responsive.width(147),
-    height: Responsive.height(223),
     borderRadius: 6,
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
   },
   imageBackgroundSize: {
-    width: Responsive.width(147),
-    height: Responsive.height(119),
+    height: Responsive.height(62),
+    resizeMode: 'stretch',
+    borderRadius: 5,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
   },
   bankIconLogoOnImageContainer: {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
@@ -116,23 +132,23 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   textContainer: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     paddingVertical: 14,
-    paddingHorizontal: 14,
+    paddingHorizontal: 12,
   },
   titleText: {
     fontSize: 12,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
-    color: '#454545'
+    color: '#454545',
   },
   subtitleText: {
     fontSize: 10,
     fontFamily: Platform.select({
       ios: 'Exo2-Regular',
-      android: 'Exo2Regular'
+      android: 'Exo2Regular',
     }),
     paddingTop: 4,
     color: '#515151',
@@ -141,25 +157,22 @@ const styles = StyleSheet.create({
     fontSize: 7,
     fontFamily: Platform.select({
       ios: 'Exo2-Regular',
-      android: 'Exo2Regular'
+      android: 'Exo2Regular',
     }),
-    paddingTop: 4,
-    color: '#4D2D8F',
-    paddingBottom: 6,
+    paddingTop: 8,
+    color: '#000000',
   },
-  progressCircleContainer: { flexDirection: 'row' },
+  progressBarContainer: {
+    marginTop: 10,
+  },
   daysLeftText: {
     fontSize: 6, paddingLeft: 10, textAlign: 'center',
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
-    })
+      android: 'Exo2Medium',
+    }),
   },
-  animatedCircleSize: { marginLeft: -24, marginTop: -6 },
   modalContainer: {
-    // paddingTop: Responsive.height(110),
-    // justifyContent: 'flex-end',
-    // backgroundColor: 'rgba(0,0,0,0.5)',
     padding: SIZES.padding,
     flex: 1,
     paddingTop: 40,
@@ -171,9 +184,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
-    color: '#ffffff'
+    color: '#ffffff',
   },
   leftIconContainer: {
     width: 44,
@@ -194,15 +207,15 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h4,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
-    })
+      android: 'Exo2Medium',
+    }),
   },
   modalSubTitleText: {
     fontSize: SIZES.h3,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
-    })
+      android: 'Exo2Medium',
+    }),
   },
   modalHeaderContainer: {
     flexDirection: 'row',
@@ -224,7 +237,7 @@ const styles = StyleSheet.create({
 
   },
   segmentContainer: {
-    // flex: 1, 
+    // flex: 1,
     paddingHorizontal: SIZES.padding2,
     backgroundColor: '#ffffff',
     paddingTop: SIZES.padding,
@@ -241,7 +254,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     paddingVertical: 0,
     alignContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   activeTabStyle: {
     backgroundColor: '#ffffff',
@@ -256,15 +269,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
-    })
+      android: 'Exo2Medium',
+    }),
   },
   activeTabTextStyle: {
     color: '#060417',
     fontSize: 16,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
-    })
+      android: 'Exo2Bold',
+    }),
   },
 });

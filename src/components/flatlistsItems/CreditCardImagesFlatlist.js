@@ -16,6 +16,7 @@ import Code from '../../assets/svgs/code.svg';
 import { applicationProperties } from '../../../application.properties';
 import { useMutation } from '@apollo/client';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
+import CommonLoading from '../CommonLoading';
 
 export default function CreditCardImagesFlatlist(props) {
   const card = props.card.item;
@@ -92,9 +93,7 @@ export default function CreditCardImagesFlatlist(props) {
                     <Text style={styles.noModalButtonText}>No</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
-                  deleteUserCard();
-                }}>
+                <TouchableOpacity onPress={deleteUserCard}>
                   <View style={styles.yesModalButton}>
                     <Text style={styles.yesModalButtonText}>Yes</Text>
                   </View>

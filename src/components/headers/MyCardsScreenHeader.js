@@ -19,8 +19,7 @@ export default function MyCardsScreenHeader (props) {
       </TouchableOpacity>
       <Text style={styles.headerText}>My Cards</Text>
       <TouchableOpacity
-        // onPress={() => navigation.navigate('AddCardScreen')}
-        onPress={() => setShowModal(true)}
+        onPress={() => navigation.navigate('AddCardHome')}
       >
         <View style={styles.rightIconContainer}>
           <AddIcon />
