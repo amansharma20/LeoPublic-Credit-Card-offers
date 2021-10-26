@@ -10,6 +10,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.75.1] C:\Users\amana\
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\amana\.gradle\caches\transforms-2\files-2.1\13e0ca18817a9e59a8c4a94704ec8c3c\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-async-storage_async-storage] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_slider] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\slider\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-masked-view_masked-view] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-masked-view\masked-view\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:lottie-react-native] C:\Users\amana\apps\Leo\Mobile\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-date-picker] C:\Users\amana\apps\Leo\Mobile\node_modules\react-native-date-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -201,6 +202,8 @@ MERGED from [:react-native-async-storage_async-storage] C:\Users\amana\apps\Leo\
 MERGED from [:react-native-async-storage_async-storage] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_clipboard] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\clipboard\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_slider] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\slider\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_slider] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-community\slider\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-masked-view_masked-view] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-masked-view\masked-view\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-masked-view_masked-view] C:\Users\amana\apps\Leo\Mobile\node_modules\@react-native-masked-view\masked-view\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:lottie-react-native] C:\Users\amana\apps\Leo\Mobile\node_modules\lottie-react-native\src\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41

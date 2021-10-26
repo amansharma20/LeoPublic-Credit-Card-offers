@@ -26,6 +26,7 @@ import BasicDetailsNavigator from './BasicDetailsNavigator';
 import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
 import AddCardHome from '../screens/addCard/AddCardHome';
 import CompareCardsScreen from '../screens/exploreScreen/CompareCardsScreen';
+
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
@@ -79,16 +80,16 @@ export default function StackNavigator() {
             {showOneTimeScreen && (
                 <Stack.Screen name="BasicDetailsNavigator" component={BasicDetailsNavigator} />
             )}
+            <Stack.Screen name="CreditProfile" component={CreditProfile} />
             <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
+            <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
             <Stack.Screen name="CardHolder" component={CardHolder} />
             <Stack.Screen name="AddCardHome" component={AddCardHome} />
             <Stack.Screen name="Educate" component={Educate} />
-            <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
             <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
             <Stack.Screen name="MonthlySpend" component={MonthlySpend} />
             <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
             <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails} />
-            <Stack.Screen name="CreditProfile" component={CreditProfile} />
             <Stack.Screen name="EditProfile" component={EditProfile} />
             <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
             <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
