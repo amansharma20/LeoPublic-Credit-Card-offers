@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import StackNavigator from './StackNavigator';
 import {
@@ -15,9 +15,11 @@ import {
 import { Responsive } from '../utils/layouts/Layout';
 import { icons } from '../constants';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from './ApplicationNavigator';
 
 const Drawer = createDrawerNavigator();
 const DrawerContent = ({ }) => {
+  const { signOut } = useContext(AuthContext);
   const navigation = useNavigation();
   return (
     <View
@@ -83,6 +85,19 @@ const DrawerContent = ({ }) => {
           </View>
           <View style={styles.rightIcon} />
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            signOut();
+          }}
+          activeOpacity={0.5}
+          style={styles.item}>
+          <View style={styles.leftIcon}>{/* <Mail/> */}</View>
+          <View style={styles.content}>
+            <Image source={icons.logOutButtonIcon} style={styles.iconStyle} />
+            <Text style={styles.text}>Logout</Text>
+          </View>
+          <View style={styles.rightIcon} />
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -90,9 +105,6 @@ const DrawerContent = ({ }) => {
 
 
 export default function DrawerNavigator(props) {
-console.log('props')
-console.log(props)
-console.log('props')
   return (
     <Drawer.Navigator
       initialRouteName="BottomTabBarNavigator"
@@ -139,9 +151,10 @@ const styles = StyleSheet.create({
     })
   },
   drawerStyles: {
-     flex: 1,
-     width: '60%', 
-     backgroundColor: 'transparent' },
+    flex: 1,
+    width: '60%',
+    backgroundColor: 'transparent'
+  },
   header: {
   },
   userInformation: {

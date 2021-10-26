@@ -8,6 +8,7 @@ import jwt from 'jwt-decode'
 import { useSelector } from 'react-redux';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
 import { useMutation } from '@apollo/client';
+import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
 
 const RATING_STAR = require('../../assets/icons/starRating.png');
 
@@ -25,11 +26,11 @@ export default function Reviews(props) {
 
     useEffect(() => {
         const bootstrapAsync = async () => {
-            let userToken;
-
             try {
-                userToken = await Keychain.getGenericPassword();
-                setUserToken(jwt(userToken.password));
+                let token = await MyAsyncStorage.getData('token');
+                console.log("HELOW ORKD")
+                console.log(token)
+                setUserToken(jwt(token));
             } catch (e) {
                 // Restoring token failed
             }
@@ -59,6 +60,10 @@ export default function Reviews(props) {
 
     console.log(reviewData)
     console.log(reviewError)
+
+    console.log('userToken')
+    console.log(userToken)
+    console.log('userToken')
 
     return (
         <View style={styles.container}>

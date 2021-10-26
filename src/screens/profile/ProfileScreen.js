@@ -175,23 +175,6 @@ export default function ProfileScreen() {
           </View>
         </> : <MonthlySpendCircularView spends ={userExpense}/>}
 
-        <View style={{ backgroundColor: '#ffffff' }}>
-          <TouchableOpacity style={{ padding: SIZES.padding }} onPress={async () => {
-            signOut();
-          }}>
-            <View style={{ flexDirection: 'row', paddingBottom: 200 }}>
-              <Image source={icons.logOutButtonIcon} style={{ width: 22, height: 22 }} />
-              <Text style={{
-                fontSize: 17, fontFamily: Platform.select({
-                  ios: 'Exo2-Bold',
-                  android: 'Exo2Bold',
-                }), color: '#6F7FAF', marginLeft: 20,
-              }}>
-                Logout
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
     </View>
   );

@@ -10,6 +10,7 @@ import * as Keychain from 'react-native-keychain';
 import DrawerNavigator from './DrawerNavigator';
 import AuthNavigator from './AuthNavigator';
 import BasicDetailsNavigator from './BasicDetailsNavigator';
+import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
 
 
 const Stack = createStackNavigator();
@@ -70,6 +71,7 @@ export default function ApplicationNavigator() {
 
       try {
         userToken = await Keychain.getGenericPassword();
+        await MyAsyncStorage.storeData('token', userToken.password);
         let newToken = 'Bearer ' + userToken.password
         console.log(newToken)
         setNewAuthToken(newToken);
