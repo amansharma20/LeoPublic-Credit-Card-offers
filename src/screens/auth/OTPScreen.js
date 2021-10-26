@@ -52,8 +52,7 @@ export default function OTPScreen(props) {
           if (response && response.success === false) {
             //Do Nothing. 
           } else {
-            let token = 'Bearer ' + response.data;
-            signIn(token)
+            signIn(response.data)
           }
         },
       );
@@ -68,9 +67,8 @@ export default function OTPScreen(props) {
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
-       
-          let token = 'Bearer ' + response.data;
-          singUp(token)
+          singUp(response.data)
+
         }
       });
     }
