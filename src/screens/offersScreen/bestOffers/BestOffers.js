@@ -53,18 +53,14 @@ export default function BestOffers() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.body}>
-        <View>
-          <FlatList
-            data={BankCardOffers}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            numColumns={2}
-            contentContainerStyle={{ paddingBottom: Responsive.height(180) }}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
-      </View>
+      <FlatList
+        data={BankCardOffers}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        numColumns={2}
+        contentContainerStyle={{ paddingBottom: Responsive.height(180) }}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 }
@@ -73,12 +69,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    alignContent: 'center',
+    paddingHorizontal: 16,
   },
   contentContainer: {
     paddingBottom: Responsive.height(20),
   },
   body: {
-    // paddingVertical: SIZES.padding,
     paddingHorizontal: SIZES.padding2,
   },
   skeletonStyle: {

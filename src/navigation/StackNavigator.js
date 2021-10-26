@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import {
     CardStyleInterpolators, createStackNavigator,
 } from '@react-navigation/stack';
@@ -39,17 +40,17 @@ export default function StackNavigator() {
 
         return () => {
             //CLEAR NOW
-        }
-    },[showOneTimeScreen])
+        };
+    },[showOneTimeScreen]);
 
     const checkUser = async () => {
-        let user = await MyAsyncStorage.getData('newUserStatus')
-        setShowOneTimeScreen(user.newUser)
-        setLoading(false)
-    }
+        let user = await MyAsyncStorage.getData('newUserStatus');
+        setShowOneTimeScreen(user.newUser);
+        setLoading(false);
+    };
 
     if (loading)
-        return (
+        {return (
             <View style={{ marginBottom: 12, alignItems: 'center' }}>
                 <SkeletonPlaceholder>
                     <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
@@ -64,7 +65,7 @@ export default function StackNavigator() {
                     <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
                 </SkeletonPlaceholder>
             </View>
-        );
+        );}
 
     return (
         <Stack.Navigator

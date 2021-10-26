@@ -1,23 +1,20 @@
+/* eslint-disable prettier/prettier */
 import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import React, { useEffect, useMemo, useReducer, useState } from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { applicationProperties } from '../../application.properties';
+import React, {useEffect, useMemo, useReducer, useState} from 'react';
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import {applicationProperties} from '../../application.properties';
 import TempOnBoarding from '../screens/tempOnBoarding/TempOnBoarding';
 import * as Keychain from 'react-native-keychain';
 import DrawerNavigator from './DrawerNavigator';
 import AuthNavigator from './AuthNavigator';
-import BasicDetailsNavigator from './BasicDetailsNavigator';
-import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
-
 
 const Stack = createStackNavigator();
 export const AuthContext = React.createContext();
 
 export default function ApplicationNavigator() {
-
   const [state, dispatch] = useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -51,7 +48,7 @@ export default function ApplicationNavigator() {
       isLoading: true,
       isSignout: false,
       userToken: null,
-    }
+    },
   );
 
   const [authToken, setNewAuthToken] = useState();
@@ -60,10 +57,9 @@ export default function ApplicationNavigator() {
     uri: applicationProperties.baseUrl + '/graphql',
     cache: new InMemoryCache(),
     headers: {
-      Authorization: authToken
+      Authorization: authToken,
     },
   });
-
 
   useEffect(() => {
     const bootstrapAsync = async () => {
@@ -71,14 +67,15 @@ export default function ApplicationNavigator() {
 
       try {
         userToken = await Keychain.getGenericPassword();
-        await MyAsyncStorage.storeData('token', userToken.password);
-        let newToken = 'Bearer ' + userToken.password
-        console.log(newToken)
+        let newToken = 'Bearer ' + userToken.password;
         setNewAuthToken(newToken);
+        await MyAsyncStorage.storeData('token', userToken.password);
       } catch (e) {
         // Restoring token failed
       }
-      userToken === false ? dispatch({ type: 'RESTORE_TOKEN', token: null }) : dispatch({ type: 'RESTORE_TOKEN', token: userToken })
+      userToken === false
+        ? dispatch({type: 'RESTORE_TOKEN', token: null})
+        : dispatch({type: 'RESTORE_TOKEN', token: userToken});
     };
 
     bootstrapAsync();
@@ -87,28 +84,27 @@ export default function ApplicationNavigator() {
   const authContext = useMemo(
     () => ({
       signIn: async data => {
-        await Keychain.setGenericPassword("email", data);
-        setNewAuthToken(data)
-        dispatch({ type: 'SIGN_IN', token: data });
+        await Keychain.setGenericPassword('email', data);
+        setNewAuthToken(data);
+        dispatch({type: 'SIGN_IN', token: data});
       },
       signOut: async () => {
         await Keychain.resetGenericPassword();
-        setNewAuthToken('null')
-        dispatch({ type: 'SIGN_OUT' })
+        setNewAuthToken('null');
+        dispatch({type: 'SIGN_OUT'});
       },
       singUp: async data => {
-        await Keychain.setGenericPassword("email", data);
-        setNewAuthToken(data)
-        dispatch({ type: 'SIGN_UP', token: data });
+        await Keychain.setGenericPassword('email', data);
+        setNewAuthToken(data);
+        dispatch({type: 'SIGN_UP', token: data});
       },
     }),
-    []
+    [],
   );
 
   if (state.isLoading) {
     return <TempOnBoarding />;
   }
-
 
   return (
     <AuthContext.Provider value={authContext}>
@@ -118,16 +114,17 @@ export default function ApplicationNavigator() {
             headerShown: false,
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             keyboardHidesTabBar: true,
-
-          }}
-        >
+          }}>
           {state.userToken == null ? (
             <>
               <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
             </>
           ) : (
             <>
-              <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+              <Stack.Screen
+                name="DrawerNavigator"
+                component={DrawerNavigator}
+              />
             </>
           )}
         </Stack.Navigator>

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity, Text, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme/';
 import { Responsive } from '../../utils/layouts/Layout';
@@ -20,9 +20,9 @@ export default function EmptyStateScreen() {
             <View style={{ marginTop: 50, alignItems: 'center', justifyContent: 'center', backgroundColor: '#DBF9FC', marginHorizontal: 80, height: 50, borderRadius: 12 }}>
                 <TouchableOpacity onPress={() => navigation.navigate('AddCardHome')} style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{
-                        fontSize: 20, fontFamily: Platform.select({
+                        fontSize: 20, color: 'black', fontFamily: Platform.select({
                             ios: 'Exo2-SemiBold',
-                            android: 'Exo2SemiBold'
+                            android: 'Exo2SemiBold',
                         })
                     }}>
                         Add Card

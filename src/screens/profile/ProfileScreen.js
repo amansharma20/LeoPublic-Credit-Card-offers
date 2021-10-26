@@ -23,11 +23,6 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import { applicationProperties } from '../../../application.properties';
 import axios from 'axios';
 
-
-
-
-
-
 export default function ProfileScreen() {
 
 
@@ -39,7 +34,7 @@ export default function ProfileScreen() {
 
   const { data: userExpenseQlResponse } = useQuery(GQLQuery.GET_USER_EXPENSE);
 
-  const userExpense = userExpenseQlResponse && userExpenseQlResponse.UserExpenseQuery && userExpenseQlResponse.UserExpenseQuery.GetUserExpenses
+  const userExpense = userExpenseQlResponse && userExpenseQlResponse.UserExpenseQuery && userExpenseQlResponse.UserExpenseQuery.GetUserExpenses;
 
 
   const selectFile = () => {
@@ -48,7 +43,7 @@ export default function ProfileScreen() {
       customButtons: [
         {
           name: 'customOptionKey',
-          title: 'Choose file from Custom Option'
+          title: 'Choose file from Custom Option',
         },
       ],
       storageOptions: {
@@ -59,9 +54,9 @@ export default function ProfileScreen() {
 
     launchImageLibrary(options, (response) => {
 
-      const FileName = response.assets && response.assets[0] && response.assets[0].fileName
-      const type = response.assets && response.assets[0] && response.assets[0].type
-      const uri = response.assets && response.assets[0] && response.assets[0].uri
+      const FileName = response.assets && response.assets[0] && response.assets[0].fileName;
+      const type = response.assets && response.assets[0] && response.assets[0].type;
+      const uri = response.assets && response.assets[0] && response.assets[0].uri;
 
       const datas = new FormData();
       datas.append('ImageFile', {
@@ -70,7 +65,7 @@ export default function ProfileScreen() {
         name:type,
         uri: Platform.OS === 'android' ? uri : uri.replace('file://', ''),
       });
-      uploadImage(datas)
+      uploadImage(datas);
     });
   };
 
@@ -81,19 +76,19 @@ export default function ProfileScreen() {
     });
     const header = {
       Authorization: Bearer,
-      'Content-Type': 'multipart/form-data'
-    }
+      'Content-Type': 'multipart/form-data',
+    };
     client.post('Profile/CustomerProfileUpdate', data, {
-      headers:header
+      headers:header,
     }).then((response) => {
-      console.log(response)
-     
+      console.log(response);
+
     })
       .catch(() => {
         
       })
   }
-  const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath
+  const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath;
 
 
   return (
@@ -107,7 +102,7 @@ export default function ProfileScreen() {
           <View style={styles.profilePictureHeaderContainer}>
             <View style={styles.pfpAlignmentContainer}>
               <TouchableOpacity onPress={() => {
-                selectFile()
+                selectFile();
               }}>
                 <Image
                   source={{
@@ -120,7 +115,7 @@ export default function ProfileScreen() {
               <Text style={styles.emailText}>{UserProfileData && UserProfileData.ApplicationUser.Email}</Text>
               <Text style={styles.birthDateText}>{UserProfileData && UserProfileData.DateOfBirth}</Text>
               <TouchableOpacity onPress={() => {
-                navigation.navigate('EditProfile')
+                navigation.navigate('EditProfile');
               }}>
                 <Text>Edit Profile</Text>
               </TouchableOpacity>
@@ -130,11 +125,11 @@ export default function ProfileScreen() {
         <View style={styles.topContainer}>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Employment Type</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? "Nil" : UserProfileData && UserProfileData.EmploymentType}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.EmploymentType == null ? 'Nil' : UserProfileData && UserProfileData.EmploymentType}</Text>
           </View>
           <View style={styles.topContainerBackgroundColor}>
             <Text style={styles.topContainerHeaderText}>Annual Salary Range</Text>
-            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? "Nil" : UserProfileData && UserProfileData.AnnualSalary}</Text>
+            <Text style={styles.topContainerSubtitleText}>{UserProfileData && UserProfileData.AnnualSalary == null ? 'Nil' : UserProfileData && UserProfileData.AnnualSalary}</Text>
           </View>
         </View>
         <View style={styles.addContainer}>
@@ -158,7 +153,7 @@ export default function ProfileScreen() {
               </Text>
               <TouchableOpacity
                 onPress={() => navigation.navigate('MonthlySpend', {
-                  expense: userExpense
+                  expense: userExpense,
                 })}>
                 <AddButton />
               </TouchableOpacity>

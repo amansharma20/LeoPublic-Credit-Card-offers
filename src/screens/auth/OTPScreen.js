@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-undef */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,8 +15,6 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Responsive } from '../../utils/layouts/Layout';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
-import { SessionService } from '../../persistence/services/SessionService';
-import { SessionAction } from '../../persistence/actions/SessionAction';
 import { AuthContext } from '../../navigation/ApplicationNavigator';
 import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
 
@@ -33,7 +29,7 @@ export default function OTPScreen(props) {
   const { screenName } = props.route.params;
   const { firstName } = props.route.params;
 
-  const [otp, setOtp] = useState("0000");
+  const [otp, setOtp] = useState('0000');
 
   const dispatch = useDispatch();
   const session = useSelector(state => state.SessionReducer.data);
@@ -50,7 +46,7 @@ export default function OTPScreen(props) {
           setUserStatus(false);
           CommonLoading.hide();
           if (response && response.success === false) {
-            //Do Nothing. 
+            //Do Nothing.
           } else {
             signIn(response.data)
           }
@@ -76,16 +72,16 @@ export default function OTPScreen(props) {
 
   const setUserStatus = async (flag) => {
     await MyAsyncStorage.storeData('newUserStatus', {
-      newUser: flag
-    })
-  }
+      newUser: flag,
+    });
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => {
-            navigation.goBack()
+            navigation.goBack();
           }}>
             <BackButtonBlack />
           </TouchableOpacity>
@@ -93,7 +89,7 @@ export default function OTPScreen(props) {
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>OTP Authentication</Text>
           <Text style={styles.subTitleText}>
-            An authentication code has been sent to {"\n"}
+            An authentication code has been sent to {'\n'}
             (+91) {phone}
           </Text>
         </View>
@@ -123,7 +119,7 @@ export default function OTPScreen(props) {
             };
             dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(() => {
               CommonLoading.hide();
-            })
+            });
           }}>
             <Text style={styles.footerTextBold}> Resend Code</Text>
           </TouchableOpacity>
@@ -162,7 +158,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h1,
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   subTitleText: {
@@ -170,7 +166,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     color: '#797E96',
   },
@@ -187,7 +183,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
   resendButton: {
@@ -224,7 +220,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.h4,
     fontFamily: Platform.select({
       ios: 'Exo2-Medium',
-      android: 'Exo2Medium'
+      android: 'Exo2Medium',
     }),
     color: '#7a869a',
   },
@@ -232,7 +228,7 @@ const styles = StyleSheet.create({
     color: '#4d2d8f',
     fontFamily: Platform.select({
       ios: 'Exo2-Bold',
-      android: 'Exo2Bold'
+      android: 'Exo2Bold',
     }),
   },
 });

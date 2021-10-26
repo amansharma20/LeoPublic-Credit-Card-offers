@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from 'react';
@@ -85,10 +86,6 @@ export default function AddCardScreen() {
       });
     }
   };
-
-
-
-
 
   var bankArray = [];
   var bankCardsArray = [];
