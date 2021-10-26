@@ -24,7 +24,9 @@ import { GQLMutation } from '../../../persistence/mutation/Mutation';
 import CommonLoading from '../../../components/CommonLoading';
 
 export default function ReviewsScreen(props) {
+
   const cardData = props.cardData;
+
   const RATING_STAR = require('../../../assets/icons/starRating.png');
   const renderItem = ({ item }) => (
     <Reviews review={item} key={item.Id} />

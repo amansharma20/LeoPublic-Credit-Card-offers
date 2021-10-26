@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Image, Modal, TextInput, TouchableOpacity } from 'react-native';
 import { images, SIZES } from '../../constants';
 import { Rating } from 'react-native-ratings';
@@ -14,7 +14,6 @@ const RATING_STAR = require('../../assets/icons/starRating.png');
 export default function Reviews(props) {
     const review = props.review;
 
-    
 
     const formatedDate = (offerdate) => {
         var date = new Date(offerdate)
@@ -22,8 +21,21 @@ export default function Reviews(props) {
         return formattedDate;
     };
 
-    const token = useSelector(state => state.SessionReducer.data.user.user);
-    const user = jwt(token);
+    const [userToken, setUserToken] = useState();
+
+    useEffect(() => {
+        const bootstrapAsync = async () => {
+            let userToken;
+
+            try {
+                userToken = await Keychain.getGenericPassword();
+                setUserToken(jwt(userToken.password));
+            } catch (e) {
+                // Restoring token failed
+            }
+        };
+        bootstrapAsync();
+    }, [userToken])
 
     const [showModal, setShowModal] = useState(false);
     const [customerCardReview, setCustomerCardReview] = useState(review.Review);
@@ -82,7 +94,7 @@ export default function Reviews(props) {
                 </Text>
             </View>
             {
-                review.CustomerUser.Id == user.CustomerUserId ? <>
+                review.CustomerUser.Id == userToken.CustomerUserId ? <>
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
                         <Text style={styles.editButton} onPress={() => setShowModal(true)}>
                             EDIT

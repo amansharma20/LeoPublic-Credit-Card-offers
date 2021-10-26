@@ -37,7 +37,6 @@ export default function ApplicationNavigator() {
             userToken: null,
           };
         case 'SIGN_UP':
-          console.log('SIGN_UP');
           return {
             ...prevState,
             isSignout: false,
@@ -68,7 +67,9 @@ export default function ApplicationNavigator() {
 
       try {
         userToken = await Keychain.getGenericPassword();
-        setNewAuthToken(userToken.password);
+        let newToken = 'Bearer ' + userToken.password
+        console.log(newToken)
+        setNewAuthToken(newToken);
       } catch (e) {
         // Restoring token failed
       }
