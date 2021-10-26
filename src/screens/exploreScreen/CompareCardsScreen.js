@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     StyleSheet,
@@ -25,7 +25,9 @@ import CompareModalItemFlatlist from '../../components/flatlistsItems/CompareMod
 import compareModalData from '../../assets/dummyData/compareModalData';
 
 
-export default function CompareCardsScreen() {
+export default function CompareCardsScreen(props) {
+
+    const [compareCardData, setCompareCardData] = useState(props.route.params.data);
 
     const navigation = useNavigation();
     const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
@@ -46,7 +48,6 @@ export default function CompareCardsScreen() {
             {...{ onScroll }}
         >
             <View style={styles.compareModalContainer}>
-                {/* HEADER  */}
                 <View style={styles.headerContainer}>
                     <View
                         style={styles.headerButtonsContainer}>
@@ -98,10 +99,9 @@ export default function CompareCardsScreen() {
                     {/* FLATLIST  */}
                     <View style={styles.flatlistBackgroundColor}>
                         <FlatList
-                            data={compareModalData}
+                            data={compareCardData}
                             renderItem={renderCompareModalItem}
                             keyExtractor={item => item.id}
-                            contentContainerStyle={styles.modalContentContainerStyle}
                         />
                     </View>
                 </View>
@@ -131,13 +131,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 30,
     },
-    modalBackgroundColor: { backgroundColor: '#4d2d8f' },
-    compareHeaderTextContainer: { marginLeft: '38%' },
+    modalBackgroundColor: {
+        backgroundColor: '#4d2d8f'
+    },
+    compareHeaderTextContainer: {
+        marginLeft: '38%'
+    },
     compareModalContainer: {
         flex: 1,
     },
-    iconSizeLeft: { width: 34, height: 34 },
-    iconSizeRight: { width: 28, height: 28 },
+    iconSizeLeft: {
+        width: 34,
+        height: 34
+    },
+    iconSizeRight: {
+        width: 28,
+        height: 28
+    },
     modalHeaderText: {
         fontSize: 24,
         fontFamily: Platform.select({
@@ -178,8 +188,15 @@ const styles = StyleSheet.create({
             ios: 'Exo2-Bold',
             android: 'Exo2Bold',
         }),
-        fontSize: 8, paddingVertical: 4, color: '#ffffff',
+        fontSize: 8,
+        paddingVertical: 4,
+        color: '#ffffff',
     },
-    cardItemsBottomContainer: { flexDirection: 'row', justifyContent: 'space-between' },
-    flatlistBackgroundColor: { backgroundColor: '#fff' },
+    cardItemsBottomContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    flatlistBackgroundColor: {
+        backgroundColor: '#fff'
+    },
 });
