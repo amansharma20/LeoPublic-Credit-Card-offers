@@ -21,8 +21,7 @@ import { useNavigation } from '@react-navigation/core';
 
 
 export default function OverviewScreen(props) {
-  const cardData = props.cardData;
-  const [showModal, setShowModal] = useState(false);
+  const cardData = props.cardData;;
 
   const navigation = useNavigation();
 
