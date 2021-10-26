@@ -12,6 +12,7 @@ export default function MyCardsScreenHeader (props) {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
 
+
   return (
     <View style={[styles.container]}>
       <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.leftIconContainer}>
@@ -19,7 +20,9 @@ export default function MyCardsScreenHeader (props) {
       </TouchableOpacity>
       <Text style={styles.headerText}>My Cards</Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('AddCardHome')}
+        onPress={() => navigation.navigate('AddCardHome',{
+          refetch: props.refetch
+        })}
       >
         <View style={styles.rightIconContainer}>
           <AddIcon />

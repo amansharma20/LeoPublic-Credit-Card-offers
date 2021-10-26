@@ -23,6 +23,7 @@ import Animated from 'react-native-reanimated';
 import EmptyStateScreen from './EmptyStateScreen';
 import { ScrollView } from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
+import { ApolloConsumer } from '@apollo/client';
 
 
 
@@ -33,7 +34,7 @@ export default function MyCards() {
   useEffect(() => {
     Platform.OS === 'ios' ? 200 : SplashScreen.hide();
   });
-  const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const { loading, data, error,refetch } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
@@ -69,7 +70,10 @@ export default function MyCards() {
   );
 
 
+
+
   return (
+
     <View style={styles.container}>
       <Animated.ScrollView
         showsVerticalScrollIndicator={false} horizontal={false}
@@ -79,7 +83,7 @@ export default function MyCards() {
           backgroundColor={'#4d2d8f'}
           barStyle={'light-content'} />
         <View >
-          <MyCardsScreenHeader />
+          <MyCardsScreenHeader refetch={refetch}/>
         </View>
         <View style={styles.mainBody}>
           <TouchableOpacity style={styles.creditCardContainer}>
@@ -114,7 +118,9 @@ export default function MyCards() {
           </View>
         </View>
       </Animated.ScrollView>
+
     </View>
+
   );
 }
 

@@ -30,7 +30,8 @@ import CommonLoading from '../../components/CommonLoading';
 import Toast from 'react-native-toast-message';
 
 
-export default function AddCardHome() {
+export default function AddCardHome(props) {
+    console.log(props)
 
     const navigation = useNavigation();
 
@@ -56,10 +57,17 @@ export default function AddCardHome() {
 
     const [addCard, { data: userCardData, error: cardAddError }] = useMutation(GQLMutation.ADD_USER_CREDIT_CARD);
 
-    const { control, handleSubmit, errors } = useForm({
+
+
+
+
+    const { control, handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
     const onSubmit = data => {
+
+
+
         CommonLoading.show();
         addCard({ variables: { BankId: parseFloat(selectedCardId), BankCardId: parseFloat(selectedCardId), CardNumber: parseFloat(data.cardNumber) } });
         setShowModal(true);
@@ -67,6 +75,7 @@ export default function AddCardHome() {
         if (userCardData && userCardData.AddCustomerUserBankCardMutation && userCardData.AddCustomerUserBankCardMutation.AddCustomerUserBankCard == 'Created') {
             setShowModal(true);
             CommonLoading.hide();
+
         }
         if (cardAddError) {
             CommonLoading.hide();
@@ -90,7 +99,7 @@ export default function AddCardHome() {
     var bankArray = [];
     var bankCardsArray = [];
 
-    const { loading, data: data1, error } = useQuery(GQLQuery.GET_BANKS);
+    const { data: data1 } = useQuery(GQLQuery.GET_BANKS);
     const Bank = data1 && data1.BankQuery && data1.BankQuery.GetBanks;
 
 
@@ -242,7 +251,10 @@ export default function AddCardHome() {
                                     Your Credit Card has been added successfully. Best Offers are
                                     waiting for you.
                                 </Text>
-                                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.modalButtonContainer} activeOpacity={0.8}>
+                                <TouchableOpacity onPress={() => {
+                                    navigation.goBack();
+                                    props.route.params.refetch();
+                                }} style={styles.modalButtonContainer} activeOpacity={0.8}>
                                     <View>
                                         <Text style={styles.modalButtonText}>Continue</Text>
                                     </View>
