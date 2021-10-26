@@ -13,37 +13,80 @@ import BestOffers from '../../../assets/svgs/bestOffers.svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Responsive } from '../../../utils/layouts/Layout';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
-import { Avatar, Badge, Icon, withBadge } from 'react-native-elements'
-import { useSelector } from 'react-redux';
-import Toast from 'react-native-toast-message';
-
+import { Badge } from 'react-native-elements'
+import update from 'immutability-helper';
 
 
 export default function ChoosePreferences() {
-    const [borderColor, setBorderColor] = useState('#ffffff');
-    const [borderColor2, setBorderColor2] = useState('#ffffff');
-    const [borderColor3, setBorderColor3] = useState('#ffffff');
-    const [borderColor4, setBorderColor4] = useState('#ffffff');
-    const [borderColor5, setBorderColor5] = useState('#ffffff');
-    const cartData = useState(false);
+
     const navigation = useNavigation();
     const [value, onSetValue] = useState(0);
     const onPressValue = () => onSetValue(value + 1);
 
-  
+    const [cardIssuer, setCardIssuer] = useState();
+    const [nature, setNature] = useState();
+    const [money, setMoney] = useState();
+    const [fees, setFees] = useState();
+    const [offers, setOffers] = useState();
 
-      useEffect(() => {
-        Toast.show({
-            type: 'error',
-            position: 'top',
-            text1: 'HI,',
-            text2: 'Preference Feature is under Development.',
-            visibilityTime: 4000,
-            autoHide: true,
-            topOffset: 30,
-            bottomOffset: 40,
-          });
-      });
+    const [selectedId, setSelectedId] = useState();
+
+    const prefernceArray = [];
+    const state2 = update(prefernceArray, { $push: [selectedId] }); // ['x', 'y']
+
+    const preferenceClicked = (id) => {
+
+        setSelectedId(id)
+        console.log(state2)
+        switch (id) {
+            case 1:
+                setCardIssuer(prefernceArray.length)
+                setNature()
+                setMoney()
+                setFees()
+                setOffers()
+                break;
+            case 2:
+                setCardIssuer()
+                setNature(prefernceArray.length)
+                setMoney()
+                setFees()
+                setOffers()
+                break;
+            case 3:
+                setCardIssuer()
+                setNature()
+                setMoney(prefernceArray.length)
+                setFees()
+                setOffers()
+                break;
+            case 4:
+                setCardIssuer()
+                setNature()
+                setMoney()
+                setFees(prefernceArray.length)
+                setOffers()
+                break;
+            case 5:
+                setCardIssuer()
+                setNature()
+                setMoney()
+                setFees()
+                setOffers(prefernceArray.length)
+                break;
+            default:
+                setCardIssuer()
+                setNature()
+                setMoney()
+                setFees()
+                setOffers()
+                break;
+        }
+    }
+
+    useEffect(() => {
+
+    });
 
     return (
         <View style={styles.container}>
@@ -60,75 +103,76 @@ export default function ChoosePreferences() {
                         </Text>
                     </View>
                     <View style={styles.firstRow}>
-                        <View style={{ borderColor: borderColor, borderWidth: 1.5, borderRadius: 24 }}>
-                            <TouchableOpacity onPress={() => setBorderColor('#4D2D8F'), onPressValue}>
+                        <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
+                            <TouchableOpacity onPress={() => preferenceClicked(1)}>
                                 <PopularityofCardIssuer />
                             </TouchableOpacity>
                             <Badge
                                 status="error"
-                                value={value}
+                                value={cardIssuer}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
                                 onPressValue={onPressValue}
                             />
+                            <Text style={styles.textPreference} >Popularity of {'\n'}Card Issuer</Text>
                         </View>
-                        <View style={{ borderColor: borderColor2, borderWidth: 1.5, borderRadius: 24 }}>
-                            <TouchableOpacity onPress={() => setBorderColor2('#4D2D8F'), onPressValue}>
+                        <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
+                            <TouchableOpacity onPress={() => preferenceClicked(2)}>
                                 <PremiumNature />
                             </TouchableOpacity>
-                            
                             <Badge
                                 status="error"
-                                value={value}
+                                value={nature}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
                                 onPressValue={onPressValue}
                             />
+                            <Text style={styles.textPreference} >Premium{'\n'}Nature</Text>
                         </View>
-                        <View style={{ borderColor: borderColor3, borderWidth: 1.5, borderRadius: 24 }}>
-                            <TouchableOpacity onPress={() => setBorderColor3('#4D2D8F'), onPressValue}>
+                        <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
+                            <TouchableOpacity onPress={() => preferenceClicked(3)}>
                                 <ValueForMoney />
                             </TouchableOpacity>
-                            
                             <Badge
                                 status="error"
-                                value={value}
+                                value={money}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
                                 onPressValue={onPressValue}
                             />
+                            <Text style={styles.textPreference} >Value for{'\n'}Money</Text>
                         </View>
                     </View>
                     <View style={styles.secondRow}>
-                        <View style={{ borderColor: borderColor4, borderWidth: 1.5, borderRadius: 24 }}>
-                            <TouchableOpacity onPress={() => setBorderColor4('#4D2D8F'), onPressValue}>
+                        <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
+                            <TouchableOpacity onPress={() => preferenceClicked(4)}>
                                 <LowerFees />
                             </TouchableOpacity>
-                            
                             <Badge
                                 status="error"
-                                value={value}
+                                value={fees}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
                                 onPressValue={onPressValue}
                             />
+                            <Text style={styles.textPreference} >Lower Fees</Text>
                         </View>
-                        <View style={{ borderColor: borderColor5, borderWidth: 1.5, borderRadius: 24 }}>
-                            <TouchableOpacity onPress={() => setBorderColor('#4D2D8F'), onPressValue}>
+                        <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
+                            <TouchableOpacity onPress={() => preferenceClicked(5)}>
                                 <BestOffers />
                             </TouchableOpacity>
-                            
                             <Badge
                                 status="error"
-                                value={value}
+                                value={offers}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
                             />
+                            <Text style={styles.textPreference} >Best Offers</Text>
                         </View>
                     </View>
 
@@ -163,8 +207,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         flex: 1,
         justifyContent: 'space-between',
-
-
     },
     titleContainer: {
 
@@ -175,7 +217,8 @@ const styles = StyleSheet.create({
             ios: 'Exo2-Bold',
             android: 'Exo2Bold'
         }),
-        color: '#172B4D', paddingVertical: 8
+        color: '#172B4D',
+        paddingVertical: 8
     },
     subtitleText: {
         fontSize: 12, color: '#6F7FAF',
@@ -184,7 +227,30 @@ const styles = StyleSheet.create({
             android: 'Exo2Medium'
         }),
     },
-    firstRow: { alignContent: 'space-between', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 24 },
-    secondRow: { justifyContent: 'space-between', flexDirection: 'row', width: '63%' },
-    borderWidth: { borderWidth: 2, borderRadius: 26, borderColor: '#4D2D8F' },
+    firstRow: {
+        alignContent: 'space-between',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 24
+    },
+    secondRow: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        width: '63%'
+    },
+    borderWidth: {
+        borderWidth: 2,
+        borderRadius: 26,
+        borderColor: '#4D2D8F'
+    },
+    textPreference: {
+        textAlign: 'center',
+        color: '#7A869A',
+        fontFamily: Platform.select({
+            ios: 'Exo2-Regular',
+            android: 'Exo2Regular'
+        }),
+        fontWeight: '600',
+        paddingTop: 5
+    }
 });

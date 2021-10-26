@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -15,16 +15,13 @@ import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
 import ProfileOffersScreenHeader from '../../components/headers/ProfileHeader';
 import { Responsive } from '../../utils/layouts/Layout';
-import { icons } from '../../constants';
 import AddButton from '../../assets/svgs/profileScreenAddButton';
-import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../persistence/query/Query';
 import MonthlySpendCircularView from './monthlySpend/MonthlySpendCircularView';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { applicationProperties } from '../../../application.properties';
 import axios from 'axios';
-import { AuthContext } from '../../navigation/ApplicationNavigator';
 
 
 
@@ -33,14 +30,10 @@ import { AuthContext } from '../../navigation/ApplicationNavigator';
 
 export default function ProfileScreen() {
 
-  const { signOut } = useContext(AuthContext);
 
-  console.log(AuthContext)
 
   const navigation = useNavigation();
   
-  const [profilePic, setProfilePic] = useState("https://picsum.photos/200/300/?blur=2");
-
   const { data } = useQuery(GQLQuery.GET_USER_PROFILE);
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
 
@@ -69,8 +62,6 @@ export default function ProfileScreen() {
       const FileName = response.assets && response.assets[0] && response.assets[0].fileName
       const type = response.assets && response.assets[0] && response.assets[0].type
       const uri = response.assets && response.assets[0] && response.assets[0].uri
-
-
 
       const datas = new FormData();
       datas.append('ImageFile', {
@@ -251,16 +242,19 @@ const styles = StyleSheet.create({
   topContainerHeaderText: {
     color: '#6F7FAF', fontSize: 14,
     fontFamily: Platform.select({
-      ios: 'Exo2-Medium',
-      android: 'Exo2Medium',
+      ios: 'Exo2-Regular',
+      android: 'Exo2Regular',
     }),
   },
   topContainerSubtitleText: {
-    color: '#060417', fontSize: 18,
+    color: '#060417', 
+    fontSize: 18,
     fontFamily: Platform.select({
-      ios: 'Exo2-Bold',
-      android: 'Exo2Bold',
+      ios: 'Exo2-Regular',
+      android: 'Exo2Regular',
     }),
+    fontWeight:'bold',
+    textTransform: 'capitalize'
   },
   addContainer: {
     padding: SIZES.padding,
