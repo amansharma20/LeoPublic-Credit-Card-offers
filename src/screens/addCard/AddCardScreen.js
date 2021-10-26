@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -13,6 +13,7 @@ import {
   ImageBackground,
   Platform,
   ToastAndroid,
+  Keyboard,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES, icons, images } from '../../constants';
@@ -30,6 +31,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GQLMutation } from '../../persistence/mutation/Mutation';
 import CommonLoading from '../../components/CommonLoading';
 import Toast from 'react-native-toast-message';
+import { KeyboardAvoidingView } from 'react-native';
 
 
 export default function AddCardScreen() {
@@ -128,6 +130,7 @@ export default function AddCardScreen() {
   }
 
 
+
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -167,7 +170,7 @@ export default function AddCardScreen() {
                 onBlur={onBlur}
                 onChangeText={value => onChange(value)}
                 value={value}
-                style={styles.digitsInput}
+                style={[styles.digitsInput]}
                 placeholderTextColor={'#B4B4B4'}
                 placeholder={'First 6 digits of your Credit Card'}
                 keyboardType={'number-pad'}
@@ -188,8 +191,7 @@ export default function AddCardScreen() {
               getCardByBankId();
             }}
             setItems={setBankName}
-            zIndex={10000}
-            zIndexInverse={1000}
+            zIndex={0}
             placeholder="Bank Name"
             style={styles.bankNamePickerContainer}
             placeholderStyle={styles.placeholderText}
@@ -219,13 +221,7 @@ export default function AddCardScreen() {
         </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
-            // onPress={()=>{
-            //   submitCardDetails()
-            // }}
-
             onPress={handleSubmit(onSubmit)}
-
-          // onPress={() => setShowModal(true)}
           >
             <View style={styles.yesButtonContainer}>
               <Text style={styles.yesButtonText}>Add Card</Text>
@@ -408,8 +404,8 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: 'red',
     alignContent: 'center',
+    zIndex:-1
   },
   backgroundImageStyle: {
     resizeMode: 'cover',

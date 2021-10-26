@@ -7,12 +7,9 @@ import Toast from 'react-native-toast-message';
 import RootStore from './src/persistence/stores/RootStore';
 import { StatusBar } from 'react-native';
 import CommonLoading from './src/components/CommonLoading';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
-
-  // useEffect(() => {
-  //   Platform.OS === 'ios' ? 200 : SplashScreen.hide();
-  // });
 
   return (
     <Provider store={RootStore}>
@@ -22,7 +19,9 @@ export default function App() {
           backgroundColor={'white'}
           barStyle={'dark-content'}
         />
-        <ApplicationNavigator />
+        <NavigationContainer>
+          <ApplicationNavigator />
+        </NavigationContainer>
         <Toast ref={ref => Toast.setRef(ref)} />
         <CommonLoading ref={ref => CommonLoading.setRef(ref)} />
       </SafeAreaProvider>

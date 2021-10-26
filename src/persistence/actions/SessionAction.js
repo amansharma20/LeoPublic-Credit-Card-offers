@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import {SessionConstant} from '../constants/SessionConstant';
-import {SessionService} from '../services/SessionService';
+import { SessionConstant } from '../constants/SessionConstant';
+import { SessionService } from '../services/SessionService';
 import {
   RequestConstant,
   ResponseConstant,
 } from '../../utils/constants/CommanConstants';
 
-export const SessionAction = {getSession};
+export const SessionAction = { getSession };
 
 function getSession() {
   return async dispatch => {

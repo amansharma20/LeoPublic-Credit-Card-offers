@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,7 +7,7 @@ import {
   Text,
   Platform,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AuthActions } from '../../persistence/actions/AuthActions';
 import { useNavigation } from '@react-navigation/native';
 import { SIZES } from '../../constants/theme';
@@ -17,10 +15,14 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Responsive } from '../../utils/layouts/Layout';
 import BackButtonBlack from '../../assets/svgs/backButtonBlack.svg';
 import CommonLoading from '../../components/CommonLoading';
-import { SessionService } from '../../persistence/services/SessionService';
-import { SessionAction } from '../../persistence/actions/SessionAction';
+import { AuthContext } from '../../navigation/ApplicationNavigator';
+import MyAsyncStorage from '../../persistence/storage/MyAsyncStorage';
+
 
 export default function OTPScreen(props) {
+
+  const { signIn, singUp } = useContext(AuthContext);
+
 
   const navigation = useNavigation();
   const { phone } = props.route.params;
@@ -30,6 +32,7 @@ export default function OTPScreen(props) {
   const [otp, setOtp] = useState('0000');
 
   const dispatch = useDispatch();
+  const session = useSelector(state => state.SessionReducer.data);
 
   const onSubmit = () => {
     CommonLoading.show();
@@ -40,53 +43,40 @@ export default function OTPScreen(props) {
       };
       dispatch(AuthActions.signIn('Account/LoginComplete', otpData)).then(
         (response) => {
+          setUserStatus(false);
           CommonLoading.hide();
           if (response && response.success === false) {
             //Do Nothing.
           } else {
-            const userData = {
-              loggedIn: true,
-              user: response.data,
-            };
-            saveTokenAsyncHome(userData);
+            let token = 'Bearer ' + response.data;
+            signIn(token);
           }
         },
       );
     } else {
-      console.log('INSIDE SIGNUP');
       const otpData = {
         MobileNumber: phone,
         Code: otp,
       };
-      console.log(otpData);
+      setUserStatus(true);
       dispatch(
-        AuthActions.signIn('Account/RegisterCustomerComplete', otpData),
+        AuthActions.signup('Account/RegisterCustomerComplete', otpData),
       ).then((response) => {
         CommonLoading.hide();
         if (response && response.success === false) { } else {
-          const userData = {
-            loggedIn: true,
-            user: response.data,
-          };
-          saveTokenAsyncDetails(userData);
+
+          let token = 'Bearer ' + response.data;
+          singUp(token);
         }
       });
     }
   };
 
-  async function saveTokenAsyncHome(user) {
-    await SessionService.setSession(user);
-    dispatch(SessionAction.getSession());
-    navigation.navigate('BottomTabBarNavigator');
-  }
-
-  async function saveTokenAsyncDetails(user) {
-    await SessionService.setSession(user);
-    dispatch(SessionAction.getSession());
-    navigation.navigate('BasicDetailsInput', {
-      firstName: firstName,
+  const setUserStatus = async (flag) => {
+    await MyAsyncStorage.storeData('newUserStatus', {
+      newUser: flag,
     });
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -129,7 +119,7 @@ export default function OTPScreen(props) {
             const signInData = {
               MobileNumber: phone,
             };
-            dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(response => {
+            dispatch(AuthActions.signIn('Account/LoginStart', signInData)).then(() => {
               CommonLoading.hide();
             });
           }}>

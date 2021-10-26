@@ -1,82 +1,98 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 import {
-    CardStyleInterpolators,
-    createStackNavigator,
+    CardStyleInterpolators, createStackNavigator,
 } from '@react-navigation/stack';
-import React from 'react';
-import BasicDetailsInput from '../screens/basicDetails/BasicDetailsInput';
-import AddCardScreen from '../screens/addCard/AddCardScreen';
+import React, { useEffect, useState } from 'react';
 import BottomTabBarNavigator from './BottomTabBarNavigator';
 import ExploreScreen from '../screens/exploreScreen/ExploreScreen';
 import OffersScreenItemDetails from '../screens/offersScreen/OffersScreenItemDetails';
 import ChoosePreferences from '../screens/profile/choosePreferences/ChoosePreferences';
 import MonthlySpend from '../screens/profile/monthlySpend/MonthlySpend';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { applicationProperties } from '../../application.properties';
-import { useDispatch, useSelector } from 'react-redux';
 import CardHolder from '../screens/basicDetails/CardHolder';
 import Educate from '../screens/basicDetails/Educate';
 import NewToCreditCards from '../screens/basicDetails/NewToCreditCards';
-import TempOnBoarding from '../screens/tempOnBoarding/TempOnBoarding';
 import CardOverviewScreen from '../screens/offersScreen/CardOverviewScreen';
-
-import Login from '../screens/auth/Login';
-import OTPScreen from '../screens/auth/OTPScreen';
-import Signup from '../screens/auth/Signup';
-import StartScreen from '../screens/auth/StartScreen';
 import ApplyForCreditCard from '../screens/basicDetails/ApplyForCreditCard';
 import CreditProfile from '../screens/basicDetails/CreditProfile';
-import OnBoardingScreen from '../screens/onBoarding/OnBoardingScreen';
-
+import EditProfile from '../screens/profile/EditProfile';
+import About from '../screens/drawer/About';
+import FAQs from '../screens/drawer/FAQs';
+import Support from '../screens/drawer/Support';
+import TermsAndConditions from '../screens/drawer/TermsAndConditions';
+import { View } from 'react-native-animatable';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import BasicDetailsNavigator from './BasicDetailsNavigator';
+import MyAsyncStorage from '../persistence/storage/MyAsyncStorage';
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
 
-    const dispatch = useDispatch()
-    const session = useSelector(state => state.SessionReducer.data);
+    const [showOneTimeScreen, setShowOneTimeScreen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    const Bearer = 'Bearer ' + session.user.user;
-    const client = new ApolloClient({
-        uri: applicationProperties.baseUrl + '/graphql',
-        cache: new InMemoryCache(),
-        headers: {
-            Authorization: Bearer
-        },
-    });
+    useEffect(() => {
 
 
+        checkUser();
+
+        return () => {
+            //CLEAR NOW
+        };
+    },[showOneTimeScreen]);
+
+    const checkUser = async () => {
+        let user = await MyAsyncStorage.getData('newUserStatus');
+        setShowOneTimeScreen(user.newUser);
+        setLoading(false);
+    };
+
+    if (loading)
+        {return (
+            <View style={{ marginBottom: 12, alignItems: 'center' }}>
+                <SkeletonPlaceholder>
+                    <View style={{ width: 289, height: 169, borderRadius: 32, marginTop: 60 }} />
+                    <View horizontal style={{ flexDirection: 'row', marginTop: 60, width: 250 }}>
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                        <View style={{ width: 60, height: 20, borderRadius: 0, marginHorizontal: 12 }} />
+                    </View>
+                    <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 90 }} />
+                    <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+                    <View style={{ width: 289, height: 100, borderRadius: 12, marginTop: 20 }} />
+                </SkeletonPlaceholder>
+            </View>
+        );}
 
     return (
-        <ApolloProvider client={client}>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false,
-                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                    keyboardHidesTabBar: true,
-                }}
-            >
-                <Stack.Screen name="TempOnBoarding" component={TempOnBoarding} />
-                <Stack.Screen name="StartScreen" component={StartScreen} />
-                <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
-                <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
-                <Stack.Screen name="BasicDetailsInput" component={BasicDetailsInput} />
-                <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
-                <Stack.Screen name="CardHolder" component={CardHolder} />
-                <Stack.Screen name="Educate" component={Educate} />
-                <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
-                <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
-                <Stack.Screen name="MonthlySpend" component={MonthlySpend} />
-                <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
-                <Stack.Screen name="AddCardScreen" component={AddCardScreen} />
-                <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Signup" component={Signup} />
-                <Stack.Screen name="OTPScreen" component={OTPScreen} />
-                <Stack.Screen name="CreditProfile" component={CreditProfile} />
-                <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} />
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                keyboardHidesTabBar: true,
 
-
-            </Stack.Navigator>
-        </ApolloProvider>
+            }}
+        >
+            {showOneTimeScreen && (
+                <Stack.Screen name="BasicDetailsNavigator" component={BasicDetailsNavigator} />
+            )}
+            <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
+            <Stack.Screen name="CardHolder" component={CardHolder} />
+            <Stack.Screen name="Educate" component={Educate} />
+            <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
+            <Stack.Screen name="ChoosePreferences" component={ChoosePreferences} />
+            <Stack.Screen name="MonthlySpend" component={MonthlySpend} />
+            <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
+            <Stack.Screen name="OffersScreenItemDetails" component={OffersScreenItemDetails} />
+            <Stack.Screen name="CreditProfile" component={CreditProfile} />
+            <Stack.Screen name="EditProfile" component={EditProfile} />
+            <Stack.Screen name="ApplyForCreditCard" component={ApplyForCreditCard} />
+            <Stack.Screen name="CardOverviewScreen" component={CardOverviewScreen} />
+            <Stack.Screen name="FAQs" component={FAQs} />
+            <Stack.Screen name="About" component={About} />
+            <Stack.Screen name="Support" component={Support} />
+            <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+        </Stack.Navigator>
     );
 }

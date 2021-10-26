@@ -13,7 +13,7 @@ import {
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useQuery } from '@apollo/client';
-import HomeSegmentNavigator from './../../navigation/HomeSegmentNavigator';
+import HomeSegmentNavigator from '../../navigation/others/HomeSegmentNavigator';
 import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
 import Carousel from 'react-native-snap-carousel';
 import { scrollInterpolator, animatedStyles } from '../../utils/animations';
@@ -23,6 +23,7 @@ import Animated from 'react-native-reanimated';
 import EmptyStateScreen from './EmptyStateScreen';
 import { ScrollView } from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
+
 
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
@@ -66,7 +67,7 @@ export default function MyCards() {
   const renderCustomerUserCards = (card) => (
     <CreditCardImagesFlatlist card={card} key={card.index} />
   );
-  
+
 
   return (
     <View style={styles.container}>

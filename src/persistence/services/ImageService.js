@@ -1,10 +1,27 @@
-// import 
+/* eslint-disable prettier/prettier */
+import { applicationProperties } from '../../../application.properties';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-// export const ImageService = {
-//     signIn
-// };
+export const ImageService = {
+  uploadProfileImage,
+};
 
-// async function getImage(url, data) {
-//     return await api.get(url, data);
-// }
 
+
+
+async function uploadProfileImage(url, data) {
+  
+  console.log(Bearer)
+  try {
+    let loginResponse = 
+    console.log(loginResponse)
+    return loginResponse;
+  } catch (e) {
+    console.log(e)
+    return {
+      success: false,
+      data: e,
+    };
+  }
+}

@@ -352,9 +352,23 @@ query MyQuery {
         }
         }
 `
-
-
-
+,GET_USER_EXPENSE: gql`
+query MyQuery {
+  UserExpenseQuery {
+    GetUserExpenses {
+      Entertainment
+      Groceries
+      Id
+      Others
+      Shopping
+      TotalCreditCardSpend
+      TotalSpend
+      Travel
+    }
+  }
+}
+`,
 };
 
 
+   

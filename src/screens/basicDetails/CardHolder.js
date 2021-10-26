@@ -22,23 +22,23 @@ export default function CardHolder() {
             <Image source={icons.backButton} style={styles.backButtonSize} />
           </View>
         </TouchableOpacity>
-        <View style={{justifyContent: 'space-between', flex: 1}}>
+        <View style={{ justifyContent: 'space-between', flex: 1 }}>
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerText}>Are you a Credit Card Holder?</Text>
           </View>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AddCardScreen')}
-            >
-              <View style={styles.yesButtonContainer}>
-                <Text style={styles.yesButtonText}>Yes, I am</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
               onPress={() => navigation.navigate('NewToCreditCards')}
             >
               <View style={styles.noButtonContainer}>
                 <Text style={styles.noButtonText}>No, I am not</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('AddCardScreen')}
+            >
+              <View style={styles.yesButtonContainer}>
+                <Text style={styles.yesButtonText}>Yes, I am</Text>
               </View>
             </TouchableOpacity>
           </View>

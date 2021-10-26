@@ -7,7 +7,7 @@ import { SIZES } from '../../constants';
 import OfferDetailsScreenHeader from '../../components/headers/OfferDetailsScreenHeader';
 import AppleIcon from '../../assets/svgs/apple.svg';
 import { Responsive } from '../../utils/layouts/Layout';
-import OffersScreenItemDetailsNavigator from '../../navigation/OffersScreenItemDetailsNavigator';
+import OffersScreenItemDetailsNavigator from '../../navigation/others/OffersScreenItemDetailsNavigator';
 import { useNavigation } from '@react-navigation/native';
 
 export default function OffersScreenItemDetails(props) {

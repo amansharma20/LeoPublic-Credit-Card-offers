@@ -12,6 +12,7 @@ async function getSession() {
     user = {
       loggedIn: false,
       user: {},
+      isSignedup: false
     };
   }
   return user;

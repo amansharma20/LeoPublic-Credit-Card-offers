@@ -4,7 +4,7 @@ import React,{useEffect} from 'react';
 import { View, StyleSheet, ScrollView, StatusBar, Dimensions,LogBox} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ExploreScreenHeader from '../../components/headers/ExploreScreenHeader';
-import ExploreTopNavigator from '../../navigation/ExploreTopNavigator';
+import ExploreTopNavigator from '../../navigation/others/ExploreTopNavigator';
 import { Responsive } from '../../utils/layouts/Layout';
 const { width: WIDTH } = Dimensions.get('window');
 
