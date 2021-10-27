@@ -1,32 +1,24 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
   Text,
   Image,
   TouchableOpacity,
-  ImageBackground,
   Platform,
 } from 'react-native';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import LinearGradient from 'react-native-linear-gradient';
-import { icons, images, SIZES } from '../../constants';
+import { COLORS, images, SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import { useNavigation } from '@react-navigation/native';
-import { applicationProperties } from '../../../application.properties';
 import * as Progress from 'react-native-progress';
 
 export default function BestOffersFlatlist(props) {
 
-  const offer = props.offer;
-
   const navigation = useNavigation();
-  const [showModal, setShowModal] = useState(false);
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const offer = props.offer;
 
   return (
     <View style={{ flex: 1, alignItems: 'center' }}>
@@ -37,10 +29,24 @@ export default function BestOffersFlatlist(props) {
           offer: offer,
         })}>
         <View style={styles.itemContainer}>
-          <Image
+          {/* <Image
             source={offer.LogoStoragePath == undefined ? { uri: 'https://picsum.photos/seed/picsum/200/300' } : { uri: applicationProperties.imageUrl + offer.LogoStoragePath }}
             style={styles.imageBackgroundSize}
-            imageStyle={styles.image} />
+            imageStyle={styles.image} /> */}
+          <View
+            style={[styles.imageBackgroundSize, { backgroundColor: COLORS.lightGray, alignItems: 'center', justifyContent: 'center' }]}
+          >
+            <Text style={{
+              color: '#0f0f00', fontFamily: Platform.select({
+                ios: 'Exo2-Bold',
+                android: 'Exo2Bold',
+              }),
+              fontSize: 21,
+              textTransform: 'capitalize'
+            }}>
+              {offer.OfferTitle}</Text>
+          </View>
+
           <View style={styles.textContainer}>
             <View>
               <Image source={images.axis} style={{ width: Responsive.width(48), height: Responsive.height(12), resizeMode: 'contain' }} />
@@ -52,6 +58,7 @@ export default function BestOffersFlatlist(props) {
                   android: 'Exo2Medium',
                 }),
                 fontSize: 12,
+                textTransform: 'capitalize'
               }}>
                 The American Express Membership Rewards Credit Card
               </Text>
@@ -100,17 +107,17 @@ const styles = StyleSheet.create({
   itemContainer: {
     elevation: 8,
     borderRadius: 6,
-    backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-    width: '90%'
+    width: '90%',
+    backgroundColor: 'white'
   },
   imageBackgroundSize: {
     height: Responsive.height(62),
     resizeMode: 'stretch',
-    borderRadius: 5,
+    // borderRadius: 5,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
   },
@@ -144,6 +151,7 @@ const styles = StyleSheet.create({
       android: 'Exo2Bold',
     }),
     color: '#454545',
+    textTransform: 'capitalize'
   },
   subtitleText: {
     fontSize: 10,
