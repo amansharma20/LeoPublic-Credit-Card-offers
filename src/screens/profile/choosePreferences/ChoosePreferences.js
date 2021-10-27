@@ -13,8 +13,7 @@ import BestOffers from '../../../assets/svgs/bestOffers.svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Responsive } from '../../../utils/layouts/Layout';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
-import { Badge } from 'react-native-elements'
-import update from 'immutability-helper';
+import { Badge } from 'react-native-elements';
 
 const prefernceArray = [0, 0, 0];
 
@@ -57,7 +56,7 @@ export default function ChoosePreferences() {
             console.log(prefernceArray)
             setShowCardBadge(!showCardBadge)
         }
-    }
+    };
 
 
 
@@ -167,7 +166,7 @@ export default function ChoosePreferences() {
                         color: '#ffffff', fontSize: 16,
                         fontFamily: Platform.select({
                             ios: 'Exo2-Bold',
-                            android: 'Exo2Bold'
+                            android: 'Exo2Bold',
                         }),
                     }}>
                         Set Preferences
@@ -200,42 +199,42 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: Platform.select({
             ios: 'Exo2-Bold',
-            android: 'Exo2Bold'
+            android: 'Exo2Bold',
         }),
         color: '#172B4D',
-        paddingVertical: 8
+        paddingVertical: 8,
     },
     subtitleText: {
         fontSize: 12, color: '#6F7FAF',
         fontFamily: Platform.select({
             ios: 'Exo2-Medium',
-            android: 'Exo2Medium'
+            android: 'Exo2Medium',
         }),
     },
     firstRow: {
         alignContent: 'space-between',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingVertical: 24
+        paddingVertical: 24,
     },
     secondRow: {
         justifyContent: 'space-between',
         flexDirection: 'row',
-        width: '63%'
+        width: '63%',
     },
     borderWidth: {
         borderWidth: 2,
         borderRadius: 26,
-        borderColor: '#4D2D8F'
+        borderColor: '#4D2D8F',
     },
     textPreference: {
         textAlign: 'center',
         color: '#7A869A',
         fontFamily: Platform.select({
             ios: 'Exo2-Regular',
-            android: 'Exo2Regular'
+            android: 'Exo2Regular',
         }),
         fontWeight: '600',
-        paddingTop: 5
-    }
+        paddingTop: 5,
+    },
 });
