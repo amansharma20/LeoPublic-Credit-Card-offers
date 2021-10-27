@@ -21,7 +21,7 @@ export default function MyCardsScreenHeader (props) {
       <Text style={styles.headerText}>My Cards</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('AddCardHome',{
-          refetch: props.refetch
+          refetch: props.refetch()
         })}
       >
         <View style={styles.rightIconContainer}>

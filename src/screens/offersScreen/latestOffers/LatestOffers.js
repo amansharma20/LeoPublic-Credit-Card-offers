@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     alignContent: 'center',
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
   },
   contentContainer: {
     paddingBottom: Responsive.height(20),

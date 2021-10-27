@@ -103,8 +103,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.1,
     shadowRadius: 8,
+    width: '90%'
   },
   imageBackgroundSize: {
     height: Responsive.height(62),
