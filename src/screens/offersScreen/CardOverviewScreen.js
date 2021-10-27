@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image, Platform } from 'react-native';
 import { SIZES } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import BackButtonPurple from '../../../src/assets/svgs/backButtonPurple.svg';
@@ -33,7 +33,12 @@ export default function CardOverviewScreen(props) {
 
                 </View>
             </View>
-            <ScrollView style={{ paddingHorizontal: 35 }}>
+            <ScrollView style={{
+                paddingHorizontal: Platform.select({
+                    ios: 20,
+                    android: 35
+                })
+            }}>
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Issuing Bank</Text>
                     <Text style={styles.subtitleText}>{cardData.BankCard.Bank.Name}</Text>
@@ -128,71 +133,62 @@ export default function CardOverviewScreen(props) {
 
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Fuel Benefits</Text>
-                    <Text style={styles.subtitleText}>₹ {cardData.BankCard.TravelBenefits}</Text>
+                    <Text style={styles.subtitleText}>₹ {cardData.BankCard.FuelBenefits}</Text>
 
                 </View>
 
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Dining</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
-
-                </View>
-
-                <View style={styles.textContainerMain}>
-                    <Text style={styles.titleText}>Dining</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
-
-                </View>
-
-
-                <View style={styles.textContainerMain}>
-                    <Text style={styles.titleText}>Dining</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.Dining}</Text>
 
                 </View>
 
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Hotel Benefits</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.HotelBenefits}</Text>
 
                 </View>
+
 
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Reward Booster</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.RewardBooster}</Text>
 
                 </View>
+
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Reward Booster Sectors</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.RewardBoosterSectors}</Text>
 
                 </View>
 
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Lounge Access</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.LoungeAccess}</Text>
 
                 </View>
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Card Focus Segment</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.CardFocusSegment}</Text>
 
                 </View>
+
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Priority Pass Membership</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.PriorityPassMembership}</Text>
 
                 </View>
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Add-on Card</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.AddOnCards}</Text>
 
                 </View>
+               
                 <View style={styles.textContainerMain}>
                     <Text style={styles.titleText}>Best Suited for</Text>
-                    <Text style={styles.subtitleText}>₹5000</Text>
+                    <Text style={styles.subtitleText}>{cardData.BankCard.BestSuitedFor}</Text>
                 </View>
-                <View style={[styles.textContainer, { paddingBottom: 50 }]}>
+                <View style={[{ paddingBottom: 50 }]}>
                 </View>
             </ScrollView>
         </View>
