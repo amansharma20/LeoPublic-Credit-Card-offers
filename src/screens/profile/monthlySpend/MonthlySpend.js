@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, Modal, Image, ScrollView, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { SIZES } from '../../../constants/theme';
 import ShoppingIcon from '../../../assets/svgs/shoppingIcon.svg';
@@ -13,36 +13,35 @@ import { Responsive } from '../../../utils/layouts/Layout';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 import { icons } from '../../../constants';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { GQLMutation } from '../../../persistence/mutation/Mutation';
+import { GQLQuery } from '../../../persistence/query/Query';
 import CommonLoading from '../../../components/CommonLoading';
 import { useNavigation } from '@react-navigation/core';
 
 
 export default function MonthlySpend(props) {
 
+    const monthlySpends = props.route.params.expense;
 
     const navigation = useNavigation();
 
     const [showModal, setShowModal] = useState(false);
     const [selectedId, setSelectedId] = useState(1);
 
+
     const [expense, setExpense] = useState(0);
-    const [expenseShopping, setExpenseShopping] = useState(0);
-    const [expenseTravelling, setExpenseTravelling] = useState(0);
-    const [expenseGroceries, setExpenseGroceries] = useState(0);
-    const [expenseEntermainment, setExpenseEntermainment] = useState(0);
-    const [expenseOthers, setExpenseOthers] = useState(0);
-    const [expenseTotalSpendCreditCard, setExpenseTotalSpendCreditCard] = useState(0);
+    const [expenseShopping, setExpenseShopping] = useState(monthlySpends.Shopping);
+    const [expenseTravelling, setExpenseTravelling] = useState(monthlySpends.Travel);
+    const [expenseGroceries, setExpenseGroceries] = useState(monthlySpends.Groceries);
+    const [expenseEntermainment, setExpenseEntermainment] = useState(monthlySpends.Entertainment);
+    const [expenseOthers, setExpenseOthers] = useState(monthlySpends.Others);
+    const [expenseTotalSpendCreditCard, setExpenseTotalSpendCreditCard] = useState(monthlySpends.TotalCreditCardSpend);
 
-    useEffect(() => {
 
-    });
-
-    const [addSpend, { data, error }] = useMutation(GQLMutation.ADD_USER_EXPENSE);
+    const [addSpend, { data, error, loading }] = useMutation(GQLMutation.ADD_USER_EXPENSE);
 
     const onPressSubmitData = () => {
-        CommonLoading.show()
         addSpend({
             variables: {
                 Entertainment: expenseEntermainment,
@@ -53,18 +52,11 @@ export default function MonthlySpend(props) {
                 Travel: expenseTravelling
             }
         });
-
-        if (data) {
-            CommonLoading.hide();
-            navigation.goBack();
-        }
-
-        if(error){
-            CommonLoading.hide();
-            navigation.goBack();
-        }
-        CommonLoading.hide();
     };
+
+    if (data) {
+        navigation.goBack();
+    }
 
     const totalExpense = () => {
         return +expenseShopping + +expenseTravelling + +expenseGroceries + +expenseEntermainment + +expenseOthers
@@ -141,7 +133,7 @@ export default function MonthlySpend(props) {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹{expenseShopping}
+                        ₹ {expenseShopping}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openExpenseModel(2)} style={styles.itemContainer}>
@@ -152,7 +144,7 @@ export default function MonthlySpend(props) {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹{expenseTravelling}
+                        ₹ {expenseTravelling}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openExpenseModel(3)} style={styles.itemContainer}>
@@ -163,7 +155,7 @@ export default function MonthlySpend(props) {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹{expenseGroceries}
+                        ₹ {expenseGroceries}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openExpenseModel(4)} style={styles.itemContainer}>
@@ -174,7 +166,7 @@ export default function MonthlySpend(props) {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹{expenseEntermainment}
+                        ₹ {expenseEntermainment}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openExpenseModel(5)} style={styles.itemContainer}>
@@ -185,7 +177,7 @@ export default function MonthlySpend(props) {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹{expenseOthers}
+                        ₹ {expenseOthers}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openExpenseModel(6)} style={styles.itemContainer}>
@@ -196,7 +188,7 @@ export default function MonthlySpend(props) {
                         </Text>
                     </View>
                     <Text style={{ fontSize: 18 }}>
-                        ₹{expenseTotalSpendCreditCard}
+                        {expenseTotalSpendCreditCard} %
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={onPressSubmitData} style={styles.buttonContainer}>
