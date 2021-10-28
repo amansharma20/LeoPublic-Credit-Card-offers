@@ -18,15 +18,18 @@ import { SIZES } from '../../../constants';
 import FilterCardsModalSegments from './FilterCardsModalSegments';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
 import RecommendedScreenFlatlist from '../../../components/flatlistsItems/RecommendedScreenFlatlist';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { useNavigation } from '@react-navigation/core';
 
 
 
-export default function RecommendedScreen() {
+export default function DiscoverScreen() {
+
+  const navigation = useNavigation();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -36,7 +39,7 @@ export default function RecommendedScreen() {
 
   const selectedCardArray = [];
   const selectedCardCallback = (card) => {
-    selectedCardArray.push(card);
+
     if (selectedCardArray.length > 2) {
       Toast.show({
         type: 'error',
@@ -48,9 +51,77 @@ export default function RecommendedScreen() {
         topOffset: 30,
         bottomOffset: 40,
       });
+    } else {
+      if (selectedCardArray.length == 0) {
+        selectedCardArray.push(card);
+      } else {
+        selectedCardArray.map((item, index) => {
+          if (item.Id == card.Id) {
+            selectedCardArray.splice(index, 1);
+          } else {
+            selectedCardArray.push(card);
+          }
+        })
+      }
     }
   }
 
+  const navigateToCompareCards = () => {
+    navigation.navigate('CompareCardsScreen', {
+      selectedCardArray: selectedCardArray,
+      cardCompareData: [
+        {
+          id: '0',
+          title: 'Card Level',
+          card1: selectedCardArray[0].CardLevel,
+          card2:  selectedCardArray[1].CardLevel
+        },
+        {
+          id: '1',
+          title: 'Credit Limit Range',
+          card1: selectedCardArray[0].CreditLimitRange,
+          card2:  selectedCardArray[1].CreditLimitRange
+        },
+        {
+          id: '2',
+          title: 'Interest Rate',
+          card1: selectedCardArray[0].InterestRate,
+          card2:  selectedCardArray[1].InterestRate
+        },
+        {
+          id: '3',
+          title: 'Joining Fees',
+          card1: selectedCardArray[0].JoiningFees,
+          card2:  selectedCardArray[1].JoiningFees
+        },
+        {
+          id: '4',
+          title: 'Annual Fees',
+          card1: selectedCardArray[0].AnnualFees,
+          card2:  selectedCardArray[1].AnnualFees
+        },
+        {
+          id: '5',
+          title: 'Eligibility Income Range',
+          card1: selectedCardArray[0].EligibilityIncomeRange,
+          card2:  selectedCardArray[1].EligibilityIncomeRange
+        },
+        {
+          id: '6',
+          title: 'Card Focus Segment',
+          card1: selectedCardArray[0].CardFocusSegment,
+          card2:  selectedCardArray[1].CardFocusSegment
+        },
+        {
+          id: '7',
+          title: 'Best Suited For',
+          card1: selectedCardArray[0].BestSuitedFor,
+          card2:  selectedCardArray[1].BestSuitedFor
+        },
+      ],
+     
+    });
+  }
 
   if (loading) {
     return Array.from({ length: 3 }).map((_, index) => (
@@ -79,6 +150,7 @@ export default function RecommendedScreen() {
           <TouchableOpacity
             onPress={() => {
               setShowModal(true)
+              // navigateToCompareCards();
             }}
             style={styles.filterButtonContainer}>
             <FilterIcon />

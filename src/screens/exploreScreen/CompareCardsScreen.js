@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import {
     View,
     StyleSheet,
@@ -14,7 +14,6 @@ import {
     Image
 } from 'react-native';
 import BackButtonWhite from '../../assets/svgs/backButtonWhite.svg';
-import AxisLogo from '../../assets/svgs/axisLogo.svg';
 import Stars from '../../assets/svgs/stars.svg';
 import Visa from '../../assets/svgs/visasvg.svg';
 import _ from 'lodash';
@@ -23,21 +22,16 @@ import { useNavigation } from '@react-navigation/native';
 import { images } from '../../constants';
 import { Responsive } from '../../utils/layouts/Layout';
 import CompareModalItemFlatlist from '../../components/flatlistsItems/CompareModalItemFlatlist';
-import compareModalData from '../../assets/dummyData/compareModalData';
 import { applicationProperties } from '../../../application.properties';
 
 
 export default function CompareCardsScreen(props) {
 
-
-
+    const navigation = useNavigation();
 
     const compareCardData = props.route.params.cardCompareData
     const cardsArray = props.route.params.selectedCardArray
 
-    console.log(cardsArray[0].CardName)
-
-    const navigation = useNavigation();
     const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
     const y = new Animated.Value(0);
     const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], { useNativeDriver: true });
