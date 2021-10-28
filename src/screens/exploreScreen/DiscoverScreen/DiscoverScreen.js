@@ -18,8 +18,6 @@ import { SIZES } from '../../../constants';
 import FilterCardsModalSegments from './FilterCardsModalSegments';
 import { useQuery } from '@apollo/client';
 import { GQLQuery } from '../../../persistence/query/Query';
-import DiscoverScreenFlatlist from '../../../components/flatlistsItems/DiscoverScreenFlatlist';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
@@ -29,24 +27,15 @@ import RecommendedScreenFlatlist from '../../../components/flatlistsItems/Recomm
 
 export default function RecommendedScreen() {
 
-  const [allCategoriesValue, setAllCategoriesValue] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [openAllCategories, setOpenAllCategories] = useState(false);
 
   const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_DISCOVER_CARDS);
   const DiscoverCards = data && data.ExploreQuery && data.ExploreQuery.GetDiscover;
 
-  const [allCategories, setAllCategories] = useState([
-    { label: 'Lifestyle', value: 'Lifestyle' },
-    { label: 'Fashion', value: 'Fashion' },
-  ]);
-
 
   const selectedCardArray = [];
-
   const selectedCardCallback = (card) => {
     selectedCardArray.push(card);
-
     if (selectedCardArray.length > 2) {
       Toast.show({
         type: 'error',

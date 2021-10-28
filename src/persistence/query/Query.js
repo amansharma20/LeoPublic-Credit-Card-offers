@@ -206,7 +206,6 @@ export const GQLQuery = {
           ForexMarkUpInPercent
           HotelBenefits
           Id
-          BestSuitedFor
           ImageStoragePath
           IncomeSalariedAnnual
           IncomeSelfEmpAnnual
