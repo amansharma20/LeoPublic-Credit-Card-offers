@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -28,14 +28,19 @@ export default function ProfileScreen() {
 
 
   const navigation = useNavigation();
-  
+
   const { data } = useQuery(GQLQuery.GET_USER_PROFILE);
   const UserProfileData = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile;
 
-  const { data: userExpenseQlResponse } = useQuery(GQLQuery.GET_USER_EXPENSE);
+  const { data: userExpenseQlResponse, refetch } = useQuery(GQLQuery.GET_USER_EXPENSE);
 
   const userExpense = userExpenseQlResponse && userExpenseQlResponse.UserExpenseQuery && userExpenseQlResponse.UserExpenseQuery.GetUserExpenses;
 
+
+  useEffect(() => {
+    console.log("REFETCH")
+    console.log("REFETCH")
+  }, [])
 
   const selectFile = () => {
     var options = {
@@ -62,7 +67,7 @@ export default function ProfileScreen() {
       datas.append('ImageFile', {
         fileName: FileName,
         type: type,
-        name:type,
+        name: type,
         uri: Platform.OS === 'android' ? uri : uri.replace('file://', ''),
       });
       uploadImage(datas);
@@ -79,13 +84,13 @@ export default function ProfileScreen() {
       'Content-Type': 'multipart/form-data',
     };
     client.post('Profile/CustomerProfileUpdate', data, {
-      headers:header,
+      headers: header,
     }).then((response) => {
       console.log(response);
 
     })
       .catch(() => {
-        
+
       })
   }
   const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath;
@@ -154,12 +159,13 @@ export default function ProfileScreen() {
               <TouchableOpacity
                 onPress={() => navigation.navigate('MonthlySpend', {
                   expense: userExpense,
+                  refetch: refetch
                 })}>
                 <AddButton />
               </TouchableOpacity>
             </View>
           </View>
-        </> : <MonthlySpendCircularView spends ={userExpense}/>}
+        </> : <MonthlySpendCircularView spends={userExpense} />}
 
       </ScrollView>
     </View>
@@ -242,13 +248,13 @@ const styles = StyleSheet.create({
     }),
   },
   topContainerSubtitleText: {
-    color: '#060417', 
+    color: '#060417',
     fontSize: 18,
     fontFamily: Platform.select({
       ios: 'Exo2-Regular',
       android: 'Exo2Regular',
     }),
-    fontWeight:'bold',
+    fontWeight: 'bold',
     textTransform: 'capitalize'
   },
   addContainer: {

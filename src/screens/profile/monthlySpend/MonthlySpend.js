@@ -23,12 +23,12 @@ import { useNavigation } from '@react-navigation/core';
 export default function MonthlySpend(props) {
 
     const monthlySpends = props.route.params.expense;
+    console.log(props)
 
     const navigation = useNavigation();
 
     const [showModal, setShowModal] = useState(false);
     const [selectedId, setSelectedId] = useState(1);
-
 
     const [expense, setExpense] = useState(0);
     const [expenseShopping, setExpenseShopping] = useState(monthlySpends.Shopping);
@@ -56,6 +56,7 @@ export default function MonthlySpend(props) {
 
     if (data) {
         navigation.goBack();
+        props.route.params.refetch();
     }
 
     const totalExpense = () => {
