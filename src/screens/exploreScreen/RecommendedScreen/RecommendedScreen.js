@@ -25,11 +25,13 @@ import { useNavigation } from '@react-navigation/core';
 
 export default function RecommendedScreen() {
 
+  const navigation = useNavigation();
+
   const [openAllCategories, setOpenAllCategories] = useState(false);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
   const [showCompareModal, setShowCompareModal] = useState(false);
 
-  const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
+  const { loading, data, error } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
   const RecommendedCards = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
 
   const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
@@ -41,12 +43,7 @@ export default function RecommendedScreen() {
     { label: 'Fashion', value: 'Fashion' },
   ]);
 
-
-
-  const navigation = useNavigation();
-
   const selectedCardArray = [];
-
   const selectedCardCallback = (card) => {
     selectedCardArray.push(card);
     if (selectedCardArray.length > 2) {

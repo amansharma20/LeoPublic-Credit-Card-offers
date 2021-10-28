@@ -128,7 +128,6 @@ export const GQLQuery = {
     AdditionalQualificationRequirements
     AnnualFees
     BankId
-    BestSuitedFor
     CardFocusSegment
     CardLevel
     CardMaterial
