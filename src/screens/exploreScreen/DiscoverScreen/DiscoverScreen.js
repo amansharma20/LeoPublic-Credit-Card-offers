@@ -22,6 +22,7 @@ import _ from 'lodash';
 import { ScrollView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
 import RecommendedScreenFlatlist from '../../../components/flatlistsItems/RecommendedScreenFlatlist';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 
 

@@ -74,7 +74,7 @@ export default function RecommendedScreenFlatlist(props) {
 
   useEffect(() => {
 
-  }, [checkboxState]);
+  }, []);
 
 
   const cardSelected = () => {
