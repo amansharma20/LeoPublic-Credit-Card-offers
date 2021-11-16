@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet, Platform, Text} from 'react-native';
 import { SIZES } from '../../../constants/theme';
 import { FlatList } from 'react-native-gesture-handler';
 import Offers from '../../../components/flatlistsItems/OffersScreenFlatlist';
@@ -35,6 +35,14 @@ export default function OffersScreen(props) {
         </SkeletonPlaceholder>
       </View>
     );
+
+    if (error){
+      return (
+        <View style={{ flex:1 , justifyContent:'center', alignSelf:'center', paddingTop:'40%'}}>
+         <Text style={styles.noOffer}>No Offers Found.</Text>
+        </View>
+      );
+    }
 
   const renderItem = ({ item }) => (
     <Offers offer = {item} key={item.Id}/>
@@ -78,4 +86,13 @@ const styles = StyleSheet.create({
   flatlistContainer: {
     paddingHorizontal: SIZES.padding,
   },
+  noOffer:{
+    color: '#7A869A',
+    fontSize: SIZES.h4,
+    paddingTop: 10,
+    fontFamily: Platform.select({
+        ios: 'Exo2-Medium',
+        android: 'Exo2Medium'
+    }),
+  }
 });

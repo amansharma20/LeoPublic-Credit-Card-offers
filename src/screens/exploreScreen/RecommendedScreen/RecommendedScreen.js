@@ -25,9 +25,10 @@ import { useNavigation } from '@react-navigation/core';
 
 export default function RecommendedScreen() {
 
+  const navigation = useNavigation();
+
   const [openAllCategories, setOpenAllCategories] = useState(false);
   const [allCategoriesValue, setAllCategoriesValue] = useState(null);
-  const [showCompareModal, setShowCompareModal] = useState(false);
 
   const { loading, data } = useQuery(GQLQuery.GET_EXPLORE_RECOMMENDED_CARDS);
   const RecommendedCards = data && data.ExploreQuery && data.ExploreQuery.GetRecommended;
@@ -42,13 +43,9 @@ export default function RecommendedScreen() {
   ]);
 
 
-
-  const navigation = useNavigation();
-
   const selectedCardArray = [];
-
   const selectedCardCallback = (card) => {
-    selectedCardArray.push(card);
+
     if (selectedCardArray.length > 2) {
       Toast.show({
         type: 'error',
@@ -60,7 +57,76 @@ export default function RecommendedScreen() {
         topOffset: 30,
         bottomOffset: 40,
       });
+    } else {
+      if (selectedCardArray.length == 0) {
+        selectedCardArray.push(card);
+      } else {
+        selectedCardArray.map((item, index) => {
+          if (item.Id == card.Id) {
+            selectedCardArray.splice(index, 1);
+          } else {
+            selectedCardArray.push(card);
+          }
+        })
+      }
     }
+  }
+
+  const navigateToCompareCards = () => {
+    navigation.navigate('CompareCardsScreen', {
+      selectedCardArray: selectedCardArray,
+      cardCompareData: [
+        {
+          id: '0',
+          title: 'Card Level',
+          card1: selectedCardArray[0].CardLevel,
+          card2:  selectedCardArray[1].CardLevel
+        },
+        {
+          id: '1',
+          title: 'Credit Limit Range',
+          card1: selectedCardArray[0].CreditLimitRange,
+          card2:  selectedCardArray[1].CreditLimitRange
+        },
+        {
+          id: '2',
+          title: 'Interest Rate',
+          card1: selectedCardArray[0].InterestRate,
+          card2:  selectedCardArray[1].InterestRate
+        },
+        {
+          id: '3',
+          title: 'Joining Fees',
+          card1: selectedCardArray[0].JoiningFees,
+          card2:  selectedCardArray[1].JoiningFees
+        },
+        {
+          id: '4',
+          title: 'Annual Fees',
+          card1: selectedCardArray[0].AnnualFees,
+          card2:  selectedCardArray[1].AnnualFees
+        },
+        {
+          id: '5',
+          title: 'Eligibility Income Range',
+          card1: selectedCardArray[0].EligibilityIncomeRange,
+          card2:  selectedCardArray[1].EligibilityIncomeRange
+        },
+        {
+          id: '6',
+          title: 'Card Focus Segment',
+          card1: selectedCardArray[0].CardFocusSegment,
+          card2:  selectedCardArray[1].CardFocusSegment
+        },
+        {
+          id: '7',
+          title: 'Best Suited For',
+          card1: selectedCardArray[0].BestSuitedFor,
+          card2:  selectedCardArray[1].BestSuitedFor
+        },
+      ],
+     
+    });
   }
 
 
@@ -113,58 +179,24 @@ export default function RecommendedScreen() {
           </View>
           <View>
             <TouchableOpacity onPress={() => {
-              navigation.navigate('CompareCardsScreen', {
-                data: [
-                  {
-                    id: '0',
-                    title: 'Card Level',
-                    card1: '1000',
-                    card2: 'None',
-                  },
-                  {
-                    id: '1',
-                    title: 'Credit Limit Range',
-                    card1: '1000',
-                    card2: '500',
-                  },
-                  {
-                    id: '2',
-                    title: 'Interest Rate',
-                    card1: 'Yes',
-                    card2: 'No',
-                  },
-                  {
-                    id: '3',
-                    title: 'Joining Fees',
-                    card1: 'Yes',
-                    card2: 'Yes',
-                  },
-                  {
-                    id: '4',
-                    title: 'Annual Fees',
-                    card1: 'Yes',
-                    card2: 'No',
-                  },
-                  {
-                    id: '5',
-                    title: 'Eligibility Income Range',
-                    card1: '20%',
-                    card2: '18%',
-                  },
-                  {
-                    id: '6',
-                    title: 'Card Focus Segment',
-                    card1: 'Yes',
-                    card2: 'Yes',
-                  },
-                  {
-                    id: '7',
-                    title: 'Best Suited For',
-                    card1: '6%',
-                    card2: '3.50%',
-                  },
-                ]
-              });
+              if (selectedCardArray.length == 2) {
+                navigateToCompareCards()
+              } else {
+                Toast.show({
+                  type: 'error',
+                  position: 'top',
+                  text1: 'Sorry',
+                  text2: 'Please Select atleast two cards to compare.',
+                  visibilityTime: 4000,
+                  autoHide: true,
+                  topOffset: 30,
+                  bottomOffset: 40,
+                });
+              }
+
+              selectedCardArray.map(item => {
+                console.log(item.CardName)
+              })
             }}>
               <View style={styles.compareButton}>
                 <Text style={styles.compareText}>Compare</Text>

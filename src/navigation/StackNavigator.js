@@ -46,7 +46,7 @@ export default function StackNavigator() {
 
     const checkUser = async () => {
         let user = await MyAsyncStorage.getData('newUserStatus');
-        setShowOneTimeScreen(user.newUser);
+        setShowOneTimeScreen(false);
         setLoading(false);
     };
 
@@ -80,7 +80,6 @@ export default function StackNavigator() {
             {showOneTimeScreen && (
                 <Stack.Screen name="BasicDetailsNavigator" component={BasicDetailsNavigator} />
             )}
-            <Stack.Screen name="CreditProfile" component={CreditProfile} />
             <Stack.Screen name="BottomTabBarNavigator" component={BottomTabBarNavigator} />
             <Stack.Screen name="NewToCreditCards" component={NewToCreditCards} />
             <Stack.Screen name="CardHolder" component={CardHolder} />
@@ -98,6 +97,8 @@ export default function StackNavigator() {
             <Stack.Screen name="Support" component={Support} />
             <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
             <Stack.Screen name="CompareCardsScreen" component={CompareCardsScreen} />
+
+            <Stack.Screen name="CreditProfile" component={CreditProfile} />
         </Stack.Navigator>
     );
 }

@@ -14,79 +14,55 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Responsive } from '../../../utils/layouts/Layout';
 import CommonHeader from '../../../components/headers/CommonHeaderWithBackButton';
 import { Badge } from 'react-native-elements';
-import update from 'immutability-helper';
+
+const prefernceArray = [0, 0, 0];
 
 
 export default function ChoosePreferences() {
 
     const navigation = useNavigation();
     const [value, onSetValue] = useState(0);
-    const onPressValue = () => onSetValue(value + 1);
+    const nextValueSelected = () => onSetValue(value + 1);
 
-    const [cardIssuer, setCardIssuer] = useState();
-    const [nature, setNature] = useState();
-    const [money, setMoney] = useState();
-    const [fees, setFees] = useState();
-    const [offers, setOffers] = useState();
+    const [showCardBadge, setShowCardBadge] = useState(false);
+    const [showNature, setShowNature] = useState(false);
+    const [showMoney, setShowMoney] = useState(false);
+    const [showFees, setShowFees] = useState(false);
+    const [showOffers, setShowOffers] = useState(false);
 
-    const [selectedId, setSelectedId] = useState();
+    
 
-    const prefernceArray = [];
-    const state2 = update(prefernceArray, { $push: [selectedId] }); // ['x', 'y']
+    const addPreference = (id) => {
 
-    const preferenceClicked = (id) => {
-
-        setSelectedId(id);
-        console.log(state2);
-        switch (id) {
+        switch (i) {
             case 1:
-                setCardIssuer(prefernceArray.length);
-                setNature();
-                setMoney();
-                setFees();
-                setOffers();
                 break;
+
             case 2:
-                setCardIssuer();
-                setNature(prefernceArray.length);
-                setMoney();
-                setFees();
-                setOffers();
                 break;
             case 3:
-                setCardIssuer();
-                setNature();
-                setMoney(prefernceArray.length);
-                setFees();
-                setOffers();
                 break;
             case 4:
-                setCardIssuer();
-                setNature();
-                setMoney();
-                setFees(prefernceArray.length);
-                setOffers();
                 break;
             case 5:
-                setCardIssuer();
-                setNature();
-                setMoney();
-                setFees();
-                setOffers(prefernceArray.length);
                 break;
             default:
-                setCardIssuer();
-                setNature();
-                setMoney();
-                setFees();
-                setOffers();
-                break;
+                break
+        }
+
+        if (value <= 2) {
+            prefernceArray[value] = id
+            nextValueSelected()
+            console.log(prefernceArray)
+            setShowCardBadge(!showCardBadge)
         }
     };
 
+
+
     useEffect(() => {
 
-    });
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -104,45 +80,51 @@ export default function ChoosePreferences() {
                     </View>
                     <View style={styles.firstRow}>
                         <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
-                            <TouchableOpacity onPress={() => preferenceClicked(1)}>
+                            <TouchableOpacity onPress={() => addPreference(1)}>
                                 <PopularityofCardIssuer />
                             </TouchableOpacity>
-                            <Badge
-                                status="error"
-                                value={cardIssuer}
-                                containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
-                                badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
-                                textStyle={{ color: '#ffffff' }}
-                                onPressValue={onPressValue}
-                            />
+                            {showCardBadge &&
+                                <Badge
+                                    status="error"
+                                    value={1}
+                                    containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
+                                    badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
+                                    textStyle={{ color: '#ffffff' }}
+
+                                />
+                            }
                             <Text style={styles.textPreference} >Popularity of {'\n'}Card Issuer</Text>
                         </View>
                         <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
                             <TouchableOpacity onPress={() => preferenceClicked(2)}>
                                 <PremiumNature />
                             </TouchableOpacity>
-                            <Badge
+
+                            {showNature && <Badge
                                 status="error"
-                                value={nature}
+                                value={2}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
-                                onPressValue={onPressValue}
+
                             />
+                            }
+
                             <Text style={styles.textPreference} >Premium{'\n'}Nature</Text>
                         </View>
                         <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
                             <TouchableOpacity onPress={() => preferenceClicked(3)}>
                                 <ValueForMoney />
                             </TouchableOpacity>
-                            <Badge
+                            {showMoney && <Badge
                                 status="error"
-                                value={money}
+                                value={3}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
-                                onPressValue={onPressValue}
-                            />
+
+                            />}
+
                             <Text style={styles.textPreference} >Value for{'\n'}Money</Text>
                         </View>
                     </View>
@@ -151,27 +133,29 @@ export default function ChoosePreferences() {
                             <TouchableOpacity onPress={() => preferenceClicked(4)}>
                                 <LowerFees />
                             </TouchableOpacity>
-                            <Badge
+                            {showFees && <Badge
                                 status="error"
-                                value={fees}
+                                value={4}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
-                                onPressValue={onPressValue}
-                            />
+
+                            />}
+
                             <Text style={styles.textPreference} >Lower Fees</Text>
                         </View>
                         <View style={{ borderColor: '#ffffff', borderWidth: 1.5, borderRadius: 24 }}>
                             <TouchableOpacity onPress={() => preferenceClicked(5)}>
                                 <BestOffers />
                             </TouchableOpacity>
-                            <Badge
+                            {showOffers && <Badge
                                 status="error"
-                                value={offers}
+                                value={5}
                                 containerStyle={{ position: 'absolute', width: 10, height: 10, color: '#ffffff' }}
                                 badgeStyle={{ backgroundColor: '#4D2D8F', marginLeft: 130 }}
                                 textStyle={{ color: '#ffffff' }}
-                            />
+                            />}
+
                             <Text style={styles.textPreference} >Best Offers</Text>
                         </View>
                     </View>

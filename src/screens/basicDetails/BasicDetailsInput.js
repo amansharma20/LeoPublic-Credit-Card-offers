@@ -91,13 +91,13 @@ export default function BasicDetailsInput(props) {
         EmploymentType: employmentValue,
         Gender: genderValue,
         PinCode: pinCode,
-        DateOfBirth : date.toISOString()
+        DateOfBirth: date.toISOString()
       },
     });
   };
 
   if (data && data.UserBasicDetailsMutation && data.UserBasicDetailsMutation.UpdateUserBasicDetails === 'Updated') {
-    navigation.navigate('CardHolder'); 
+    navigation.navigate('CardHolder');
     CommonLoading.hide();
   }
   if (error != undefined) {

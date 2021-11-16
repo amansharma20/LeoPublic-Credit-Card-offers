@@ -20,6 +20,11 @@ export default function MonthlySpendCircularView(props) {
 
     const spends = props.spends
     const navigation = useNavigation();
+
+    const getPercentage = (spend) => {
+        return (spend * 100) / spends.TotalSpend
+    }
+
     return (
         <View style={{ backgroundColor: '#ffffff', padding: SIZES.padding, borderBottomColor: '#e4e7f0', borderBottomWidth: 1 }}>
 
@@ -34,9 +39,11 @@ export default function MonthlySpendCircularView(props) {
                     Monthly Spend Pattern
                 </Text>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('MonthlySpend')
+                    navigation.navigate('MonthlySpend', {
+                        expense: spends,
+                    })
                 }}>
-                    <Text style={{ marginRight: 10, color: '#4D2D8F', }}>
+                    <Text style={{ marginRight: 10, marginTop: 5, color: '#4D2D8F', }}>
                         EDIT
                     </Text>
                 </TouchableOpacity>
@@ -63,13 +70,6 @@ export default function MonthlySpendCircularView(props) {
                 }}>
                     Monthly Expense
                 </Text>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('MonthlySpend')
-                }}>
-                    <Text style={{ marginRight: 10 }}>
-                        EDIT
-                    </Text>
-                </TouchableOpacity>
             </View>
             <View style={{ paddingVertical: SIZES.padding, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{ alignItems: 'center' }}>
@@ -79,13 +79,13 @@ export default function MonthlySpendCircularView(props) {
                             android: 'Exo2Bold',
                         }),
                     }}>
-                        60%
+                        {getPercentage(spends.Shopping).toFixed()} %
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
                         size={75}
                         width={5}
-                        fill={30}
+                        fill={getPercentage(spends.Shopping)}
                         tintColor="#4D2D8F"
                         // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
@@ -106,14 +106,14 @@ export default function MonthlySpendCircularView(props) {
                             android: 'Exo2Bold',
                         }),
                     }}>
-                        60%
+                        {getPercentage(spends.Groceries).toFixed()} %
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
 
                         size={75}
                         width={5}
-                        fill={30}
+                        fill={getPercentage(spends.Groceries)}
                         tintColor="#4D2D8F"
                         // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
@@ -134,16 +134,14 @@ export default function MonthlySpendCircularView(props) {
                             android: 'Exo2Bold',
                         }),
                     }}>
-                        60%
+                        {getPercentage(spends.Travel).toFixed()} %
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
-
                         size={75}
                         width={5}
-                        fill={30}
+                        fill={getPercentage(spends.Travel)}
                         tintColor="#4D2D8F"
-                        // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
                     />
                     <Text style={{
@@ -165,15 +163,14 @@ export default function MonthlySpendCircularView(props) {
                             android: 'Exo2Bold',
                         }),
                     }}>
-                        60%
+                        {getPercentage(spends.Entertainment).toFixed()} %
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
                         size={75}
                         width={5}
-                        fill={30}
+                        fill={getPercentage(spends.Entertainment)}
                         tintColor="#4D2D8F"
-                        // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
                     />
                     <Text style={{
@@ -192,15 +189,14 @@ export default function MonthlySpendCircularView(props) {
                             android: 'Exo2Bold',
                         }),
                     }}>
-                        60%
+                        {getPercentage(spends.Others).toFixed()} %
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
                         size={75}
                         width={5}
-                        fill={30}
+                        fill={getPercentage(spends.Others)}
                         tintColor="#4D2D8F"
-                        // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
                     />
                     <Text style={{
@@ -219,15 +215,14 @@ export default function MonthlySpendCircularView(props) {
                             android: 'Exo2Bold',
                         }),
                     }}>
-                        60%
+                        {spends.TotalCreditCardSpend} %
                     </Text>
                     <AnimatedCircularProgress
                         style={{ paddingHorizontal: SIZES.padding2 }}
                         size={75}
                         width={5}
-                        fill={30}
+                        fill={spends.TotalCreditCardSpend}
                         tintColor="#4D2D8F"
-                        // onAnimationComplete={() => console.log('onAnimationComplete')}
                         backgroundColor="#b9b9b9"
                     />
                     <Text style={{

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import MyCardsScreenHeader from '../../components/headers/MyCardsScreenHeader';
 import { Responsive } from '../../utils/layouts/Layout';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import HomeSegmentNavigator from '../../navigation/others/HomeSegmentNavigator';
 import CreditCardImagesFlatlist from '../../components/flatlistsItems/CreditCardImagesFlatlist';
 import Carousel from 'react-native-snap-carousel';
@@ -23,6 +23,8 @@ import Animated from 'react-native-reanimated';
 import EmptyStateScreen from './EmptyStateScreen';
 import { ScrollView } from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
+import { ApolloConsumer } from '@apollo/client';
+import { GQLMutation } from '../../persistence/mutation/Mutation';
 
 
 
@@ -33,13 +35,17 @@ export default function MyCards() {
   useEffect(() => {
     Platform.OS === 'ios' ? 200 : SplashScreen.hide();
   });
-  const { loading, data, error } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const { loading, data, error, refetch } = useQuery(GQLQuery.GET_USER_BANK_CARDS);
+  const [deleteCard, { data: deletedCardData, error: r, loading: deleteLoading }] = useMutation(GQLMutation.DELETE_USER_CARD);
+
   const BankCards = data && data.BankCardQuery && data.BankCardQuery.GetCustomerUserBankCard;
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
+
 
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested', 'Warning: Each', 'Warning: Failed'])
   }, [BankCards])
+
 
 
   const cardIndexChanged = (cardId) => {
@@ -64,12 +70,40 @@ export default function MyCards() {
       </View>
     );
 
+
+
+
+  selectedCard = (id) => {
+    deleteCard({ variables: { Id: id } });
+    if (deletedCardData && deletedCardData.DeleteCustomerUserBankCardMutation && deletedCardData.DeleteCustomerUserBankCardMutation.DeleteCustomerUserBankCard == 'Deleted') {
+      refetch();
+    }
+  }
+
+  console.log(deletedCardData)
+  console.log(data)
+
+  if (deletedCardData){
+    console.log('ss')
+  }
+
   const renderCustomerUserCards = (card) => (
-    <CreditCardImagesFlatlist card={card} key={card.index} />
+    <CreditCardImagesFlatlist card={card} key={card.index} selectedCard={selectedCard} />
   );
 
 
+
+
+  if (!deleteLoading) {
+    console.log("HUA")
+    refetch()
+  }
+
+
+
+
   return (
+
     <View style={styles.container}>
       <Animated.ScrollView
         showsVerticalScrollIndicator={false} horizontal={false}
@@ -79,7 +113,7 @@ export default function MyCards() {
           backgroundColor={'#4d2d8f'}
           barStyle={'light-content'} />
         <View >
-          <MyCardsScreenHeader />
+          <MyCardsScreenHeader refetch={refetch} />
         </View>
         <View style={styles.mainBody}>
           <TouchableOpacity style={styles.creditCardContainer}>
@@ -114,7 +148,9 @@ export default function MyCards() {
           </View>
         </View>
       </Animated.ScrollView>
+
     </View>
+
   );
 }
 
