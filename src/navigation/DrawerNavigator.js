@@ -28,27 +28,9 @@ const DrawerContent = ({ }) => {
         height: Responsive.screenHeight(),
         backgroundColor: 'white',
       }}>
-      <View style={styles.header}>
-        {/* <FastImage source={require('../../assets/images/logo.gif')} resizeMode={FastImage.resizeMode.cover} style={{
-                  width: '100%',
-                  height: '100%',
-              }}/> */}
-      </View>
       <ScrollView
         style={styles.userInformation}
         showsVerticalScrollIndicator={false}>
-        <TouchableOpacity activeOpacity={0.5} style={styles.item}>
-          <View style={styles.leftIcon}>
-            {/* <FastImage source={user.loggedIn ? require('../../assets/images/avatar/avatar1.png') : require('../../assets/images/useravatar.png')} resizeMode={FastImage.resizeMode.contain} style={{
-                          width: Responsive.width(32),
-                          height: Responsive.height(32),
-                      }}/> */}
-          </View>
-          <View style={styles.content}>
-            {/* <CommonText style={styles.text}>{user.loggedIn ? user.user.username : lang.guest}</CommonText> */}
-          </View>
-          <View style={styles.rightIcon} />
-        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate('About')} activeOpacity={0.5} style={styles.item}>
           <View style={styles.leftIcon}>{/* <Mail/> */}</View>

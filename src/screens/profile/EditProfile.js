@@ -86,7 +86,7 @@ export default function ProfileScreen() {
                 EmploymentType: employmentValue,
                 Gender: genderValue,
                 PinCode: pinCode,
-                DateOfBirth: date.toISOString()
+                DateOfBirth: date.toISOString(),
             },
         });
     };
@@ -156,7 +156,7 @@ export default function ProfileScreen() {
         })
             .catch(() => {
 
-            })
+            });
     }
     const profilePicture = dataa && dataa.UserProfileQuery && dataa.UserProfileQuery.GetUserProfile && dataa && dataa.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath;
 
@@ -174,8 +174,11 @@ export default function ProfileScreen() {
                             <Image
                                 source={{
                                     uri: applicationProperties.imageUrl + profilePicture,
+                                    headers: {
+                                        Authorization: uploadImage,
+                                    },
                                 }}
-                                style={styles.profileImage}
+                            style={styles.profileImage}
                             />
                             <TouchableOpacity onPress={() => {
                                 selectFile();
@@ -318,7 +321,7 @@ const styles = StyleSheet.create({
     },
     pfpAlignmentContainer: {
         alignItems: 'center',
-        marginTop: -65
+        marginTop: -65,
     },
     profileImage: {
         width: Responsive.width(88),

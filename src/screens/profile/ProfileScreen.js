@@ -23,9 +23,11 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import { applicationProperties } from '../../../application.properties';
 import axios from 'axios';
 
-export default function ProfileScreen() {
+export default function ProfileScreen(props) {
 
-
+  console.log('props');
+  console.log(props);
+  console.log('props');
 
   const navigation = useNavigation();
 
@@ -38,12 +40,12 @@ export default function ProfileScreen() {
 
 
   useEffect(() => {
-    console.log("REFETCH")
-    console.log("REFETCH")
-  }, [])
+    console.log('REFETCH');
+    console.log('REFETCH');
+  }, []);
 
   const selectFile = () => {
-    var options = {
+    const options = {
       title: 'Select Image',
       customButtons: [
         {
@@ -91,8 +93,9 @@ export default function ProfileScreen() {
     })
       .catch(() => {
 
-      })
+      });
   }
+
   const profilePicture = data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile && data && data.UserProfileQuery && data.UserProfileQuery.GetUserProfile.ProfilePictureStoragePath;
 
 
@@ -159,7 +162,7 @@ export default function ProfileScreen() {
               <TouchableOpacity
                 onPress={() => navigation.navigate('MonthlySpend', {
                   expense: userExpense,
-                  refetch: refetch
+                  refetch: refetch,
                 })}>
                 <AddButton />
               </TouchableOpacity>
@@ -255,7 +258,7 @@ const styles = StyleSheet.create({
       android: 'Exo2Regular',
     }),
     fontWeight: 'bold',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
   },
   addContainer: {
     padding: SIZES.padding,
